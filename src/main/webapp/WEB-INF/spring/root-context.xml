@@ -27,16 +27,29 @@
 			- 마이바티스 설정경로를 지정해줌
 	-->
 	
+
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="/WEB-INF/config/mybatis_config.xml"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/sumy/gamestore/mapper/GameListMapper.xml</value>
+				<value>classpath:com/sumy/gamestore/mapper/NewsListMapper.xml</value>
+				<!-- <value>classpath:com/sumy/gamestore/mapper/QuestionListMapper.xml</value> -->
+			</list>
+		</property>
 	</bean>
 	
 	<!-- 맵퍼 스캔 -> 마이바티스의 기능 -->
 	<mybatis-spring:scan base-package="com.sumy.gamestore"/>
 	
+	<!-- <mvc:resources location="/resources/" mapping="/resources/**"/> -->
+	
+	
 	<!-- 컨트롤러를 제외한 Context(Service...) 스캔 -->
 	<context:component-scan base-package="com.sumy.gamestore">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+	
+	
 </beans>

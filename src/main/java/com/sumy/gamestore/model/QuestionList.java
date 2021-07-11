@@ -14,7 +14,9 @@ import lombok.NoArgsConstructor;
 public class QuestionList {
 	private int questionId;
 	private int userId;
-	private LocalDateTime questionTitle;
+	private String questionTitle;
+	private String questionText;
+	private LocalDateTime questionWriteDate;
 	private boolean questionAnswerYn;
 	private boolean questionReadYn;
 	private String questionImage1;

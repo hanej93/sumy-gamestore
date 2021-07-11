@@ -9,27 +9,27 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+@EnableWebSecurity // 시큐리티를 활성화시키겠다!!
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // 시큐리티기능 중 부가적인 메소드를 활성시키는 것
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
-	@Bean
+	@Bean // Bean 어노테이션 : 반환하는 객체를 빈 객체로 등록
 	public BCryptPasswordEncoder encodePwd( ) {
 		return new BCryptPasswordEncoder();
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable();
-		http.authorizeRequests()
-			.antMatchers("/user/**").authenticated() // 인증만 되면 들어갈 수 있는 주소
+		http.csrf().disable(); // csrf 해킹을 막는 기능인데 이것을 비활성화
+		http.authorizeRequests()  // url 요청에 관한 세팅
+			.antMatchers("/user/**").authenticated() // /user/... url 요청이 올 때 -> 이런 권한만 접근이 가능하다!
 			.antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
-			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+			//.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()
 			.loginPage("/loginForm")
-			.loginProcessingUrl("/login")//login 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인을 진행
+			.loginProcessingUrl("/login") //login 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인을 진행
 			.defaultSuccessUrl("/"); 
 			
 	}
