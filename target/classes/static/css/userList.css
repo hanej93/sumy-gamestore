@@ -1,0 +1,18 @@
+@charset "UTF-8";
+h1{
+	text-align:center;
+
+}
+hr{
+	width:300px;
+}
+div.container{
+	width:400px;
+	margin: 0 auto;
+}
+section{
+	width:300px;
+	border: 1px solid black;
+	padding: 5px;
+	margin: 5px auto 0 auto;
+}
