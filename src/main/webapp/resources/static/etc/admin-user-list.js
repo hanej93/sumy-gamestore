@@ -124,7 +124,7 @@ let userInfo = {
 		};
 		
 		$.ajax({
-			type:"PUT", 
+			type:"PUT",
 			url:"/admin/user/blacklist",
 			data:JSON.stringify(data),
 			contentType:"application/json;charset=utf-8", 

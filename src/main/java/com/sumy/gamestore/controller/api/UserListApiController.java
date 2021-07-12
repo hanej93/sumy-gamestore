@@ -2,6 +2,7 @@ package com.sumy.gamestore.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,11 +20,10 @@ public class UserListApiController {
 	UserInfoService userInfoService;
 
 	@PutMapping("/admin/user/blacklist")
-	public ResponseDto<Integer> addGame(@RequestBody UserInfo userInfo) {
+	public ResponseDto<Integer> updateUserBlackList(@RequestBody UserInfo userInfo) {
 		System.out.println(userInfo.getUserId());
 		System.out.println(userInfo.getUserBlacklist());	
-		System.out.println(userInfo.getUserWarningCount());	
-
+		
 		UserInfo resultUser = userInfoService.유저검색(userInfo.getUserId());
 		resultUser.setUserBlacklist(userInfo.getUserBlacklist());
 		userInfoService.유저수정(resultUser);

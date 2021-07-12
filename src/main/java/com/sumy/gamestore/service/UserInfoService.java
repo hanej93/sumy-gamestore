@@ -34,7 +34,7 @@ public class UserInfoService {
 		
 		int affectedRows = userInfoMapper.updateUser(userInfo);
 		
-		if(affectedRows ==1) {
+		if(affectedRows == 1) {
 			UserInfo updateUser =
 					UserInfo.builder()
 					.userProfileImage(userInfo.getUserProfileImage())

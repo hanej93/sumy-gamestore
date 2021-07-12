@@ -195,7 +195,6 @@
                       <!-- Toggles Views -->
                       <label class="form-check-inline u-check mx-0 mb-0">
                         <input userId="${userList.userId }" id="blacklist-checkbox${userList.userId }" class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox"
-                        
 	                        <c:if test="${userList.userBlacklist == 1 }">
 	                        checked
 	                        </c:if>
@@ -244,7 +243,7 @@
                                 </div>
                                 <!-- Textarea Resizable -->
                                 <div class="form-group g-mb-20 g-px-20">
-                                  <textarea id="userMemo${userList.userId}" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="메모를 입력해주세요" maxlength="200"><%-- ${userList.userMemo } --%></textarea>
+                                  <textarea id="userMemo${userList.userId}" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="메모를 입력해주세요" maxlength="200"></textarea>
                                 </div>
 
                               </div>
