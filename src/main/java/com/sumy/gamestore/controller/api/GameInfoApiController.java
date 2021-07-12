@@ -30,10 +30,21 @@ public class GameInfoApiController {
 
 	@PostMapping("/admin/game/add")
 	public ResponseDto<Integer> addGame(@RequestPart(value = "gameInfo") GameInfo gameInfo
-			, MultipartFile file
-			, List<MultipartFile> files) {
-
-
+			, @RequestPart(value = "file", required = false) MultipartFile file
+			, @RequestPart(value = "files", required = false) List<MultipartFile> files) {
+		System.out.println("===========================================");
+		System.out.println("썸머노트!!!");
+		System.out.println(gameInfo.getGameMainText());
+		
+		
+//		System.out.println("===========================================");
+//		System.out.println(file.getOriginalFilename());
+//		System.out.println("-------------------------------------------");
+//		for (MultipartFile multipartFile : files) {
+//			System.out.println(multipartFile.getOriginalFilename());
+//		}
+//		System.out.println("===========================================");
+		
 		// 파일 있는지 확인
 		if (file == null || file.isEmpty()) {
 			System.out.println("파일이 없음");

@@ -168,7 +168,7 @@
                     <label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
                     <form id="fileForm" enctype="multipart/form-data">
                       <input
-                      id="fileAttachment" name="file" type="file" accept=".gif,.jpg,.jpeg,.png">
+                      id="fileAttachment" name="thumbnail" type="file" accept=".gif,.jpg,.jpeg,.png">
                     </form>
                       <i class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
                       <span class="js-value" id="imgExplain">이미지 파일을 첨부해주세요.</span>

@@ -6,7 +6,8 @@ let gameAdd = {
 		
 		
 		$("#btn-game-add-parent").on("click",()=>{
-			this.valid();
+			//this.valid();
+			$('#exampleModal').modal('show');
 		});
 	},
 	
@@ -24,6 +25,9 @@ let gameAdd = {
 			let categoryStr = "gameCategoryId" + (index+1);
 			categoryList[categoryStr] = $(this).val();
 		});
+		
+		console.log("코드" +$("#summernote").summernote('code'));
+		console.log("밸류" +$("#summernote").val());
 
 		let data = {
 			gameTitle:$("#gameTitle").val(),			
@@ -31,7 +35,7 @@ let gameAdd = {
 			gameRate:$("#gameRate").val(),				
 			gamePrice: numberToString,
 			gameSubText:$("#gameSubText").val(),			
-			gameMainText:$("#summernote").val(),
+			gameMainText:$("#summernote").summernote('code'),
 			gameDiscountRate:$("#sumy-game-discount-rate").val(),
 			gameCategoryId1:categoryList.gameCategoryId1,			
 			gameCategoryId2:categoryList.gameCategoryId2,			
@@ -48,13 +52,17 @@ let gameAdd = {
 		for(var i = 0; i < len; i++ ){
 			console.dir($('#input-multiple-image')[0].files[i]);
 			formData.append("files", $('#input-multiple-image')[0].files[i]);
+			console.log($('#input-multiple-image')[0].files[i]);
 		}
 		
 		
 		formData.append('gameInfo', new Blob([JSON.stringify(data)] , {type: "application/json"}));
-		formData.append('file', $('#fileAttachment'));
-		formData.append('files', $('#input-multiple-image')[0]);
+		formData.append('file', $('#fileAttachment')[0].files[0]);
+		//console.log($('#fileAttachment')[0].files[0]);
+		//formData.append('files', $('#input-multiple-image')[0]);
 		
+		
+		//console.log($('#input-multiple-image')[0]);
 		
 		
 		$.ajax({
