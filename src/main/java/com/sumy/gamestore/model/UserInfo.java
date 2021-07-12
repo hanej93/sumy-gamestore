@@ -21,10 +21,10 @@ public class UserInfo {
 	private String userPhoneNumber;
 	private String userName;
 	private LocalDate userBirthDate;
-	private boolean userGender;
+	private int userGender;
 	private LocalDate userJoinedDate;
 	private int userWarningCount;
-	private boolean userBlacklist;
+	private int userBlacklist;
 	private String userAuthorityRate;
 	private String userMemo;
 

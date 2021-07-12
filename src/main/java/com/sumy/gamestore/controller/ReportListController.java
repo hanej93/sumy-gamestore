@@ -22,7 +22,7 @@ public class ReportListController {
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		int total = reportListService.신고총개수();
+		int total = reportListService.신고총개수(vo);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -31,7 +31,7 @@ public class ReportListController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		}
-		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword());
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", reportListService.한페이지신고리스트(vo));
 		

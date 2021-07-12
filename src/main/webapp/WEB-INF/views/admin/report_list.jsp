@@ -99,10 +99,10 @@
 
               <div class="media-body align-self-center g-mt-10 g-mt-0--md">
                 <div class="input-group g-pos-rel g-max-width-380 float-right">
-                  <input
+                  <input id="report-nickname-search"
                     class="form-control h-100 g-font-size-default g-brd-gray-light-v7 g-brd-lightblue-v3--focus g-rounded-20 g-pl-20 g-pr-50 g-py-10"
                     type="text" placeholder="닉네임을 입력하세요.">
-                  <button
+                  <button id="report-nickname-search-btn"
                     class="btn g-pos-abs g-top-0 g-right-0 g-z-index-2 g-width-60 h-100 g-bg-transparent g-font-size-16 g-color-primary g-color-secondary--hover rounded-0"
                     type="submit">
                     <i class="hs-admin-search g-absolute-centered"></i>
@@ -360,7 +360,7 @@
 	              <c:if test="${paging.startPage != 1 }">
 	                <li class="list-inline-item g-mr-10">
 	                  <a class="u-pagination-v1__item u-pagination-v1-2 g-bg-lightblue-v3--active g-color-gray-dark-v6 g-color-black--hover g-color-white--active g-brd-gray-light-v7 g-brd-lightblue-v3--hover g-brd-lightblue-v3--active g-px-18 g-py-12 g-rounded-4"
-	                    href="/admin/report/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
+	                    href="/admin/report/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}" aria-label="Previous">
 	                    <span aria-hidden="true">
 	                      <i class="hs-admin-angle-left"></i>
 	                    </span>
@@ -374,7 +374,7 @@
 		                	<c:when test="${p != paging.nowPage }">
 				                <li class="list-inline-item g-hidden-sm-down g-mr-10">
 				                  <a class="u-pagination-v1__item u-pagination-v1-2 g-bg-lightblue-v3--active g-color-gray-dark-v6 g-color-black--hover g-color-white--active g-brd-gray-light-v7 g-brd-lightblue-v3--hover g-brd-lightblue-v3--active g-px-18 g-py-12 g-rounded-4"
-				                    href="/admin/report/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				                    href="/admin/report/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}">${p }</a>
 				                </li>
 			                </c:when>
 			                <c:when test="${p == paging.nowPage }">
@@ -391,7 +391,7 @@
 	                <c:if test="${paging.endPage != paging.lastPage}">
 		                <li class="list-inline-item">
 		                  <a class="u-pagination-v1__item u-pagination-v1-2 g-bg-lightblue-v3--active g-color-gray-dark-v6 g-color-black--hover g-color-white--active g-brd-gray-light-v7 g-brd-lightblue-v3--hover g-brd-lightblue-v3--active g-px-18 g-py-12 g-rounded-4"
-		                    href="/admin/report/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}" aria-label="Next">
+		                    href="/admin/report/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}" aria-label="Next">
 		                    <span aria-hidden="true">
 		                      <i class="hs-admin-angle-right"></i>
 		                    </span>
@@ -440,7 +440,7 @@
     <script src="/resources/static/admin/assets/js/components/hs.popup.js"></script>
 
     <!-- JS Custom -->
-    <script src="/resources/static/assets/js/custom.js"></script>
+    <!-- <script src="/resources/static/assets/js/custom.js"></script> -->
 
     <!-- JS Plugins Init. -->
     <script>
@@ -495,5 +495,7 @@
 
       });
     </script>
+    
+    <script src="/resources/static/etc/admin-report-list.js"></script>
 </body>
 </html>

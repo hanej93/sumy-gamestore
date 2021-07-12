@@ -18,12 +18,16 @@ public class UserListApiController {
 	@Autowired
 	UserInfoService userInfoService;
 
-	@PostMapping("/admin/user/list")
+	@PutMapping("/admin/user/blacklist")
 	public ResponseDto<Integer> addGame(@RequestBody UserInfo userInfo) {
-		
-		System.out.println(userInfo.isUserBlacklist());	
+		System.out.println(userInfo.getUserId());
+		System.out.println(userInfo.getUserBlacklist());	
 		System.out.println(userInfo.getUserWarningCount());	
 
+		UserInfo resultUser = userInfoService.유저검색(userInfo.getUserId());
+		resultUser.setUserBlacklist(userInfo.getUserBlacklist());
+		userInfoService.유저수정(resultUser);
+		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	

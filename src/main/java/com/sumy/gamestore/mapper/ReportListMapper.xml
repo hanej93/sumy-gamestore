@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sumy.gamestore.mapper.ReportListMapper">
+ 	<select id="selectReportList" parameterType="com.sumy.gamestore.dto.PagingVO" resultType="com.sumy.gamestore.model.ReportList">
+ 		select * from report_list
+ 		
+ 		<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="keyword != null and keyword != '' ">
+				AND review_id like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim>
+		order by report_id desc limit #{start}, #{cntPage}
+		
+
+ 	</select>
+ 	
+ 	<select id="countReportList" parameterType="com.sumy.gamestore.dto.PagingVO" resultType="int">
+ 		select count(*) from report_list
+ 		<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="	keyword != null and keyword != '' ">
+			
+				AND review_id like CONCAT('%', #{keyword}, '%')
+
+			</if>
+
+		</trim>
+
+ 	</select>
+ 	
+</mapper>

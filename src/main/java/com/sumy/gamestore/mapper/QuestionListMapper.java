@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.sumy.gamestore.dto.PagingVO;
-import com.sumy.gamestore.dto.QuestionListDto;
 import com.sumy.gamestore.model.QuestionList;
 
 @Mapper
@@ -33,10 +32,10 @@ public interface QuestionListMapper {
 	
 	// ================================================
 	
-	@Select("select count(*) from question_list")
+//	@Select("select count(*) from question_list")
 	public int countQuestionList(PagingVO vo);
 
-	@Select("select * from question_list order by question_id desc limit #{start}, #{cntPage}")
+//	@Select("select * from question_list order by question_id desc limit #{start}, #{cntPage}")
 	public List<QuestionList> selectQuestionList(PagingVO vo);
 	
 }

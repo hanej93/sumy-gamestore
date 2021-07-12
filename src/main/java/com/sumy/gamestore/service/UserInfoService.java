@@ -16,13 +16,13 @@ public class UserInfoService {
 	private UserInfoMapper userInfoMapper;
 	
 	// 총 유저 갯수 조회
-	public int 유저총개수() {
-		return userInfoMapper.countUserList();
+	public int 유저총개수(PagingVO vo) {
+		return userInfoMapper.countUserList(vo);
 	}
 	
 	// 한 페이지 유저 리스트 조회
 	public List<UserInfo> 한페이지유저리스트(PagingVO vo){
-		return userInfoMapper.selectUserList(vo);
+		return userInfoMapper.selectUserInfo(vo);
 	}
 	
 	public UserInfo 유저검색(int userId) {
@@ -30,23 +30,26 @@ public class UserInfoService {
 		return userInfo;
 	}
 	
-//	public UserInfo 유저수정(UserInfo userInfo) {
-//		
-//		int affectedRows = userInfoMapper.updateUser(userInfo);
-//		
-//		if(affectedRows ==1) {
-//			return new GameInfo(gameInfo.getGameId(), gameInfo.getGameTitle(), gameInfo.getGameDev(), gameInfo.getGamePrice(), 
-//					gameInfo.getGameDiscountRate(), gameInfo.getGameSubText(), gameInfo.getGameMainText(), gameInfo.getGameRate(), 
-//					gameInfo.getGameThumbImage(), gameInfo.getGameCategoryId1(), gameInfo.getGameCategoryId2(), 
-//					gameInfo.getGameCategoryId3(), gameInfo.getGameCategoryId4(), gameInfo.getGameIntroImage1(), 
-//					gameInfo.getGameIntroImage2(), gameInfo.getGameIntroImage3(), gameInfo.getGameIntroImage4(), 
-//					gameInfo.getGameIntroImage5(), gameInfo.getGameReleaseDate(), gameInfo.getGameUpdateDate(), 
-//					gameInfo.getGameSaleCount(), gameInfo.getGameTotalEarnings());
-//			
-//		}else {
-//			return null;
-//		}	
-//	}
+	public UserInfo 유저수정(UserInfo userInfo) {
+		
+		int affectedRows = userInfoMapper.updateUser(userInfo);
+		
+		if(affectedRows ==1) {
+			UserInfo updateUser =
+					UserInfo.builder()
+					.userProfileImage(userInfo.getUserProfileImage())
+					.userName(userInfo.getUserName())
+					.userNickname(userInfo.getUserNickname())
+					.userEmail(userInfo.getUserEmail())
+					.userWarningCount(userInfo.getUserWarningCount())
+					.userBlacklist(userInfo.getUserBlacklist())
+					.build();
+			return updateUser;
+					
+		}else {
+			return null;
+		}
+	}
 	
 	public int 유저삭제(int userId) {
 		return userInfoMapper.deleteUser(userId);

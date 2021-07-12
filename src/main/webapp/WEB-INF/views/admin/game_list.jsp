@@ -749,7 +749,7 @@
     <script src="/resources/static/assets/js/components/hs.slider.js"></script>
 
     <!-- JS Custom -->
-    <script src="/resources/static/assets/js/custom.js"></script>
+    <!-- <script src="/resources/static/assets/js/custom.js"></script> -->
 
     <!-- JS Plugins Init. -->
     <script>

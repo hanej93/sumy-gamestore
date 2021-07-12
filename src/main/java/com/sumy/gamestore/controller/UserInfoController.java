@@ -23,7 +23,7 @@ public class UserInfoController {
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		int total = userInfoService.유저총개수();
+		int total = userInfoService.유저총개수(vo);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -32,7 +32,7 @@ public class UserInfoController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		}
-		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword(), vo.getBlacklistYn());
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", userInfoService.한페이지유저리스트(vo));
 		

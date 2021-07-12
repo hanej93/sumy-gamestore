@@ -23,8 +23,8 @@ public class ReportListService {
 //	private boolean reportReadYn;
 	
 	// 총 신고 갯수 조회
-	public int 신고총개수() {
-		return reportListMapper.countReportList();
+	public int 신고총개수(PagingVO vo) {
+		return reportListMapper.countReportList(vo);
 	}
 	
 	// 한 페이지 신고 리스트 조회
