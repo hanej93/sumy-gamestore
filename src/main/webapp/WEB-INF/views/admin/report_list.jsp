@@ -121,37 +121,37 @@
                       </div>
                     </th>
                     <th
-                      class="g-hidden-sm-down g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
+                      class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
                       <div class="d-flex align-items-center justify-content-center">
-                        프로필사진
+                        신고자
+                      </div>
+                    </th>
+                    <th
+                      class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
+                      <div class="d-flex align-items-center justify-content-center">
+                        신고대상
+                      </div>
+                    </th>
+                    <th class="g-hidden-sm-down g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
+                      <div class="d-flex align-items-center justify-content-center">
+                         신고당한 횟수
                       </div>
                     </th>
                     <th
                       class="g-hidden-sm-down g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
                       <div class="d-flex align-items-center justify-content-center">
-                        이름
+                        경고
+                      </div>
+                    </th>
+                    <th
+                      class="g-hidden-sm-down g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
+                      <div class="d-flex align-items-center justify-content-center">
+                        신고일
                       </div>
                     </th>
                     <th class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
                       <div class="d-flex align-items-center justify-content-center">
-                        닉네임
-                      </div>
-                    </th>
-                    <th
-                      class="g-hidden-sm-down g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
-                      <div class="d-flex align-items-center justify-content-center">
-                        이메일
-                      </div>
-                    </th>
-                    <th
-                      class="g-hidden-sm-down g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
-                      <div class="d-flex align-items-center justify-content-center">
-                        등록일
-                      </div>
-                    </th>
-                    <th class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
-                      <div class="d-flex align-items-center justify-content-center">
-                        읽음상태
+                        읽음
                       </div>
                     </th>
                     <th class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
@@ -171,18 +171,19 @@
                     	${reportList.reportId}
                     </td>
                     <td
-                      class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <img src="/resources/static/assets/img-temp/100x100/img1.jpg">
+                      class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
+                      <span class="">${reportList.fromUserNickname }</span>
                     </td>
                     <td
-                      class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <span class="g-hidden-sm-down">${reportList.reportFromUserId}</span>
+                      class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
+                      <span class="">${reportList.toUserNickname }</span>
                     </td>
-                    <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
-                      ${reportList.reviewId}</td>
+                    <td class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
+                      <span class="g-hidden-sm-down">${reportList.reviewReportCount }</span>
+                      </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <span class="g-hidden-sm-down">${reportList.reportText}</span>
+                      <span class="g-hidden-sm-down">${reportList.toUserWarningCount }</span>
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
@@ -224,22 +225,26 @@
                               <div class="modal-body">
                                 <div class="row justify-content-start text-left g-mx-5">
                                   <div class="col-12 g-my-10"><h5>신고자</h5></div>
-                                  <div class="col-12 g-my-10">이름 : 김머시기</div>
-                                  <div class="col-12 g-my-10">닉네임 : 별명이</div>
-                                  <div class="col-12 g-my-10">이메일 : ABCD@naver.com</div>
-                                  <div class="col-12 g-my-10">신고등록일 : 2021-06-24</div>
+                                  <div class="col-12 g-my-10">이름 : ${reportList.fromUserName}</div>
+                                  <div class="col-12 g-my-10">닉네임 : ${reportList.fromUserNickname}</div>
+                                  <div class="col-12 g-my-10">이메일 : ${reportList.fromUserEmail}</div>
+                                  <div class="col-12 g-my-10">신고등록일 : ${reportList.reportWriteDate}</div>
+                                </div>
+                                <h5 class="modal-title ml-auto g-my-10" id="exampleModalLabel">신고 사유</h5>
+                                <div class="g-mb-20 g-px-20">
+                                  <textarea id="" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="내용이 없습니다." readonly="readonly">${reportList.reportText }</textarea>
                                 </div>
                                 <hr class="g-mx-20 g-my-10">
                                 <div class="row justify-content-start text-left g-mx-5">
                                   <div class="col-12 g-my-10"><h5>신고 대상</h5></div>
-                                  <div class="col-12 g-my-10">이름 : 김땡땡</div>
-                                  <div class="col-12 g-my-10">닉네임 : 별명이</div>
-                                  <div class="col-12 g-my-10">이메일 : DEFG@naver.com</div>
-                                  <div class="col-12 g-my-10">신고당한 횟수 : 5</div>
+                                  <div class="col-12 g-my-10">이름 : ${reportList.toUserName}</div>
+                                  <div class="col-12 g-my-10">닉네임 : ${reportList.toUserNickname}</div>
+                                  <div class="col-12 g-my-10">이메일 : ${reportList.toUserEmail}</div>
+                                  <div class="col-12 g-my-10">신고당한 횟수 : ${reportList.reviewReportCount}</div>
                                   <div class="col-12 g-my-10">경고 : 
                                     <div id="sumy-warning-minus" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-minus"></i>
                                     </div>
-                                    <span id="sumy-warning-num">1</span>
+                                    <span id="sumy-warning-num">${reportList.toUserWarningCount }</span>
                                     <div id="sumy-warning-plus" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-plus"></i>
                                     </div>
                                   </div>
@@ -251,7 +256,7 @@
                                   <!-- Textarea Resizable -->
                                   <div class="g-mb-20 g-px-20">
                                     <!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-                                    <textarea id="inputGroup2_2" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="리뷰 내용이 없습니다." readonly="readonly">너의 어머니는 건강하시니?</textarea>
+                                    <textarea id="" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="리뷰 내용이 없습니다." readonly="readonly">${reportList.reviewText }</textarea>
                                   </div>
                                 </form>
                               </div>

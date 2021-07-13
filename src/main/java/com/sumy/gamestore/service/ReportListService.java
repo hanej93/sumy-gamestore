@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.dto.ReportReviewUserDto;
 import com.sumy.gamestore.mapper.ReportListMapper;
 import com.sumy.gamestore.model.ReportList;
 
@@ -28,7 +29,7 @@ public class ReportListService {
 	}
 	
 	// 한 페이지 신고 리스트 조회
-	public List<ReportList> 한페이지신고리스트(PagingVO vo){
+	public List<ReportReviewUserDto> 한페이지신고리스트(PagingVO vo){
 		return reportListMapper.selectReportList(vo);
 	}
 	
