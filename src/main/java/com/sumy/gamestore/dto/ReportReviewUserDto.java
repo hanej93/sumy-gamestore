@@ -32,6 +32,7 @@ public class ReportReviewUserDto {
 	2) 닉네임
 	3) 이메일
 	4) 경고
+	5) 아이디
 
 	4. 리뷰테이블
 	1) 리뷰내용
@@ -57,6 +58,7 @@ public class ReportReviewUserDto {
 	private String toUserNickname;
 	private String toUserEmail;
 	private int toUserWarningCount;
+	private int toUserId;
 	
 	// 리뷰 테이블
 	private String reviewText;

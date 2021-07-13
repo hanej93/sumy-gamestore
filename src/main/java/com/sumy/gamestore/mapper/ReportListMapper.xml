@@ -22,6 +22,7 @@
 		tu.user_nickname as to_user_nickname,
 		tu.user_email as to_user_email,
 		tu.user_warning_count as to_user_warning_count,
+		tu.user_id as to_user_id,
 		
 		rv.review_text,
 		rv.review_report_count 

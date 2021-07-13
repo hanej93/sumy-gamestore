@@ -48,7 +48,7 @@ public class UserListApiController {
 		resultUser.setUserWarningCount(userInfo.getUserWarningCount());
 		resultUser.setUserMemo(userInfo.getUserMemo());
 		
-		System.out.println(resultUser);
+		userInfoService.유저수정(resultUser);
 
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

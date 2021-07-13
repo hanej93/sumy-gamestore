@@ -17,6 +17,6 @@ public class ReportList {
 	private int reviewId;
 	private String reportText;
 	private LocalDateTime reportWriteDate;
-	private boolean reportReadYn;
+	private int reportReadYn;
 	
 }

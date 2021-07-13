@@ -195,7 +195,6 @@
                         <input reportId="${reportList.reportId }" id="readYn-checkbox${reportList.reportId }" class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox"
                          <c:if test="${reportList.reportReadYn == 1 }">
                           checked
-                          
                          </c:if>
                          >
                         <div class="u-check-icon-radio-v7">
@@ -211,13 +210,13 @@
 
                         <!-- 모달 버튼 시작 -->
                         <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" data-toggle="modal"
-                          data-target="#exampleModal">
+                          data-target="#exampleModal1${reportList.reportId }">
                           <i class="hs-admin-pencil g-font-size-18"></i>
                         </a>
                         <!-- 모달 버튼 끝 -->
 
                         <!-- 모달 내용 시작 -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div toUserId="${reportList.toUserId }" reportId="${reportList.reportId }" class="modal fade" id="exampleModal1${reportList.reportId }" tabindex="-1" aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
@@ -237,7 +236,7 @@
                                 </div>
                                 <h5 class="modal-title ml-auto g-my-10" id="exampleModalLabel">신고 사유</h5>
                                 <div class="g-mb-20 g-px-20">
-                                  <textarea id="" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="내용이 없습니다." readonly="readonly">${reportList.reportText }</textarea>
+                                  <textarea class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="내용이 없습니다." readonly="readonly">${reportList.reportText }</textarea>
                                 </div>
                                 <hr class="g-mx-20 g-my-10">
                                 <div class="row justify-content-start text-left g-mx-5">
@@ -247,10 +246,10 @@
                                   <div class="col-12 g-my-10">이메일 : ${reportList.toUserEmail}</div>
                                   <div class="col-12 g-my-10">신고당한 횟수 : ${reportList.reviewReportCount}</div>
                                   <div class="col-12 g-my-10">경고 : 
-                                    <div id="sumy-warning-minus" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-minus"></i>
+                                    <div id="sumy-warning-minus${reportList.reportId }" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-minus"></i>
                                     </div>
-                                    <span id="sumy-warning-num">${reportList.toUserWarningCount }</span>
-                                    <div id="sumy-warning-plus" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-plus"></i>
+                                    <span id="sumy-warning-num${reportList.reportId }">${reportList.toUserWarningCount }</span>
+                                    <div id="sumy-warning-plus${reportList.reportId }" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-plus"></i>
                                     </div>
                                   </div>
                                 </div>
@@ -261,7 +260,7 @@
                                   <!-- Textarea Resizable -->
                                   <div class="g-mb-20 g-px-20">
                                     <!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-                                    <textarea id="" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="리뷰 내용이 없습니다." readonly="readonly">${reportList.reviewText }</textarea>
+                                    <textarea class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="리뷰 내용이 없습니다." readonly="readonly">${reportList.reviewText }</textarea>
                                   </div>
                                 </form>
                               </div>
@@ -311,7 +310,7 @@
                                 <div class="row justify-content-center g-mx-5">
                                   <div class="col-12 g-mt-10 g-mb-30">신고내역을 삭제 하시겠습니까?</div>
                                   <div>
-                                    <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal5" data-dismiss="modal">삭제</a>
+                                    <a id="delBtn${reportList.reportId}" reportId="${reportList.reportId}" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal5" data-dismiss="modal">삭제</a>
                                     <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                                   </div>
                                 </div>
@@ -482,24 +481,6 @@
           }
         });
 
-        //경고 횟수 추가
-        $("#sumy-warning-plus").on("click",()=>{
-          let warningNum = $("#sumy-warning-num").text();
-          if (warningNum < 3){
-            warningNum = Number(warningNum) + 1;
-            $("#sumy-warning-num").text(warningNum);
-          }
-        });
-
-        //경고 횟수 감소
-        $("#sumy-warning-minus").on("click",()=>{
-          let warningNum = $("#sumy-warning-num").text();
-          if (warningNum > 0){
-            warningNum = Number(warningNum) -1;
-            $("#sumy-warning-num").text(warningNum);
-          }
-        });
-        
       	//sidebar 메뉴 액티브
         $("#warningSidebar").addClass("has-active");
 

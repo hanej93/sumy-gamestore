@@ -71,6 +71,8 @@ let userInfo = {
 				userWarningCount:$(userWarningCountStr).text(),
 				userMemo:$(userMemoStr).val()
 			}
+			console.log($(userMemoStr).val());
+			
 			$.ajax({
 				type:"PUT", 
 				url:"/admin/user/memo",
@@ -78,7 +80,7 @@ let userInfo = {
 				contentType:"application/json;charset=utf-8", 
 				dataType:"json" 
 			}).done(function(resp){ 
-				console.log(resp);
+				location.reload();
 			}).fail(function(error){ 
 				console.log(error); 
 				alert(JSON.stringify(error));

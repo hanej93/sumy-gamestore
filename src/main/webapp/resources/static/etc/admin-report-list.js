@@ -6,29 +6,67 @@ let reportList = {
 			this.search();
 		});
 		
-		// 읽음 상태에 따른 조회 
-		$('#updateReadYn-select').on('change', ()=>{
+		// 읽음 상태에 따른 조회 (미구현)
+		$('#readYn-select').on('change', ()=>{
 			this.search();
 		});
 		
-		// 읽음 상태 변경 (미구현)
-		$("[id^='updateReadYn-checkbox']").on('change',function(){
+		// 읽음 상태 변경
+		$("[id^='readYn-checkbox']").on('change',function(){
 			let checkBox =$(this);
 			reportList.updateReadYn(checkBox);
 		});
 		
 		
-		// 경고 횟수 추가 (미구현)
+		// 경고 횟수 추가
         $("[id^='sumy-warning-plus']").on("click",function(){
 			let plusBtn = $(this);
         	reportList.warningPlus(plusBtn);
         });
 
-        // 경고 횟수 감소 (미구현)
+        // 경고 횟수 감소
         $("[id^='sumy-warning-minus']").on("click",function(){
 			let minusBtn = $(this);
         	reportList.warningMinus(minusBtn);
         });
+
+		// 해당 리포트 삭제
+		$("[id^='delBtn']").on("click",function(){
+			let reportId = $(this).attr("reportId");
+			reportList.delete(reportId);
+		});
+			
+		// 해당 댓글(리뷰) 삭제
+		
+		
+		// 모달이 꺼졌을 때 경고횟수 저장
+		$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
+			let modal = $(this);
+			var toUserId = modal.attr("toUserId");
+			var reportId = modal.attr("reportId");
+			
+			let userWarningCountStr = "#sumy-warning-num" + reportId;
+			
+			var data = {
+				toUserId:toUserId,
+				toUserWarningCount:$(userWarningCountStr).text()
+				
+			}
+			
+			$.ajax({
+				type:"put", 
+				url:"/admin/report/memo",
+				data:JSON.stringify(data),
+				contentType:"application/json;charset=utf-8", 
+				dataType:"json" 
+			}).done(function(resp){ 
+				location.reload();
+			}).fail(function(error){ 
+				console.log(error); 
+				alert(JSON.stringify(error));
+			});
+			
+		});
 
 	},
 	
@@ -76,8 +114,6 @@ let reportList = {
 	
 	// 경고 증가
 	warningPlus: function(plusBtn) {
-		//let warningNum = $("#sumy-warning-num").text();
-		//let warningNum = $("#sumy-warning-plus").parent().children("span").text();
 		let warningNum = plusBtn.parent().children("span").text();
 		
         if(warningNum < 3){
@@ -88,7 +124,6 @@ let reportList = {
 	
 	// 경고 감소
 	warningMinus: function(minusBtn) {
-		//let warningNum = $("#sumy-warning-num").text();
 		let warningNum = minusBtn.parent().children("span").text();
         if(warningNum > 0){
             minusBtn.parent().children("span").text(Number(warningNum)-1);
@@ -96,22 +131,22 @@ let reportList = {
 	},
 	
 	// 신고리스트 삭제
-	delete: function(userId) {
+	delete: function(reportId) {
 		
-		alert("버튼클릭확인" +userId);
+		alert("버튼클릭확인" +reportId);
 		
 		let data = {
-			userId:userId
+			reportId:reportId
 		}
 		
 		$.ajax({
 			type:"DELETE", 
-			url:"/admin/user/list",
+			url:"/admin/report/list",
 			data:JSON.stringify(data),
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
-			location.href = "/admin/user/list";
+			location.reload();
 		}).fail(function(error){ 
 			console.log(error); 
 			alert(JSON.stringify(error));
