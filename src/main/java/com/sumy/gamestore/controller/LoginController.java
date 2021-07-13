@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,9 @@ import com.sumy.gamestore.service.MailSendService;
 @Controller
 @RequestMapping("/user")
 public class LoginController {
+	@Autowired
+	BCryptPasswordEncoder bcryptPasswordEncoder;
+	
 	@Autowired
 	JoinedUserService joinedUserService;
 
@@ -83,6 +87,8 @@ public class LoginController {
 		System.out.println(userInfo);
 		userInfo.setUserJoinedDate(LocalDate.now());// 가입날짜 세팅
 		userInfo.setUserAuthorityRate("ROLE_USER");// 사용자 계정 세팅
+		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
+		userInfo.setUserPassword(encodePS);//암호화
 		int total = joinedUserService.addUser(userInfo);
 		return "user/home-page-1";
 	}
