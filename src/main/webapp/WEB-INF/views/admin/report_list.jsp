@@ -192,7 +192,11 @@
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
                       <!-- Toggles Views -->
                       <label class="form-check-inline u-check mx-0 mb-0">
-                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox" checked="">
+                        <input reportId="${reportList.reportId }" id="readYn-checkbox${reportList.reportId }" class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox"
+                         <c:if test="${reportList.reportReadYn == 1 }">
+                          checked
+                         </c:if>
+                         >
                         <div class="u-check-icon-radio-v7">
                           <i class="d-inline-block"></i>
                         </div>

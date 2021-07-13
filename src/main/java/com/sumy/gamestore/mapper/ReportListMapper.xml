@@ -39,7 +39,7 @@
  		<trim prefix="WHERE" prefixOverrides="AND|OR">
 
 			<if test="keyword != null and keyword != '' ">
-				AND review_id like CONCAT('%', #{keyword}, '%')
+				AND tu.user_nickname like CONCAT('%', #{keyword}, '%')
 			</if>
 		</trim>
 		order by report_id desc limit #{start}, #{cntPage}
@@ -65,9 +65,7 @@
  		<trim prefix="WHERE" prefixOverrides="AND|OR">
 
 			<if test="	keyword != null and keyword != '' ">
-			
-				AND review_id like CONCAT('%', #{keyword}, '%')
-
+				AND tu.user_nickname like CONCAT('%', #{keyword}, '%')
 			</if>
 
 		</trim>
