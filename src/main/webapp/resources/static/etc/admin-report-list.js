@@ -35,9 +35,13 @@ let reportList = {
 			let reportId = $(this).attr("reportId");
 			reportList.delete(reportId);
 		});
+		
 			
 		// 해당 댓글(리뷰) 삭제
-		
+		$("[id^='delReviewBtn']").on("click",function(){
+			let reviewId = $(this).attr("reviewId");
+			reportList.deleteReview(reviewId);
+		});
 		
 		// 모달이 꺼졌을 때 경고횟수 저장
 		$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
@@ -66,6 +70,13 @@ let reportList = {
 				alert(JSON.stringify(error));
 			});
 			
+		});
+		
+		
+		// 확인 버튼의 모달이 꺼졌을 때 모든 모달 닫기
+		$("#exampleModal3").on('hidden.bs.modal', function () {
+			
+			$("[id^='exampleModal1']").modal('hide');
 		});
 
 	},
@@ -133,8 +144,6 @@ let reportList = {
 	// 신고리스트 삭제
 	delete: function(reportId) {
 		
-		alert("버튼클릭확인" +reportId);
-		
 		let data = {
 			reportId:reportId
 		}
@@ -147,6 +156,31 @@ let reportList = {
 			dataType:"json" 
 		}).done(function(resp){ 
 			location.reload();
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+	},
+	
+	deleteReview: function(reviewId) {
+		
+		let data = {
+			reviewId:reviewId
+		}
+		
+		$.ajax({
+			type:"DELETE", 
+			url:"/admin/report/review",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			$("[id^='exampleModal2']").modal('hide');
+			if(resp.data == 1){
+				$("#exampleModal3").modal('show');
+			} else{
+				alert("해당 댓글은 이미 삭제되었습니다.");
+			}
 		}).fail(function(error){ 
 			console.log(error); 
 			alert(JSON.stringify(error));

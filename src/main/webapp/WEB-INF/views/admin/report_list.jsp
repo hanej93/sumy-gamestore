@@ -265,7 +265,7 @@
                                 </form>
                               </div>
                               <div class="modal-footer justify-content-center">
-                                <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal">리뷰 삭제</a>
+                                <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal2${reportList.reportId}">리뷰 삭제</a>
                                 <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                                 
                               </div>
@@ -276,7 +276,7 @@
                         <!-- 모달 내용 끝 -->
                   
                         <!-- 신고 재확인 팝업 시작-->
-                        <div class="modal fade justify-content-center" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade justify-content-center" id="exampleModal2${reportList.reportId}" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
@@ -284,7 +284,7 @@
                                 <div class="row justify-content-center g-mx-5">
                                   <div class="col-12 g-mt-10 g-mb-30">리뷰를 삭제하시겠습니까?</div>
                                     <div>
-                                      <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal">삭제</a>
+                                      <a id="delReviewBtn${reportList.reportId}" reviewId="${reportList.reviewId}" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal">삭제</a>
                                       <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                                     </div>
                                 </div>
