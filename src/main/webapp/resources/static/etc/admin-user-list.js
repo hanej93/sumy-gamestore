@@ -1,24 +1,30 @@
-let gameList = {
+let userInfo = {
 	init: function(){
 		$('#user-nickname-search-btn').on('click', ()=>{
 			this.search();
 		});
 		
-		$('#blacklist-checkbox').on('change',()=>{
-			this.blacklist();
+		//블랙리스트 
+		$('#blacklistYn-select').on('change', ()=>{
+			this.search();
+		});
+		
+		
+		$("[id^='blacklist-checkbox']").on('change',function(){
+			let checkBox =$(this);
+			userInfo.blacklist(checkBox);
 		});
 		
 		 //경고 횟수 추가
-		$("[id^='sumy-warning-plus']")
         $("[id^='sumy-warning-plus']").on("click",function(){
 			let plusBtn = $(this);
-        	gameList.warningPlus(plusBtn);
+        	userInfo.warningPlus(plusBtn);
         });
 
         //경고 횟수 감소
         $("[id^='sumy-warning-minus']").on("click",function(){
 			let minusBtn = $(this);
-        	gameList.warningMinus(minusBtn);
+        	userInfo.warningMinus(minusBtn);
         });
 
 		// 모달이 켜졌을 때
@@ -84,7 +90,7 @@ let gameList = {
 		// 삭제버튼을 눌렀을 때
 		$("[id^='delBtn']").on('click', function () {
 			let userId = $(this).attr("userid");
-			gameList.delete(userId);
+			userInfo.delete(userId);
 		});
 
 
@@ -98,19 +104,28 @@ let gameList = {
 
 		url = url + "&keyword=" + $('#user-nickname-search').val();
 
+		url = url + "&blacklistYn=" + $('#blacklistYn-select').val();
+
 		location.href = url;
 	
 	},
 	
-	blacklist: function() {
-		console.log($('#blacklist-checkbox').prop('checked'));
+	blacklist: function(blackListCheckBox) {
+		console.log(blackListCheckBox.prop('checked'));
+		var userBlacklist = 0;
+		if(blackListCheckBox.prop('checked')){
+			userBlacklist = 1;
+		}
+		
+		
 		let data = {
-			userBlacklist:$('#blacklist-checkbox').prop('checked')
+			userBlacklist:userBlacklist,
+			userId:blackListCheckBox.attr("userId")
 		};
 		
 		$.ajax({
-			type:"POST", 
-			url:"/admin/user/list",
+			type:"PUT",
+			url:"/admin/user/blacklist",
 			data:JSON.stringify(data),
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
@@ -167,7 +182,7 @@ let gameList = {
 	
 }
 
-gameList.init();
+userInfo.init();
 
 
 

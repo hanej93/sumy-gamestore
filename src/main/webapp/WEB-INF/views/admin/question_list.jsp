@@ -194,13 +194,13 @@
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <span class="g-hidden-sm-down">${questionList.questionTitle}</span>
+                      <span class="g-hidden-sm-down">${questionList.userName}</span>
                     </td>
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
-                      Dropbox Inc.</td>
+                      ${questionList.userNickname}</td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <span class="g-hidden-sm-down">devin.newman@gmail.com</span>
+                      <span class="g-hidden-sm-down">${questionList.userEmail}</span>
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
@@ -498,7 +498,7 @@
     <script src="/resources/static/admin/assets/js/components/hs.popup.js"></script>
 
     <!-- JS Custom -->
-    <script src="/resources/static/assets/js/custom.js"></script>
+    <!-- <script src="/resources/static/assets/js/custom.js"></script> -->
 
     <!-- JS Plugins Init. -->
     <script>

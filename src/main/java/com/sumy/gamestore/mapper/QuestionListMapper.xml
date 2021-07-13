@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sumy.gamestore.mapper.QuestionListMapper">
+ 	<select id="selectQuestionList" parameterType="com.sumy.gamestore.dto.PagingVO" resultType="com.sumy.gamestore.dto.QuestionUserDto">
+ 		<!-- select * from question_list -->
+ 		select * 
+		from question_list as q 
+		inner join user_info as u 
+		on q.user_id = u.user_id
+ 		
+ 		<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="keyword != null and keyword != '' ">
+				AND question_title like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim>
+		order by question_id desc limit #{start}, #{cntPage}
+		
+
+ 	</select>
+ 	
+ 	<select id="countQuestionList" parameterType="com.sumy.gamestore.dto.PagingVO" resultType="int">
+ 		<!-- select count(*) from question_list -->
+ 		select count(*) 
+		from question_list as q 
+		inner join user_info as u 
+		on q.user_id = u.user_id
+ 		<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="	keyword != null and keyword != '' ">
+			
+				AND question_title like CONCAT('%', #{keyword}, '%')
+
+			</if>
+
+		</trim>
+
+ 	</select>
+ 	
+</mapper>

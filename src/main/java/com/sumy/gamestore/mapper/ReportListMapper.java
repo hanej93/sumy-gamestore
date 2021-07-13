@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.dto.ReportReviewUserDto;
 import com.sumy.gamestore.model.ReportList;
 
 @Mapper
@@ -32,10 +33,10 @@ public interface ReportListMapper {
 	
 	// ================================================
 	
-	@Select("select count(*) from report_list")
-	public int countReportList();
+//	@Select("select count(*) from report_list")
+	public int countReportList(PagingVO vo);
 
-	@Select("select * from report_list order by report_id desc limit #{start}, #{cntPage}")
-	public List<ReportList> selectReportList(PagingVO vo);
+//	@Select("select * from report_list order by report_id desc limit #{start}, #{cntPage}")
+	public List<ReportReviewUserDto> selectReportList(PagingVO vo);
 	
 }

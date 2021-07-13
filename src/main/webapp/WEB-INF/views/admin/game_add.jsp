@@ -506,7 +506,7 @@
     <script src="/resources/static/assets/js/components/hs.masked-input.js"></script>
 
     <!-- JS Custom -->
-    <script src="/resources/static/assets/js/custom.js"></script>
+    <!-- <script src="/resources/static/assets/js/custom.js"></script> -->
 	
 	<!-- 썸머노트 스크립트 -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>

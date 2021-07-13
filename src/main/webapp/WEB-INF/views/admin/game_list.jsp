@@ -385,7 +385,7 @@
             <!-- 신고 관리 시작 -->
             <li id="warningSidebar"
             class="u-sidebar-navigation-v1-menu-item u-side-nav--has-sub-menu u-side-nav--top-level-menu-item">
-              <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12"href="${pageContext.request.contextPath }/admin/warning/list"
+              <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12"href="${pageContext.request.contextPath }/admin/report/list"
                 >
                 <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
                   <i class="hs-admin-alert"></i>
@@ -549,12 +549,12 @@
                       ${gameInfo.gameId}</td>
                     <td
                       class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <a class="d-flex align-items-center u-link-v5 g-color-black g-color-secondary--hover g-color-secondary--opened justify-content-center"
+                      <a class="d-flex align-items-center u-link-v5 g-color-black g-color-secondary--hover g-color-secondary--opened"
                         href="#contact-1">
                         <img
-                          class="g-width-40 g-width-50--md g-height-40 g-height-50--md g-brd-around g-brd-2 g-brd-transparent g-brd-lightblue-v3--parent-opened g-rounded-5 g-mr-20--sm"
+                          class="flex-shrink-0 g-width-80 g-height-115 g-brd-around g-brd-2 g-brd-transparent g-brd-lightblue-v3--parent-opened g-rounded-5 g-mr-20--sm"
                           src="${gameInfo.gameThumbImage}" alt="Image Description">
-                        <span class="">${gameInfo.gameTitle}</span>
+                        <span class="flex-grow-1 ms-3">${gameInfo.gameTitle}</span>
                       </a>
                     </td>
                     <td
@@ -749,7 +749,7 @@
     <script src="/resources/static/assets/js/components/hs.slider.js"></script>
 
     <!-- JS Custom -->
-    <script src="/resources/static/assets/js/custom.js"></script>
+    <!-- <script src="/resources/static/assets/js/custom.js"></script> -->
 
     <!-- JS Plugins Init. -->
     <script>

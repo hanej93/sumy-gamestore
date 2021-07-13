@@ -22,7 +22,7 @@ public class EmailCertification {
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587); 
 		mailSender.setUsername("javacake93@gmail.com");
-		mailSender.setPassword("audwn3!@1524#!");
+		mailSender.setPassword("");
 		mailSender.setDefaultEncoding("utf-8");
 		mailSender.setJavaMailProperties(properties);
 		

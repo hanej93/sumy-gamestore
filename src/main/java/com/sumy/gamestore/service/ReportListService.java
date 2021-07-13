@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.dto.ReportReviewUserDto;
 import com.sumy.gamestore.mapper.ReportListMapper;
 import com.sumy.gamestore.model.ReportList;
 
@@ -23,12 +24,12 @@ public class ReportListService {
 //	private boolean reportReadYn;
 	
 	// 총 신고 갯수 조회
-	public int 신고총개수() {
-		return reportListMapper.countReportList();
+	public int 신고총개수(PagingVO vo) {
+		return reportListMapper.countReportList(vo);
 	}
 	
 	// 한 페이지 신고 리스트 조회
-	public List<ReportList> 한페이지신고리스트(PagingVO vo){
+	public List<ReportReviewUserDto> 한페이지신고리스트(PagingVO vo){
 		return reportListMapper.selectReportList(vo);
 	}
 	

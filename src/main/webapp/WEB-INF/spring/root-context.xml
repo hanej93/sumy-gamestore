@@ -35,7 +35,9 @@
 			<list>
 				<value>classpath:com/sumy/gamestore/mapper/GameListMapper.xml</value>
 				<value>classpath:com/sumy/gamestore/mapper/NewsListMapper.xml</value>
-				<!-- <value>classpath:com/sumy/gamestore/mapper/QuestionListMapper.xml</value> -->
+				<value>classpath:com/sumy/gamestore/mapper/UserListMapper.xml</value>
+				<value>classpath:com/sumy/gamestore/mapper/QuestionListMapper.xml</value>
+				<value>classpath:com/sumy/gamestore/mapper/ReportListMapper.xml</value>
 			</list>
 		</property>
 	</bean>

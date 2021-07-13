@@ -1,25 +1,35 @@
-package com.sumy.gamestore.model;
+package com.sumy.gamestore.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import com.sumy.gamestore.model.QuestionList;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data   // getter setter tostring 자동으로 만들어줌
-@NoArgsConstructor  // 빈생성자 자동으로 만들어줌
-@AllArgsConstructor // 모든필드포함한 생성자 자동으로 만들어줌
-@Builder // 빌더패턴 자동으로 만들어줌
-public class UserInfo {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class QuestionUserDto {
+	private int questionId;
 	private int userId;
+	private String questionTitle;
+	private String questionText;
+	private LocalDateTime questionWriteDate;
+	private int questionAnswerYn;
+	private int questionReadYn;
+	private String questionImage1;
+	private String questionImage2;
+	private String questionImage3;
 	private String userEmail;
 	private String userPassword;
 	private String userNickname;
 	private String userProfileImage;
-	private String userZipCode;
 	private String userAddress;
-	private String userDetailAddress;
 	private String userPhoneNumber;
 	private String userName;
 	private LocalDate userBirthDate;
@@ -29,5 +39,4 @@ public class UserInfo {
 	private int userBlacklist;
 	private String userAuthorityRate;
 	private String userMemo;
-
 }
