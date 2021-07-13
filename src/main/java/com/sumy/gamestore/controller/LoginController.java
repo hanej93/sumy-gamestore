@@ -1,5 +1,7 @@
 package com.sumy.gamestore.controller;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,30 @@ public class LoginController {
 	@Autowired
 	JoinedUserService joinedUserService;
 
+	// 로그인 화면
+	@GetMapping("/login")
+	public String test1() {
+		
+		return "user/page-login-1";
+	}
+	
+	//로그인 완료 화면
+	@PostMapping("/loginSuccess")
+	public String test2(UserInfo userInfo) {
+		System.out.println(userInfo);
+		userInfo.setUserJoinedDate(LocalDate.now());// 가입날짜 세팅
+		userInfo.setUserAuthorityRate("ROLE_USER");// 사용자 계정 세팅
+		int total = joinedUserService.addUser(userInfo);
+		return "user/home-page-1";
+	}
+	
+	// 비밀번호 찾기 화면
+	@GetMapping("/page-password-recovery-1")
+	public String test12() {
+
+		return "user/page-password-recovery-1";
+	}
+	
 	// 회원가입 화면
 	@GetMapping("/join")
 	public String test14() {
@@ -29,7 +55,7 @@ public class LoginController {
 
 	@ResponseBody
 	@GetMapping("/checkMail")
-	public String SendMail(String mail, HttpSession session, Model model) {
+	public String SendMail(String mail, Model model) {
 		MailSendService mss = new MailSendService();
 		String authKey = mss.sendAuthMail(mail);// 인증메일 전송
 		model.addAttribute("authKey", authKey);
@@ -44,11 +70,20 @@ public class LoginController {
 		return "user/jusoPopup";
 	}
 
+	// 주소 api 화면(popup)
+	@PostMapping("/jusoPopup")
+	public String test18() {
+
+		return "user/jusoPopup";
+	}
+
 	// 회원가입 완료 화면
 	@PostMapping("/joinedSuccess")
 	public String test8(UserInfo userInfo) {
+		System.out.println(userInfo);
+		userInfo.setUserJoinedDate(LocalDate.now());// 가입날짜 세팅
+		userInfo.setUserAuthorityRate("ROLE_USER");// 사용자 계정 세팅
 		int total = joinedUserService.addUser(userInfo);
-		System.out.println(total);
-		return "user/page-order-completed-1";
+		return "user/home-page-1";
 	}
 }

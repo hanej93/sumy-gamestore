@@ -95,7 +95,7 @@
 										class="input-group-text justify-content-center w-100 g-bg-transparent g-brd-gray-light-v3 g-color-gray-dark-v5">
 											<i class="icon-finance-067 u-line-icon-pro"></i>
 									</span>
-									</span> <input id="emailInput"
+									</span> <input id="userEmail"
 										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-rounded-left-0 g-rounded-right-3 g-py-15 g-px-15"
 										type="email" placeholder="이메일 주소 @포함">
 								</div>
@@ -109,7 +109,7 @@
 										class="input-group-text justify-content-center w-100 g-bg-transparent g-brd-gray-light-v3 g-color-gray-dark-v5">
 											<i class="icon-media-094 u-line-icon-pro"></i>
 									</span>
-									</span> <input id="passwordInput"
+									</span> <input id="userPassword"
 										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-rounded-left-0 g-rounded-right-3 g-py-15 g-px-15"
 										type="text" placeholder="비밀번호 입력">
 								</div>
@@ -213,7 +213,7 @@
 	<script src="/resources/static/assets/js/components/hs.go-to.js"></script>
 
 	<!-- JS Customization -->
-	<script src="/resources/static/assets/js/custom.js"></script>
+	<script src="/resources/static/user/assets/js/page-login-1.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>

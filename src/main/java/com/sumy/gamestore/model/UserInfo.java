@@ -2,6 +2,8 @@ package com.sumy.gamestore.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +24,7 @@ public class UserInfo {
 	private String userDetailAddress;
 	private String userPhoneNumber;
 	private String userName;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate userBirthDate;
 	private int userGender;
 	private LocalDate userJoinedDate;
