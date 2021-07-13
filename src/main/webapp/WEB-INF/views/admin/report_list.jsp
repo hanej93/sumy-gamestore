@@ -236,7 +236,7 @@
                                 </div>
                                 <h5 class="modal-title ml-auto g-my-10" id="exampleModalLabel">신고 사유</h5>
                                 <div class="g-mb-20 g-px-20">
-                                  <textarea id="" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="내용이 없습니다." readonly="readonly">${reportList.reportText }</textarea>
+                                  <textarea class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="내용이 없습니다." readonly="readonly">${reportList.reportText }</textarea>
                                 </div>
                                 <hr class="g-mx-20 g-my-10">
                                 <div class="row justify-content-start text-left g-mx-5">
@@ -260,7 +260,7 @@
                                   <!-- Textarea Resizable -->
                                   <div class="g-mb-20 g-px-20">
                                     <!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-                                    <textarea id="" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="리뷰 내용이 없습니다." readonly="readonly">${reportList.reviewText }</textarea>
+                                    <textarea class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="리뷰 내용이 없습니다." readonly="readonly">${reportList.reviewText }</textarea>
                                   </div>
                                 </form>
                               </div>
@@ -310,7 +310,7 @@
                                 <div class="row justify-content-center g-mx-5">
                                   <div class="col-12 g-mt-10 g-mb-30">신고내역을 삭제 하시겠습니까?</div>
                                   <div>
-                                    <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal5" data-dismiss="modal">삭제</a>
+                                    <a id="delBtn${reportList.reportId}" reportId="${reportList.reportId}" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal5" data-dismiss="modal">삭제</a>
                                     <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                                   </div>
                                 </div>
@@ -481,24 +481,6 @@
           }
         });
 
-        //경고 횟수 추가
-        $("#sumy-warning-plus").on("click",()=>{
-          let warningNum = $("#sumy-warning-num").text();
-          if (warningNum < 3){
-            warningNum = Number(warningNum) + 1;
-            $("#sumy-warning-num").text(warningNum);
-          }
-        });
-
-        //경고 횟수 감소
-        $("#sumy-warning-minus").on("click",()=>{
-          let warningNum = $("#sumy-warning-num").text();
-          if (warningNum > 0){
-            warningNum = Number(warningNum) -1;
-            $("#sumy-warning-num").text(warningNum);
-          }
-        });
-        
       	//sidebar 메뉴 액티브
         $("#warningSidebar").addClass("has-active");
 

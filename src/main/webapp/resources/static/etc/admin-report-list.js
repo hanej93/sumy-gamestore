@@ -18,17 +18,26 @@ let reportList = {
 		});
 		
 		
-		// 경고 횟수 추가 (미구현)
+		// 경고 횟수 추가
         $("[id^='sumy-warning-plus']").on("click",function(){
 			let plusBtn = $(this);
         	reportList.warningPlus(plusBtn);
         });
 
-        // 경고 횟수 감소 (미구현)
+        // 경고 횟수 감소
         $("[id^='sumy-warning-minus']").on("click",function(){
 			let minusBtn = $(this);
         	reportList.warningMinus(minusBtn);
         });
+
+		// 해당 리포트 삭제
+		$("[id^='delBtn']").on("click",function(){
+			let reportId = $(this).attr("reportId");
+			reportList.delete(reportId);
+		});
+			
+		// 해당 댓글(리뷰) 삭제
+		
 		
 		// 모달이 꺼졌을 때 경고횟수 저장
 		$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
@@ -122,12 +131,12 @@ let reportList = {
 	},
 	
 	// 신고리스트 삭제
-	delete: function(userId) {
+	delete: function(reportId) {
 		
-		alert("버튼클릭확인" +userId);
+		alert("버튼클릭확인" +reportId);
 		
 		let data = {
-			userId:userId
+			reportId:reportId
 		}
 		
 		$.ajax({
@@ -137,7 +146,7 @@ let reportList = {
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
-			location.href = "/admin/report/list";
+			location.reload();
 		}).fail(function(error){ 
 			console.log(error); 
 			alert(JSON.stringify(error));

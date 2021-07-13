@@ -2,6 +2,7 @@ package com.sumy.gamestore.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,24 +50,15 @@ public class ReportListApiController {
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
-//	
-//	@PutMapping("/admin/user/memo")
-//	public ResponseDto<Integer> updateMemo(@RequestBody UserInfo userInfo) {
-//		
-//		UserInfo resultUser = userInfoService.유저검색(userInfo.getUserId());
-//		resultUser.setUserWarningCount(userInfo.getUserWarningCount());
-//		resultUser.setUserMemo(userInfo.getUserMemo());
-//		
-//		System.out.println(resultUser);
-//
-//		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-//	}
-//
-//
-//	@DeleteMapping("/admin/user/list")
-//	public ResponseDto<Integer> deleteGame(@RequestBody UserInfo userInfo) {
-//		System.out.println(userInfo.getUserId());
-//		int result = userInfoService.유저삭제(userInfo.getUserId());
-//		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
-//	}
+
+	@DeleteMapping("/admin/report/list")
+	public ResponseDto<Integer> deleteGame(@RequestBody ReportList reportList) {
+		System.out.println(reportList.getReportId());
+		int result = reportListService.신고삭제(reportList.getReportId());
+		
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
+	}
+	
+	
+	
 }
