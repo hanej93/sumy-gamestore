@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.dto.QuestionUserDto;
 import com.sumy.gamestore.mapper.QuestionListMapper;
 import com.sumy.gamestore.model.QuestionList;
 
@@ -30,7 +31,7 @@ public class QuestionListService {
 	}
 	
 	// 한 페이지 문의 리스트 조회
-	public List<QuestionList> 한페이지문의리스트(PagingVO vo){
+	public List<QuestionUserDto> 한페이지문의리스트(PagingVO vo){
 		return questionListMapper.selectQuestionList(vo);
 	}
 	
