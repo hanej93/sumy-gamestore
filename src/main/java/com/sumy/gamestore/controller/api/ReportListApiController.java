@@ -24,6 +24,8 @@ public class ReportListApiController {
 	@Autowired
 	UserInfoService userInfoService;
 
+	
+	// 리포트 읽음 수정(미구현 - 신고 업데이트 관련 작업 필요)
 	@PutMapping("/admin/report/readYn")
 	public ResponseDto<Integer> updateReportReadYn(@RequestBody ReportList reportList) {
 		System.out.println(reportList.getReportId());
@@ -37,9 +39,9 @@ public class ReportListApiController {
 	}
 	
 	
-	
+	// 유저 경고 수정
 	@PutMapping("/admin/report/memo")
-	public ResponseDto<Integer> showMemo(@RequestBody ReportReviewUserDto reportReviewUserDto) {
+	public ResponseDto<Integer> updateUserWarningCnt(@RequestBody ReportReviewUserDto reportReviewUserDto) {
 		System.out.println(reportReviewUserDto.getToUserId());
 		System.out.println(reportReviewUserDto.getToUserWarningCount());
 		
@@ -51,11 +53,23 @@ public class ReportListApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
+	// 신고삭제 기능
 	@DeleteMapping("/admin/report/list")
-	public ResponseDto<Integer> deleteGame(@RequestBody ReportList reportList) {
+	public ResponseDto<Integer> deleteReport(@RequestBody ReportList reportList) {
 		System.out.println(reportList.getReportId());
 		int result = reportListService.신고삭제(reportList.getReportId());
 		
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
+	}
+	
+	
+	// 리뷰삭제 기능 (미구현 - 리뷰 관련 클래스필요)
+	@DeleteMapping("/admin/report/review")
+	public ResponseDto<Integer> deleteReview(@RequestBody ReportReviewUserDto reportReviewUserDto) {
+		System.out.println(reportReviewUserDto.getReviewId());
+		
+		
+		int result = 1;
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
 	}
 	
