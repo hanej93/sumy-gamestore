@@ -17,7 +17,9 @@ public class UserInfo {
 	private String userPassword;
 	private String userNickname;
 	private String userProfileImage;
+	private String userZipCode;
 	private String userAddress;
+	private String userDetailAddress;
 	private String userPhoneNumber;
 	private String userName;
 	private LocalDate userBirthDate;

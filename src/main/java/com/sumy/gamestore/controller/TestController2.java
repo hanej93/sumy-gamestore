@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +18,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sumy.gamestore.dto.ResponseDto;
+import com.sumy.gamestore.model.UserInfo;
+import com.sumy.gamestore.service.JoinedUserService;
 import com.sumy.gamestore.service.MailSendService;
 
 @Controller
 @RequestMapping("/user")
 public class TestController2 {
+	
+	@Autowired
+	JoinedUserService joinedUserService;
 
 	// 메인 화면
 	@GetMapping("/game/home-page-1")
@@ -100,71 +106,12 @@ public class TestController2 {
 		return "user/page-password-recovery-1";
 	}
 
-	// 회원가입 화면
-	@GetMapping("/game/page-signup-1")
-	public String test14() {
-
-		return "user/page-signup-1";
-	}
-	
-	@ResponseBody
-	@GetMapping("/game/checkMail")
-	public String SendMail(String mail, HttpSession session, Model model){
-		MailSendService mss = new MailSendService();
-		String authKey = mss.sendAuthMail(mail);//인증메일 전송
-		model.addAttribute("authKey", authKey);
-		System.out.println("인증보내떠!");
-		return authKey;
-	}
-
 	// 위시리스트 화면
 	@GetMapping("/game/page-wishlist-1")
 	public String test15() {
 
 		return "user/page-wishlist-1";
 	}
-
-	// 주소 api 화면(TEST01)
-//	@GetMapping("/game/juso")
-//	public String test16() {
-//
-//		return "test/jsp_sample/Sample";
-//	}
-
-	// 주소 api 화면(popup2)
-//	@PostMapping("/game/juso")
-//	public String test18() {
-//
-//		return "test/jsp_sample/Sample";
-//	}
-
-	// 주소 api 화면(TEST01) get, post
-	@RequestMapping(value = "/game/juso", method = { RequestMethod.GET, RequestMethod.POST })
-	public String test18() {
-		System.out.println("여기 탔다!");
-		return "test/jsp_sample/Sample";
-	}
-
-	// 주소 api 화면(popup)
-	@GetMapping("/game/jusoPopup")
-	public String test17() {
-
-		return "user/jusoPopup";
-	}
-
-	// 주소 api 화면(popup)
-	@PostMapping("/game/jusoPopup")
-	public String test19() {
-
-		return "user/jusoPopup";
-	}
-	
-	// 회원가입 완료 화면
-//	@PostMapping("/game/joinedSuccess")
-//	public String test8(@RequestParam(value = "title") String title,) {
-//		
-//		return "user/page-order-completed-1";
-//	}
 
 	// 아직 안 쓰는 화면 : 결제 정보 저장 화면
 	@GetMapping("/game/page-payment-options-1")

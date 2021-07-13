@@ -79,7 +79,7 @@
 						</header>
 
 						<!-- Form -->
-						<form name="userInfo" method="post" action="user/game/joinedSuccess">
+						<form name="userInfo" method="post" action="joinedSuccess">
 							<!-- Profile Picture -->
 							<div class="text-center g-pos-rel g-mb-30">
 								<div class="g-width-100 g-height-100 mx-auto mb-3">
@@ -103,7 +103,7 @@
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">이메일</label>
 									<div class="input-group g-mb-10">
-										<input id="emailInput"
+										<input id="userEmail" name="userEmail"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="email" placeholder="이메일 주소 @포함">
 										<div id="emailReBox" class="input-group-append p-0"
@@ -138,7 +138,6 @@
 												class="rounded btn u-btn-primary g-font-size-12 text-uppercase g-py-17 g-px-15"
 												type="button">인증번호 확인</button>
 										</div>
-										<span class="rounded g-px-15 g-py-13 g-color-primary">03:00</span>
 									</div>
 									<small class="form-control-feedback g-mt-10"
 										style="display: none;">이메일 인증번호 입력은 필수 항목입니다.</small>
@@ -147,7 +146,7 @@
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">비밀번호</label>
 									<div class="g-mb-10">
-										<input id="passwordInput"
+										<input id="userPassword" name="userPassword"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="비밀번호 입력">
 									</div>
@@ -171,7 +170,7 @@
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">성명</label>
 									<div class="g-mb-10">
-										<input id="nameInput"
+										<input id="userName" name="userName"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="성명 입력" maxlength="17">
 									</div>
@@ -182,7 +181,7 @@
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">별명</label>
 									<div class="g-mb-10">
-										<input id="nickNameInput"
+										<input id="userNickname" name="userNickname"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="별명 10자리 이내로 입력" maxlength="10">
 									</div>
@@ -194,7 +193,7 @@
 									<label class="g-mb-10">생년월일 선택</label>
 									<div class="row">
 										<div class="col g-mb-10">
-											<input id="birthDateInput"
+											<input id="userBirthDate" name="userBirthDate"
 												class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
 												type="date" placeholder="연도">
 										</div>
@@ -207,7 +206,7 @@
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">성별</label>
 									<div class="g-mb-10">
-										<select id="genderSelect" class="form-control rounded g-py-12">
+										<select id="userGender" name="userGender" class="form-control rounded g-py-12">
 											<option value="1">남자</option>
 											<option value="2">여자</option>
 										</select>
@@ -224,12 +223,12 @@
 									<label class="g-mb-10">주소</label>
 									<div class="row no-gutters g-mb-10">
 										<div class="input-group col-10">
-											<input id="zipNo" name="zipNo"
+											<input id="userZipCode" name="userZipCode"
 												class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
 												type="text" placeholder="우편번호 입력">
 											<div class="input-group-append p-0">
 												<!-- 우편번호 찾기 버튼 -->
-												<button id="addressSearch" 
+												<button
 													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-17 g-px-15"
 													type="button" onclick="goPopup()">우편번호 찾기</button>
 											</div>
@@ -237,13 +236,13 @@
 									</div>
 
 									<div class="g-mb-10">
-										<input id="roadAddrPart1" name="roadAddrPart1"
+										<input id="userAddress" name="userAddress"
 											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
 											type="text" placeholder="주소 입력">
 									</div>
 
 									<div>
-										<input id="addrDetail" name="addrDetail"
+										<input id="userDetailAddress" name="userDetailAddress"
 											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
 											type="text" placeholder="상세주소 입력">
 									</div>
@@ -252,7 +251,7 @@
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">연락처</label>
 									<div>
-										<input id="phoneNumInput"
+										<input id="userPhoneNumber" name="userPhoneNumber"
 											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
 											type="text" maxlength="11" placeholder="폰번호 -빼고 입력"
 											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
@@ -446,7 +445,7 @@
 	<script src="/resources/static/assets/js/helpers/hs.file-attachments.js"></script>
 
 	<!-- JS Customization -->
-	<script src="/resources/static/assets/js/custom.js"></script>
+	<script src="/resources/static/user/assets/js/page-signup-1.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>
