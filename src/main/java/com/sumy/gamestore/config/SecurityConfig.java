@@ -22,11 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable(); // csrf 해킹을 막는 기능인데 이것을 비활성화
 		http.authorizeRequests()  // url 요청에 관한 세팅
-<<<<<<< HEAD
-//			.antMatchers("/user/**").authenticated() // /user/... url 요청이 올 때 -> 이런 권한만 접근이 가능하다!
-=======
-			//.antMatchers("/user/**").authenticated() // /user/... url 요청이 올 때 -> 이런 권한만 접근이 가능하다!
->>>>>>> cf5c41e7dc99fcc69362ed10140be1238b21e0e8
 			.antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
 			//.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().permitAll()
