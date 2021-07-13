@@ -195,7 +195,6 @@
                         <input reportId="${reportList.reportId }" id="readYn-checkbox${reportList.reportId }" class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox"
                          <c:if test="${reportList.reportReadYn == 1 }">
                           checked
-                          
                          </c:if>
                          >
                         <div class="u-check-icon-radio-v7">
@@ -211,13 +210,13 @@
 
                         <!-- 모달 버튼 시작 -->
                         <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" data-toggle="modal"
-                          data-target="#exampleModal">
+                          data-target="#exampleModal1${reportList.reportId }">
                           <i class="hs-admin-pencil g-font-size-18"></i>
                         </a>
                         <!-- 모달 버튼 끝 -->
 
                         <!-- 모달 내용 시작 -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div toUserId="${reportList.toUserId }" reportId="${reportList.reportId }" class="modal fade" id="exampleModal1${reportList.reportId }" tabindex="-1" aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
@@ -247,10 +246,10 @@
                                   <div class="col-12 g-my-10">이메일 : ${reportList.toUserEmail}</div>
                                   <div class="col-12 g-my-10">신고당한 횟수 : ${reportList.reviewReportCount}</div>
                                   <div class="col-12 g-my-10">경고 : 
-                                    <div id="sumy-warning-minus" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-minus"></i>
+                                    <div id="sumy-warning-minus${reportList.reportId }" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-minus"></i>
                                     </div>
-                                    <span id="sumy-warning-num">${reportList.toUserWarningCount }</span>
-                                    <div id="sumy-warning-plus" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-plus"></i>
+                                    <span id="sumy-warning-num${reportList.reportId }">${reportList.toUserWarningCount }</span>
+                                    <div id="sumy-warning-plus${reportList.reportId }" class="btn btn-md g-color-primary--hover g-py-0"><i class="icon-plus"></i>
                                     </div>
                                   </div>
                                 </div>
