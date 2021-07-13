@@ -43,6 +43,12 @@ let reportList = {
 			reportList.deleteReview(reviewId);
 		});
 		
+		// 모달이 켜졌을 때 읽음 상태로 변경
+		$("[id^='exampleModal1']").on('shown.bs.modal', function () {
+			let reportId = $(this).attr("reportId");
+			reportList.updateReadYes(reportId); 
+		});
+		
 		// 모달이 꺼졌을 때 경고횟수 저장
 		$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
 			let modal = $(this);
@@ -185,7 +191,33 @@ let reportList = {
 			console.log(error); 
 			alert(JSON.stringify(error));
 		});
+	},
+
+
+	// 읽음상태로 변경	
+	updateReadYes: function(reportId) {
+		
+		let data = {
+			reportId:reportId,
+			reportReadYn:1
+		}
+		
+		$.ajax({
+			type:"PUT",
+			url:"/admin/report/readYn",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			console.log(resp);
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
 	}
+	
+	
+	
 }
 
 reportList.init();
