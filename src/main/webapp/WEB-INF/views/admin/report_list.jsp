@@ -195,6 +195,7 @@
                         <input reportId="${reportList.reportId }" id="readYn-checkbox${reportList.reportId }" class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox"
                          <c:if test="${reportList.reportReadYn == 1 }">
                           checked
+                          
                          </c:if>
                          >
                         <div class="u-check-icon-radio-v7">
