@@ -12,8 +12,23 @@ public class PagingVO {
 	// keyword
 	private String keyword = "";
 	private String blacklistYn = "";
+	private String answerYn = "";
+	private String readerYn = "";
 	
 	public PagingVO() {
+	}
+	
+	public PagingVO(int total, int nowPage, int cntPerPage, String keyword, String answerYn, String readerYn) {
+		setNowPage(nowPage);
+		setCntPerPage(cntPerPage);
+		setTotal(total);
+		calcLastPage(getTotal(), getCntPerPage());
+		calcStartEndPage(getNowPage(), cntPage);
+		calcStartEnd(getNowPage(), getCntPerPage());
+		setKeyword(keyword);
+		setBlacklistYn(blacklistYn);
+		setAnswerYn(answerYn);
+		setReaderYn(readerYn);
 	}
 	
 	public PagingVO(int total, int nowPage, int cntPerPage, String keyword, String blacklistYn) {

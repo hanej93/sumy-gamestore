@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.dto.QuestionUserDto;
@@ -13,20 +14,26 @@ import com.sumy.gamestore.model.QuestionList;
 @Mapper
 public interface QuestionListMapper {
 	
-//	private int reportId;
-//	private int reportFromUserId;
-//	private int reviewId;
-//	private String reportText;
-//	private LocalDateTime reportWriteDate;
-//	private boolean reportReadYn;
-	
-	@Select("select * from question_list where report_id = #{questionId}")
+	@Select("select * from question_list where question_id = #{questionId}")
 	public QuestionList selectOneByQuestionId(int questionId);
+
+//	private int questionId;
+//	private int userId;
+//	private String questionTitle;
+//	private String questionText;
+//	private LocalDateTime questionWriteDate;
+//	private int questionAnswerYn;
+//	private int questionReadYn;
+//	private String questionImage1;
+//	private String questionImage2;
+//	private String questionImage3;
 	
-//	@Update("update set news_title = #{newsTitle}, news_sub_title = #{newsSubTitle}, news_thumb_image = #{newsThumbImage}, "
-//			+ "news_text = #{newsText}, news_write_date = #{newsWriteDate}, news_update_date = #{newsUpdateDate} "
-//			+ "from news_list where news_id = #{newsId}")
-//	public int updateNews(NewsList News);
+	@Update("update question_list set user_id=#{userId}, question_title = #{questionTitle}, question_text = #{questionText},"
+			+ " question_write_date = #{questionWriteDate}, question_answer_yn = #{questionAnswerYn},"
+			+ " question_read_yn = #{questionReadYn}, question_image_1 = #{questionImage1},"
+			+ " question_image_2 = #{questionImage2}, question_image_3 = #{questionImage3}"
+			+ " where question_id = #{questionId}")
+	public int updateQuestion(QuestionList Question);
 	
 	@Delete("delete from question_list where question_id = #{questionId}")
 	public int deleteQuestion(int questionId);

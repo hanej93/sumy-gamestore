@@ -83,11 +83,14 @@
                 <span class="g-color-gray-dark-v6 g-mr-12">답변 상태:</span>
 
                 <div class="u-select--v1 g-pr-20">
-                  <select class="js-select u-select--v1-select w-100" style="display: none;">
-                    <option
-                      data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">No</span></span>'>
-                      No</option>
-                    <option
+                  <select id="answerYn-select" class="js-select u-select--v1-select w-100" style="display: none;">
+                    <option <c:if test="${paging.answerYn == 'Both'}">selected</c:if>
+                    	data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">Both</span></span>'>
+                    Both</option>
+                    <option <c:if test="${paging.answerYn == 'No'}">selected</c:if>
+                    	data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">No</span></span>'>
+                    No</option>
+                    <option <c:if test="${paging.answerYn == 'Yes'}">selected</c:if>
                       data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">Yes</span></span>'>
                       Yes</option>
                   </select>
@@ -96,11 +99,14 @@
                 <span class="g-color-gray-dark-v6 g-mr-12 g-ml-20">읽음 상태:</span>
 
                 <div class="u-select--v1 g-pr-20">
-                  <select class="js-select u-select--v1-select w-100" style="display: none;">
-                    <option
-                      data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">No</span></span>'>
-                      No</option>
-                    <option
+                  <select id="readerYn-select" class="js-select u-select--v1-select w-100" style="display: none;">
+                     <option <c:if test="${paging.readerYn == 'Both'}">selected</c:if>
+                    	data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">Both</span></span>'>
+                    Both</option>
+                    <option <c:if test="${paging.readerYn == 'No'}">selected</c:if>
+                    	data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">No</span></span>'>
+                    No</option>
+                    <option <c:if test="${paging.readerYn == 'Yes'}">selected</c:if>
                       data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">Yes</span></span>'>
                       Yes</option>
                   </select>
@@ -112,10 +118,10 @@
 
               <div class="media-body align-self-center g-mt-10 g-mt-0--md">
                 <div class="input-group g-pos-rel g-max-width-380 float-right">
-                  <input id = "question-nickname-search"
+                  <input id = "question-title-search"
                     class="form-control h-100 g-font-size-default g-brd-gray-light-v7 g-brd-lightblue-v3--focus g-rounded-20 g-pl-20 g-pr-50 g-py-10"
-                    type="text" placeholder="닉네임을 입력하세요.">
-                  <button id = "question-nickname-search-btn"
+                    type="text" placeholder="문의제목을 입력하세요.">
+                  <button id = "question-title-search-btn"
                     class="btn g-pos-abs g-top-0 g-right-0 g-z-index-2 g-width-60 h-100 g-bg-transparent g-font-size-16 g-color-primary g-color-secondary--hover rounded-0"
                     type="submit">
                     <i class="hs-admin-search g-absolute-centered"></i>
@@ -136,7 +142,7 @@
                     <th
                       class="g-hidden-sm-down g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
                       <div class="d-flex align-items-center justify-content-center">
-                        프로필사진
+                        문의제목
                       </div>
                     </th>
                     <th
@@ -164,12 +170,12 @@
                     </th>
                     <th class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
                       <div class="d-flex align-items-center justify-content-center">
-                        읽음상태
+                        답변상태
                       </div>
                     </th>
                     <th class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
                       <div class="d-flex align-items-center justify-content-center">
-                        답변상태
+                        읽음상태
                       </div>
                     </th>
                     <th class="g-bg-gray-light-v8 g-font-weight-400 g-valign-middle g-brd-bottom-none g-py-15">
@@ -190,7 +196,7 @@
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <img src="/resources/static/assets/img-temp/100x100/img1.jpg">
+                      ${questionList.questionTitle }
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
@@ -204,12 +210,17 @@
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <span class="g-hidden-sm-down">${questionList.questionWriteDate}</span>
+                      <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+      					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
                     </td>
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
                       <!-- Toggles Views -->
                       <label class="form-check-inline u-check mx-0 mb-0">
-                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox" checked="">
+                        <input questionId="${questionList.questionId }" id="answerYn-checkbox${questionList.questionId }" class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox"
+	                        <c:if test="${questionList.questionAnswerYn == 1 }">
+	                        checked
+	                        </c:if>
+                        >
                         <div class="u-check-icon-radio-v7">
                           <i class="d-inline-block"></i>
                         </div>
@@ -219,7 +230,11 @@
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
                       <!-- Toggles Views -->
                       <label class="form-check-inline u-check mx-0 mb-0">
-                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox" checked="">
+                        <input questionId="${questionList.questionId }" id="readerYn-checkbox${questionList.questionId }" class="g-hidden-xs-up g-pos-abs g-top-0 g-right-0" name="radGroup1_1" type="checkbox"
+	                        <c:if test="${questionList.questionReadYn == 1 }">
+	                        checked
+	                        </c:if>
+                        >
                         <div class="u-check-icon-radio-v7">
                           <i class="d-inline-block"></i>
                         </div>

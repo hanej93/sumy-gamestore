@@ -3,8 +3,6 @@ package com.sumy.gamestore.dto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.sumy.gamestore.model.QuestionList;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

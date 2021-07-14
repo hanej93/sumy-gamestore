@@ -31,7 +31,7 @@ public class QuestionListController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		}
-		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword());
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword(), vo.getAnswerYn(), vo.getReaderYn());
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", questionListService.한페이지문의리스트(vo));
 		

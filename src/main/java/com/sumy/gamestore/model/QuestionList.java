@@ -17,8 +17,8 @@ public class QuestionList {
 	private String questionTitle;
 	private String questionText;
 	private LocalDateTime questionWriteDate;
-	private boolean questionAnswerYn;
-	private boolean questionReadYn;
+	private int questionAnswerYn;
+	private int questionReadYn;
 	private String questionImage1;
 	private String questionImage2;
 	private String questionImage3;
