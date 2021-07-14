@@ -3,13 +3,18 @@ package com.sumy.gamestore.controller.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sumy.gamestore.dto.QuestionUserDto;
 import com.sumy.gamestore.dto.ResponseDto;
 import com.sumy.gamestore.model.QuestionList;
 import com.sumy.gamestore.service.QuestionListService;
+import com.sumy.gamestore.service.QuestionMailSendService;
 
 @RestController
 public class QuestionListApiController {
@@ -17,6 +22,9 @@ public class QuestionListApiController {
 	@Autowired
 	QuestionListService questionListService;
 
+	@Autowired
+	QuestionMailSendService questionMailSendService;
+	
 	@PutMapping("/admin/question/answer")
 	public ResponseDto<Integer> updateQuestionAnswer(@RequestBody QuestionList questionList) {
 		System.out.println("questionAnswer : " + questionList.getQuestionAnswerYn());
@@ -36,6 +44,15 @@ public class QuestionListApiController {
 		QuestionList resultQuestion = questionListService.문의검색(questionList.getQuestionId());
 		resultQuestion.setQuestionReadYn(questionList.getQuestionReadYn());
 		questionListService.문의수정(resultQuestion);
+		
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	@PostMapping("/admin/question/email")
+	public ResponseDto<Integer> updateQuestionReader(@RequestBody QuestionUserDto questionUserDto) {
+		System.out.println("Email : " + questionUserDto.getUserEmail());
+		System.out.println("Text : " + questionUserDto.getQuestionText());
+		questionMailSendService.sendMail(questionUserDto.getUserEmail(), questionUserDto.getQuestionText());
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

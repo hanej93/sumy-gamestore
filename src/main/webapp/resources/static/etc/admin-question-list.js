@@ -38,6 +38,11 @@ let questionList = {
 			location.reload();
 		});
 		
+		$("[id^='mailSendBtn']").on('click', function(){
+			let questionId = $(this).attr('questionId');
+			questionList.sendMail(questionId);
+		});
+		
 	},
 	
 	search: function(){
@@ -132,6 +137,31 @@ let questionList = {
 			console.log(error); 
 			alert(JSON.stringify(error));
 		});
+	},
+	
+	sendMail: function(questionId) {
+		
+		let emailStr = "#email" + questionId;
+		let answerTextStr = "#answerText" + questionId;
+		
+		let data = {
+			userEmail:$(emailStr).text(),
+			questionText:$(answerTextStr).val()
+		}
+		
+		$.ajax({
+			type:"POST",
+			url:"/admin/question/email",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			console.log(resp);
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+		
 	}
 	
 }
