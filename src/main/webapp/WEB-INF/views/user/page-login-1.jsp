@@ -150,9 +150,9 @@
 
 							<div class="row no-gutters">
 								<div class="col-6">
-									<button
+									<a
 										class="btn btn-block u-btn-yellow g-font-size-12 text-uppercase g-py-12 g-px-25 mr-2"
-										type="button">카카오톡 로그인</button>
+										type="button" href="javascript:kakaoLogin();">카카오톡 로그인</a>
 								</div>
 								<div class="col-6">
 									<button
@@ -220,6 +220,7 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<!-- javascript key : 9ecf755c39ffadc782344e2b46539a29 -->
 	
+	
 	<!-- JS Plugins Init. -->
 	<script>
     $(document).on('ready', function () {
@@ -246,6 +247,25 @@
 
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
+      
+    //카카오 로그인 api
+  	window.Kakao.init("9ecf755c39ffadc782344e2b46539a29");
+  	
+  	function kakaoLogin(){
+  		window.Kakao.Auth.login({
+  			scope:'profile_nickname, profile_image, account_email, gender',
+  			success: function(authObj){
+  				console.log(authObj);
+  				window.Kakao.API.request({
+  					url:'/v2/user/me',
+  					success: res =>{
+  						const kakao_account = res.kakao_account;
+  						console.log(kakao_account);
+  					}
+  				});
+  			}
+  		});
+  	}
     });
   </script>
 
