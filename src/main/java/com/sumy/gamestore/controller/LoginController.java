@@ -88,7 +88,7 @@ public class LoginController {
 	@PostMapping("/jusoPopup")
 	public String test18() {
 
-		return "user/jusoPopup";
+		return "user/jusoPopup"; 
 	}
 
 	// 회원가입 완료 화면
