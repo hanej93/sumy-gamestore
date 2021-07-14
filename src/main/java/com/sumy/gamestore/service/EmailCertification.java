@@ -21,8 +21,8 @@ public class EmailCertification {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587); 
-		mailSender.setUsername("javacake93@gmail.com");
-		mailSender.setPassword("");
+		mailSender.setUsername("kimsumy599@gmail.com");
+		mailSender.setPassword("1234567890Tt");
 		mailSender.setDefaultEncoding("utf-8");
 		mailSender.setJavaMailProperties(properties);
 		
