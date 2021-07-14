@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.service.JoinedUserService;
+import com.sumy.gamestore.service.LoginUserService;
 import com.sumy.gamestore.service.MailSendService;
 
 @Controller
@@ -25,6 +26,9 @@ public class LoginController {
 	
 	@Autowired
 	JoinedUserService joinedUserService;
+	
+	@Autowired
+	LoginUserService loginUserService;
 
 	// 로그인 화면
 	@GetMapping("/login")
@@ -37,9 +41,15 @@ public class LoginController {
 	@PostMapping("/loginSuccess")
 	public String test2(UserInfo userInfo) {
 		System.out.println(userInfo);
-		userInfo.setUserJoinedDate(LocalDate.now());// 가입날짜 세팅
-		userInfo.setUserAuthorityRate("ROLE_USER");// 사용자 계정 세팅
-		int total = joinedUserService.addUser(userInfo);
+//		userInfo.setUserJoinedDate(LocalDate.now());// 가입날짜 세팅
+//		userInfo.setUserAuthorityRate("ROLE_USER");// 사용자 계정 세팅
+//		int total = joinedUserService.addUser(userInfo);
+		loginUserService.selectUser(userInfo);
+		
+//		if(!loginUserService.selectUser(userInfo)) {
+//			System.out.println("로그인 실패");
+//		}
+//		System.out.println("로그인 성공");
 		return "user/home-page-1";
 	}
 	
@@ -85,8 +95,6 @@ public class LoginController {
 	@PostMapping("/joinedSuccess")
 	public String test8(UserInfo userInfo) {
 		System.out.println(userInfo);
-		userInfo.setUserJoinedDate(LocalDate.now());// 가입날짜 세팅
-		userInfo.setUserAuthorityRate("ROLE_USER");// 사용자 계정 세팅
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
 		userInfo.setUserPassword(encodePS);//암호화
 		int total = joinedUserService.addUser(userInfo);

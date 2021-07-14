@@ -24,9 +24,10 @@ public class UserInfo {
 	private String userDetailAddress;
 	private String userPhoneNumber;
 	private String userName;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate userBirthDate;
 	private int userGender;
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate userJoinedDate;
 	private int userWarningCount;
 	private int userBlacklist;

@@ -93,6 +93,16 @@ $(document).on('ready', function() {
 */
 
 $(document).on('ready', function() {
+	
+	//비밀번호 입력 pocus 시 password off
+	$('#userPassword').focus(function() {
+		$(this).attr('type', 'text');
+	});
+
+	//비밀번호 입력 blur 시 password on
+	$('#userPassword').blur(function() {
+		$(this).attr('type', 'password');
+	});
 
 	//로그인 버튼 클릭 시 
 	$('#loginBtn').on('click', function() {
@@ -117,24 +127,43 @@ $(document).on('ready', function() {
 		//비밀번호 불일치일 시
 		if ((chkPW($('#userPassword').val())) < 3) {
 			if ((chkPW($('#userPassword').val())) == 0) {
-				removeErrorAndSuccess($('#passwordInput'));
-				addError($('#passwordInput'));
-				$('#passwordInput').parent().parent().children('small').html('비밀번호는 8자리 ~ 20자리 이내로 입력해주세요.');
+				removeErrorAndSuccess($('#userPassword'));
+				addError($('#userPassword'));
+				$('#userPassword').parent().parent().children('small').html('비밀번호는 8자리 ~ 20자리 이내로 입력해주세요.');
 				return false;
-			} else if ((chkPW($('#passwordInput').val())) == 1) {
-				removeErrorAndSuccess($('#passwordInput'));
-				addError($('#passwordInput'));
-				$('#passwordInput').parent().parent().children('small').html('비밀번호는 공백 없이 입력해주세요.');
+			} else if ((chkPW($('#userPassword').val())) == 1) {
+				removeErrorAndSuccess($('#userPassword'));
+				addError($('#userPassword'));
+				$('#userPassword').parent().parent().children('small').html('비밀번호는 공백 없이 입력해주세요.');
 				return false;
-			} else if ((chkPW($('#passwordInput').val())) == 2) {
-				removeErrorAndSuccess($('#passwordInput'));
-				addError($('#passwordInput'));
-				$('#passwordInput').parent().parent().children('small').html('비밀번호는 영문,숫자, 특수문자를 혼합하여 입력해주세요.');
+			} else if ((chkPW($('#userPassword').val())) == 2) {
+				removeErrorAndSuccess($('#userPassword'));
+				addError($('#userPassword'));
+				$('#userPassword').parent().parent().children('small').html('비밀번호는 영문,숫자, 특수문자를 혼합하여 입력해주세요.');
 				return false;
 			}
 		}
 		//비밀번호 유효성 통과했을 시 error클래스 있다면 삭제
-		removeErrorAndSuccess($('#passwordInput'));
-		alert('로그인 성공!');
+		removeErrorAndSuccess($('#userPassword'));
+		//로그인 유효성 통과 후 로그인 정보 DB와 매칭
+		/*$.ajax({
+			type: "post",
+			url: "loginSuccess",
+			data : {
+	            userEmail : $('#userEmail').val(),
+	            userPassword : $('#userPassword').val()
+	        },
+
+			success: function(result) {
+				emailCode = result;//인증코드 담는 변수
+				console.log(emailCode);
+				
+				alert("로그인에 성공했습니다.");
+			},
+			error: function(error) {
+				alert("로그인에 실패했습니다.");
+				return false;
+			}
+		});*/
 	});
 });
