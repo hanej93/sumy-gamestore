@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import com.sumy.gamestore.model.GameInfo;
 
 @Mapper
-public interface ShowGameMapper {
+public interface ShowGameMapper {  //메인 페이지
 	
 	//무료 게임
 	@Select("select * from game_info where game_discount_rate = 100 order by game_id desc limit 7")
@@ -18,18 +18,18 @@ public interface ShowGameMapper {
 	public GameInfo selectDiscountGame();
 	
 	//신규 및 인기작
-	//1.신규 출시
-	@Select("select * from game_info order by game_id desc limit 3")
-	public GameInfo selectNewGame();
-	
-	//2.리뷰 많은 순
-	@Select("select g.game_id, g.game_title, g.game_dev, g.game_price, g. game_thumb_image , g. game_discount_rate, count(*) as rv_cnt "
-			+ "from review_list as r join game_info as g on r.game_id = g.game_id group by game_id order by rv_cnt desc limit 3")
-	public GameInfo selectMostReviewGame();
-	
-	//3.전체 이용가
-	@Select("select * from game_info where game_rate= '전체' order by game_id limit 3")
-	public GameInfo selectAllUsersGame();
+		//1.신규 출시
+		@Select("select * from game_info order by game_id desc limit 3")
+		public GameInfo selectNewGame();
+		
+		//2.리뷰 많은 순
+		@Select("select g.game_id, g.game_title, g.game_dev, g.game_price, g. game_thumb_image , g. game_discount_rate, count(*) as rv_cnt "
+				+ "from review_list as r join game_info as g on r.game_id = g.game_id group by game_id order by rv_cnt desc limit 3")
+		public GameInfo selectMostReviewGame();
+		
+		//3.전체 이용가
+		@Select("select * from game_info where game_rate= '전체' order by game_id limit 3")
+		public GameInfo selectAllUsersGame();
 	
 //	//추천 게임
 //	@Select("select * from game_info order by game_id limit 3")
