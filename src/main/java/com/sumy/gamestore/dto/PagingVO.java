@@ -14,6 +14,7 @@ public class PagingVO {
 	private String blacklistYn = "";
 	private String answerYn = "";
 	private String readerYn = "";
+	private String reportReadYn = "";
 	
 	public PagingVO() {
 	}
@@ -26,7 +27,6 @@ public class PagingVO {
 		calcStartEndPage(getNowPage(), cntPage);
 		calcStartEnd(getNowPage(), getCntPerPage());
 		setKeyword(keyword);
-		setBlacklistYn(blacklistYn);
 		setAnswerYn(answerYn);
 		setReaderYn(readerYn);
 	}

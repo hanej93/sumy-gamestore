@@ -26,13 +26,6 @@ public interface ReportListMapper {
 	@Select("select * from report_list where report_id = #{reportId}")
 	public ReportList selectOneByReportId(int reportId);
 	
-//	private int reportId;
-//	private int reportFromUserId;
-//	private int reviewId;
-//	private String reportText;
-//	private LocalDateTime reportWriteDate;
-//	private int reportReadYn;
-	
 	@Update("update report_list set report_from_user_id=#{reportFromUserId}, review_id = #{reviewId},"
 			+ " report_text = #{reportText}, report_write_date = #{reportWriteDate},"
 			+ " report_read_yn = #{reportReadYn} where report_id = #{reportId}")

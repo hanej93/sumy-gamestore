@@ -6,8 +6,8 @@ let reportList = {
 			this.search();
 		});
 		
-		// 읽음 상태에 따른 조회 (미구현)
-		$('#readYn-select').on('change', ()=>{
+		// 읽음 상태에 따른 조회
+		$('#reportReadYn-select').on('change', ()=>{
 			this.search();
 		});
 		
@@ -95,6 +95,8 @@ let reportList = {
 		url = url + "?nowPage=" + 1;
 
 		url = url + "&keyword=" + $('#report-nickname-search').val();
+		
+		url = url + "&reportReadYn=" + $('#reportReadYn-select').val();
 
 		location.href = url;
 	

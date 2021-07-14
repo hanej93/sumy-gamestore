@@ -31,7 +31,9 @@ public class ReportListController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		}
+		String reportReadYn = vo.getReportReadYn();
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword());
+		vo.setReportReadYn(reportReadYn);
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", reportListService.한페이지신고리스트(vo));
 		

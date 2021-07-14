@@ -42,6 +42,12 @@
 			<if test="keyword != null and keyword != '' ">
 				AND tu.user_nickname like CONCAT('%', #{keyword}, '%')
 			</if>
+			<if test="reportReadYn != null and reportReadYn != '' and reportReadYn == 'Yes'">
+				AND report_read_yn = 1
+			</if>
+			<if test="reportReadYn != null and reportReadYn != '' and reportReadYn == 'No'">
+				AND report_read_yn = 0
+			</if>
 		</trim>
 		order by report_id desc limit #{start}, #{cntPage}
 		
@@ -68,7 +74,12 @@
 			<if test="	keyword != null and keyword != '' ">
 				AND tu.user_nickname like CONCAT('%', #{keyword}, '%')
 			</if>
-
+			<if test="reportReadYn != null and reportReadYn != '' and reportReadYn == 'Yes'">
+				AND report_read_yn = 1
+			</if>
+			<if test="reportReadYn != null and reportReadYn != '' and reportReadYn == 'No'">
+				AND report_read_yn = 0
+			</if>
 		</trim>
 
  	</select>

@@ -83,11 +83,14 @@
                 <span class="g-color-gray-dark-v6 g-mr-12">읽음 상태:</span>
 
                 <div class="u-select--v1 g-pr-20">
-                  <select class="js-select u-select--v1-select w-100" style="display: none;">
-                    <option
+                  <select id="reportReadYn-select" class="js-select u-select--v1-select w-100" style="display: none;">
+                  <option <c:if test="${paging.reportReadYn == 'Both'}">selected</c:if>
+                      data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">Both</span></span>'>
+                      Both</option>
+                    <option <c:if test="${paging.reportReadYn == 'No'}">selected</c:if>
                       data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">No</span></span>'>
                       No</option>
-                    <option
+                    <option <c:if test="${paging.reportReadYn == 'Yes'}">selected</c:if>
                       data-content='<span class="d-flex align-items-center"><span class="g-line-height-1_2 g-color-black">Yes</span></span>'>
                       Yes</option>
                   </select>
@@ -99,9 +102,9 @@
 
               <div class="media-body align-self-center g-mt-10 g-mt-0--md">
                 <div class="input-group g-pos-rel g-max-width-380 float-right">
-                  <input id="report-nickname-search"
+                  <input id="report-nickname-search" value="${paging.keyword }"
                     class="form-control h-100 g-font-size-default g-brd-gray-light-v7 g-brd-lightblue-v3--focus g-rounded-20 g-pl-20 g-pr-50 g-py-10"
-                    type="text" placeholder="닉네임을 입력하세요.">
+                    type="text" placeholder="신고대상을 입력하세요.">
                   <button id="report-nickname-search-btn"
                     class="btn g-pos-abs g-top-0 g-right-0 g-z-index-2 g-width-60 h-100 g-bg-transparent g-font-size-16 g-color-primary g-color-secondary--hover rounded-0"
                     type="submit">
@@ -187,7 +190,8 @@
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <span class="g-hidden-sm-down">${reportList.reportWriteDate}</span>
+                      <fmt:parseDate value="${reportList.reportWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+      					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
                     </td>
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
                       <!-- Toggles Views -->
@@ -369,7 +373,7 @@
 	              <c:if test="${paging.startPage != 1 }">
 	                <li class="list-inline-item g-mr-10">
 	                  <a class="u-pagination-v1__item u-pagination-v1-2 g-bg-lightblue-v3--active g-color-gray-dark-v6 g-color-black--hover g-color-white--active g-brd-gray-light-v7 g-brd-lightblue-v3--hover g-brd-lightblue-v3--active g-px-18 g-py-12 g-rounded-4"
-	                    href="/admin/report/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}" aria-label="Previous">
+	                    href="/admin/report/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&reportReadYn=${paging.reportReadYn}" aria-label="Previous">
 	                    <span aria-hidden="true">
 	                      <i class="hs-admin-angle-left"></i>
 	                    </span>
@@ -383,7 +387,7 @@
 		                	<c:when test="${p != paging.nowPage }">
 				                <li class="list-inline-item g-hidden-sm-down g-mr-10">
 				                  <a class="u-pagination-v1__item u-pagination-v1-2 g-bg-lightblue-v3--active g-color-gray-dark-v6 g-color-black--hover g-color-white--active g-brd-gray-light-v7 g-brd-lightblue-v3--hover g-brd-lightblue-v3--active g-px-18 g-py-12 g-rounded-4"
-				                    href="/admin/report/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}">${p }</a>
+				                    href="/admin/report/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&reportReadYn=${paging.reportReadYn}">${p }</a>
 				                </li>
 			                </c:when>
 			                <c:when test="${p == paging.nowPage }">
@@ -400,7 +404,7 @@
 	                <c:if test="${paging.endPage != paging.lastPage}">
 		                <li class="list-inline-item">
 		                  <a class="u-pagination-v1__item u-pagination-v1-2 g-bg-lightblue-v3--active g-color-gray-dark-v6 g-color-black--hover g-color-white--active g-brd-gray-light-v7 g-brd-lightblue-v3--hover g-brd-lightblue-v3--active g-px-18 g-py-12 g-rounded-4"
-		                    href="/admin/report/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}" aria-label="Next">
+		                    href="/admin/report/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&reportReadYn=${paging.reportReadYn}" aria-label="Next">
 		                    <span aria-hidden="true">
 		                      <i class="hs-admin-angle-right"></i>
 		                    </span>
