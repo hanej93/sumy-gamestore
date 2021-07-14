@@ -23,7 +23,7 @@ import com.sumy.gamestore.service.JoinedUserService;
 import com.sumy.gamestore.service.MailSendService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/sumy")
 public class TestController2 {
 	
 	@Autowired

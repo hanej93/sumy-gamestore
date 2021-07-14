@@ -216,6 +216,10 @@
 	<script src="/resources/static/user/assets/js/page-login-1.js"></script>
 	<script src="/resources/static/user/assets/js/footer.js"></script>
 
+	<!-- 카카오 로그인 api 소스 첨부 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<!-- javascript key : 9ecf755c39ffadc782344e2b46539a29 -->
+	
 	<!-- JS Plugins Init. -->
 	<script>
     $(document).on('ready', function () {

@@ -19,7 +19,7 @@ import com.sumy.gamestore.service.LoginUserService;
 import com.sumy.gamestore.service.MailSendService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/sumy")
 public class LoginController {
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
