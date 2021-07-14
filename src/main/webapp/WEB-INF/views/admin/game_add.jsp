@@ -250,7 +250,7 @@
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          Canada
+                          액션
                         </label>
                       </div>
 
@@ -261,18 +261,18 @@
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          United Kingdom
+                          어드벤쳐
                         </label>
                       </div>
 
-                      <div class="form-group g-mb-10 g-mb-0--md">
+                      <div class="form-group g-mb-10 g-mb-10--md">
                         <label class="u-check g-pl-25">
                           <input id="category" value="3"
                            class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          Australia
+                          인디
                         </label>
                       </div>
                     </div>
@@ -287,7 +287,7 @@
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          USA
+                          RPG
                         </label>
                       </div>
 
@@ -298,18 +298,92 @@
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          New Zealand
+                          퍼즐
                         </label>
                       </div>
 
-                      <div class="form-group g-mb-10 g-mb-0--md">
+                      <div class="form-group g-mb-10 g-mb-20--md">
                         <label class="u-check g-pl-25">
                           <input id="category" value="6"
                            class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          Sweden
+                          1인칭
+                        </label>
+                      </div>
+                    </div>
+                    <!-- End Right Column -->
+                    
+                    <!-- Left Column -->
+                    <div class="col-md-6">
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="7"
+                          class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          내레이션
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="8"
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          전략
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10 g-mb-0--md">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="9"
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          슈팅
+                        </label>
+                      </div>
+                    </div>
+                    <!-- End Left Column -->
+                    
+                    <!-- Right Column -->
+                    <div class="col-md-6">
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="10"
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          시뮬레이션
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="11"
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          전투
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10 g-mb-0--md">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="12"
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          도시 건설
                         </label>
                       </div>
                     </div>
