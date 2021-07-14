@@ -38,6 +38,10 @@ let questionList = {
 			location.reload();
 		});
 		
+		$("#exampleModal3").on('hidden.bs.modal', function () {
+			$("[id^='exampleModal1']").modal('hide');
+		});
+		
 		$("[id^='mailSendBtn']").on('click', function(){
 			let questionId = $(this).attr('questionId');
 			questionList.sendMail(questionId);
@@ -156,6 +160,9 @@ let questionList = {
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
+			$("[id^='exampleModal2']").modal("hide");
+			$("#exampleModal3").modal("show");
+			
 			console.log(resp);
 		}).fail(function(error){ 
 			console.log(error); 
