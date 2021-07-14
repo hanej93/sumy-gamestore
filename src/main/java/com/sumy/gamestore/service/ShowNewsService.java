@@ -1,5 +1,7 @@
 package com.sumy.gamestore.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,8 @@ public class ShowNewsService {  //메인 페이지
 	private ShowNewsMapper showNewsMapper;
 	
 	//뉴스 보여주기
-	public NewsList selectNewsByNewsId() {
-		return showNewsMapper.selectNewsByNewsId();
+	public List<NewsList> selectNewsAll() {
+		return showNewsMapper.selectNewsAll();
 	}
 	
 	

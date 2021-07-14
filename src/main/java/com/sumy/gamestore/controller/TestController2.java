@@ -29,13 +29,6 @@ public class TestController2 {
 	@Autowired
 	JoinedUserService joinedUserService;
 
-	// 메인 화면
-	@GetMapping("home-page-1")
-	public String test1() {
-
-		return "user/home-page-1";
-	}
-
 	// 카탈로그 화면
 	@GetMapping("catalogue-page")
 	public String test2() {

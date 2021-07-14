@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +37,7 @@
 </head>
 
 <body>
+
 	<main>
 		<!-- Header -->
 		<jsp:include page="layout/header.jsp" />
@@ -283,8 +286,7 @@
 								<h2 class="h4 g-color-white g-font-weight-400 mb-3">
 									<a
 										class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
-										href="page-our-stores-2.html">3 out of 10, EP 5: "The Rig
-										Is Up!"</a>
+										href="page-our-stores-2.html">${newsList[0].newsTitle}</a>
 								</h2>
 								<h2
 									class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
@@ -307,6 +309,7 @@
 					<!-- End Blog Background Overlay Blocks -->
 				</div>
 
+              
 				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
 					<!-- Blog Background Overlay Blocks -->
 					<article class="u-block-hover">
