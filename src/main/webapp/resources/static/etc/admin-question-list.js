@@ -25,6 +25,19 @@ let questionList = {
 			let checkBox =$(this);
 			questionList.answer(checkBox);
 		});
+		
+		
+		// 모달이 켜졌을 때 읽음 상태로 변경
+		$("[id^='exampleModal1']").on('shown.bs.modal', function () {
+			let questionId = $(this).attr("questionId");
+			questionList.updateReadYes(questionId); 
+		});
+		
+		// 모달이 꺼졌을 때 페이지 리로드
+		$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
+			location.reload();
+		});
+		
 	},
 	
 	search: function(){
@@ -97,6 +110,28 @@ let questionList = {
 			alert(JSON.stringify(error));
 		});
 		
+	},
+	
+	// 읽음상태로 변경	
+	updateReadYes: function(questionId) {
+		
+		let data = {
+			questionId:questionId,
+			questionReadYn:1
+		}
+		
+		$.ajax({
+			type:"PUT",
+			url:"/admin/question/reader",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			console.log(resp);
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
 	}
 	
 }

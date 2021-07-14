@@ -211,7 +211,7 @@
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
                       <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-      					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+      				  <fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
                     </td>
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
                       <!-- Toggles Views -->
@@ -247,13 +247,13 @@
                       <div class="align-items-center g-line-height-1 justify-content-center">
                         <!-- 전송 버튼 시작 -->
                         <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" data-toggle="modal"
-                          data-target="#exampleModal">
+                          data-target="#exampleModal1${questionList.questionId }">
                           <i class="hs-admin-pencil g-font-size-18"></i>
                         </a>
                         <!-- 전송 버튼 끝 -->
 
                         <!-- 전송 내용 시작 -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div questionId="${questionList.questionId }" class="modal fade" id="exampleModal1${questionList.questionId }" tabindex="-1" aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
@@ -265,30 +265,31 @@
                               </div>
                               <div class="modal-body">
                                 <div class="row justify-content-start text-left g-mx-5">
-                                  <div class="col-12 g-my-15">이름 : 김머시기</div>
-                                  <div class="col-12 g-my-15">닉네임 : 별명이</div>
-                                  <div class="col-12 g-my-15">이메일 : ABCD@naver.com</div>
-                                  <div class="col-12 g-my-15">등록일 : 2021-06-24</div>
+                                  <div class="col-12 g-my-15">이름 : ${questionList.userName }</div>
+                                  <div class="col-12 g-my-15">닉네임 : ${questionList.userNickname }</div>
+                                  <div class="col-12 g-my-15">이메일 : ${questionList.userEmail }</div>
+                                  <div class="col-12 g-my-15">등록일 : <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+      				  <fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/></div>
                                 </div>
-                                <h5 class="modal-title ml-auto" id="exampleModalLabel">문의 제목</h5>
+                                <h5 class="modal-title ml-auto" id="exampleModalLabel">${questionList.questionTitle }</h5>
                                 <hr class="g-mx-20 g-my-10">
                                 <form>
                                   <!-- Textarea Resizable -->
                                   <div class="g-mb-20 g-px-20">
                                     <!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-                                    <textarea id="inputGroup2_2"
+                                    <textarea
                                       class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4"
-                                      placeholder="문의 내용이 없습니다." readonly="readonly"></textarea>
+                                      placeholder="문의 내용이 없습니다." readonly="readonly">${questionList.questionText }</textarea>
                                   </div>
                                   <div class="g-mb-20 g-mx-20 row justify-content-between">
                                     <!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-                                    <a class="js-fancybox col-4 g-px-5" href="javascript:;"
+                                    <a class="js-fancybox col-12 g-px-5" href="javascript:;"
                                       data-fancybox="lightbox-gallery--03"
-                                      data-src="/resources/static/assets/img-temp/500x600/img1.jpg" data-speed="350"
+                                      data-src="${questionList.questionImage1 }" data-speed="350"
                                       data-caption="문의 사진">
-                                      <img class="img-fluid" src="/resources/static/assets/img-temp/500x600/img1.jpg">
+                                      <img class="img-fluid" src="${questionList.questionImage1 }">
                                     </a>
-                                    <a class="js-fancybox col-4 g-px-5" href="javascript:;"
+                                    <!-- <a class="js-fancybox col-4 g-px-5" href="javascript:;"
                                       data-fancybox="lightbox-gallery--03"
                                       data-src="/resources/static/assets/img-temp/500x600/img2.jpg" data-speed="350"
                                       data-caption="문의 사진">
@@ -299,7 +300,7 @@
                                       data-src="/resources/static/assets/img-temp/500x600/img3.jpg" data-speed="350"
                                       data-caption="문의 사진">
                                       <img class="img-fluid" src="/resources/static/assets/img-temp/500x600/img3.jpg">
-                                    </a>
+                                    </a> -->
                                   </div>
                                   <h5 class="modal-title ml-auto g-my-10" id="exampleModalLabel">문의 답변</h5>
                                   <form>
@@ -316,7 +317,7 @@
                               <div class="modal-footer justify-content-center">
                                 <a href="#"
                                   class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                                  data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal"
+                                  data-toggle="modal" data-target="#exampleModal2${questionList.questionId }" data-dismiss="modal"
                                   aria-label="Close">전송</a>
                                 <a href="#"
                                   class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
@@ -329,7 +330,7 @@
                         <!-- 전송 내용 끝 -->
 
                         <!-- 문의 재확인 팝업 시작-->
-                        <div class="modal fade justify-content-center" id="exampleModal2" tabindex="-1"
+                        <div class="modal fade justify-content-center" id="exampleModal2${questionList.questionId }" tabindex="-1"
                           aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
@@ -353,13 +354,13 @@
 
                         <!-- 삭제 버튼 시작 -->
                         <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" data-toggle="modal"
-                          data-target="#exampleModal4">
+                          data-target="#exampleModal4${questionList.questionId }">
                           <i class="hs-admin-trash g-font-size-18"></i>
                         </a>
                         <!-- 삭제 버튼 끝 -->
 
                         <!-- 삭제 모달 내용 시작 -->
-                        <div class="modal fade justify-content-center" id="exampleModal4" tabindex="-1"
+                        <div class="modal fade justify-content-center" id="exampleModal4${questionList.questionId }" tabindex="-1"
                           aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
