@@ -267,7 +267,7 @@
                                 <div class="row justify-content-start text-left g-mx-5">
                                   <div class="col-12 g-my-15">이름 : ${questionList.userName }</div>
                                   <div class="col-12 g-my-15">닉네임 : ${questionList.userNickname }</div>
-                                  <div class="col-12 g-my-15">이메일 : ${questionList.userEmail }</div>
+                                  <div class="col-12 g-my-15">이메일 : <span id="email${questionList.questionId }">${questionList.userEmail }</span></div>
                                   <div class="col-12 g-my-15">등록일 : <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
       				  <fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/></div>
                                 </div>
@@ -307,7 +307,7 @@
                                     <!-- Textarea Resizable -->
                                     <div class="g-mb-20 g-px-20">
                                       <!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-                                      <textarea id="inputGroup2_2"
+                                      <textarea id="answerText${questionList.questionId }"
                                         class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4"
                                         placeholder="답변 내용을 작성해주세요." maxlength="1000"></textarea>
                                     </div>
@@ -315,9 +315,9 @@
                                   </form>
                               </div>
                               <div class="modal-footer justify-content-center">
-                                <a href="#"
+                                <a href="#" questionId="${questionList.questionId }"
                                   class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                                  data-toggle="modal" data-target="#exampleModal2${questionList.questionId }" data-dismiss="modal"
+                                  data-toggle="modal" data-target="#exampleModal2${questionList.questionId }"
                                   aria-label="Close">전송</a>
                                 <a href="#"
                                   class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
@@ -338,8 +338,8 @@
                                 <div class="row justify-content-center g-mx-5">
                                   <div class="col-12 g-mt-10 g-mb-30">답변을 전송하시겠습니까?</div>
                                   <div>
-                                    <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                                      data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" aria-label="Close">전송</a>
+                                    <a id="mailSendBtn${questionList.questionId }" questionId="${questionList.questionId }" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
+                                      data-toggle="modal" aria-label="Close">전송</a>
                                     <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
                                       data-dismiss="modal">닫기</a>
                                   </div>

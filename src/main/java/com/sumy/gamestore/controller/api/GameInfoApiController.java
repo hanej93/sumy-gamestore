@@ -151,11 +151,12 @@ public class GameInfoApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
-	@DeleteMapping("/admin/game/delete")
+	@DeleteMapping("/admin/game/list")
 	public ResponseDto<Integer> deleteGame(@RequestBody GameInfo gameInfo) {
-		System.out.println(gameInfo);
-		System.out.println("출력확인!!");
-		System.out.println(HttpStatus.OK.value());
+		
+		System.out.println(gameInfo.getGameId());
+		gameInfoService.게임삭제(gameInfo.getGameId());
+		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 }

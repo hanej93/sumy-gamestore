@@ -112,11 +112,9 @@ public class NewsListApiController {
 	
 	
 	
-	@DeleteMapping("/admin/news/delete")
+	@DeleteMapping("/admin/news/list")
 	public ResponseDto<Integer> deleteNews(@RequestBody NewsList newsList) {
-		System.out.println(newsList);
-		System.out.println("출력확인!!");
-		System.out.println(HttpStatus.OK.value());
+		newsListService.뉴스삭제(newsList.getNewsId());
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 }

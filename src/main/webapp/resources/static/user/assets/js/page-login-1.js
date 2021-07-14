@@ -103,6 +103,9 @@ $(document).on('ready', function() {
 	$('#userPassword').blur(function() {
 		$(this).attr('type', 'password');
 	});
+	
+	//카카오 로그인 api
+	
 
 	//로그인 버튼 클릭 시 
 	$('#loginBtn').on('click', function() {
