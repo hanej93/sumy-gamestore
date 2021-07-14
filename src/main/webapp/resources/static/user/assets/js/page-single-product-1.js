@@ -1,0 +1,76 @@
+/*** 
+ **
+ *
+ 
+	page-single-product-1.html(게임 상세 화면) custom script
+	작성자 : 김명주
+	작성일 : 2021-07-01
+
+***
+**
+*/
+
+
+$(document).on('ready', function() {
+	//리뷰 수정하기 : p, textarea toggle
+	$('.reviewUpdateBtn').on('click', function() {
+		//리뷰 수정 전 p값 가져와서 input에 넣기.
+		$('.reviewUpdateInput').val($(this).parents($('.media-body')).children('p').html().trim());
+		$(this).parents().children($('.media-body')).children('p').css('display', 'none');
+		$(this).parents().children($('.media-body')).children('form[name=reviewForm]').css('display', 'block');
+	});
+
+	//리뷰 취소
+	$('.reviewFormReset').on('click', function() {
+		if (!confirm('작성중인 리뷰를 나가시겠습니까?')) {
+			return false;
+		}
+		$(this).parents().children($('.media-body')).children('p').css('display', 'block');
+		$(this).parents().children($('.media-body')).children('form[name=reviewForm]').css('display', 'none');
+	});
+
+	//리뷰 수정완료 : update review
+	$('.reviewFormComplete').on('click', function() {
+		if ($(this).parent().parent().parent().children().first().children($('#reviewUpdateInput')).val() == "") {
+			console.log("dd2");
+			alert("수정할 리뷰 내용이 없습니다.");
+			return false;
+		}
+		if (!confirm('리뷰 수정을 완료하시겠습니까?')) {
+			return false;
+		}
+		$(this).parents().children($('.media-body')).children('p').css('display', 'block');
+		$(this).parents().children($('.media-body')).children('form[name=reviewForm]').css('display', 'none');
+		alert('리뷰 수정을 완료하였습니다.');
+	});
+
+	//리뷰 삭제하기 : delete review
+	$('.reviewDeleteBtn').on('click', function() {
+		if (!confirm('리뷰를 삭제하시겠습니까?')) {
+			return false;
+		}
+		alert('리뷰를 삭제를 완료하였습니다.');
+	});
+
+	//리뷰 신고하기 : declaration(width declarationModal)
+	$('#declarationBtn').on('click', function() {
+		var declarationName = $('span#declarationName').text();
+
+		if ($('#inputGroup2_2').val() == "") {
+			alert('신고할 내용을 작성해주세요.');
+			return false;
+		}
+
+		if (!confirm("'" + declarationName + "' 님을 신고하시겠습니까?")) {
+			return false;
+		}
+		alert('신고가 완료되었습니다.');
+	});
+
+	// 자세히보기 인덱스1
+	$("#detailsBtn").on("click", () => {
+		$("#details").toggleClass("line--clamp");
+		$('#detailsBtn').text($('#detailsBtn').text() == '자세히 보기' ? '간략히 보기' : '자세히 보기');
+	});
+
+});

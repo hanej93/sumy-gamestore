@@ -665,7 +665,7 @@ $(document).ready(function() {
  **
  *
  
-	page-help-1.html(문의하기 폼), reviewMore-page.html(리뷰더보기 화면) custom script
+	page-help-1.html(문의하기 폼) custom script
 	작성자 : 김명주
 	작성일 : 2021-07-01
 
@@ -674,17 +674,6 @@ $(document).ready(function() {
 */
 
 $(document).on('ready', function() {
-	//닫기 버튼
-	// if($('#questionForSumyModalTitle').val()!="" || $('#questionForSumyModalContents').val()!=""){
-	//     console.log('dd1');
-	//     $('#questionForSumyModal').children('.close').on('click', function(){
-	//         console.log('dd2');
-	//         if(!confirm('작성중인 내용을 저장하지 않고 나가시겠습니까?')){
-	//             console.log('dd3');
-	//             return false;
-	//         }
-	//     });
-	// }
 
 	//문의하기 버튼
 	$('#questionForSumyBtn').on('click', function() {
