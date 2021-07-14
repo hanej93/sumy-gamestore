@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<main>
+	<main class="g-pt-80">
 		<!-- Header -->
 		<header id="js-header"
 			class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance"
@@ -209,8 +209,6 @@
 	<script src="/resources/static/assets/js/components/hs.go-to.js"></script>
 	<script src="/resources/static/assets/js/components/hs.countdown.js"></script>
 
-	<!-- JS Customization -->
-	<script src="/resources/static/assets/js/custom.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>

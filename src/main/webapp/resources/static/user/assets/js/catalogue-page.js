@@ -1,21 +1,3 @@
-/*** 
- **
- *
- 
-	header fixed height custom script
-	제목 : 헤더 fixed만큼 본문 마진주기
-	작성자 : 김명주
-	작성일 : 2021-07-05
-
-***
-**
-*/
-
-
-$(document).on('ready', function() {
-	$('main').css('padding-top', '80px');
-});
-
 
 /*** 
  **

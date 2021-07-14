@@ -60,7 +60,7 @@
 </head>
 
 <body>
-	<main class="backgroundBKop05">
+	<main class="backgroundBKop05 g-pt-80">
 		<video muted autoplay loop id="myVideo">
 			<source
 				src="/resources/static/user/assets/video/K_DA - POP_STARS (ft. Madison Beer, (G)I-DLE, Jaira Burns) _ Music Video - League of Legends (1080p).mp4"

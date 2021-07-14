@@ -38,7 +38,7 @@
 
 <body>
 
-	<main>
+	<main class="g-pt-80">
 		<!-- Header -->
 		<jsp:include page="layout/header.jsp" />
 		<!-- End Header -->
@@ -2372,7 +2372,6 @@
 	<script src="/resources/static/assets/js/components/hs.countdown.js"></script>
 	<script src="/resources/static/assets/js/components/hs.count-qty.js"></script>
 
-	<script src="/resources/static/assets/js/custom.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>

@@ -42,7 +42,7 @@
 </head>
 
 <body>
-	<main>
+	<main class="g-pt-80">
 		<!-- Header -->
 		<header id="js-header"
 			class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance"
@@ -167,7 +167,7 @@
 	<script src="/resources/static/assets/js/components/hs.go-to.js"></script>
 
 	<!-- JS Customization -->
-	<script src="/resources/static/assets/js/custom.js"></script>
+	<script src="/resources/static/user/assets/js/page-password-recovery-1.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>
