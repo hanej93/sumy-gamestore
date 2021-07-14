@@ -50,7 +50,7 @@ public class MailSendService {
 //					.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
 //					.append("<a href='http://localhost:9080/member/signUpConfirm?email=").append("paro_85@naver.com")
 //					.append("&authKey=").append(authKey).append("' target='_blank'>이메일 인증 확인</a>").toString());
-			sendMail.setFrom("javacake93@gmail.com", "sumy");
+			sendMail.setFrom("kimsumy599@gmail.com", "sumy");
 			sendMail.setTo(email);
 			sendMail.send();
 		} catch (MessagingException e) {
