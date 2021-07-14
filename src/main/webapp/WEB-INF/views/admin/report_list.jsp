@@ -300,13 +300,13 @@
 
                         <!-- 삭제 버튼 시작 -->
                         <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" data-toggle="modal"
-                        data-target="#exampleModal4">
+                        data-target="#exampleModal4${reportList.reportId}">
                           <i class="hs-admin-trash g-font-size-18"></i>
                         </a>
                         <!-- 삭제 버튼 끝 -->
 
                         <!-- 삭제 모달 내용 시작 -->
-                        <div class="modal fade justify-content-center" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade justify-content-center" id="exampleModal4${reportList.reportId}" tabindex="-1" aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
@@ -314,7 +314,7 @@
                                 <div class="row justify-content-center g-mx-5">
                                   <div class="col-12 g-mt-10 g-mb-30">신고내역을 삭제 하시겠습니까?</div>
                                   <div>
-                                    <a id="delBtn${reportList.reportId}" reportId="${reportList.reportId}" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal5" data-dismiss="modal">삭제</a>
+                                    <a id="delBtn${reportList.reportId}" reportId="${reportList.reportId}" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal">삭제</a>
                                     <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                                   </div>
                                 </div>
@@ -357,7 +357,9 @@
 	                    <div class="row justify-content-center g-mx-5">
 	                      <div class="col-12 g-mt-10 g-mb-30">신고내역 삭제를 완료하였습니다.</div>
 	                        <div>
-	                          <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-font-size-14" data-dismiss="modal">확인</a>
+	                          <a href="#"
+	                          class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-font-size-14"
+	                          data-dismiss="modal">확인</a>
 	                        </div>
 	                    </div>
 	                  </div>

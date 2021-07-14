@@ -84,6 +84,11 @@ let reportList = {
 			
 			$("[id^='exampleModal1']").modal('hide');
 		});
+		
+		// 확인 버튼의 모달이 꺼졌을 때 페이지 리로드
+		$("#exampleModal5").on('hidden.bs.modal', function () {
+			location.reload();			
+		});
 
 	},
 	
@@ -155,6 +160,7 @@ let reportList = {
 		let data = {
 			reportId:reportId
 		}
+		console.log(reportId);
 		
 		$.ajax({
 			type:"DELETE", 
@@ -163,7 +169,10 @@ let reportList = {
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
-			location.reload();
+			$("[id^='exampleModal4']").modal("hide");
+			$("#exampleModal5").modal("show");
+			
+			
 		}).fail(function(error){ 
 			console.log(error); 
 			alert(JSON.stringify(error));
