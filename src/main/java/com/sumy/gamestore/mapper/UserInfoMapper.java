@@ -19,9 +19,40 @@ public interface UserInfoMapper {
 	@Select("select * from user_info where user_id = #{userId}")
 	public UserInfo selectOneByUserId(int userId);
 	
-	@Update("update user_info set user_profile_image =#{userProfileImage}, user_name =#{userName},"
-			+ "user_nickname =#{userNickname}, user_email =#{userEmail}, user_warning_count =#{userWarningCount},"
-			+ "user_blacklist =#{userBlacklist} where user_id = #{userId}")
+//	user_id
+//	user_email
+//	user_password
+//	user_nickname
+//	user_profile_image
+//	user_zip_code
+//	user_address
+//	user_detail_address
+//	user_phone_number
+//	user_name
+//	user_birth_date
+//	user_gender
+//	user_joined_date
+//	user_warning_count
+//	user_blacklist
+//	user_authority_rate
+//	user_memo
+	
+	@Update("update user_info set user_email =#{userEmail}, "
+			+ "user_password =#{userPassword}, "
+			+ "user_nickname =#{userNickname}, "
+			+ "user_profile_image =#{userProfileImage}, "
+			+ "user_zip_code =#{userZipCode}, "
+			+ "user_address =#{userAddress}, "
+			+ "user_detail_address =#{userDetailAddress}, "
+			+ "user_phone_number =#{userPhoneNumber}, "
+			+ "user_name =#{userName},"
+			+ "user_birth_date =#{userBirthDate}, "
+			+ "user_gender =#{userGender}, "
+			+ "user_joined_date =#{userJoinedDate}, "
+			+ "user_warning_count =#{userWarningCount}, "
+			+ "user_blacklist =#{userBlacklist}, "
+			+ "user_authority_rate =#{userAuthorityRate}, "
+			+ "user_memo = #{userMemo} where user_id = #{userId}")
 	public int updateUser(UserInfo userInfo);
 	
 	@Delete("delete from user_info where user_id = #{userId}")

@@ -15,6 +15,7 @@ public class ReportListService {
 
 	@Autowired
 	private ReportListMapper reportListMapper;
+	
 
 	// 총 신고 갯수 조회
 	public int 신고총개수(PagingVO vo) {
@@ -32,12 +33,11 @@ public class ReportListService {
 	}
 	
 	public int 신고수정(ReportList reportList) {
-		
 		return reportListMapper.updateReport(reportList);
-			
 	}
 	
 	public int 신고삭제(int reportId) {
 		return reportListMapper.deleteReport(reportId);
 	}
+	
 }

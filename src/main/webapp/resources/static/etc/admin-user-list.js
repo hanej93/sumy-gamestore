@@ -26,6 +26,11 @@ let userInfo = {
 			location.reload();			
 		});
 		
+		// 확인 버튼의 모달이 꺼졌을 때 페이지 리로드
+		$("#exampleModal3").on('hidden.bs.modal', function () {
+			location.reload();			
+		});
+		
 		 //경고 횟수 추가
         $("[id^='sumy-warning-plus']").on("click",function(){
 			let plusBtn = $(this);
@@ -91,7 +96,6 @@ let userInfo = {
 				contentType:"application/json;charset=utf-8", 
 				dataType:"json" 
 			}).done(function(resp){ 
-				location.reload();
 			}).fail(function(error){ 
 				console.log(error); 
 				alert(JSON.stringify(error));

@@ -243,12 +243,12 @@
                                 </div>
                                 <!-- Textarea Resizable -->
                                 <div class="form-group g-mb-20 g-px-20">
-                                  <textarea id="userMemo${userList.userId}" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="메모를 입력해주세요" maxlength="200"></textarea>
+                                  <textarea value="${userList.userMemo }" id="userMemo${userList.userId}" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4" placeholder="메모를 입력해주세요" maxlength="200"></textarea>
                                 </div>
 
                               </div>
                               <div class="modal-footer justify-content-center">
-                                <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal">저장</a>
+                                <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal2${userList.userId}" data-dismiss="modal">저장</a>
                                 <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                               </div>
                             </div>
@@ -257,7 +257,7 @@
                         <!-- 메모 모달 내용 끝 -->
 
                         <!-- 메모 재확인 팝업 시작-->
-                        <div class="modal fade justify-content-center" id="exampleModal2" tabindex="-1"
+                        <div class="modal fade justify-content-center" id="exampleModal2${userList.userId}" tabindex="-1"
                           aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
                           <div class="modal-dialog  modal-dialog-scrollable">
                             <div class="modal-content">
