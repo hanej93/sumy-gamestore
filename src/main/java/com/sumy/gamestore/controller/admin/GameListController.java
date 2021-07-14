@@ -1,4 +1,4 @@
-package com.sumy.gamestore.controller;
+package com.sumy.gamestore.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sumy.gamestore.dto.PagingVO;
-import com.sumy.gamestore.service.ReportListService;
+import com.sumy.gamestore.service.GameInfoService;
 
 @Controller
 @RequestMapping("/admin")
-public class ReportListController {
+public class GameListController {
 	
 	@Autowired
-	ReportListService reportListService;
+	GameInfoService gameInfoService;
 	
-	@GetMapping("/report/list")
-	public String showReport(PagingVO vo, Model model
+	@GetMapping("/game/list")
+	public String showGame(PagingVO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		int total = reportListService.신고총개수(vo);
+		int total = gameInfoService.게임총개수(vo);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -31,19 +31,23 @@ public class ReportListController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		}
-		String reportReadYn = vo.getReportReadYn();
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword());
-		vo.setReportReadYn(reportReadYn);
 		model.addAttribute("paging", vo);
-		model.addAttribute("viewAll", reportListService.한페이지신고리스트(vo));
+		model.addAttribute("viewAll", gameInfoService.한페이지게임리스트(vo));
 		
-		return "admin/report_list";
+		return "admin/game_list";
 	}
 	
-//	@GetMapping("/news/update")
-//	public String updateNews() {
-//		
-//		return "admin/news_update";
-//	}
+	@GetMapping("/game/add")
+	public String addGame() {
+		
+		return "admin/game_add";
+	}
+	
+	@GetMapping("/game/update")
+	public String updateGame() {
+		
+		return "admin/game_update";
+	}
 	
 }

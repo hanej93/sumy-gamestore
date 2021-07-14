@@ -1,4 +1,4 @@
-package com.sumy.gamestore.controller.api;
+package com.sumy.gamestore.controller.admin.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

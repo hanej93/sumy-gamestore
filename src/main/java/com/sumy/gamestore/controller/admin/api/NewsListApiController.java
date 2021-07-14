@@ -1,4 +1,4 @@
-package com.sumy.gamestore.controller.api;
+package com.sumy.gamestore.controller.admin.api;
 
 import java.io.File;
 import java.io.IOException;
