@@ -15,6 +15,17 @@ let userInfo = {
 			userInfo.blacklist(checkBox);
 		});
 		
+		//유저 삭제
+		$("[id^='delBtn']").on("click",function(){
+			let userId = $(this).attr("userId");
+			userInfo.delete(userId);
+		});
+		
+		// 확인 버튼의 모달이 꺼졌을 때 페이지 리로드
+		$("#exampleModal5").on('hidden.bs.modal', function () {
+			location.reload();			
+		});
+		
 		 //경고 횟수 추가
         $("[id^='sumy-warning-plus']").on("click",function(){
 			let plusBtn = $(this);
@@ -88,14 +99,6 @@ let userInfo = {
 			
 	    });
 		
-		
-		// 삭제버튼을 눌렀을 때
-		$("[id^='delBtn']").on('click', function () {
-			let userId = $(this).attr("userid");
-			userInfo.delete(userId);
-		});
-
-
 	},
 	
 	search: function(){
@@ -159,9 +162,8 @@ let userInfo = {
         }
 	},
 	
+	//유저 삭제
 	delete: function(userId) {
-		
-		alert("버튼클릭확인" +userId);
 		
 		let data = {
 			userId:userId
@@ -174,7 +176,10 @@ let userInfo = {
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
-			location.href = "/admin/user/list";
+			$("[id^='exampleModal4']").modal("hide");
+			$("#exampleModal5").modal("show");
+			
+			
 		}).fail(function(error){ 
 			console.log(error); 
 			alert(JSON.stringify(error));

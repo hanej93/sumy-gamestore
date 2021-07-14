@@ -30,25 +30,8 @@ public class UserInfoService {
 		return userInfo;
 	}
 	
-	public UserInfo 유저수정(UserInfo userInfo) {
-		
-		int affectedRows = userInfoMapper.updateUser(userInfo);
-		
-		if(affectedRows == 1) {
-			UserInfo updateUser =
-					UserInfo.builder()
-					.userProfileImage(userInfo.getUserProfileImage())
-					.userName(userInfo.getUserName())
-					.userNickname(userInfo.getUserNickname())
-					.userEmail(userInfo.getUserEmail())
-					.userWarningCount(userInfo.getUserWarningCount())
-					.userBlacklist(userInfo.getUserBlacklist())
-					.build();
-			return updateUser;
-					
-		}else {
-			return null;
-		}
+	public int 유저수정(UserInfo userInfo) {
+		return userInfoMapper.updateUser(userInfo);
 	}
 	
 	public int 유저삭제(int userId) {

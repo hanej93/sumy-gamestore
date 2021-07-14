@@ -36,32 +36,8 @@ public class NewsListService {
 	}
 	
 	//빌더패턴 주석 걸어놓았어요
-	public NewsList 뉴스수정(NewsList newsList) {
-		int affectedRows = newsListMapper.updateNews(newsList);
-		
-		if(affectedRows ==1) {
-			return new NewsList(newsList.getNewsId(), newsList.getNewsTitle(), newsList.getNewsSubTitle(), 
-			newsList.getNewsThumbImage(), newsList.getNewsText(), newsList.getNewsWriteDate(),newsList.getNewsUpdateDate());	
-		}else {
-			return null;
-		}	
-		
-//		int affectedRows = newsListMapper.updateNews(newsList);
-//		
-//		if(affectedRows ==1) {
-//			NewsList updateNews =
-//					NewsList.builder()
-//					.newsTitle(newsList.getNewsTitle())
-//					.newsSubTitle(newsList.getNewsSubTitle())
-//					.newsThumbImage(newsList.getNewsThumbImage())
-//					.newsText(newsList.getNewsText())
-//					.newsWriteDate(newsList.getNewsWriteDate())
-//					.newsUpdateDate(LocalDateTime.now())
-//					.build();
-//			return updateNews;
-//		}else {
-//			return null;
-//		}	
+	public int 뉴스수정(NewsList newsList) {
+		return newsListMapper.updateNews(newsList);
 	}
 	
 	public int 뉴스삭제(int newsId) {

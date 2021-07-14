@@ -16,13 +16,6 @@ public class ReportListService {
 	@Autowired
 	private ReportListMapper reportListMapper;
 
-//	private int reportId;					// 0넣으면 됨
-//	private int reportFromUserId;			// 유저 아이디
-//	private int reviewId;					// 리뷰 아이디
-//	private String reportText;
-//	private LocalDateTime reportWriteDate;
-//	private boolean reportReadYn;
-	
 	// 총 신고 갯수 조회
 	public int 신고총개수(PagingVO vo) {
 		return reportListMapper.countReportList(vo);

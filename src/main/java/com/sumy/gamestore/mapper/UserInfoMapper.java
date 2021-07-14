@@ -18,21 +18,7 @@ public interface UserInfoMapper {
 	
 	@Select("select * from user_info where user_id = #{userId}")
 	public UserInfo selectOneByUserId(int userId);
-//	private int userId;
-//	private String userEmail;
-//	private String userPassword;
-//	private String userNickname;
-//	private String userProfileImage;
-//	private String userAddress;
-//	private String userPhoneNumber;
-//	private String userName;
-//	private LocalDate userBirthDate;
-//	private boolean userGender;
-//	private LocalDate userJoinedDate;
-//	private int userWarningCount;
-//	private boolean userBlacklist;
-//	private String userAuthorityRate;
-//	private String userMemo;
+	
 	@Update("update user_info set user_profile_image =#{userProfileImage}, user_name =#{userName},"
 			+ "user_nickname =#{userNickname}, user_email =#{userEmail}, user_warning_count =#{userWarningCount},"
 			+ "user_blacklist =#{userBlacklist} where user_id = #{userId}")
