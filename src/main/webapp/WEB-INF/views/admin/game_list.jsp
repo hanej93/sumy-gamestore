@@ -481,7 +481,7 @@
 
               <div class="media-body align-self-center g-mt-10 g-mt-0--md">
                 <div class="input-group g-pos-rel g-max-width-380 float-right">
-                  <input id="game-title-search"
+                  <input id="game-title-search" value="${paging.keyword }"
                     class="form-control h-100 g-font-size-default g-brd-gray-light-v7 g-brd-lightblue-v3--focus g-rounded-20 g-pl-20 g-pr-50 g-py-10"
                     type="text" placeholder="게임제목을 입력하세요.">
                   <input id="nowPage" type="hidden" value="${paging.nowPage }">

@@ -118,7 +118,7 @@
 
               <div class="media-body align-self-center g-mt-10 g-mt-0--md">
                 <div class="input-group g-pos-rel g-max-width-380 float-right">
-                  <input id = "question-title-search"
+                  <input id = "question-title-search" value="${paging.keyword }"
                     class="form-control h-100 g-font-size-default g-brd-gray-light-v7 g-brd-lightblue-v3--focus g-rounded-20 g-pl-20 g-pr-50 g-py-10"
                     type="text" placeholder="문의제목을 입력하세요.">
                   <button id = "question-title-search-btn"
