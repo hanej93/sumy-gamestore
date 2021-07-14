@@ -30,8 +30,8 @@ public interface QuestionListMapper {
 	
 	@Update("update question_list set user_id=#{userId}, question_title = #{questionTitle}, question_text = #{questionText},"
 			+ " question_write_date = #{questionWriteDate}, question_answer_yn = #{questionAnswerYn},"
-			+ " question_read_yn = #{questionReadYn}, question_image_1 = #{questionImage1},"
-			+ " question_image_2 = #{questionImage2}, question_image_3 = #{questionImage3}"
+			+ " question_read_yn = #{questionReadYn}, question_image1 = #{questionImage1},"
+			+ " question_image2 = #{questionImage2}, question_image3 = #{questionImage3}"
 			+ " where question_id = #{questionId}")
 	public int updateQuestion(QuestionList Question);
 	

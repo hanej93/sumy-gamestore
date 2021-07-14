@@ -23,7 +23,6 @@ public class ReportListApiController {
 	
 	@Autowired
 	UserInfoService userInfoService;
-
 	
 	// 리포트 읽음 수정(미구현 - 신고 업데이트 관련 작업 필요)
 	@PutMapping("/admin/report/readYn")
@@ -34,8 +33,8 @@ public class ReportListApiController {
 		ReportList resultReport = reportListService.신고검색(reportList.getReportId());
 		resultReport.setReportReadYn(reportList.getReportReadYn());
 		// 신고수정
-		
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+		int result = reportListService.신고수정(resultReport);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
 	}
 	
 	

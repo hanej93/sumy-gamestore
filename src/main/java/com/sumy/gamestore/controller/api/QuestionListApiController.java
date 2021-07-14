@@ -17,14 +17,24 @@ public class QuestionListApiController {
 	@Autowired
 	QuestionListService questionListService;
 
-	@PutMapping("/admin/question/answerReader")
-	public ResponseDto<Integer> updateQuestionAnswerReader(@RequestBody QuestionList questionList) {
+	@PutMapping("/admin/question/answer")
+	public ResponseDto<Integer> updateQuestionAnswer(@RequestBody QuestionList questionList) {
 		System.out.println("userId : " + questionList.getUserId());
-		System.out.println("questionReader : " + questionList.getQuestionReadYn());	
 		System.out.println("questionAnswer : " + questionList.getQuestionAnswerYn());
 		
 		QuestionList resultQuestion = questionListService.문의검색(questionList.getQuestionId());
 		resultQuestion.setQuestionAnswerYn(questionList.getQuestionAnswerYn());
+		questionListService.문의수정(resultQuestion);
+		
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	@PutMapping("/admin/question/reader")
+	public ResponseDto<Integer> updateQuestionReader(@RequestBody QuestionList questionList) {
+		System.out.println("userId : " + questionList.getUserId());
+		System.out.println("questionReader : " + questionList.getQuestionReadYn());	
+		
+		QuestionList resultQuestion = questionListService.문의검색(questionList.getQuestionId());
 		resultQuestion.setQuestionReadYn(questionList.getQuestionReadYn());
 		questionListService.문의수정(resultQuestion);
 		

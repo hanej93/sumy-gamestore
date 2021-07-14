@@ -12,11 +12,15 @@ let questionList = {
 			this.search();
 		});
 		
+		
+		// 읽음 상태 변경
 		$("[id^='readerYn-checkbox']").on('change',function(){
 			let checkBox =$(this);
 			questionList.reader(checkBox);
 		});
 		
+		
+		// 답변 상태 변경
 		$("[id^='answerYn-checkbox']").on('change',function(){
 			let checkBox =$(this);
 			questionList.answer(checkBox);
@@ -54,7 +58,7 @@ let questionList = {
 		
 		$.ajax({
 			type:"PUT",
-			url:"/admin/question/answerReader",
+			url:"/admin/question/answer",
 			data:JSON.stringify(data),
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
@@ -82,7 +86,7 @@ let questionList = {
 		
 		$.ajax({
 			type:"PUT",
-			url:"/admin/question/answerReader",
+			url:"/admin/question/reader",
 			data:JSON.stringify(data),
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 

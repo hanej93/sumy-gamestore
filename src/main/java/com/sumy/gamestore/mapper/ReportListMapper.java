@@ -1,13 +1,16 @@
 package com.sumy.gamestore.mapper;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.dto.ReportReviewUserDto;
+import com.sumy.gamestore.model.QuestionList;
 import com.sumy.gamestore.model.ReportList;
 
 @Mapper
@@ -23,10 +26,17 @@ public interface ReportListMapper {
 	@Select("select * from report_list where report_id = #{reportId}")
 	public ReportList selectOneByReportId(int reportId);
 	
-//	@Update("update set news_title = #{newsTitle}, news_sub_title = #{newsSubTitle}, news_thumb_image = #{newsThumbImage}, "
-//			+ "news_text = #{newsText}, news_write_date = #{newsWriteDate}, news_update_date = #{newsUpdateDate} "
-//			+ "from news_list where news_id = #{newsId}")
-//	public int updateNews(NewsList News);
+//	private int reportId;
+//	private int reportFromUserId;
+//	private int reviewId;
+//	private String reportText;
+//	private LocalDateTime reportWriteDate;
+//	private int reportReadYn;
+	
+	@Update("update report_list set report_from_user_id=#{reportFromUserId}, review_id = #{reviewId},"
+			+ " report_text = #{reportText}, report_write_date = #{reportWriteDate},"
+			+ " report_read_yn = #{reportReadYn} where report_id = #{reportId}")
+	public int updateReport(ReportList reportList);
 	
 	@Delete("delete from report_list where report_id = #{reportId}")
 	public int deleteReport(int reportId);

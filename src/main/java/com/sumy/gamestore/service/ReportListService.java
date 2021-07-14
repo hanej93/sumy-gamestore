@@ -38,17 +38,11 @@ public class ReportListService {
 		return reportList;
 	}
 	
-//	public ReportList 신고수정(ReportList reportList) {
-//		
-//		int affectedRows = reportListMapper.updateNews(reportList);
-//		
-//		if(affectedRows ==1) {
-//			return new NewsList(newsList.getNewsId(), newsList.getNewsTitle(), newsList.getNewsSubTitle(), 
-//			newsList.getNewsThumbImage(), newsList.getNewsText(), newsList.getNewsWriteDate(),newsList.getNewsUpdateDate());	
-//		}else {
-//			return null;
-//		}	
-//	}
+	public int 신고수정(ReportList reportList) {
+		
+		return reportListMapper.updateReport(reportList);
+			
+	}
 	
 	public int 신고삭제(int reportId) {
 		return reportListMapper.deleteReport(reportId);
