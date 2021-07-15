@@ -46,6 +46,10 @@
 	background: rgba(0, 0, 0, 0.5);
 }
 
+main{
+	height:100vh;
+}
+
 #myVideo {
 	position: fixed;
 	top: 0;
@@ -59,7 +63,7 @@
 </style>
 </head>
 
-<body>
+<body style="background: black;">
 	<main class="backgroundBKop05 g-pt-80">
 		<video muted autoplay loop id="myVideo">
 			<source
@@ -78,9 +82,9 @@
 		<!-- End Header -->
 
 		<!-- Login -->
-		<section class="container g-pt-100 g-pb-20">
+		<section class="container g-pt-20">
 			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-5 order-lg-2 g-mb-80">
+				<div class="col-md-6 col-lg-5 order-lg-2">
 					<div
 						class="g-brd-around g-brd-gray-light-v3 rounded g-px-30 g-py-50 mb-4 ">
 						<header class="text-center mb-4">
@@ -129,7 +133,7 @@
 									</label>
 								</div>
 								<div class="col align-self-center text-right">
-									<a class="g-font-size-13" href="page-password-recovery-1.html">비밀번호
+									<a class="g-font-size-13" href="/sumy/password-recovery">비밀번호
 										찾기</a>
 								</div>
 							</div>
@@ -174,12 +178,6 @@
 			</div>
 		</section>
 		<!-- End Login -->
-
-		<!-- Footer -->
-		<footer class="g-bg-main-light-v1">
-			<jsp:include page="layout/footer.jsp"/>
-		</footer>
-		<!-- End Footer -->
 
 		<a class="js-go-to u-go-to-v2" href="#" data-type="fixed"
 			data-position='{
