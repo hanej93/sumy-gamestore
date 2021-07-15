@@ -49,8 +49,16 @@ public class MainPageController {
 		List<GameInfo> NewGameList = showGameService.selectNewGame();
 		model.addAttribute("NewGameList", NewGameList);
 		
-		List<GameInfo> RecentUpdateGameList = showGameService.selectRecentUpdateGame();
+		List<GameInfo> RecentUpdateGameList = showGameService.selectRecentUpdateGame(); 
 		model.addAttribute("RecentUpdateGameList", RecentUpdateGameList);
+	 	
+		List<GameInfo> RecommendGameList = showGameService.selectRecommendGame();
+		model.addAttribute("RecommendGameList", RecommendGameList);
+		
+		List<GameInfo> CategoryGameList = showGameService.selectCategoryGame();
+		model.addAttribute("CategoryGameList", CategoryGameList);
+		
+		
 		
 	     return "user/home-page-1";
 	}
