@@ -97,7 +97,7 @@ $(document).on('ready', function() {
 		}
 		let data = {
 			reviewId:reviewId,
-			reportFromUserId:$(this).principalUserId,
+			reportFromUserId:$(this).attr("principalUserId"),
 			reportText:$(declarationTextStr).children('.g-color-primary').length
 		};
 		
@@ -109,6 +109,7 @@ $(document).on('ready', function() {
 			dataType:"json" 
 		}).done(function(resp){ 
 			alert('신고가 완료되었습니다.');
+			$("[id^='declarationModal']").modal('hide');
 		}).fail(function(error){ 
 			console.log(error); 
 			alert(JSON.stringify(error));
