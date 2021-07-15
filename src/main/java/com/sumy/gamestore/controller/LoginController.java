@@ -2,20 +2,24 @@ package com.sumy.gamestore.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sumy.gamestore.model.UserInfo;
@@ -59,7 +63,7 @@ public class LoginController {
 	}
 	
 	// 비밀번호 찾기 화면
-	@GetMapping("/page-password-recovery-1")
+	@GetMapping("/password-recovery")
 	public String test12() {
 
 		return "user/page-password-recovery-1";
@@ -115,6 +119,7 @@ public class LoginController {
 		return "user/page-signup-1";
 	}
 
+	//비밀번호 찾기 이메일 인증
 	@ResponseBody
 	@GetMapping("/checkMail")
 	public String SendMail(String mail, Model model) {

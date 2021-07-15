@@ -153,64 +153,18 @@
 						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
 						<div class="row">
 							<div class="col-8">
-								<span class="d-block g-color-text g-font-size-13 mb-1">현재
-									비밀번호</span>
-								<!-- <span id="loginSecurityNowPwd" class="d-block">*******</span> -->
-								<input type="password" id="loginSecurityNowPwd"
+								<span class="d-block g-color-text g-font-size-13 mb-1">비밀번호 변경</span>
+								<span class="d-block g-font-weight-600 g-color-primary g-font-size-10 g-mt-20">비밀번호 변경을 하기 위해선, 이메일 인증이 필요합니다.</span>
+								<!-- <input type="password" id="loginSecurityNowPwd"
 									value="asdf!@1234" readonly="readonly"
-									class="form-control form-control-md rounded">
+									class="form-control form-control-md rounded"> -->
 							</div>
 						</div>
 						<div class="text-right">
-							<a id="loginSecurityPasswordBtn"
-								class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a>
+							<a href="/sumy/password-recovery"
+								class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">변경</a>
 						</div>
 					</div>
-
-
-					<div id="loginSecurityPwdUpdate" style="display: none;"
-						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
-						<h3 class="h5 mb-3">
-							비밀번호 변경
-							<div class="g-color-gray-dark-v5 g-font-size-12 g-mt-10">영문
-								대소문자 포함, 숫자 포함, 특수 문자 포함, 공백x, 비밀번호 8~20자</div>
-						</h3>
-
-						<form>
-							<div class="row">
-								<div class="col-sm-12 form-group g-mb-20">
-									<label class="g-color-text g-font-size-13">현재 비밀번호</label> <input
-										id="loginSecurityUpdateNowPwd"
-										class="form-control g-brd-gray-light-v4 g-brd-primary--focus g-color-text rounded g-py-13 g-px-15"
-										type="text" placeholder="현재 비밀번호 입력">
-								</div>
-
-								<div class="col-sm-12 form-group g-mb-20">
-									<label class="g-color-text g-font-size-13">새 비밀번호</label> <input
-										id="loginSecurityUpdateNewPwd"
-										class="form-control g-brd-gray-light-v4 g-brd-primary--focus g-color-text rounded g-py-13 g-px-15"
-										type="text" placeholder="새 비밀번호 입력">
-								</div>
-
-								<div class="col-sm-12 form-group g-mb-20">
-									<label class="g-color-text g-font-size-13">새 비밀번호 확인</label> <input
-										id="loginSecurityUpdateCheckNewPwd"
-										class="form-control g-brd-gray-light-v4 g-brd-primary--focus g-color-text rounded g-py-13 g-px-15"
-										type="text" placeholder="새 비밀번호 재입력">
-								</div>
-
-								<div class="col-8">
-									<button id="loginSecurityCancelPwdBtn"
-										class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 g-mr-10"
-										type="button" role="button">취소</button>
-									<button id="loginSecurityUpdatePwdBtn"
-										class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
-										type="button" role="button">수정 완료</button>
-								</div>
-
-							</div>
-					</div>
-					</form>
 
 					<div id="loginSecurityAddressDiv"
 						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
