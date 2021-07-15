@@ -24,7 +24,7 @@
 				</core:if>
 			</div>
 
-			<span class="d-block g-font-weight-500">홍길동</span> <span
+			<span class="d-block g-font-weight-500">${principal.user.userName}</span> <span
 				class="u-icon-v3 u-icon-size--xs g-color-white--hover g-bg-primary--hover rounded-circle g-pos-abs g-top-0 g-right-15 g-cursor-pointer"
 				title="프로필 사진 변경" type="button" data-toggle="modal"
 				data-target="#profileUpdateModal"> <i

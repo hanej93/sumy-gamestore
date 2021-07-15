@@ -56,9 +56,6 @@
 	</sec:authorize>
 	
 	<main class="g-pt-80">
-	타입 : ${principal.user} <br>
-	ID : ${principal.user.userEmail} <br>
-	PW : ${principal.user.userPassword}
 		<!-- Header -->
 		<header id="js-header"
 			class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance"
@@ -107,7 +104,7 @@
 						<div class="row">
 							<div class="col-8">
 								<span class="d-block g-color-text g-font-size-13 mb-1">이메일(ID)</span>
-								<span class="d-block">james@gmail.com</span>
+								<span class="d-block">${principal.user.userEmail}</span>
 							</div>
 						</div>
 
@@ -116,7 +113,7 @@
 						<div class="row">
 							<div class="col-8">
 								<span class="d-block g-color-text g-font-size-13 mb-1">이름</span>
-								<span class="d-block">홍길동</span>
+								<span class="d-block">${principal.user.userName}</span>
 							</div>
 						</div>
 					</div>
@@ -126,7 +123,7 @@
 						<div class="row">
 							<div class="col-12">
 								<span class="d-block g-color-text g-font-size-13 mb-1">별명</span>
-								<span id="loginSecurityStarName">닌자완자</span>
+								<span id="loginSecurityStarName">${principal.user.userNickname}</span>
 								<div class="text-right">
 									<a id="loginSecurityNameBtn"
 										class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a></a>
@@ -228,12 +225,11 @@
 										</div>
 										<div>
 											<div id="loginSecurityAddressNow01"
-												class="media-body g-color-text">140-11</div>
+												class="media-body g-color-text">${principal.user.userZipCode}</div>
 											<div id="loginSecurityAddressNow02"
-												class="media-body g-color-text">경기도 서울시 특별구 서울4동 서울로
-												211-12</div>
+												class="media-body g-color-text">${principal.user.userAddress}</div>
 											<div id="loginSecurityAddressNow03"
-												class="media-body g-color-text">성원 1차아파트 100동 100호</div>
+												class="media-body g-color-text">${principal.user.userDetailAddress}</div>
 										</div>
 									</address> <!-- End Address --> <!-- End Addresses -->
 
@@ -296,7 +292,7 @@
 						<div class="row">
 							<div id="loginSecurityNumberDiv" class="col-8">
 								<span class="d-block g-color-text g-font-size-13 mb-1">연락처</span>
-								<span id="loginSecurityNumber">010-1111-2222</span>
+								<span id="loginSecurityNumber">${principal.user.userPhoneNumber}</span>
 							</div>
 
 							<div class="col-4 text-right g-mt-35">
@@ -393,62 +389,6 @@
 		</div>
 		<!-- 프로필 사진 변경 모달 내용 끝 -->
 		
-		<!-- 프로필 사진 변경 모달 내용 시작 -->
-		<div class="modal fade" id="profileUpdateModal" tabindex="-1"
-			aria-labelledby="declarationModalLabel" style="display: none;"
-			aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title ml-auto" id="declarationModalLabel">프로필
-							사진 업데이트</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form id="fileForm">
-							<label class="g-mb-10">이미지 찾기</label>
-							<div class="input-group g-mb-10">
-								<div class="custom-file">
-									<!-- Plain File Input -->
-									<div class="form-group mb-0">
-										<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-											<input id="imgInp" class="questionFileInput"
-											name="file-attachment" type="file"> <i
-											class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
-											<span class="js-value">이미지 첨부</span>
-										</label>
-									</div>
-									<!-- End Plain File Input -->
-								</div>
-							</div>
-							<div
-								class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20 text-center"
-								style="height: 360px">
-								<img id="blah" class="img-fluid"
-									src="/resources/static/user/assets/img-temp/500x320/img1.png" style="height: 100%;"
-									alt="이미지 찾기를 실행해주세요.">
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer justify-content-center">
-						<div class="row g-mx-minus-5 g-mb-20">
-							<button id="profileUpdateBtn"
-								class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
-								type="button" aria-label="Close">
-								업데이트</button>
-							<button
-								class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-								data-dismiss="modal" aria-label="Close" type="button">
-								닫기</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 프로필 사진 변경 모달 내용 끝 -->
 
 		<!-- Footer -->
 		<footer class="g-bg-main-light-v1">
