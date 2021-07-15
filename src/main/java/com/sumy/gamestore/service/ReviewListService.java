@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.dto.ReviewUserDto;
 import com.sumy.gamestore.mapper.ReviewListMapper;
 import com.sumy.gamestore.model.ReviewList;
 
@@ -24,6 +25,21 @@ public class ReviewListService {
 	public List<ReviewList> 한페이지리뷰리스트(PagingVO vo){
 		return reviewListMapper.selectReviewList(vo);
 	}
+	
+	// 한 페이지 리뷰 리스트 조회
+	public List<ReviewUserDto> 리뷰검색_게임아이디_5(int gameId){
+		return reviewListMapper.selectReviewByGameIdUpto5(gameId);
+	}
+	
+	
+	public List<ReviewUserDto> 리뷰검색_게임아이디(int gameId, PagingVO vo){
+		return reviewListMapper.selectReviewByGameId(gameId, vo);
+	}
+	
+	public int 리뷰총개수_게임아이디(int gameId, PagingVO vo) {
+		return reviewListMapper.countReviewByGameId(gameId, vo);
+	}
+	
 	
 	public ReviewList 리뷰검색(int reviewId) {
 		ReviewList reviewList = reviewListMapper.selectOneByReviewId(reviewId);

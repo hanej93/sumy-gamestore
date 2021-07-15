@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="../favicon.ico">
+<!-- <link rel="shortcut icon" href="../favicon.ico"> -->
 
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
@@ -66,7 +68,7 @@
 							카탈로그 목록</a> <i class="g-color-gray-light-v2 g-ml-5 fa fa-angle-right"></i>
 					</li>
 					<li class="list-inline-item g-mr-5"><a
-						class="u-link-v5 g-color-text" href="page-single-product-1.html">게임
+						class="u-link-v5 g-color-text" href="/sumy/single-product/${gameInfo.gameId }">게임
 							상세보기</a> <i class="g-color-gray-light-v2 g-ml-5 fa fa-angle-right"></i>
 					</li>
 					<li class="list-inline-item g-color-primary"><span>리뷰
@@ -81,13 +83,13 @@
 			<div class="row g-pt-10">
 				<!-- Product Info -->
 				<div class="col-lg-5">
-					<img class="img-fluid" src="/resources/static/user/assets/img-temp/500x320/img1.png"
+					<img class="img-fluid" src="${gameInfo.gameThumbImage}"
 						alt="Image Description">
 				</div>
 				<div class="col-lg-7">
 					<h2
-						class="g-color-gray-dark-v5 g-font-weight-400 g-font-size-12 text-uppercase mb-2 g-mt-30">어나더레벨코프</h2>
-					<h1 class="g-font-weight-300 mb-4">Little Big Workshop</h1>
+						class="g-color-gray-dark-v5 g-font-weight-400 g-font-size-12 text-uppercase mb-2 g-mt-30">${gameInfo.gameDev}</h2>
+					<h1 class="g-font-weight-300 mb-4">${gameInfo.gameTitle}</h1>
 					<!-- End Product Info -->
 
 					<!-- Price -->
@@ -96,8 +98,10 @@
 							class="g-color-gray-dark-v5 g-font-weight-400 g-font-size-12 text-uppercase mb-2">게임
 							가격</h2>
 
-						<span class="g-color-black g-font-weight-500 g-font-size-30 mr-2">&#8361;33,000</span>
-						<s class="g-color-gray-dark-v4 g-font-weight-500 g-font-size-16">&#8361;44,000</s>
+						<span class="g-color-black g-font-weight-500 g-font-size-30 mr-2">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice * (100-gameInfo.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
+						<c:if test="${ gameInfo.gameDiscountRate ne '0'}">
+							<s class="g-color-gray-dark-v4 g-font-weight-500 g-font-size-16">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice}" type="number"/></s>
+						</c:if>
 					</div>
 					<!-- End Price -->
 					<!-- Buttons -->
@@ -175,15 +179,18 @@
 
 						<!-- Review -->
 						<div class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-50">
+						
+							<!-- 리뷰 반복 시작 -->
+							<c:forEach items="${reviewList }" var="review">
 							<!-- Media -->
 							<div class="media g-mb-30">
 								<img
 									class="d-flex g-width-60 g-height-60 rounded-circle g-mt-3 g-mr-20"
-									src="/resources/static/user/assets/img-temp/100x100/img1.jpg" alt="Image Description">
+									src="${review.userProfileImage }" alt="Image Description">
 								<div class="media-body">
 									<div class="d-flex align-items-start g-mb-15 g-mb-10--sm">
 										<div class="d-block">
-											<h5 class="h6">프로악플러</h5>
+											<h5 class="h6">${review.userNickname }</h5>
 
 											<!-- Rating -->
 											<ul
@@ -202,8 +209,10 @@
 											</ul>
 											<!-- End Rating -->
 
-											<span class="d-block g-color-gray-dark-v5 g-font-size-11">2020년
-												7월 3일</span>
+											<span class="d-block g-color-gray-dark-v5 g-font-size-11">
+												<fmt:parseDate value="${review.reviewUpdateDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+      											<fmt:formatDate value="${dateFmt}"  pattern="yyyy년 MM월 dd일"/>
+											</span>
 										</div>
 										<div class="ml-auto">
 											<!-- Small Button Group -->
@@ -229,11 +238,7 @@
 										</div>
 									</div>
 
-									<p>프리파이어는 궁극의 모바일 생존 슈팅 게임입니다. 이 게임은 10분 동안 당신을 외딴섬에 다른
-										49명의 사람과 가두고 생존하는지를 지켜보게 될 것입니다. 플레이어는 낙하산을 통해 자유롭게 시작 지점을 선택할
-										수 있고, 최대한 안전 지역 안에서 살아남기를 목표로 할 수 있습니다. 차량을 운전해 넓은 지역을 탐험할 수
-										있고, 풀에 몸을 숨길 수도 있습니다. 매복, 저격, 생존. 단 하나의 목표는 ""생존""하고 끝가지 살아남는
-										것입니다.</p>
+									<p>${review.reviewText }</p>
 									<form name="reviewForm" style="display: none;">
 										<div class="g-mb-30">
 											<textarea
@@ -284,479 +289,48 @@
 								</div>
 							</div>
 							<!-- End Media -->
-
-							<!-- Media -->
-							<div class="media g-brd-top g-brd-gray-light-v4 g-pt-30 g-mb-30">
-								<img
-									class="d-flex g-width-60 g-height-60 rounded-circle g-mt-3 g-mr-20"
-									src="/resources/static/user/assets/img-temp/100x100/img1.jpg" alt="Image Description">
-								<div class="media-body">
-									<div class="d-flex align-items-start g-mb-15 g-mb-10--sm">
-										<div class="d-block">
-											<h5 class="h6">프로악플러</h5>
-
-											<!-- Rating -->
-											<ul
-												class="js-rating u-rating-v1 g-font-size-13 g-color-gray-light-v3 mb-0"
-												data-hover-classes="g-color-primary">
-												<li class="g-line-height-1_4 g-color-primary click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-line-height-1_4 g-color-primary click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-											</ul>
-											<!-- End Rating -->
-
-											<span class="d-block g-color-gray-dark-v5 g-font-size-11">2020년
-												7월 3일</span>
-										</div>
-										<div class="ml-auto">
-											<!-- Small Button Group -->
-											<div class="btn-group g-mr-10 g-mb-15">
-												<button class="btn btn-primary btn-sm dropdown-toggle"
-													type="button" data-toggle="dropdown" aria-haspopup="true"
-													aria-expanded="false">
-													<i class="align-middle icon-layers u-line-icon-pro"></i>
-												</button>
-
-												<div class="dropdown-menu">
-													<button class="dropdown-item reviewUpdateBtn">댓글
-														수정</button>
-													<button class="dropdown-item reviewDeleteBtn">댓글
-														삭제</button>
-													<button class="dropdown-item" data-toggle="modal"
-														data-target="#declarationModal">신고하기</button>
-													<!-- <div class="dropdown-divider"></div> -->
-												</div>
-											</div>
-											<!-- End Small Button Group -->
-										</div>
-									</div>
-
-									<p>프리파이어는 궁극의 모바일 생존 슈팅 게임입니다. 이 게임은 10분 동안 당신을 외딴섬에 다른
-										49명의 사람과 가두고 생존하는지를 지켜보게 될 것입니다. 플레이어는 낙하산을 통해 자유롭게 시작 지점을 선택할
-										수 있고, 최대한 안전 지역 안에서 살아남기를 목표로 할 수 있습니다. 차량을 운전해 넓은 지역을 탐험할 수
-										있고, 풀에 몸을 숨길 수도 있습니다. 매복, 저격, 생존. 단 하나의 목표는 ""생존""하고 끝가지 살아남는
-										것입니다.</p>
-									<form name="reviewForm" style="display: none;">
-										<div class="g-mb-30">
-											<textarea
-												class="reviewUpdateInput form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-												rows="5" placeholder="리뷰를 작성해주세요."></textarea>
-										</div>
-										<div class="row align-items-center">
-											<div class="col-8">
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormReset g-mr-10"
-													type="button" role="button">취소</button>
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormComplete"
-													type="button" role="button">수정 완료</button>
-											</div>
-
-											<!-- Rating -->
-											<div class="col-5 col-sm-4 col-md-3">
-												<h3 class="h6 mb-1">별점:</h3>
-
-												<ul
-													class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
-													data-hover-classes="g-color-primary">
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-													</li>
-												</ul>
-												<!-- End Rating -->
-											</div>
-										</div>
-									</form>
-
-									<ul class="list-inline my-0">
-										<li class="list-inline-item g-mr-20"><a
-											class="g-color-gray-dark-v5 g-text-underline--none--hover"
-											href="#"> <i class="icon-like g-pos-rel g-top-1 g-mr-3"></i>
-												5
-										</a></li>
-
-									</ul>
-								</div>
-							</div>
-							<!-- End Media -->
-
-
-							<!-- Media -->
-							<div class="media g-brd-top g-brd-gray-light-v4 g-pt-30 g-mb-30">
-								<img
-									class="d-flex g-width-60 g-height-60 rounded-circle g-mt-3 g-mr-20"
-									src="/resources/static/user/assets/img-temp/100x100/img1.jpg" alt="Image Description">
-								<div class="media-body">
-									<div class="d-flex align-items-start g-mb-15 g-mb-10--sm">
-										<div class="d-block">
-											<h5 class="h6">프로악플러</h5>
-
-											<!-- Rating -->
-											<ul
-												class="js-rating u-rating-v1 g-font-size-13 g-color-gray-light-v3 mb-0"
-												data-hover-classes="g-color-primary">
-												<li class="g-line-height-1_4 g-color-primary click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-line-height-1_4 g-color-primary click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-line-height-1_4 g-color-primary click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-line-height-1_4 g-color-primary click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-line-height-1_4 g-color-primary click"><i
-													class="fa fa-star"></i></li>
-											</ul>
-											<!-- End Rating -->
-
-											<span class="d-block g-color-gray-dark-v5 g-font-size-11">2020년
-												7월 3일</span>
-										</div>
-										<div class="ml-auto">
-											<!-- Small Button Group -->
-											<div class="btn-group g-mr-10 g-mb-15">
-												<button class="btn btn-primary btn-sm dropdown-toggle"
-													type="button" data-toggle="dropdown" aria-haspopup="true"
-													aria-expanded="false">
-													<i class="align-middle icon-layers u-line-icon-pro"></i>
-												</button>
-
-												<div class="dropdown-menu">
-													<button class="dropdown-item reviewUpdateBtn">댓글
-														수정</button>
-													<button class="dropdown-item reviewDeleteBtn">댓글
-														삭제</button>
-													<button class="dropdown-item" data-toggle="modal"
-														data-target="#declarationModal">신고하기</button>
-													<!-- <div class="dropdown-divider"></div> -->
-												</div>
-											</div>
-											<!-- End Small Button Group -->
-										</div>
-									</div>
-
-									<p>프리파이어는 궁극의 모바일 생존 슈팅 게임입니다. 이 게임은 10분 동안 당신을 외딴섬에 다른
-										49명의 사람과 가두고 생존하는지를 지켜보게 될 것입니다. 플레이어는 낙하산을 통해 자유롭게 시작 지점을 선택할
-										수 있고, 최대한 안전 지역 안에서 살아남기를 목표로 할 수 있습니다. 차량을 운전해 넓은 지역을 탐험할 수
-										있고, 풀에 몸을 숨길 수도 있습니다. 매복, 저격, 생존. 단 하나의 목표는 ""생존""하고 끝가지 살아남는
-										것입니다.</p>
-									<form name="reviewForm" style="display: none;">
-										<div class="g-mb-30">
-											<textarea
-												class="reviewUpdateInput form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-												rows="5" placeholder="리뷰를 작성해주세요."></textarea>
-										</div>
-										<div class="row align-items-center">
-											<div class="col-8">
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormReset g-mr-10"
-													type="button" role="button">취소</button>
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormComplete"
-													type="button" role="button">수정 완료</button>
-											</div>
-
-											<!-- Rating -->
-											<div class="col-5 col-sm-4 col-md-3">
-												<h3 class="h6 mb-1">별점:</h3>
-
-												<ul
-													class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
-													data-hover-classes="g-color-primary">
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-													</li>
-												</ul>
-												<!-- End Rating -->
-											</div>
-										</div>
-									</form>
-
-									<ul class="list-inline my-0">
-										<li class="list-inline-item g-mr-20"><a
-											class="g-color-gray-dark-v5 g-text-underline--none--hover"
-											href="#"> <i class="icon-like g-pos-rel g-top-1 g-mr-3"></i>
-												5
-										</a></li>
-
-									</ul>
-								</div>
-							</div>
-							<!-- End Media -->
-
-							<!-- Media -->
-							<div class="media g-brd-top g-brd-gray-light-v4 g-pt-30 g-mb-30">
-								<img
-									class="d-flex g-width-60 g-height-60 rounded-circle g-mt-3 g-mr-20"
-									src="/resources/static/user/assets/img-temp/100x100/img1.jpg" alt="Image Description">
-								<div class="media-body">
-									<div class="d-flex align-items-start g-mb-15 g-mb-10--sm">
-										<div class="d-block">
-											<h5 class="h6">프로악플러</h5>
-
-											<!-- Rating -->
-											<ul
-												class="js-rating u-rating-v1 g-font-size-13 g-color-gray-light-v3 mb-0"
-												data-hover-classes="g-color-primary">
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-											</ul>
-											<!-- End Rating -->
-
-											<span class="d-block g-color-gray-dark-v5 g-font-size-11">2020년
-												7월 3일</span>
-										</div>
-										<div class="ml-auto">
-											<!-- Small Button Group -->
-											<div class="btn-group g-mr-10 g-mb-15">
-												<button class="btn btn-primary btn-sm dropdown-toggle"
-													type="button" data-toggle="dropdown" aria-haspopup="true"
-													aria-expanded="false">
-													<i class="align-middle icon-layers u-line-icon-pro"></i>
-												</button>
-
-												<div class="dropdown-menu">
-													<button class="dropdown-item reviewUpdateBtn">댓글
-														수정</button>
-													<button class="dropdown-item reviewDeleteBtn">댓글
-														삭제</button>
-													<button class="dropdown-item" data-toggle="modal"
-														data-target="#declarationModal">신고하기</button>
-													<!-- <div class="dropdown-divider"></div> -->
-												</div>
-											</div>
-											<!-- End Small Button Group -->
-										</div>
-									</div>
-
-									<p>프리파이어는 궁극의 모바일 생존 슈팅 게임입니다. 이 게임은 10분 동안 당신을 외딴섬에 다른
-										49명의 사람과 가두고 생존하는지를 지켜보게 될 것입니다. 플레이어는 낙하산을 통해 자유롭게 시작 지점을 선택할
-										수 있고, 최대한 안전 지역 안에서 살아남기를 목표로 할 수 있습니다. 차량을 운전해 넓은 지역을 탐험할 수
-										있고, 풀에 몸을 숨길 수도 있습니다. 매복, 저격, 생존. 단 하나의 목표는 ""생존""하고 끝가지 살아남는
-										것입니다.</p>
-									<form name="reviewForm" style="display: none;">
-										<div class="g-mb-30">
-											<textarea
-												class="reviewUpdateInput form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-												rows="5" placeholder="리뷰를 작성해주세요."></textarea>
-										</div>
-										<div class="row align-items-center">
-											<div class="col-8">
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormReset g-mr-10"
-													type="button" role="button">취소</button>
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormComplete"
-													type="button" role="button">수정 완료</button>
-											</div>
-
-											<!-- Rating -->
-											<div class="col-5 col-sm-4 col-md-3">
-												<h3 class="h6 mb-1">별점:</h3>
-
-												<ul
-													class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
-													data-hover-classes="g-color-primary">
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-													</li>
-												</ul>
-												<!-- End Rating -->
-											</div>
-										</div>
-									</form>
-
-									<ul class="list-inline my-0">
-										<li class="list-inline-item g-mr-20"><a
-											class="g-color-gray-dark-v5 g-text-underline--none--hover"
-											href="#"> <i class="icon-like g-pos-rel g-top-1 g-mr-3"></i>
-												5
-										</a></li>
-
-									</ul>
-								</div>
-							</div>
-							<!-- End Media -->
-
-							<!-- Media -->
-							<div class="media g-brd-top g-brd-gray-light-v4 g-pt-30 g-mb-30">
-								<img
-									class="d-flex g-width-60 g-height-60 rounded-circle g-mt-3 g-mr-20"
-									src="/resources/static/user/assets/img-temp/100x100/img1.jpg" alt="Image Description">
-								<div class="media-body">
-									<div class="d-flex align-items-start g-mb-15 g-mb-10--sm">
-										<div class="d-block">
-											<h5 class="h6">프로악플러</h5>
-
-											<!-- Rating -->
-											<ul
-												class="js-rating u-rating-v1 g-font-size-13 g-color-gray-light-v3 mb-0"
-												data-hover-classes="g-color-primary">
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-											</ul>
-											<!-- End Rating -->
-
-											<span class="d-block g-color-gray-dark-v5 g-font-size-11">2020년
-												7월 3일</span>
-										</div>
-										<div class="ml-auto">
-											<!-- Small Button Group -->
-											<div class="btn-group g-mr-10 g-mb-15">
-												<button class="btn btn-primary btn-sm dropdown-toggle"
-													type="button" data-toggle="dropdown" aria-haspopup="true"
-													aria-expanded="false">
-													<i class="align-middle icon-layers u-line-icon-pro"></i>
-												</button>
-
-												<div class="dropdown-menu">
-													<button class="dropdown-item reviewUpdateBtn">댓글
-														수정</button>
-													<button class="dropdown-item reviewDeleteBtn">댓글
-														삭제</button>
-													<button class="dropdown-item" data-toggle="modal"
-														data-target="#declarationModal">신고하기</button>
-													<!-- <div class="dropdown-divider"></div> -->
-												</div>
-											</div>
-											<!-- End Small Button Group -->
-										</div>
-									</div>
-
-									<p>프리파이어는 궁극의 모바일 생존 슈팅 게임입니다. 이 게임은 10분 동안 당신을 외딴섬에 다른
-										49명의 사람과 가두고 생존하는지를 지켜보게 될 것입니다. 플레이어는 낙하산을 통해 자유롭게 시작 지점을 선택할
-										수 있고, 최대한 안전 지역 안에서 살아남기를 목표로 할 수 있습니다. 차량을 운전해 넓은 지역을 탐험할 수
-										있고, 풀에 몸을 숨길 수도 있습니다. 매복, 저격, 생존. 단 하나의 목표는 ""생존""하고 끝가지 살아남는
-										것입니다.</p>
-									<form name="reviewForm" style="display: none;">
-										<div class="g-mb-30">
-											<textarea
-												class="reviewUpdateInput form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-												rows="5" placeholder="리뷰를 작성해주세요."></textarea>
-										</div>
-										<div class="row align-items-center">
-											<div class="col-8">
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormReset g-mr-10"
-													type="button" role="button">취소</button>
-												<button
-													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormComplete"
-													type="button" role="button">수정 완료</button>
-											</div>
-
-											<!-- Rating -->
-											<div class="col-5 col-sm-4 col-md-3">
-												<h3 class="h6 mb-1">별점:</h3>
-
-												<ul
-													class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
-													data-hover-classes="g-color-primary">
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-color-primary g-line-height-1_4 click"><i
-														class="fa fa-star"></i></li>
-													<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-													</li>
-												</ul>
-												<!-- End Rating -->
-											</div>
-										</div>
-									</form>
-
-									<ul class="list-inline my-0">
-										<li class="list-inline-item g-mr-20"><a
-											class="g-color-gray-dark-v5 g-text-underline--none--hover"
-											href="#"> <i class="icon-like g-pos-rel g-top-1 g-mr-3"></i>
-												5
-										</a></li>
-
-									</ul>
-								</div>
-							</div>
-							<!-- End Media -->
+							</c:forEach>
+							
 						</div>
 						<!-- End Review -->
 
 
 						<nav class="g-mb-100 " aria-label="Page Navigation">
 							<ul class="list-inline mb-0 align-items-center">
-								<li class="list-inline-item"><a
-									class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-mr-15"
-									href="#" aria-label="Next"> <span aria-hidden="true">
-											<i class="fa fa-angle-left"></i>
-									</span> <span class="sr-only">Before</span>
-								</a></li>
-								<li class="list-inline-item hidden-down"><a
-									class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded-circle g-pa-5"
-									href="#">1</a></li>
-								<li class="list-inline-item hidden-down"><a
-									class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
-									href="#">2</a></li>
-								<li class="list-inline-item g-hidden-xs-down"><a
-									class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
-									href="#">3</a></li>
-								<li class="list-inline-item hidden-down"><span
-									class="g-width-30 g-height-30 g-color-gray-dark-v5 g-font-size-12 rounded-circle g-pa-5">...</span>
-								</li>
-								<li class="list-inline-item g-hidden-xs-down"><a
-									class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
-									href="#">15</a></li>
+								<c:if test="${paging.startPage != 1 }">
+									<li class="list-inline-item"><a
+										class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-mr-15"
+										href="/sumy/single-product/${gameInfo.gameId }/review?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}" aria-label="Next"> <span aria-hidden="true">
+												<i class="fa fa-angle-left"></i>
+										</span> <span class="sr-only">Before</span>
+									</a></li>
+								</c:if>
+								<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == paging.nowPage }">
+											<li class="list-inline-item hidden-down"><a
+												class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded-circle g-pa-5"
+												href="/sumy/single-product/${gameInfo.gameId }/review?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+										</c:when>
+										<c:when test="${p != paging.nowPage }">
+											<li class="list-inline-item hidden-down"><a
+												class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
+												href="/sumy/single-product/${gameInfo.gameId }/review?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+										</c:when>
+									</c:choose>
+								</c:forEach>	
+											
+								<c:if test="${paging.endPage != paging.lastPage}">					
 								<li class="list-inline-item"><a
 									class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-ml-15"
-									href="#" aria-label="Next"> <span aria-hidden="true">
+									href="/sumy/single-product/${gameInfo.gameId }/review?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}" aria-label="Next"> <span aria-hidden="true">
 											<i class="fa fa-angle-right"></i>
 									</span> <span class="sr-only">Next</span>
 								</a></li>
+								</c:if>
 								<li class="list-inline-item float-right"><span
 									class="u-pagination-v1__item-info g-color-gray-dark-v4 g-font-size-12 g-pa-5">Page
-										1 of 15</span></li>
+										${paging.nowPage } of ${paging.lastPage }</span></li>
 							</ul>
 						</nav>
 
@@ -805,139 +379,6 @@
 			</div>
 		</div>
 		<!-- 모달 내용 끝 -->
-
-		<!-- 회사소개 모달 내용 시작 -->
-		<div class="modal fade" id="aboutSumyModal" tabindex="-1"
-			aria-labelledby="declarationModalLabel" style="display: none;"
-			aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title ml-auto" id="declarationModalLabel">
-							회사소개</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div
-							class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20">
-							<iframe
-								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.344060966518!2d126.98692621556901!3d37.57051513165742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e7a005c9c5%3A0xac4890a924a29f30!2z642U7KGw7J2A7Lu07ZOo7YSw7JWE7Yq47ZWZ7JuQIOyiheuhnOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1624784512798!5m2!1sko!2skr"
-								width="100%" height="200px" style="border: 0;"
-								allowfullscreen="" loading="lazy"></iframe>
-						</div>
-						<div style="border-radius: 2px;">
-							<div class="col-12 g-my-15 text-left g-color-gray-dark-v5">
-								<span class="u-icon-v1 g-color-primary--hover "> <i
-									class="icon-communication-002 u-line-icon-pro"></i>
-								</span> 회사명 -<br>Sumy
-							</div>
-							<div class="col-12 g-my-15 text-left g-color-gray-dark-v5">
-								<span class="u-icon-v1 g-color-primary--hover"> <i
-									class="icon-communication-044 u-line-icon-pro"></i>
-								</span> 사업자등록번호 -<br>123-12315-46546
-							</div>
-							<div class="col-12 g-my-15 text-left g-color-gray-dark-v5">
-								<span class="u-icon-v1 g-color-primary--hover"> <i
-									class="icon-communication-054 u-line-icon-pro"></i>
-								</span> 대표문의번호 -<br>1599-8888
-							</div>
-							<div class="col-12 g-my-15 text-left g-color-gray-dark-v5">
-								<span class="u-icon-v1 g-color-primary--hover"> <i
-									class="icon-communication-011 u-line-icon-pro"></i>
-								</span> 찾아오시는 길 -<br>
-								<h6>서울특별시 종로구 종로2가 수표로 105 육의전빌딩 9층</h6>
-							</div>
-						</div>
-
-					</div>
-					<div class="modal-footer justify-content-center">
-						<div class="row g-mx-minus-5 g-mb-20">
-							<button class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
-								type="button" data-toggle="modal"
-								data-target="#questionForSumyModal" data-dismiss="modal"
-								aria-label="Close">문의하기</button>
-							<button
-								class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-								data-dismiss="modal" aria-label="Close" type="button">
-								닫기</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 회사소개 모달 내용 끝 -->
-
-		<!-- 문의하기 모달 내용 시작 -->
-		<div class="modal fade" id="questionForSumyModal" tabindex="-1"
-			aria-labelledby="declarationModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title ml-auto" id="declarationModalLabel">문의하기</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form>
-							<label class="g-mb-10">문의 제목</label>
-							<div class="g-mb-10">
-								<input id="questionForSumyModalTitle"
-									class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
-									type="text" placeholder="문의 제목 입력">
-							</div>
-							<label class="g-mb-10">문의 내용</label>
-							<!-- Textarea Resizable -->
-							<div class="g-mb-30">
-								<textarea id="questionForSumyModalContents"
-									class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-									rows="5" placeholder="문의 내용을 작성해주세요."></textarea>
-							</div>
-							<label class="g-mb-10">이미지 찾기</label>
-							<div class="input-group g-mb-10">
-								<div class="custom-file">
-									<!-- Plain File Input -->
-									<div class="form-group mb-0">
-										<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-											<input id="imgInp" class="questionFileInput"
-											name="file-attachment" type="file"> <i
-											class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
-											<span class="js-value">이미지 첨부 1</span>
-										</label>
-									</div>
-									<!-- End Plain File Input -->
-								</div>
-							</div>
-
-							<div
-								class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20 text-center g-bg-gray-light-v5"
-								style="height: 360px">
-								<img id="blah" class="img-fluid"
-									src="/resources/static/user/assets/img-temp/500x320/img1.png" alt="이미지 찾기를 실행해주세요."
-									style="height: 100%">
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer justify-content-center">
-						<div class="row g-mx-minus-5 g-mb-20">
-							<button id="questionForSumyBtn"
-								class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
-								type="button" data-dismiss="modal" aria-label="Close">
-								문의하기</button>
-							<button
-								class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-								data-dismiss="modal" aria-label="Close" type="button">
-								닫기</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 문의하기 모달 내용 끝 -->
 
 		<!-- Footer -->
 		<footer class="g-bg-main-light-v1">

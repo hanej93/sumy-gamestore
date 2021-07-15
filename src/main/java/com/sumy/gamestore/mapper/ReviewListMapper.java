@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.dto.ReviewUserDto;
 import com.sumy.gamestore.model.ReviewList;
 
 @Mapper
@@ -32,6 +34,28 @@ public interface ReviewListMapper {
 	public int deleteReview(int reviewId);
 	
 	// ================================================
+	
+	@Select("select * from review_list r "
+			+ "join user_info u "
+			+ "on r.user_id = u.user_id "
+			+ "where game_id = #{gameId} "
+			+ "order by review_update_date desc limit 5")
+	public List<ReviewUserDto> selectReviewByGameIdUpto5(int gameId);
+	
+	
+	@Select("select * from review_list r "
+			+ "join user_info u "
+			+ "on r.user_id = u.user_id "
+			+ "where game_id = #{gameId} "
+			+ "order by review_update_date desc limit #{vo.start}, #{vo.cntPage}")
+	public List<ReviewUserDto> selectReviewByGameId(@Param("gameId") int gameId,@Param("vo") PagingVO vo);
+	
+	@Select("select count(*) from review_list r "
+			+ "join user_info u "
+			+ "on r.user_id = u.user_id "
+			+ "where game_id = #{gameId} "
+			+ "order by review_update_date desc limit #{vo.start}, #{vo.cntPage}")
+	public int countReviewByGameId(@Param("gameId") int gameId,@Param("vo") PagingVO vo);
 	
 //	@Select("select count(*) from review_list")
 	public int countReviewList(PagingVO vo);
