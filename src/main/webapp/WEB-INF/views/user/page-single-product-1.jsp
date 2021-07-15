@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="favicon.ico">
+<!-- <link rel="shortcut icon" href="favicon.ico"> -->
 
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
@@ -142,8 +144,8 @@
 						<img class="img-fluid" src="/resources/static/user/assets/img-temp/500x320/img1.png"
 							alt="Image Description">
 						<h2
-							class="g-color-gray-dark-v5 g-font-weight-400 g-font-size-12 text-uppercase mb-2 g-mt-30">어나더레벨코프</h2>
-						<h1 class="g-font-weight-300 mb-4">Little Big Workshop</h1>
+							class="g-color-gray-dark-v5 g-font-weight-400 g-font-size-12 text-uppercase mb-2 g-mt-30">${gameInfo.gameDev}</h2>
+						<h1 class="g-font-weight-300 mb-4">${gameInfo.gameTitle}</h1>
 						<!-- End Product Info -->
 
 						<!-- Price -->
@@ -152,8 +154,10 @@
 								class="g-color-gray-dark-v5 g-font-weight-400 g-font-size-12 text-uppercase mb-2">게임
 								가격</h2>
 
-							<span class="g-color-black g-font-weight-500 g-font-size-30 mr-2">&#8361;33,000</span>
-							<s class="g-color-gray-dark-v4 g-font-weight-500 g-font-size-16">&#8361;44,000</s>
+							<span class="g-color-black g-font-weight-500 g-font-size-30 mr-2">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice * (100-gameInfo.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
+							<c:if test="${ gameInfo.gameDiscountRate ne '0'}">
+								<s class="g-color-gray-dark-v4 g-font-weight-500 g-font-size-16">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice}" type="number"/></s>
+							</c:if>
 						</div>
 						<!-- End Price -->
 
@@ -189,25 +193,27 @@
 
 				<div class="row">
 					<div class="col-md-8 g-mb-30">
-						<p>거실에 마법의 공장이 딱 나타났다고 상상해보세요. 노동자와 작업대, 기계를 관리하고 멋진 물건을 만들며
-							작지만 큰 공방을 꿈꾸던 공장으로 키워보세요!</p>
+						<p>${gameInfo.gameSubText }</p>
 					</div>
 
 					<div class="col-md-4 g-mb-0 g-mb-30--md">
 						<!-- List -->
 						<ul class="list-unstyled g-color-text">
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
-								<span>개발사:</span> <span class="float-right g-color-black">어나더레벨코프</span>
+								<span>개발사:</span> <span class="float-right g-color-black">${gameInfo.gameDev }</span>
 							</li>
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
 								<span>태그:</span> <span class="float-right g-color-black">폭력,
 									어드벤쳐, 슈팅</span>
 							</li>
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
-								<span>출시일:</span> <span class="float-right g-color-black">2021-10-12</span>
+								<span>출시일:</span> <span class="float-right g-color-black">
+									<fmt:parseDate value="${gameInfo.gameReleaseDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+      								<fmt:formatDate value="${dateFmt}"  pattern="yyyy-MM-dd"/>
+								</span>
 							</li>
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
-								<span>구매 수:</span> <span class="float-right g-color-black">50,000,000</span>
+								<span>구매 수:</span> <span class="float-right g-color-black">${gameInfo.gameSaleCount}</span>
 							</li>
 						</ul>
 						<!-- End List -->
@@ -220,31 +226,18 @@
 		<!-- Details -->
 		<div class="container g-py-50 text-center">
 			<style>
-.line--clamp {
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 8;
-	overflow: hidden;
-}
-</style>
+				.line--clamp {
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 8;
+					overflow: hidden;
+				}
+			</style>
 			<!-- 자세히보기 인덱스2 -->
 			<div id="details" class="mb-5 line--clamp">
 				<span class="d-block g-font-size-12 text-uppercase mb-5">게임소개</span>
-				<h2 class="mb-4">Little Big Workshop</h2>
-				<p>거실에 마법의 공장이 딱 나타났다고 상상해보세요. 근면한 노동자가 고객이 원하는 것은 뭐든 서둘러 만들어내는,
-					신중하게 계획한 걸작이죠. 고무 오리, 서랍장, 드론과 전자 기타, 스쿠터와 각종 멋진 상품들을 다양한 재료로 제작하고
-					판매해 현금을 벌 수 있으며, 이 현금은 기계를 더 사고, 노동자를 더 고용하고, 사업을 확장하는 데 바로 투자할 수
-					있습니다. Little Big Workshop에서 공장 거물이 될 수 있습니다!</p>
-				<p>Big Boss가 되어 여러분만의 책상 위 공장을 경영할 때입니다. 작업 현장을 조직하고, 노동자를 관리하고,
-					기계류를 구매하고, 효율적인 생산 라인을 설계하세요. 모든 것은 제한 시간 내에 해야 하며 고객사에 만족을 안겨야
-					합니다!</p>
-				<p>여유를 가지세요. 원하는 대로 움직일 수 있게 될 때까지 생각하고, 숙고하고, 찔러볼 수 있는 샌드박스
-					경험이니까요. 다수의 부품과 조각으로 만들어진 50종 이상의 고유한 제품 유형을 생산하며, 고객사와 끊임없이 변화하는
-					시장에 제품을 공급하세요. 제품들 전부 다른 재료와 생산 방식으로 제작할 수 있습니다. 똑같아 보이는 공장이 어디에도
-					없는 셈이죠.</p>
-				<p>작은 공방에서 시작해 직원이 가득한 공장으로 확장하세요. 복잡한 기계를 잠금 해제하고, 더 많은 생산 방식을
-					추가하고, 무엇보다도, 공간을 더 넓히세요. 머지않아 다수의 생산 라인을 경영하고, 날마다 수백 개의 최신 제품을
-					생산하고, 귀여운 노동자들이 실제로 일하는 것을 기쁨에 차 지켜보게 될 것입니다.</p>
+				<h2 class="mb-4">${gameInfo.gameTitle }</h2>
+				${gameInfo.gameMainText }
 			</div>
 
 			<button id="detailsBtn"
