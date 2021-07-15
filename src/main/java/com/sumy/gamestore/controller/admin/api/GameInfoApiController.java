@@ -20,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sumy.gamestore.dto.ResponseDto;
 import com.sumy.gamestore.model.GameInfo;
+import com.sumy.gamestore.model.ReviewList;
 import com.sumy.gamestore.service.GameInfoService;
+import com.sumy.gamestore.service.ReviewListService;
 
 @RestController
 public class GameInfoApiController {
@@ -28,6 +30,9 @@ public class GameInfoApiController {
 	@Autowired
 	private GameInfoService gameInfoService;
 
+	@Autowired
+	private ReviewListService reviewListService;
+	
 	@PostMapping("/admin/game/add")
 	public ResponseDto<Integer> addGame(@RequestPart(value = "gameInfo") GameInfo gameInfo
 			, @RequestPart(value = "file", required = false) MultipartFile file
@@ -152,10 +157,11 @@ public class GameInfoApiController {
 	}
 
 	@DeleteMapping("/admin/game/list")
-	public ResponseDto<Integer> deleteGame(@RequestBody GameInfo gameInfo) {
+	public ResponseDto<Integer> deleteGame(@RequestBody GameInfo gameInfo, ReviewList reviewList ) {
 		
 		System.out.println(gameInfo.getGameId());
 		gameInfoService.게임삭제(gameInfo.getGameId());
+		reviewListService.리뷰삭제(reviewList.getReviewId());
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
