@@ -1,14 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!-- Profile Settings -->
 <div class="col-lg-3 g-mb-50">
 	<aside class="g-brd-around g-brd-gray-light-v4 rounded g-px-20 g-py-30">
 		<!-- Profile Picture -->
 		<div class="text-center g-pos-rel g-mb-30">
 			<div class="g-width-100 g-height-100 mx-auto mb-3">
-				<img id="blah2" class="rounded-circle"
-					src="/resources/static/user/assets/img-temp/100x100/img1.jpg"
-					alt="Image Decor" width="100%" height="100%">
+				<sec:authorize access="isAuthenticated()">
+					<sec:authentication property="principal" var="principal" />
+				</sec:authorize>
+				<core:if test="${principal.user.userProfileImage eq null}">
+					<img id="blah2" class="rounded-circle"
+						src="/resources/static/user/assets/img-temp/100x100/img1.jpg"
+						alt="Image Decor" width="100%" height="100%">
+				</core:if>
+				<core:if test="${principal.user.userProfileImage ne null}">
+					<img id="blah2" class="rounded-circle"
+						src="${principal.user.userProfileImage}" alt="Image Decor"
+						width="100%" height="100%">
+				</core:if>
 			</div>
 
 			<span class="d-block g-font-weight-500">홍길동</span> <span

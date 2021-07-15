@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +51,14 @@
 </head>
 
 <body>
+	<sec:authorize access="isAuthenticated()">
+	    <sec:authentication property="principal" var="principal"/>
+	</sec:authorize>
+	
 	<main class="g-pt-80">
+	타입 : ${principal.user} <br>
+	ID : ${principal.user.userEmail} <br>
+	PW : ${principal.user.userPassword}
 		<!-- Header -->
 		<header id="js-header"
 			class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance"
