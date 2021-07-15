@@ -380,6 +380,63 @@
 			</div>
 		</div>
 		<!-- 프로필 사진 변경 모달 내용 끝 -->
+		
+		<!-- 프로필 사진 변경 모달 내용 시작 -->
+		<div class="modal fade" id="profileUpdateModal" tabindex="-1"
+			aria-labelledby="declarationModalLabel" style="display: none;"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title ml-auto" id="declarationModalLabel">프로필
+							사진 업데이트</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="fileForm">
+							<label class="g-mb-10">이미지 찾기</label>
+							<div class="input-group g-mb-10">
+								<div class="custom-file">
+									<!-- Plain File Input -->
+									<div class="form-group mb-0">
+										<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
+											<input id="imgInp" class="questionFileInput"
+											name="file-attachment" type="file"> <i
+											class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
+											<span class="js-value">이미지 첨부</span>
+										</label>
+									</div>
+									<!-- End Plain File Input -->
+								</div>
+							</div>
+							<div
+								class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20 text-center"
+								style="height: 360px">
+								<img id="blah" class="img-fluid"
+									src="/resources/static/user/assets/img-temp/500x320/img1.png" style="height: 100%;"
+									alt="이미지 찾기를 실행해주세요.">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer justify-content-center">
+						<div class="row g-mx-minus-5 g-mb-20">
+							<button id="profileUpdateBtn"
+								class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
+								type="button" aria-label="Close">
+								업데이트</button>
+							<button
+								class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
+								data-dismiss="modal" aria-label="Close" type="button">
+								닫기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 프로필 사진 변경 모달 내용 끝 -->
 
 		<!-- Footer -->
 		<footer class="g-bg-main-light-v1">
@@ -387,14 +444,6 @@
 		</footer>
 		<!-- End Footer -->
 
-		<a class="js-go-to u-go-to-v2" href="#" data-type="fixed"
-			data-position='{
-           "bottom": 15,
-           "right": 15
-         }'
-			data-offset-top="400" data-compensation="#js-header"
-			data-show-effect="zoomIn"> <i class="hs-icon hs-icon-arrow-top"></i>
-		</a>
 	</main>
 
 	<div class="u-outer-spaces-helper"></div>

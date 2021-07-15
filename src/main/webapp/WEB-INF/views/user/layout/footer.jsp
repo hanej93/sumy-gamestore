@@ -6,7 +6,7 @@
 <!-- Footer -->
 <footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
 	<div class="g-ml-30">
-		<div class="row">
+		<div>
 			<div class="col-md-8 text-center text-md-left g-mb-10 g-mb-0--md">
 				<div class="d-lg-flex">
 					<small
@@ -135,7 +135,7 @@
 
 <!-- 문의하기 모달 내용 시작 -->
 <div class="modal fade" id="questionForSumyModal" tabindex="-1"
-	aria-labelledby="declarationModalLabel" aria-hidden="true">
+	aria-labelledby="declarationModalLabel" aria-hidden="true" style="overflow-y:auto;">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
