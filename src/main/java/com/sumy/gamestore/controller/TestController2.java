@@ -57,20 +57,6 @@ public class TestController2 {
 		return "user/page-help-1";
 	}
 
-	// 회원 정보 수정 화면
-	@GetMapping("page-login-security-1")
-	public String test7() {
-
-		return "user/page-login-security-1";
-	}
-
-	// 주문 내역 화면
-	@GetMapping("page-orders-1")
-	public String test9() {
-
-		return "user/page-orders-1";
-	}
-
 	// 뉴스 화면
 	@GetMapping("page-our-stores-1")
 	public String test10() {
@@ -83,19 +69,5 @@ public class TestController2 {
 	public String test11() {
 
 		return "user/page-our-stores-2";
-	}
-
-	// 위시리스트 화면
-	@GetMapping("page-wishlist-1")
-	public String test15() {
-
-		return "user/page-wishlist-1";
-	}
-
-	// 아직 안 쓰는 화면 : 결제 정보 저장 화면
-	@GetMapping("page-payment-options-1")
-	public String test13() {
-
-		return "user/page-payment-options-1";
 	}
 }
