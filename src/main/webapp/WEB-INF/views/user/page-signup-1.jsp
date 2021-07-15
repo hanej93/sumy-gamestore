@@ -86,6 +86,7 @@
 									<img id="blah2" class="rounded-circle"
 										src="/resources/static/user/assets/img-temp/100x100/img1.jpg" alt="Image Decor"
 										width="100%" height="100%">
+									<input type="text" id="userProfileImage" name="userProfileImage" value="" style="display:none;">
 								</div>
 
 								<span

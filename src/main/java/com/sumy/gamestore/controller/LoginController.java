@@ -105,7 +105,7 @@ public class LoginController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-		return "success";
+		return resourcePathname;
 	}
 	
 	// 회원가입 화면
@@ -141,7 +141,7 @@ public class LoginController {
 
 	// 회원가입 완료 화면
 	@PostMapping("/joinedSuccess")
-	public String test8(UserInfo userInfo, String fileAttachment) {
+	public String test8(UserInfo userInfo) {
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
 		userInfo.setUserPassword(encodePS);//암호화
 		int total = joinedUserService.addUser(userInfo);
