@@ -26,7 +26,7 @@ public interface ReportListMapper {
 	public ReportList selectOneByReportId(int reportId);
 	
 	@Insert("insert into report_list values(#{reportId}, #{reportFromUserId}, #{reviewId},"
-			+ " #{reportText}, #{reportWriteDate}, #{reportReadYn}")
+			+ " #{reportText}, #{reportWriteDate}, #{reportReadYn})")
 	public int insertReport(ReportList reportList);
 	
 	@Update("update report_list set report_from_user_id=#{reportFromUserId}, review_id = #{reviewId},"

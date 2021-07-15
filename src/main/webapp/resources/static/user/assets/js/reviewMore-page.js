@@ -1,16 +1,3 @@
-let reviewMore = {
-	init: function(){
-		$("[id^='delBtn']").on("click",function(){
-			
-		});
-	}
-}
-
-reviewMore.init();
-
-
-
-
 
 /*** 
  **
@@ -93,8 +80,9 @@ $(document).on('ready', function() {
 		alert('리뷰를 삭제를 완료하였습니다.');
 	});
 
+
 	//리뷰 신고하기 : declaration(width declarationModal)
-	$("id^='declarationBtn'").on('click', function() {
+	$("[id^='declarationBtn']").on('click', function() {
 		let reviewId = $(this).attr("reviewId");
 		let declarationNameStr = "#declarationName" + reviewId;
 		let declarationTextStr = "#declarationText" + reviewId;
@@ -114,8 +102,8 @@ $(document).on('ready', function() {
 		};
 		
 		$.ajax({
-			type:"PUT",
-			url:"/sumy/game/review",
+			type:"POST",
+			url:"/sumy/game/review/report",
 			data:JSON.stringify(data),
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 

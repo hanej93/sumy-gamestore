@@ -222,24 +222,24 @@
 													aria-expanded="false">
 													<i class="align-middle icon-layers u-line-icon-pro"></i>
 												</button>
-												<%-- <sec:authorize access="isAuthenticated()"> --%>
+												<sec:authorize access="isAuthenticated()">
 												<div class="dropdown-menu">
-												<%-- <c:choose>
-													<c:when test="${principal.user.userId == review.userId }"> --%>
+												<c:choose>
+													<c:when test="${principal.user.userId == review.userId }">
 														<button class="dropdown-item reviewUpdateBtn">댓글
 															수정</button>
 														<button class="dropdown-item reviewDeleteBtn">댓글
 															삭제</button>
-													<%-- </c:when>
-													<c:otherwise> --%>
+													</c:when>
+													<c:otherwise>
 														<button class="dropdown-item" data-toggle="modal"
 															data-target="#declarationModal${review.reviewId }" style="cursor: pointer;">
 															신고하기</button>
-												<%-- 	</c:otherwise>
-												</c:choose> --%>
+												</c:otherwise>
+												</c:choose>
 														<!-- <div class="dropdown-divider"></div> -->
 												</div>
-												<%-- </sec:authorize> --%>
+												</sec:authorize>
 											</div>
 											
 											<!-- End Small Button Group -->
