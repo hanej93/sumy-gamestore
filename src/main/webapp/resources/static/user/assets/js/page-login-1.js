@@ -130,12 +130,12 @@ $(document).on('ready', function() {
 		//비밀번호 유효성 통과했을 시 error클래스 있다면 삭제
 		removeErrorAndSuccess($('#userPassword'));
 		//로그인 유효성 통과 후 로그인 정보 DB와 매칭
-		/*$.ajax({
+		$.ajax({
 			type: "post",
-			url: "loginSuccess",
+			url: "/loginProc",
 			data : {
-	            userEmail : $('#userEmail').val(),
-	            userPassword : $('#userPassword').val()
+	            username : $('#userEmail').val(),
+	            password : $('#userPassword').val()
 	        },
 
 			success: function(result) {
@@ -148,6 +148,6 @@ $(document).on('ready', function() {
 				alert("로그인에 실패했습니다.");
 				return false;
 			}
-		});*/
+		});
 	});
 });
