@@ -354,7 +354,7 @@
 
                         <!-- 삭제 버튼 시작 -->
                         <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" data-toggle="modal"
-                          data-target="#exampleModal4${questionList.questionId }">
+                            data-target="#exampleModal4${questionList.questionId }">
                           <i class="hs-admin-trash g-font-size-18"></i>
                         </a>
                         <!-- 삭제 버튼 끝 -->
@@ -368,12 +368,8 @@
                                 <div class="row justify-content-center g-mx-5">
                                   <div class="col-12 g-mt-10 g-mb-30">문의내역을 삭제 하시겠습니까?</div>
                                   <div>
-                                    <a href="#"
-                                      class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                                      data-toggle="modal" data-dismiss="modal" data-target="#exampleModal5">삭제</a>
-                                    <a href="#"
-                                      class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                                      data-dismiss="modal">닫기</a>
+                                    <a id="delBtn${questionList.questionId }" questionId="${questionList.questionId }" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-dismiss="modal" data-target="#exampleModal5">삭제</a>
+                                    <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                                   </div>
                                 </div>
                               </div>

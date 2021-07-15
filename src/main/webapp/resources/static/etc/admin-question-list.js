@@ -26,6 +26,16 @@ let questionList = {
 			questionList.answer(checkBox);
 		});
 		
+		//문의 삭제
+		$("[id^='delBtn']").on("click",function(){
+			let questionId = $(this).attr("questionId");
+			questionList.delete(questionId);
+		});
+		
+		// 확인 버튼의 모달이 꺼졌을 때 페이지 리로드
+		$("#exampleModal5").on('hidden.bs.modal', function () {
+			location.reload();			
+		});
 		
 		// 모달이 켜졌을 때 읽음 상태로 변경
 		$("[id^='exampleModal1']").on('shown.bs.modal', function () {
@@ -169,6 +179,30 @@ let questionList = {
 			alert(JSON.stringify(error));
 		});
 		
+	},
+	
+	//문의 삭제
+	delete: function(questionId) {
+		
+		let data = {
+			questionId:questionId
+		}
+		
+		$.ajax({
+			type:"DELETE", 
+			url:"/admin/question/list",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			$("[id^='exampleModal4']").modal("hide");
+			$("#exampleModal5").modal("show");
+			
+			
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
 	}
 	
 }
