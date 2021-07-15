@@ -1,5 +1,6 @@
 package com.sumy.gamestore.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class JoinedUserService {
 	private JoinedUserMapper joinedUserMapper;
 	
 	public int addUser(UserInfo userInfo) {
+		userInfo.setUserJoinedDate(LocalDate.now());
+		userInfo.setUserAuthorityRate("ROLE_ADMIN");
+		System.out.println(userInfo);
 		return joinedUserMapper.insertUser(userInfo);
 	}
 	

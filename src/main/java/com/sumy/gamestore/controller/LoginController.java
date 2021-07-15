@@ -1,6 +1,9 @@
 package com.sumy.gamestore.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.service.JoinedUserService;
@@ -60,6 +65,49 @@ public class LoginController {
 		return "user/page-password-recovery-1";
 	}
 	
+	//프로필 변경
+	@ResponseBody
+	@PostMapping("/profileImgAdd")
+	public String test17(@RequestPart(value = "file", required = false) MultipartFile file) {
+		System.out.println(file.getOriginalFilename());
+		
+		if (file == null || file.isEmpty()) {
+            System.out.println("파일이 없음");
+        }
+
+        // 현재 날짜 조회 - ex) 2021-07-07
+        String currentDate = LocalDate.now().toString();
+        // 파일 저장 경로 (현재 날짜를 포함) - ex) C:/upload/2021-07-07/
+        String uploadFilePath = "C:\\upload\\" + currentDate + "/";
+
+        // 파일 확장자 ex) jpg, png ..
+        String prefix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1,
+                file.getOriginalFilename().length());
+
+        // 랜덤아이디로 파일명 생성
+        String filename = UUID.randomUUID().toString() + "." + prefix;
+
+        // 폴더가 없다면 생성
+        File folder = new File(uploadFilePath);
+        if (!folder.isDirectory()) {
+            folder.mkdirs();
+        }
+
+        // 실제 저장되는 위치
+        String pathname = uploadFilePath + filename;
+        // 가상 가상 파일 위치 - ex) /upload/2021-07-07/파일명.jpg
+        String resourcePathname = "/upload/" + currentDate + "/" + filename;
+        File dest = new File(pathname);
+        try {
+            file.transferTo(dest);
+
+        } catch (IllegalStateException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return "success";
+	}
+	
 	// 회원가입 화면
 	@GetMapping("/join")
 	public String test14() {
@@ -94,10 +142,9 @@ public class LoginController {
 	// 회원가입 완료 화면
 	@PostMapping("/joinedSuccess")
 	public String test8(UserInfo userInfo) {
-		System.out.println(userInfo);
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
 		userInfo.setUserPassword(encodePS);//암호화
 		int total = joinedUserService.addUser(userInfo);
-		return "user/home-page-1";
+		return "sumy/home-page-1";
 	}
 }

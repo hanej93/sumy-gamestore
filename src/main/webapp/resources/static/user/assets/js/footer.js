@@ -61,11 +61,27 @@ $(document).ready(function() {
 
 	//프로필 사진 변경 버튼
 	$('#profileUpdateBtn').on('click', function() {
-		if (!confirm('프로필 변경을 완료하시겠습니까?')) {
-			alert('프로필 변경을 취소하였습니다.');
-		}
-		$('#blah2').attr('src', targetUrl);
-		alert('프로필 변경을 완료하였습니다.');
+		var form = $('#fileForm')[0];
+		var formData = new FormData(form);
 
+		formData.append('file', $('#imgInp')[0].files[0]);
+		$.ajax({
+			type: 'POST',
+			url: '/sumy/profileImgAdd',
+			enctype: "multipart/form-data",
+			processData: false,
+			contentType: false,
+			data: formData,
+		}).done(function() {
+			console.log("파일전송 성공");
+			if (!confirm('프로필 변경을 완료하시겠습니까?')) {
+				alert('프로필 변경을 취소하였습니다.');
+			}
+			alert('프로필 변경을 완료하였습니다.');
+			$("#profileUpdateModal").modal('hide');
+			$('#blah2').attr('src', targetUrl);
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
 	});
 });
