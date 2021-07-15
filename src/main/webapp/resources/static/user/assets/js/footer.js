@@ -72,11 +72,12 @@ $(document).ready(function() {
 			processData: false,
 			contentType: false,
 			data: formData,
-		}).done(function() {
+		}).done(function(result) {
 			console.log("파일전송 성공");
 			if (!confirm('프로필 변경을 완료하시겠습니까?')) {
 				alert('프로필 변경을 취소하였습니다.');
 			}
+			$('#userProfileImage').attr('value', result);
 			alert('프로필 변경을 완료하였습니다.');
 			$("#profileUpdateModal").modal('hide');
 			$('#blah2').attr('src', targetUrl);

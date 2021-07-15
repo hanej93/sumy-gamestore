@@ -88,7 +88,7 @@
 						</header>
 
 						<!-- Form -->
-						<form class="g-py-15">
+						<form id="loginForm" method="post" action="/loginProc" class="g-py-15">
 							<div class="form-group mb-4">
 								<div class="input-group g-rounded-left-3">
 									<span class="input-group-prepend g-width-45"> <span
@@ -137,7 +137,7 @@
 							<div class="mb-5">
 								<button id="loginBtn"
 									class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"
-									type="button">로그인</button>
+									type="submit">로그인</button>
 							</div>
 
 							<div class="d-flex justify-content-center text-center g-mb-30">

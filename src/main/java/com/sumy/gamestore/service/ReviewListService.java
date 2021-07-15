@@ -8,13 +8,18 @@ import org.springframework.stereotype.Service;
 import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.dto.ReviewUserDto;
 import com.sumy.gamestore.mapper.ReviewListMapper;
+import com.sumy.gamestore.mapper.UserInfoMapper;
 import com.sumy.gamestore.model.ReviewList;
+import com.sumy.gamestore.model.UserInfo;
 
 @Service
 public class ReviewListService {
 
 	@Autowired
 	private ReviewListMapper reviewListMapper;
+	
+	@Autowired
+	private UserInfoMapper userInfoMapper; 
 
 	// 총 리뷰 갯수 조회
 	public int 리뷰총개수(PagingVO vo) {
@@ -29,6 +34,12 @@ public class ReviewListService {
 	// 한 페이지 리뷰 리스트 조회
 	public List<ReviewUserDto> 리뷰검색_게임아이디_5(int gameId){
 		return reviewListMapper.selectReviewByGameIdUpto5(gameId);
+	}
+	
+	// 리뷰테이블에 유저아이디 갯수
+	public int 유저아이디개수_이메일(String email, int gameId) {
+		UserInfo userInfo = userInfoMapper.findByUserEmail(email);
+		return reviewListMapper.countReviewByGameIdAndUserName(gameId, userInfo.getUserId());
 	}
 	
 	
