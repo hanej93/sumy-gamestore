@@ -88,14 +88,14 @@
 						</header>
 
 						<!-- Form -->
-						<form class="g-py-15">
+						<form id="loginForm" method="post" action="/loginProc" class="g-py-15">
 							<div class="form-group mb-4">
 								<div class="input-group g-rounded-left-3">
 									<span class="input-group-prepend g-width-45"> <span
 										class="input-group-text justify-content-center w-100 g-bg-transparent g-brd-gray-light-v3 g-color-gray-dark-v5">
 											<i class="icon-finance-067 u-line-icon-pro"></i>
 									</span>
-									</span> <input id="userEmail" name="userEmail"
+									</span> <input id="userEmail" name="username"
 										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-rounded-left-0 g-rounded-right-3 g-py-15 g-px-15"
 										type="email" placeholder="이메일 주소 @포함">
 								</div>
@@ -109,7 +109,7 @@
 										class="input-group-text justify-content-center w-100 g-bg-transparent g-brd-gray-light-v3 g-color-gray-dark-v5">
 											<i class="icon-media-094 u-line-icon-pro"></i>
 									</span>
-									</span> <input id="userPassword" name="userPassword"
+									</span> <input id="userPassword" name="password"
 										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-rounded-left-0 g-rounded-right-3 g-py-15 g-px-15"
 										type="text" placeholder="비밀번호 입력">
 								</div>
@@ -137,7 +137,7 @@
 							<div class="mb-5">
 								<button id="loginBtn"
 									class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"
-									type="button">로그인</button>
+									type="submit">로그인</button>
 							</div>
 
 							<div class="d-flex justify-content-center text-center g-mb-30">
@@ -167,7 +167,7 @@
 					<div class="text-center">
 						<p class="g-color-gray-dark-v5 mb-0">
 							계정을 가지고 있지 않으신가요? <a class="g-font-weight-600"
-								href="page-signup-1.html">회원가입</a>
+								href="/sumy/join">회원가입</a>
 						</p>
 					</div>
 				</div>

@@ -358,7 +358,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form id="fileForm">
 							<label class="g-mb-10">이미지 찾기</label>
 							<div class="input-group g-mb-10">
 								<div class="custom-file">
@@ -387,7 +387,7 @@
 						<div class="row g-mx-minus-5 g-mb-20">
 							<button id="profileUpdateBtn"
 								class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
-								type="button" data-dismiss="modal" aria-label="Close">
+								type="button" aria-label="Close">
 								업데이트</button>
 							<button
 								class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
@@ -446,6 +446,7 @@
 
 	<!-- JS Customization -->
 	<script src="/resources/static/user/assets/js/page-signup-1.js"></script>
+	<script src="/resources/static/user/assets/js/footer.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>

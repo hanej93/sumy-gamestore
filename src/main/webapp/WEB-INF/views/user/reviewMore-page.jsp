@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,15 +152,15 @@
 						<h3 class="h6 mb-1">별점:</h3>
 
 						<ul
-							class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
+							class="u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
 							data-hover-classes="g-color-primary">
-							<li class="g-color-primary g-line-height-1_4 click"><i
+							<li class="g-color-primary g-line-height-1_4"><i
 								class="fa fa-star"></i></li>
-							<li class="g-color-primary g-line-height-1_4 click"><i
+							<li class="g-color-primary g-line-height-1_4"><i
 								class="fa fa-star"></i></li>
-							<li class="g-color-primary g-line-height-1_4 click"><i
+							<li class="g-color-primary g-line-height-1_4"><i
 								class="fa fa-star"></i></li>
-							<li class="g-color-primary g-line-height-1_4 click"><i
+							<li class="g-color-primary g-line-height-1_4"><i
 								class="fa fa-star"></i></li>
 							<li class="g-line-height-1_4"><i class="fa fa-star"></i></li>
 						</ul>
@@ -194,18 +195,16 @@
 
 											<!-- Rating -->
 											<ul
-												class="js-rating u-rating-v1 g-font-size-13 g-color-gray-light-v3 mb-0"
+												class="u-rating-v1 g-font-size-13 g-color-gray-light-v3 mb-0"
 												data-hover-classes="g-color-primary">
-												<li class="g-color-primary g-line-height-1_4 click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-color-primary g-line-height-1_4 click"><i
-													class="fa fa-star"></i></li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
-												<li class="g-line-height-1_4"><i class="fa fa-star"></i>
-												</li>
+												<c:forEach begin="1" end="${review.reviewStarRating }" step="1">
+													<li class="g-color-primary g-line-height-1_4 click"><i
+														class="fa fa-star"></i></li>
+												</c:forEach>
+												<c:forEach begin="1" end="${5 - (review.reviewStarRating) }" step="1">
+													<li class="g-line-height-1_4"><i class="fa fa-star"></i>
+													</li>
+												</c:forEach>
 											</ul>
 											<!-- End Rating -->
 
@@ -216,24 +215,33 @@
 										</div>
 										<div class="ml-auto">
 											<!-- Small Button Group -->
+											
 											<div class="btn-group g-mr-10 g-mb-15">
 												<button class="btn btn-primary btn-sm dropdown-toggle"
 													type="button" data-toggle="dropdown" aria-haspopup="true"
 													aria-expanded="false">
 													<i class="align-middle icon-layers u-line-icon-pro"></i>
 												</button>
-
+												<%-- <sec:authorize access="isAuthenticated()"> --%>
 												<div class="dropdown-menu">
-													<button class="dropdown-item reviewUpdateBtn">댓글
-														수정</button>
-													<button class="dropdown-item reviewDeleteBtn">댓글
-														삭제</button>
-													<button class="dropdown-item" data-toggle="modal"
-														data-target="#declarationModal" style="cursor: pointer;">
-														신고하기</a>
+												<%-- <c:choose>
+													<c:when test="${principal.user.userId == review.userId }"> --%>
+														<button class="dropdown-item reviewUpdateBtn">댓글
+															수정</button>
+														<button class="dropdown-item reviewDeleteBtn">댓글
+															삭제</button>
+													<%-- </c:when>
+													<c:otherwise> --%>
+														<button class="dropdown-item" data-toggle="modal"
+															data-target="#declarationModal${review.reviewId }" style="cursor: pointer;">
+															신고하기</button>
+												<%-- 	</c:otherwise>
+												</c:choose> --%>
 														<!-- <div class="dropdown-divider"></div> -->
 												</div>
+												<%-- </sec:authorize> --%>
 											</div>
+											
 											<!-- End Small Button Group -->
 										</div>
 									</div>
@@ -241,16 +249,16 @@
 									<p>${review.reviewText }</p>
 									<form name="reviewForm" style="display: none;">
 										<div class="g-mb-30">
-											<textarea
+											<textarea id="updateWriteText${review.reviewId}"
 												class="reviewUpdateInput form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-												rows="5" placeholder="리뷰를 작성해주세요."></textarea>
+												rows="5" placeholder="리뷰를 작성해주세요.">${review.reviewText }</textarea>
 										</div>
 										<div class="row align-items-center">
 											<div class="col-8">
 												<button
 													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormReset g-mr-10"
 													type="button" role="button">취소</button>
-												<button
+												<button reviewId=${review.reviewId }
 													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 reviewFormComplete"
 													type="button" role="button">수정 완료</button>
 											</div>
@@ -259,7 +267,7 @@
 											<div class="col-5 col-sm-4 col-md-3">
 												<h3 class="h6 mb-1">별점:</h3>
 
-												<ul
+												<ul id="updateWriteStar${review.reviewId}"
 													class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
 													data-hover-classes="g-color-primary">
 													<li class="g-color-primary g-line-height-1_4 click"><i
@@ -277,12 +285,51 @@
 											</div>
 										</div>
 									</form>
+									<!-- 모달 내용 시작 -->
+									<div class="modal fade" id="declarationModal${review.reviewId }" tabindex="-1"
+										aria-labelledby="declarationModalLabel" style="display: none;"
+										aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title ml-auto" id="declarationModalLabel">댓글
+														신고하기</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<div class="row justify-content-start text-left g-mx-5">
+														<div class="col-12 g-my-15">
+															신고대상 이름 : <span id="declarationName${review.reviewId }">${review.userNickname}</span>
+														</div>
+													</div>
+													<form>
+														<!-- Textarea Resizable -->
+														<div class="form-group g-mb-20 g-px-20">
+															<!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
+															<textarea id="declarationText${review.reviewId }"
+																class="form-control form-control-md rounded-0 g-color-gray-dark-v6"
+																rows="4" placeholder="신고하는 이유에 대해서 작성해주세요." maxlength="200"></textarea>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer justify-content-center">
+													<button principalUserId="${principal.user.userId}" reviewId="${review.reviewId }" id="declarationBtn${review.reviewId }"
+														class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
+														data-dismiss="modal${review.reviewId }" aria-label="Close" type="button">신고하기</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 모달 내용 끝 -->
 
 									<ul class="list-inline my-0">
 										<li class="list-inline-item g-mr-20"><a
 											class="g-color-gray-dark-v5 g-text-underline--none--hover"
 											href="#"> <i class="icon-like g-pos-rel g-top-1 g-mr-3"></i>
-												5
+												${review.reviewLikeCount}
 										</a></li>
 
 									</ul>
@@ -339,46 +386,8 @@
 			</div>
 		</div>
 		<!-- End Review -->
-
-		<!-- 모달 내용 시작 -->
-		<div class="modal fade" id="declarationModal" tabindex="-1"
-			aria-labelledby="declarationModalLabel" style="display: none;"
-			aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title ml-auto" id="declarationModalLabel">댓글
-							신고하기</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="row justify-content-start text-left g-mx-5">
-							<div class="col-12 g-my-15">
-								신고대상 이름 : <span id="declarationName">프로악플러</span>
-							</div>
-						</div>
-						<form>
-							<!-- Textarea Resizable -->
-							<div class="form-group g-mb-20 g-px-20">
-								<!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-								<textarea id="inputGroup2_2"
-									class="form-control form-control-md rounded-0 g-color-gray-dark-v6"
-									rows="4" placeholder="신고하는 이유에 대해서 작성해주세요." maxlength="200"></textarea>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer justify-content-center">
-						<button id="declarationBtn"
-							class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-							data-dismiss="modal" aria-label="Close" type="button">신고하기</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 모달 내용 끝 -->
+		
+		
 
 		<!-- Footer -->
 		<footer class="g-bg-main-light-v1">

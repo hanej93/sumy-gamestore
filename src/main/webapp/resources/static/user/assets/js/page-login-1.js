@@ -88,8 +88,8 @@ $(document).on('ready', function() {
 	
 	
 
-	//로그인 버튼 클릭 시 
-	$('#loginBtn').on('click', function() {
+	
+	$('#loginForm').on('submit', function() {
 		//이메일 공란 check
 		if ($('#userEmail').val() == "") {
 			removeErrorAndSuccess($('#userEmail'));
@@ -132,10 +132,10 @@ $(document).on('ready', function() {
 		//로그인 유효성 통과 후 로그인 정보 DB와 매칭
 		/*$.ajax({
 			type: "post",
-			url: "loginSuccess",
+			url: "/loginProc",
 			data : {
-	            userEmail : $('#userEmail').val(),
-	            userPassword : $('#userPassword').val()
+	            username : $('#userEmail').val(),
+	            password : $('#userPassword').val()
 	        },
 
 			success: function(result) {

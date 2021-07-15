@@ -14,7 +14,7 @@ import com.sumy.gamestore.model.UserInfo;
 
 @Mapper
 public interface JoinedUserMapper {
-	@Insert("insert into user_info values(#{userId}, #{userEmail}, #{userPassword}, #{userNickname},"
+	@Insert("insert into user_info values(#{userId}, #{userEmail}, #{userPassword}, #{userProvider}, #{userToken}, #{userNickname},"
 			+ "#{userProfileImage}, #{userZipCode}, #{userAddress}, #{userDetailAddress}, #{userPhoneNumber}, #{userName}, #{userBirthDate}, #{userGender}, #{userJoinedDate}, #{userWarningCount}, #{userBlacklist}, #{userAuthorityRate}, #{userMemo})")
 	public int insertUser(UserInfo userInfo);
 

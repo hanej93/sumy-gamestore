@@ -26,7 +26,7 @@ public interface ReviewListMapper {
 			+ "review_report_count = #{reviewReportCount}, "
 			+ "review_star_rating = #{reviewStarRating}, "
 			+ "review_write_date = #{reviewWriteDate}, "
-			+ "review_update_date = #{reviewUpdateDate}, "
+			+ "review_update_date = #{reviewUpdateDate} "
 			+ " where review_id = #{reviewId}")
 	public int updateReview(ReviewList reviewList);
 	
@@ -56,6 +56,13 @@ public interface ReviewListMapper {
 			+ "where game_id = #{gameId} "
 			+ "order by review_update_date desc limit #{vo.start}, #{vo.cntPage}")
 	public int countReviewByGameId(@Param("gameId") int gameId,@Param("vo") PagingVO vo);
+	
+	@Select("select count(*) from review_list r "
+			+ "join user_info u "
+			+ "on r.user_id = u.user_id "
+			+ "where game_id = #{gameId} "
+			+ "and user_id = #{userId}")
+	public int countReviewByGameIdAndUserName(int gameId, int userId);
 	
 //	@Select("select count(*) from review_list")
 	public int countReviewList(PagingVO vo);
