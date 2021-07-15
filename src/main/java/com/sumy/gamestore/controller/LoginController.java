@@ -141,7 +141,7 @@ public class LoginController {
 
 	// 회원가입 완료 화면
 	@PostMapping("/joinedSuccess")
-	public String test8(UserInfo userInfo) {
+	public String test8(UserInfo userInfo, String fileAttachment) {
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
 		userInfo.setUserPassword(encodePS);//암호화
 		int total = joinedUserService.addUser(userInfo);
