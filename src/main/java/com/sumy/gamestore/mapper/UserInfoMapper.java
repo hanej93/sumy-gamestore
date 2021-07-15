@@ -13,8 +13,11 @@ import com.sumy.gamestore.model.UserInfo;
 @Mapper
 public interface UserInfoMapper {
 	
-	@Select("select * from user_info where user_name = #{user_name}")
+	@Select("select * from user_info where user_name = #{username}")
 	public UserInfo findByUsername(String username);
+	
+	@Select("select * from user_info where user_email = #{userEmail}")
+	public UserInfo findByUserEmail(String userEmail);
 	
 	@Select("select * from user_info where user_id = #{userId}")
 	public UserInfo selectOneByUserId(int userId);

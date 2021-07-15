@@ -267,7 +267,7 @@
 											<div class="col-5 col-sm-4 col-md-3">
 												<h3 class="h6 mb-1">별점:</h3>
 
-												<ul id="reviewWriteStar${review.reviewId}"
+												<ul id="updateWriteStar${review.reviewId}"
 													class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
 													data-hover-classes="g-color-primary">
 													<li class="g-color-primary g-line-height-1_4 click"><i
@@ -302,14 +302,14 @@
 												<div class="modal-body">
 													<div class="row justify-content-start text-left g-mx-5">
 														<div class="col-12 g-my-15">
-															신고대상 이름 : <span id="declarationName">${review.userNickname}</span>
+															신고대상 이름 : <span id="declarationName${review.reviewId }">${review.userNickname}</span>
 														</div>
 													</div>
 													<form>
 														<!-- Textarea Resizable -->
 														<div class="form-group g-mb-20 g-px-20">
 															<!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-															<textarea id="inputGroup2_2"
+															<textarea id="declarationText${review.reviewId }"
 																class="form-control form-control-md rounded-0 g-color-gray-dark-v6"
 																rows="4" placeholder="신고하는 이유에 대해서 작성해주세요." maxlength="200"></textarea>
 														</div>

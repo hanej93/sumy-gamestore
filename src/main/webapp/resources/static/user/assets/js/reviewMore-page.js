@@ -56,9 +56,33 @@ $(document).on('ready', function() {
 		$(this).parents().children($('.media-body')).children('p').css('display', 'block');
 		$(this).parents().children($('.media-body')).children('form[name=reviewForm]').css('display', 'none');
 		
-		let review = $(this).attr('reviewId');
+		let reviewId = $(this).attr('reviewId');
+		let updateWriteTextStr = "#updateWriteText" + reviewId;
+		let updateWriteStarStr = "#updateWriteStar" + reviewId;
+		console.log(reviewId);
+		console.log($(updateWriteTextStr).val());
+		console.log($(updateWriteStarStr).children('.g-color-primary').length);
+
+		let data = {
+			reviewId:reviewId,
+			reviewText:$(updateWriteTextStr).val(),
+			reviewStarRating:$(updateWriteStarStr).children('.g-color-primary').length
+		};
 		
-		alert('리뷰 수정을 완료하였습니다.');
+		$.ajax({
+			type:"PUT",
+			url:"/sumy/game/review",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			//alert('리뷰 수정을 완료하였습니다.');
+			location.reload();
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+		
 	});
 
 	//리뷰 삭제하기 : delete review
