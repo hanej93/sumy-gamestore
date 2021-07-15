@@ -88,8 +88,8 @@ $(document).on('ready', function() {
 	
 	
 
-	//로그인 버튼 클릭 시 
-	$('#loginBtn').on('click', function() {
+	
+	$('#loginForm').on('submit', function() {
 		//이메일 공란 check
 		if ($('#userEmail').val() == "") {
 			removeErrorAndSuccess($('#userEmail'));
@@ -130,7 +130,7 @@ $(document).on('ready', function() {
 		//비밀번호 유효성 통과했을 시 error클래스 있다면 삭제
 		removeErrorAndSuccess($('#userPassword'));
 		//로그인 유효성 통과 후 로그인 정보 DB와 매칭
-		$.ajax({
+		/*$.ajax({
 			type: "post",
 			url: "/loginProc",
 			data : {
@@ -148,6 +148,6 @@ $(document).on('ready', function() {
 				alert("로그인에 실패했습니다.");
 				return false;
 			}
-		});
+		});*/
 	});
 });

@@ -316,7 +316,7 @@
 													</form>
 												</div>
 												<div class="modal-footer justify-content-center">
-													<button id="declarationBtn"
+													<button principalUserId="${principal.user.userId}" reviewId="${review.reviewId }" id="declarationBtn${review.reviewId }"
 														class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
 														data-dismiss="modal${review.reviewId }" aria-label="Close" type="button">신고하기</button>
 												</div>

@@ -22,7 +22,7 @@ public class PrincipalDetailService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println(username);
 		UserInfo principal = userInfoMapper.findByUserEmail(username);
-		System.out.println(principal);
+		System.out.println("로그인 객체 확인: " + principal);
 		return new PrincipalDetail(principal);
 
 	}
