@@ -149,14 +149,14 @@
 				<form>
 					<label class="g-mb-10">문의 제목</label>
 					<div class="g-mb-10">
-						<input id="questionForSumyModalTitle"
+						<input id="questionForSumyModalTitle" name="questionTitle"
 							class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
 							type="text" placeholder="문의 제목 입력">
 					</div>
 					<label class="g-mb-10">문의 내용</label>
 					<!-- Textarea Resizable -->
 					<div class="g-mb-30">
-						<textarea id="questionForSumyModalContents"
+						<textarea id="questionForSumyModalContents" name="questionText"
 							class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
 							rows="5" placeholder="문의 내용을 작성해주세요."></textarea>
 					</div>
@@ -166,7 +166,7 @@
 							<!-- Plain File Input -->
 							<div class="form-group mb-0">
 								<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-									<input id="imgInp" class="questionFileInput"
+									<input id="imgInp2" name="questionImage1" class="questionFileInput"
 									name="file-attachment" type="file"> <i
 									class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
 									<span class="js-value">이미지 첨부하기</span>
@@ -183,13 +183,12 @@
 							src="/resources/static/user/assets/img-temp/500x320/img1.png"
 							alt="이미지 찾기를 실행해주세요." style="height: 100%">
 					</div>
-				</form>
 			</div>
 			<div class="modal-footer justify-content-center">
 				<div class="row g-mx-minus-5 g-mb-20">
 					<button id="questionForSumyBtn"
 						class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
-						type="button" data-dismiss="modal" aria-label="Close">
+						type="button" aria-label="Close">
 						문의하기</button>
 					<button
 						class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
@@ -197,6 +196,7 @@
 					</button>
 				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 </div>
