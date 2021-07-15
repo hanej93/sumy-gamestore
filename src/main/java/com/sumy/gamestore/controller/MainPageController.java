@@ -24,7 +24,7 @@ public class MainPageController {
 	ShowNewsService showNewsService;
 	
 	//메인 페이지
-	@GetMapping("/home-page")
+	@GetMapping(value = {"/home-page", "/"})
 	public String test1(Model model) {
 		//뉴스
 		List<NewsList> newsList = showNewsService.selectNewsAll();
