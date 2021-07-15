@@ -1,6 +1,8 @@
 let reviewMore = {
 	init: function(){
-		
+		$("[id^='delBtn']").on("click",function(){
+			
+		});
 	}
 }
 
@@ -53,6 +55,9 @@ $(document).on('ready', function() {
 		}
 		$(this).parents().children($('.media-body')).children('p').css('display', 'block');
 		$(this).parents().children($('.media-body')).children('form[name=reviewForm]').css('display', 'none');
+		
+		let review = $(this).attr('reviewId');
+		
 		alert('리뷰 수정을 완료하였습니다.');
 	});
 
