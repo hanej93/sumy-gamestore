@@ -48,6 +48,7 @@
 </head>
 
 <body>
+   
 	<sec:authorize access="isAuthenticated()">
 	    <sec:authentication property="principal" var="principal"/>
 	</sec:authorize>
@@ -130,14 +131,18 @@
 						</header>
 
 						<!-- Form -->
-						<form class="g-py-15">
+						<form class="g-py-15" name="pwdRecoveryForm" method="post">
 							
 							<div id="loginSecurityPwdUpdate">
 
 								<div class="form-group g-mb-20">
-									<label class="g-mb-10">이메일</label> 
+								<input type="text" name="userId"
+                                 value="${principal.user.userId}" 
+                                 style="display: none;">
+									<label class="g-mb-10">새 비밀번호</label> 
 									<input
 											id="loginSecurityUpdateNewPwd"
+											name="userPassword"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="새 비밀번호 입력">
 

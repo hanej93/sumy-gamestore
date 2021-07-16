@@ -71,5 +71,17 @@ public class UpdateUserService {
 		return userInfo;//성공 시 객체 반환
 	}
 	
+	//비밀번호 업데이트
+		public UserInfo pwdRecoveryUpdate(UserInfo userInfo) {
+			System.out.println("정보수정 전 객체 내용 : "+userInfo.getUserPassword());
+			int row = updateUserMapper.pwdRecoveryUpdate(userInfo);
+			if(!(row>0)) {
+				System.out.println("updateUserMapper.insertUserPhoneNumber(userInfo) 반영된 줄 수 : "+row);
+				System.out.println("정보수정 완료 객체 내용"+userInfo.getUserPassword());
+				return null;
+			}
+			return userInfo;//성공 시 객체 반환
+		}
+	
 
 }

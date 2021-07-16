@@ -7,6 +7,15 @@
 ***
 **
 */
+//6. 비밀번호와 비밀번호 확인 매칭의 true/false 함수
+//   사용처 - page-signup-1.html(회원가입)
+function mathPwAndRePw(password, rePassword) {
+   if (password != rePassword) {
+      return false;
+   } else {
+      return true;
+   }
+}
 
 //1. 이메일 정규식 매칭 함수
 //   사용처 - page-signup-1.html(회원가입), page-login-1.html(로그인)
@@ -252,15 +261,25 @@ $(document).ready(function() {
 			$('#loginSecurityNowPwd').val($('#loginSecurityUpdateNewPwd').val());
 		}
 
-		if (confirm('비밀번호 수정을 완료하시겠습니까?')) {
-			alert('비밀번호 수정을 완료하였습니다.');
+		if (!confirm('비밀번호 수정을 완료하시겠습니까?')) {
+			alert('비밀번호 수정을 취소했습니다.');
 		}
+		var queryString = $("form[name=pwdRecoveryForm]").serialize();
+		console.log("쿼리스트링" + queryString);
 
-		$(this).css('display', 'inline-block');
-		$('#loginSecurityPwdUpdate').css('display', 'none');
-		$('#loginSecurityPasswordBtn').css('display', 'inline-block');
-		$('#loginSecurityNowPwdDiv').css('display', 'block');
-		console.log($('#loginSecurityNowPwd').val());
+		$.ajax({
+			type: 'post',
+			url: '/user/pwdRecoveryUpdate',
+			data: queryString,
+			dataType: 'json',
+			error: function(xhr, status, error) {
+			},
+			success: function(json) {
+				console.log("비밀번호 수정 성공");
+			}
+		});
+		alert('비밀번호 수정을 완료하였습니다.');
+		location.href="/user/login-security";
 	});
 
 	//비밀번호 수정취소 : update review
@@ -280,7 +299,7 @@ $(document).ready(function() {
 		$('#userEmail').attr('readonly', false);
 		$('#emailCertificationSendBtn').text('인증');
 		$('#emailCertificationNumInput').css('display', 'none');
-		
-		
+
+
 	});
 });

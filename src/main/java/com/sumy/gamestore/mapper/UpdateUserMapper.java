@@ -34,13 +34,13 @@ public interface UpdateUserMapper {
 	// update user_info user_phone_number
 	@Update("update user_info set user_phone_number = #{userPhoneNumber} where user_id = #{userId}")
 	public int insertUserPhoneNumber(UserInfo userInfo);
+	
+	// update user_info user_pwdRecoveryUpdate
+		@Update("update user_info set user_password = #{userPassword} where user_id = #{userId}")
+		public int pwdRecoveryUpdate(UserInfo userInfo);
 
-	// ================================================
 
-//	@Select("select count(*) from news_list")
-	public int countNewsList(PagingVO vo);
 
-//	@Select("select * from news_list order by news_id desc limit #{start}, #{cntPage}")
-	public List<NewsList> selectNewsList(PagingVO vo);
+	
 
 }

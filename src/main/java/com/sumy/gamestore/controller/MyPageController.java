@@ -1,6 +1,7 @@
 package com.sumy.gamestore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.service.MyPageService;
+import com.sumy.gamestore.service.UpdateUserService;
 
 @Controller
 @RequestMapping("/user")
@@ -15,6 +17,12 @@ public class MyPageController {
 
 	@Autowired
 	MyPageService myPageService;
+	
+	@Autowired
+	UpdateUserService updateUserService;
+	
+	@Autowired
+	BCryptPasswordEncoder bcryptPasswordEncoder;
 
 	// 회원 정보 수정 화면
 	@GetMapping("/login-security")
@@ -54,6 +62,19 @@ public class MyPageController {
 		myPageService.insertUserPhoneNumber(userInfo);
 		return "연락처수정";
 	}
+	
+	// 비밀번호 업데이트
+		@PostMapping("/pwdRecoveryUpdate")
+		public String pwdRecoveryUpdate(UserInfo userInfo) {
+			
+			  String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
+		      userInfo.setUserPassword(encodePS);//암호화
+		      
+			updateUserService.pwdRecoveryUpdate(userInfo);
+			return "비밀번호수정";
+		}
+	
+	
 
 	//아직 사용 안하는 컨트롤러 두 개 
 	
