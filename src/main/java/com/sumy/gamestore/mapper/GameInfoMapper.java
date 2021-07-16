@@ -40,10 +40,12 @@ public interface GameInfoMapper {
 			+ "where game_id = #{gameId}")		
 	public int updateGame(GameInfo game);
 	
-
+	//리뷰리스트를 게임 아이디로 조회해서 해당 리뷰아이디를 List<> 로 받아옴
+	@Select("select review_id from review_list where game_id = #{gameId}")
+	public List<Integer> reviewIdList(int gameId);
 	
-	@Delete("delete from report_list where game_id = #{gameId}")
-	public int deleteReportList(int gameId);
+	@Delete("delete from report_list where review_id = #{reviewId}")
+	public int deleteReportList(int reviewId);
 
 	@Delete("delete from review_list where game_id = #{gameId}")
 	public int deleteReview(int gameId);
