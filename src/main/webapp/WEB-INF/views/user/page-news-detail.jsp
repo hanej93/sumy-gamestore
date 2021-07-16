@@ -95,7 +95,7 @@
 							<div class="col-sm-3 col-md-4 ml-auto text-sm-right">
 								<h4
 									class="g-color-gray-dark-v4 g-font-weight-400 g-font-size-12 text-uppercase g-mb-2">
-									뉴스 ID : <span>333</span>
+									뉴스 ID : <span>${news.newsId }</span>
 								</h4>
 							</div>
 						</div>
@@ -103,38 +103,23 @@
 					<div class="g-pa-20">
 						<!-- News Info -->
 						<div class="col g-mb-30">
-							<h2 class="h4 mb-3 mt-3">캔디크러쉬 사가가 50% 할인!!</h2>
-							<span class="g-color-text mr-10">작성일 : <span>2021-05-05
-									13:12:01</span></span> <span class="g-color-text">수정일 : <span>2021-05-05
-									13:12:01</span></span>
+							<h2 class="h4 mb-3 mt-3">${news.newsTitle }</h2>
+							<span class="g-color-text mr-10">작성일 : <span>${news.newsWriteDate }</span></span> 
+							<span class="g-color-text">수정일 : <span>${news.newsUpdateDate }</span></span>
 							<div class="row">
 								<div class="col-lg-12 g-mt-30 g-mb-30">
-									<h3 class="h5 g-color-gray-dark-v3">데이토즈의 ‘애니팡2’도 영국 킹 닷컴의
-										‘캔디크러쉬사가’와 표절 논란에 휩싸였다. 논란에도 애니팡2는 대중의 인기를 한몸에 받고 마니아층을 형성했다.
-										'캔디크러쉬사가' 입장에선 눈뜨고 코 베인 실정인 것이다.</h3>
+									<h3 class="h5 g-color-gray-dark-v3">${news.newsSubTitle }</h3>
 								</div>
 							</div>
 							<div class="order-md-2 g-mb-30">
 								<img class="img-fluid w-100"
-									src="/resources/static/user/assets/img-temp/1200x800/img1.jpg" alt="Image Description">
+									src="${news.newsThumbImage }" alt="Image Description">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-12 g-mt-30 g-mb-30">
 								<h3 class="h6 g-color-gray-dark-v3">
-									타인의 것을 탐내는 것만큼 추해보이는 것도 없다. 발각되면 즉시 자신의 이미지가 실추하는데도 이들은 위험을 안고
-									과감한 도전을 한다. 꼭 개인에게만 표절 우려가 있는 건 아니다. 기업도 그렇다. 기업들도 특정 회사의
-									지식재산권을 교묘하게 이용해 질타를 받곤 한다. <br>
-									<br> 최근 엔씨소프트는 웹젠에 리니지 저작권 침해에 대한 법적 대응 입장을 내놓았다. 웹젠이 서비스
-									중인 ‘R2M’이 엔씨소프트의 ‘리니지M’의 콘텐츠와 시스템을 모방했다는 것이다. <br>
-									<br> 게임 누리꾼 익명의 유저 A씨는 “R2M은 레벨링 방식, 필드 구성, 핵심 스킬은 물론 돈을
-									내고 뽑는 변신카드의 확률도 리니지M과 흡사하다”며 “특히 특정 부위 아이템이 안전 강화되지 않는 것도 같고 버프
-									물약 재료도 같다”고 비판했다. <br>
-									<br> 이어 “전투 스킬과 구성도 리니지M과 비슷하다. 콘텐츠 회사가 이정도로 타사의 아이디어를 대놓고
-									베끼는 건 말을 잃게 만든다”고 덧붙였다. <br>
-									<br> 사실 게임업계의 표절 논란은 엔씨소프트와 웹젠만의 일은 아니다. 배틀그라운드도 비슷한 이유로
-									골머리를 앓은 바 있다. 이들은 중국 게임 업체와 갈등을 겪었다. 배틀그라운드가 전세계적에서 폭발적인 인기를 받자
-									중국 업체들이 이 게임을 일단 베끼고 본 것이다.
+									${news.newsText }
 								</h3>
 							</div>
 						</div>
@@ -154,7 +139,7 @@
 							</span> <span class="sr-only">Before</span>
 						</a></li>
 						<li class="list-inline-item hidden-down"><a
-							href="page-our-stores-1.html" class="g-color-black">목록보기</a></li>
+							href="/sumy/news/list" class="g-color-black">목록보기</a></li>
 						<li class="list-inline-item"><a
 							class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-ml-15"
 							href="#" aria-label="Next"> <span aria-hidden="true">

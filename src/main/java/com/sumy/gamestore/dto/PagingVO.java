@@ -15,6 +15,7 @@ public class PagingVO {
 	private String answerYn = "";
 	private String readerYn = "";
 	private String reportReadYn = "";
+	private String keywordOpt = "";
 	
 	public PagingVO() {
 	}
