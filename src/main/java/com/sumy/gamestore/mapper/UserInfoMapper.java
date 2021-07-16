@@ -58,15 +58,15 @@ public interface UserInfoMapper {
 			+ "user_memo = #{userMemo} where user_id = #{userId}")
 	public int updateUser(UserInfo userInfo);
 
-	//리뷰리스트를 게임 아이디로 조회해서 해당 리뷰아이디를 List<> 로 받아옴
+	//리뷰리스트를 유저 아이디로 조회해서 해당 리뷰아이디를 List<> 로 받아옴
 	@Select("select review_id from review_list where user_id = #{userId}")
 	public List<Integer> reviewIdList(int userId);
 	
-	@Delete("delete from user_info where user_id = #{userId}")
+	@Delete("delete from question_list where user_id = #{userId}")
 	public int deleteQuestionList(int userId);
 	
-	@Delete("delete from report_list where review_id = #{reviewId}")
-	public int deleteReportList(int reviewId);
+	@Delete("delete from report_list where report_from_user_id = #{userId}")
+	public int deleteReportList(int userId);
 
 	@Delete("delete from review_list where user_id = #{userId}")
 	public int deleteReview(int userId);

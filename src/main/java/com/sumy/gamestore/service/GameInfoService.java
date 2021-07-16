@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.mapper.GameInfoMapper;
@@ -38,6 +39,7 @@ public class GameInfoService {
 		return gameInfoMapper.updateGame(gameInfo);
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
 	public int 게임삭제(int gameId) {
 		// 1. 리뷰리스트를 게임 아이디로 조회해서 해당 리뷰아이디를 List<> 로 받아옴
 		// List<Integer> deleteReviewIdList = 1번의 결과;
