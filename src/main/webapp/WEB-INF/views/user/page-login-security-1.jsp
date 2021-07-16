@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 
 
 
@@ -52,9 +53,9 @@
 
 <body>
 	<sec:authorize access="isAuthenticated()">
-	    <sec:authentication property="principal" var="principal"/>
+		<sec:authentication property="principal" var="principal" />
 	</sec:authorize>
-	
+
 	<main class="g-pt-80">
 		<!-- Header -->
 		<header id="js-header"
@@ -130,7 +131,10 @@
 								</div>
 								<form name="nickNameForm" style="display: none;">
 									<div class="g-mb-30">
+										<input type="text" name="userId"
+											value="${principal.user.userId}" style="display: none;">
 										<textarea id="loginSecurityNickNameTextArea"
+											name="userNickname"
 											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
 											rows="5" placeholder="별명을 작성해주세요."></textarea>
 									</div>
@@ -144,8 +148,8 @@
 												type="button" role="button">수정 완료</button>
 										</div>
 									</div>
+								</form>
 							</div>
-							</form>
 						</div>
 					</div>
 
@@ -153,8 +157,10 @@
 						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
 						<div class="row">
 							<div class="col-8">
-								<span class="d-block g-color-text g-font-size-13 mb-1">비밀번호 변경</span>
-								<span class="d-block g-font-weight-600 g-color-primary g-font-size-10 g-mt-20">비밀번호 변경을 하기 위해선, 이메일 인증이 필요합니다.</span>
+								<span class="d-block g-color-text g-font-size-13 mb-1">비밀번호
+									변경</span> <span
+									class="d-block g-font-weight-600 g-color-primary g-font-size-10 g-mt-20">비밀번호
+									변경을 하기 위해선, 이메일 인증이 필요합니다.</span>
 								<!-- <input type="password" id="loginSecurityNowPwd"
 									value="asdf!@1234" readonly="readonly"
 									class="form-control form-control-md rounded"> -->
@@ -200,44 +206,47 @@
 						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
 						<div class="row">
 							<div class="col-8">
+								<form name="addressForm">
+									<input type="text" name="userId"
+											value="${principal.user.userId}" style="display: none;">
+									<h3 class="h5 mb-3">주소 변경</h3>
+									<div class="row no-gutters g-mb-10">
+										<div class="input-group col-6">
+											<input id="loginSecurityAddressUpdate01" name="userZipCode"
+												class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
+												type="text" placeholder="우편번호 입력" readonly="readonly">
+										</div>
+										<div class="input-group-append p-0">
+											<button
+												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25">우편번호
+												찾기</button>
+											<!-- 주소 팝업 버튼 -->
+										</div>
+									</div>
 
-								<h3 class="h5 mb-3">주소 변경</h3>
-								<div class="row no-gutters g-mb-10">
-									<div class="input-group col-6">
-										<input id="loginSecurityAddressUpdate01"
+									<div class="g-mb-10">
+										<input id="loginSecurityAddressUpdate02" name="userAddress"
 											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
-											type="text" placeholder="우편번호 입력" readonly="readonly">
+											type="text" placeholder="주소 입력">
 									</div>
-									<div class="input-group-append p-0">
-										<button
-											class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25">우편번호
-											찾기</button>
-										<!-- 주소 팝업 버튼 -->
+
+									<div class="g-mb-10">
+										<input id="loginSecurityAddressUpdate03" name="userDetailAddress"
+											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
+											type="text" placeholder="상세주소 입력">
 									</div>
-								</div>
-
-								<div class="g-mb-10">
-									<input id="loginSecurityAddressUpdate02"
-										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
-										type="text" placeholder="주소 입력">
-								</div>
-
-								<div class="g-mb-10">
-									<input id="loginSecurityAddressUpdate03"
-										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
-										type="text" placeholder="상세주소 입력">
-								</div>
-
+									<div class="col-8">
+										<button id="loginSecurityCancelAddressBtn"
+											class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 g-mr-10"
+											type="button" role="button">취소</button>
+										<button id="loginSecurityUpdateAddressBtn"
+											class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
+											type="button" role="button">수정 완료</button>
+									</div>
+								</form>
 							</div>
 
-							<div class="col-8">
-								<button id="loginSecurityCancelAddressBtn"
-									class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 g-mr-10"
-									type="button" role="button">취소</button>
-								<button id="loginSecurityUpdateAddressBtn"
-									class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
-									type="button" role="button">수정 완료</button>
-							</div>
+
 						</div>
 					</div>
 
@@ -342,7 +351,7 @@
 			</div>
 		</div>
 		<!-- 프로필 사진 변경 모달 내용 끝 -->
-		
+
 
 		<!-- Footer -->
 		<footer class="g-bg-main-light-v1">

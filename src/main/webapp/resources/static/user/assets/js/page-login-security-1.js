@@ -56,6 +56,22 @@ $(document).on('ready', function() {
 		if (!confirm('별명 수정을 완료하시겠습니까?')) {
 			return false;
 		}
+
+		var queryString = $("form[name=nickNameForm]").serialize();
+		console.log("쿼리스트링" + queryString);
+
+		$.ajax({
+			type: 'post',
+			url: '/user/profileNickNameUpdate',
+			data: queryString,
+			dataType: 'json',
+			error: function(xhr, status, error) {
+				alert(error);
+			},
+			success: function(json) {
+				console.log("닉네임 변경 성공");
+			}
+		});
 		alert('별명 수정을 완료하였습니다.');
 
 		$(this).css('display', 'inline-block');
@@ -113,7 +129,25 @@ $(document).on('ready', function() {
 		if (!confirm('주소 수정을 완료하시겠습니까?')) {
 			return false;
 		}
+
+
+		var queryString = $("form[name=addressForm]").serialize();
+		console.log("쿼리스트링" + queryString);
+
+		$.ajax({
+			type: 'post',
+			url: '/user/profileAddressUpdate',
+			data: queryString,
+			dataType: 'json',
+			error: function(xhr, status, error) {
+				alert(error);
+			},
+			success: function(json) {
+				console.log("주소 수정 성공");
+			}
+		});
 		alert('주소 수정을 완료하였습니다.');
+
 		$('#loginSecurityAddressNow01').text($('#loginSecurityAddressUpdate01').val());
 		$('#loginSecurityAddressNow02').text($('#loginSecurityAddressUpdate02').val());
 		$('#loginSecurityAddressNow03').text($('#loginSecurityAddressUpdate03').val());
