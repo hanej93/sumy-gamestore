@@ -38,25 +38,6 @@ public class GameInfoService {
 		return gameInfoMapper.updateGame(gameInfo);
 	}
 	
-	
-	
-	//트랜잭션 구현 고려
-//	public int 리포트삭제(int gameId) {
-//		return gameInfoMapper.deleteReportList(gameId);
-//	}
-	
-	public int 리뷰삭제(int gameId) {
-		return gameInfoMapper.deleteReview(gameId);
-	}
-
-	public int 위시리스트삭제(int gameId) {
-		return gameInfoMapper.deleteWishListGame(gameId);
-	}
-	
-	public int 구매한게임삭제(int gameId) {
-		return gameInfoMapper.deletePurchasedGameList(gameId);
-	}
-	
 	public int 게임삭제(int gameId) {
 		// 1. 리뷰리스트를 게임 아이디로 조회해서 해당 리뷰아이디를 List<> 로 받아옴
 		// List<Integer> deleteReviewIdList = 1번의 결과;

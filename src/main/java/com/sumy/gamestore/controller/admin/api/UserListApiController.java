@@ -2,7 +2,6 @@ package com.sumy.gamestore.controller.admin.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -10,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sumy.gamestore.dto.ResponseDto;
+import com.sumy.gamestore.model.PurchasedGameList;
+import com.sumy.gamestore.model.QuestionList;
+import com.sumy.gamestore.model.ReportList;
+import com.sumy.gamestore.model.ReviewList;
 import com.sumy.gamestore.model.UserInfo;
+import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.UserInfoService;
 
 @RestController
@@ -63,9 +67,13 @@ public class UserListApiController {
 	}
 
 	@DeleteMapping("/admin/user/list")
-	public ResponseDto<Integer> deleteGame(@RequestBody UserInfo userInfo) {
+	public ResponseDto<Integer> deleteGame(@RequestBody UserInfo userInfo, QuestionList questionList, 
+		ReportList reportList, ReviewList reviewList, WishlistGame wishlistGame, PurchasedGameList purchasedGameList) {
 		System.out.println(userInfo.getUserId());
 		int result = userInfoService.유저삭제(userInfo.getUserId());
+		
+		userInfoService.유저삭제(reviewList.getUserId());
+		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
 	}
 }

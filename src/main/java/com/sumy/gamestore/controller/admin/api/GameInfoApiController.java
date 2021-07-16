@@ -163,13 +163,8 @@ public class GameInfoApiController {
 		WishlistGame wishlistGame, PurchasedGameList purchasedGameList) {
 		
 		System.out.println(gameInfo.getGameId());
-//		gameInfoService.리포트삭제();		
-		gameInfoService.리뷰삭제(reviewList.getGameId());
-		gameInfoService.위시리스트삭제(wishlistGame.getGameId());
-		gameInfoService.구매한게임삭제(purchasedGameList.getGameId());
 		gameInfoService.게임삭제(gameInfo.getGameId());
 
-		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 }
