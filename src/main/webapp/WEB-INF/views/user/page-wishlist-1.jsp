@@ -105,7 +105,15 @@
 							</thead>
 
 							<tbody>
+							
+							<c:set var = "originalTotalPrice" value = "0" scope="request"/>
+							<c:set var = "finalTotalPrice" value = "0" scope="request"/>
+							
+							
 							<c:forEach items="${viewAll }" var="wishList">
+							
+							<c:set var= "originalTotalPrice" value="${originalTotalPrice + wishList.gamePrice}" scope="request"/>
+							<c:set var= "finalTotalPrice" value="${finalTotalPrice + wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}" scope="request"/>
 								<!-- Item-->
 								<tr class="g-brd-bottom g-brd-gray-light-v4">
 									<td class="text-left g-py-25"><img
@@ -120,14 +128,21 @@
 										</div></td>
 									<td class="text-right g-color-black">
 										<div class="d-flex flex-column">
-											<del
-												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
+											
+												<del
+													class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">
+													<c:if test="${ wishList.gameDiscountRate ne '0'}">
+														&#8361;<fmt:formatNumber value="${wishList.gamePrice}" type="number"/>
+													</c:if>
+													</del>
+											
 											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
-												&#8361;32,000 <span
+												&#8361;<fmt:formatNumber value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/> <span
 												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
 													<i class="mt-auto fa fa-trash"></i>
 											</span>
 											</span>
+											
 										</div>
 									</td>
 								</tr>
@@ -149,19 +164,19 @@
 						<div class="d-flex justify-content-between mb-2">
 							<span class="g-color-black">상품 수</span> <span
 								class="g-color-black g-font-weight-300"><span
-								class="g-color-primary" id="wishTotalNum">2</span> 개</span>
+								class="g-color-primary" id="wishTotalNum"><!-- 2 --></span> 개</span>
 						</div>
 
 						<div class="d-flex justify-content-between mb-2">
 							<span class="g-color-black">상품 금액</span> <span
 								class="g-color-black g-font-weight-300"><span
-								id="wishTotalPriceBefore">96,000</span> &#8361;</span>
+								id="wishTotalPriceBefore1"><c:out value="${originalTotalPrice }"/></span> &#8361;</span>
 						</div>
 
 						<div class="d-flex justify-content-between mb-2">
 							<span class="g-color-black">할인 금액</span> <span
 								class="g-font-weight-300 g-color-lightred">- <span
-								id="wishTotalDiscountRate">9,000</span> &#8361;
+								id="wishTotalDiscountRate1"><c:out value="${originalTotalPrice - finalTotalPrice }"/></span> &#8361;
 							</span>
 						</div>
 
@@ -170,7 +185,7 @@
 						<div class="d-flex justify-content-between mb-2">
 							<span class="g-color-black">전체 주문 금액</span> <span
 								class="g-color-primary g-font-weight-700 g-font-size-16 g-line-height-1_2"><span
-								id="wishTotalPriceAfter">87,000</span> &#8361;</span>
+								id="wishTotalPriceAfter1"><c:out value="${finalTotalPrice }"/></span> &#8361;</span>
 						</div>
 					</aside>
 					<button
