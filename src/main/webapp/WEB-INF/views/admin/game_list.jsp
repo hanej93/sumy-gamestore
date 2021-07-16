@@ -550,7 +550,7 @@
                     <td
                       class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
                       <a class="d-flex align-items-center u-link-v5 g-color-black g-color-secondary--hover g-color-secondary--opened"
-                        href="#contact-1">
+                        href="/sumy/single-product/${gameInfo.gameId }">
                         <img
                           class="flex-shrink-0 g-width-80 g-height-115 g-brd-around g-brd-2 g-brd-transparent g-brd-lightblue-v3--parent-opened g-rounded-5 g-mr-20--sm"
                           src="${gameInfo.gameThumbImage}" alt="Image Description">
