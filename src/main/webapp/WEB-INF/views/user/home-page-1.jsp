@@ -342,7 +342,7 @@
 							<img class="img-fluid"
 								data-lazy="${FreeGameList.gameThumbImage}"
 								alt="Image Description">
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
+							<a class="u-link-v2" href="/sumy/single-product/${FreeGameList.gameId}"></a>
 						</figure>
 
 						<div class="media">
@@ -350,7 +350,7 @@
 							<div class="d-flex flex-column">
 								<h4 class="h6 g-color-black mb-1">
 									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> ${FreeGameList.gameTitle} </a>
+										href="/sumy/single-product/${FreeGameList.gameId}"> ${FreeGameList.gameTitle} </a>
 								</h4>
 								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${FreeGameList.gameDev}</span>
 								<span class="g-color-black g-font-size-17"> <del class="g-font-size-12 g-color-gray-dark-v5">
@@ -411,7 +411,7 @@
 							<span
 								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
 								-${DiscountGameList.gameDiscountRate}%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
+							<a class="u-link-v2" href="/sumy/single-product/${DiscountGameList.gameId}"></a>
 						</figure>
 
 						<div class="media">
@@ -419,7 +419,7 @@
 							<div class="d-flex flex-column">
 								<h4 class="h6 g-color-black mb-1">
 									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"></a>${DiscountGameList.gameTitle}
+										href="/sumy/single-product/${DiscountGameList.gameId}"></a>${DiscountGameList.gameTitle}
 								</h4>
 								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13"></span>${DiscountGameList.gameDev}
 								 <span class="g-color-black g-font-size-17">
@@ -482,7 +482,7 @@
 								<h4 class="h5 g-mb-7">
 									<a
 										class="g-color-black g-color-primary--hover g-text-underline--none--hover"
-										href="page-single-product-1.html">${NewGameList.gameTitle}</a>
+										href="/sumy/single-product/${NewGameList.gameId}">${NewGameList.gameTitle}</a>
 								</h4>
 								<!-- End Article Info -->
 
@@ -526,7 +526,7 @@
 								<h4 class="h5 g-mb-7">
 									<a
 										class="g-color-black g-color-primary--hover g-text-underline--none--hover"
-										href="page-single-product-1.html">${MostReviewGameList.gameTitle}</a>
+										href="/sumy/single-product/${MostReviewGameList.gameId}">${MostReviewGameList.gameTitle}</a>
 								</h4>
 
 								<!-- End Article Info -->
@@ -571,7 +571,7 @@
 								<h4 class="h5 g-mb-7">
 									<a
 										class="g-color-black g-color-primary--hover g-text-underline--none--hover"
-										href="page-single-product-1.html">${AllUsersGameList.gameTitle}</a>
+										href="/sumy/single-product/${AllUsersGameList.gameId}">${AllUsersGameList.gameTitle}</a>
 								</h4>
 
 								<!-- End Article Info -->
@@ -630,7 +630,7 @@
 								<h2 class="h4 g-color-white g-font-weight-400 mb-3">
 									<a
 										class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
-										href="page-our-stores-2.html">${RecommendGameList.gameTitle}</a>
+										href="/sumy/single-product/${RecommendGameList.gameId}">${RecommendGameList.gameTitle}</a>
 								</h2>
 								<h2
 									class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
@@ -647,7 +647,7 @@
 								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
 								href="page-single-product-1.html">게임 상세보기</a>
 						</div>
-						<a class="u-link-v2" href="page-single-product-1.html"></a>
+						<a class="u-link-v2" href="/sumy/single-product/${RecommendGameList.gameId}"></a>
 					</article>
 					<!-- End Blog Background Overlay Blocks -->
 				</div>
@@ -731,7 +731,7 @@
 							<span
 								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
 								-${HottestGameList.gameDiscountRate}%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
+							<a class="u-link-v2" href="/sumy/single-product/${HottestGameList.gameId}"></a>
 						</figure>
 
 						<div class="media">
@@ -739,7 +739,7 @@
 							<div class="d-flex flex-column">
 								<h4 class="h6 g-color-black mb-1">
 									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> ${HottestGameList.gameTitle} </a>
+										href="/sumy/single-product/${HottestGameList.gameId}"> ${HottestGameList.gameTitle} </a>
 								</h4>
 								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${HottestGameList.gameDev}</span>
 								<span class="g-color-black g-font-size-17">
