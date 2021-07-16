@@ -800,14 +800,8 @@
       $("button[type='reset']").click(function () {
         $("h3:contains('별점')").next().children().addClass('g-color-primary click');
         $("h3:contains('별점')").next().children().last().removeClass('g-color-primary click');
-
-
-        var slider = $("h3:contains('가격')").next().children();
-        console.log(slider.children().eq(1).css({ "left": "calc(100%/3)", "width": "calc(100%/3)" }));
-        console.log(slider.children().eq(2).css({ "left": "calc(100%/3)" }));
-        console.log(slider.children().eq(3).css({ "left": "calc(100%/3 * 2)" }));
-
-        $("#rangeSliderAmount3").text("20000 - 40000");
+        
+        $.HSCore.components.HSSlider.init('#rangeSlider1');
       });
 
       });
