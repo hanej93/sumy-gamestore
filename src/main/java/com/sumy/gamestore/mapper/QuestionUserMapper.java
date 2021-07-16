@@ -13,6 +13,6 @@ public interface QuestionUserMapper {
 			+ "values(#{questionId}, #{userId}, #{questionTitle}, #{questionText}"
 			+ ", #{questionWriteDate}, #{questionAnswerYn}, #{questionReadYn}, #{questionImage1}"
 			+ ", #{questionImage2},#{questionImage3})")
-	public QuestionList insertQuestion(QuestionList question);
+	public int insertQuestion(QuestionList question);
 
 }

@@ -13,7 +13,7 @@ public class QuestionUserService {
 	@Autowired
 	private QuestionUserMapper questionUserMapper;
 	
-	public QuestionList questionInsert(QuestionList question) {
+	public int questionInsert(QuestionList question) {
 		return questionUserMapper.insertQuestion(question);
 	}
 

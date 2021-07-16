@@ -15,7 +15,7 @@
 $(document).on('ready', function() {
 	var targetUrl;
 	function readURL(input) {
-		console.log(input);
+		console.log('미리보기 함수 호출'+input);
 		if (input.files && input.files[0]) {
 			var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
 			reader.onload = function(e) {
@@ -32,17 +32,41 @@ $(document).on('ready', function() {
 		}
 	} //readURL()--
 	
-	//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+	function readURL2(input) {
+		console.log('미리보기 함수 호출2'+input);
+		if (input.files && input.files[0]) {
+			console.log('되냐?1');
+			var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+			reader.onload = function(e) {
+				//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+				console.log('되냐?2');
+				targetUrl = e.target.result;
+				$('#questionImg').attr('src', targetUrl);
+				console.log('되냐?3');
+			}
+			reader.readAsDataURL(input.files[0]);
+			//console.log(input.files[0]);
+			//File내용을 읽어 dataURL형식의 문자열로 저장
+		}
+	} //readURL()--
+	
+	//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드-프로필?
 	$("#imgInp").change(function() {
 		//alert(this.value); //선택한 이미지 경로 표시
 		readURL(this);
 	});
 	
-	//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-	$("#imgInp2").change(function() {
-		console.log(this);
+	//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드-프로필?
+	$("#blah2").change(function() {
+		console.log('버튼이벤트 감지'+this);
 		//alert(this.value); //선택한 이미지 경로 표시
 		readURL(this);
+	});
+	
+	//문의하기
+	$("#questionImgInput").change(function() {
+		console.log('버튼이벤트 감지'+this);
+		readURL2(this);
 	});
 
 
@@ -61,6 +85,20 @@ $(document).on('ready', function() {
 		if (!confirm('문의하기를 완료하시겠습니까?')) {
 			return false;
 		}
+		
+		var queryString = $("form[name=questionForm]").serialize();
+		console.log("쿼리스트링" + queryString);
+		$.ajax({
+			type: 'post',
+			url: '/user/profileNickNameUpdate',
+			data: queryString,
+			dataType: 'json',
+			error: function(xhr, status, error) {
+			},
+			success: function(json) {
+				console.log("닉네임 변경 성공");
+			}
+		});
 		alert('문의하기를 완료하였습니다.');
 	});
 	

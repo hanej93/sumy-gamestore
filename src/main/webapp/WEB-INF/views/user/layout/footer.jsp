@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <!-- Footer -->
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
 	<div class="g-ml-30">
 		<div>
@@ -146,7 +152,9 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form name="questionForm" method="post">
+					<input type="text" name="userId"
+						value="${principal.user.userId}" style="display: none;">
 					<label class="g-mb-10">문의 제목</label>
 					<div class="g-mb-10">
 						<input id="questionForSumyModalTitle" name="questionTitle"
@@ -166,7 +174,7 @@
 							<!-- Plain File Input -->
 							<div class="form-group mb-0">
 								<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-									<input id="imgInp2" name="questionImage1" class="questionFileInput"
+									<input id="questionImgInput" name="questionImage1" class="questionFileInput"
 									name="file-attachment" type="file"> <i
 									class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
 									<span class="js-value">이미지 첨부하기</span>
@@ -179,7 +187,7 @@
 					<div
 						class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20 text-center g-bg-gray-light-v5"
 						style="height: 360px">
-						<img id="blah" class="img-fluid"
+						<img id="questionImg" class="img-fluid"
 							src="/resources/static/user/assets/img-temp/500x320/img1.png"
 							alt="이미지 찾기를 실행해주세요." style="height: 100%">
 					</div>

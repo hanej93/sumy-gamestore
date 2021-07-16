@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sumy.gamestore.model.QuestionList;
 import com.sumy.gamestore.service.QuestionUserService;
@@ -16,14 +18,12 @@ public class QuestionUserController {
 	QuestionUserService questionUserService;
 	
 	//메인 페이지
-		//@GetMapping(value = {"/home-page", "/", ""})
-		public String test1(Model model) {			
-			QuestionList questionList = questionUserService.questionInsert(null);
-			model.addAttribute("questionList", questionList);
-			
-			
-			return "user/home-page-1";
-			//문의 하기 설정
-		}
+	@ResponseBody
+	@PostMapping("/questionModal")
+	public String test1(QuestionList questionList) {
+		int row = questionUserService.questionInsert(questionList);
+		return "문의하기 성공";
+		//문의 하기 설정
+	}
 
 }
