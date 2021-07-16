@@ -37,9 +37,9 @@ function goPopup(){
 //    사용처 - page-signup-1.html(회원가입)
 function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		$("form[name=addressForm] #userZipCode").val(zipNo);
-		$("form[name=addressForm] #userDetailAddress").val(addrDetail);
-		$("form[name=addressForm] #userAddress").val(roadAddrPart1);
+		$("form[name=addressForm] #loginSecurityAddressUpdate01").val(zipNo);
+		$("form[name=addressForm] #loginSecurityAddressUpdate02").val(roadAddrPart1);
+		$("form[name=addressForm] #loginSecurityAddressUpdate03").val(addrDetail);
 		
 }
 
@@ -208,6 +208,21 @@ $(document).on('ready', function() {
 			return false;
 		}
 		$('#loginSecurityNumberUpdate').val(regixPhone($('#loginSecurityNumberUpdate').val()));
+		
+		var queryString = $("form[name=phoneForm]").serialize();
+		console.log("쿼리스트링" + queryString);
+		
+		$.ajax({
+			type: 'post',
+			url: '/user/profilePhonesUpdate',
+			data: queryString,
+			dataType: 'json',
+			error: function(xhr, status, error) {
+			},
+			success: function(json) {
+				console.log("연락처 수정 성공");
+			}
+		});
 		alert('핸드폰 번호 수정을 완료하였습니다.');
 		$('#loginSecurityNumber').text($('#loginSecurityNumberUpdate').val());
 		$(this).css('display', 'inline-block');

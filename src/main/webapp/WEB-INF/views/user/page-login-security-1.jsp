@@ -263,9 +263,11 @@
 									class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a>
 							</div>
 							<div class="col-8">
-								<form id="loginSecurityNumberForm" style="display: none;">
+								<form id="loginSecurityNumberForm" name="phoneForm" style="display: none;">
+									<input type="text" name="userId"
+											value="${principal.user.userId}" style="display: none;">
 									<div class="g-mb-30">
-										<input id="loginSecurityNumberUpdate"
+										<input id="loginSecurityNumberUpdate" name="userPhoneNumber"
 											class="form-control g-brd-gray-light-v4 g-brd-primary--focus g-color-text rounded g-py-13 g-px-15"
 											type="text" placeholder="연락처 - 빼고 입력" maxlength="11"
 											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
