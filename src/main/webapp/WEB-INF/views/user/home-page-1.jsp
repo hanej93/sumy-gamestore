@@ -304,7 +304,7 @@
 								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
 								href="page-our-stores-2.html">뉴스 더보기</a>
 						</div>
-						<a class="u-link-v2" href="page-our-stores-2.html"></a>
+						<a class="u-link-v2" href="page-our-stores-1/gameId = 18"></a>
 					</article>
 					<!-- End Blog Background Overlay Blocks -->
 				</div>
@@ -355,7 +355,7 @@
 								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${FreeGameList.gameDev}</span>
 								<span class="g-color-black g-font-size-17"> <del class="g-font-size-12 g-color-gray-dark-v5">
 								    &#8361;${FreeGameList.gamePrice}</del>
-									&#8361;0
+									<span class="g-font-size-15 font-weight-bold">무료</span>
 								</span>
 							</div>
 							<!-- End Product Info -->
@@ -423,10 +423,10 @@
 								</h4>
 								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13"></span>${DiscountGameList.gameDev}
 								 <span class="g-color-black g-font-size-17">
-									<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${DiscountGameList.gamePrice}</del>
-									&#8361;<fmt:formatNumber value="${DiscountGameList.gamePrice * (100-DiscountGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/>
-                        <c:if test="${ DiscountGameList.gameDiscountRate ne '0'}">
-                        </c:if>
+								 <c:if test="${ DiscountGameList.gameDiscountRate ne '0'}">
+		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${DiscountGameList.gamePrice}</del>
+		                        </c:if>
+									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${DiscountGameList.gamePrice * (100-DiscountGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
 								</span>
 							</div>
 							<!-- End Product Info -->
@@ -489,7 +489,13 @@
 
 								<!-- Article Footer -->
 								<footer class="d-flex justify-content-between g-font-size-16">
-									<span class="g-color-black g-line-height-1">&#8361;${NewGameList.gamePrice}</span>
+									<span class="g-color-black g-font-size-17">
+								 <c:if test="${ NewGameList.gameDiscountRate ne '0'}">
+		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${NewGameList.gamePrice}</del>
+		                        </c:if>
+									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${NewGameList.gamePrice * (100-NewGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
+								</span>
+									
 								</footer>
 								<!-- End Article Footer -->
 							</div>
@@ -527,7 +533,12 @@
 
 								<!-- Article Footer -->
 								<footer class="d-flex justify-content-between g-font-size-16">
-									<span class="g-color-black g-line-height-1">&#8361;${MostReviewGameList.gamePrice}</span>
+									<span class="g-color-black g-font-size-17">
+								 <c:if test="${ MostReviewGameList.gameDiscountRate ne '0'}">
+		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${MostReviewGameList.gamePrice}</del>
+		                        </c:if>
+									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${MostReviewGameList.gamePrice * (100-MostReviewGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
+								</span>
 								</footer>
 								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-8">리뷰
 								  </span>
@@ -567,7 +578,12 @@
 
 								<!-- Article Footer -->
 								<footer class="d-flex justify-content-between g-font-size-16">
-									<span class="g-color-black g-line-height-1">&#8361;${AllUsersGameList.gamePrice}</span>
+									<span class="g-color-black g-font-size-17">
+								 <c:if test="${ AllUsersGameList.gameDiscountRate ne '0'}">
+		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${AllUsersGameList.gamePrice}</del>
+		                        </c:if>
+									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${AllUsersGameList.gamePrice * (100-AllUsersGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
+								</span>
 								</footer>
 								<!-- End Article Footer -->
 							</div>
@@ -583,7 +599,8 @@
 		</section>
 		<!-- End New Arrivals -->
 
-		<!-- chuchun game -->
+			<!-- chuchun game -->
+		<div class="row g-mx-minus-10 g-pb-170">
 		<div class="container">
 			<div class="text-center mx-auto g-max-width-600 g-mb-50">
 				<h2 class="g-color-black mb-4">
@@ -595,9 +612,8 @@
 				</h2>
 				<p class="lead">Sumy Game shop에서 인증된 추천 게임들 여러분의 마음대로 즐겨보세요!!</p>
 			</div>
-
-			<div class="row g-mx-minus-10">
-			
+			<div class="row g-mx-minus-10">			
+            <c:forEach var="RecommendGameList" items="${RecommendGameList}">
 				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
 					<!-- Blog Background Overlay Blocks -->
 					
@@ -605,7 +621,7 @@
 						<div class="g-bg-cover g-bg-white-gradient-opacity-v1--after">
 							<img
 								class="d-flex align-items-end u-block-hover__main--mover-down"
-								src="/resources/static/user/assets/img-temp/650x650/img1.jpg"
+								src="${RecommendGameList.gameThumbImage}"
 								alt="Image Description">
 						</div>
 						<div
@@ -614,17 +630,17 @@
 								<h2 class="h4 g-color-white g-font-weight-400 mb-3">
 									<a
 										class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
-										href="page-our-stores-2.html">캔디크러쉬 사가 : Redive</a>
+										href="page-our-stores-2.html">${RecommendGameList.gameTitle}</a>
 								</h2>
 								<h2
 									class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
-									‘캔디크러쉬사가’의 화끈한 Redive</h2>
+									${RecommendGameList.gameSubText}</h2>
 								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">업데이트
-									날짜</span> <span
-									class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2">&#183;</span>
+									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
+									</span> <span
+									class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2"></span>
 								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">2021-05-05</span>
+									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">${RecommendGameList.gameUpdateDate}</span>
 							</div>
 
 							<a
@@ -635,466 +651,16 @@
 					</article>
 					<!-- End Blog Background Overlay Blocks -->
 				</div>
-
-				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
-					<!-- Blog Background Overlay Blocks -->
-					<article class="u-block-hover">
-						<div class="g-bg-cover g-bg-white-gradient-opacity-v1--after">
-							<img
-								class="d-flex align-items-end u-block-hover__main--mover-down"
-								src="/resources/static/user/assets/img-temp/650x650/img1.jpg"
-								alt="Image Description">
-						</div>
-						<div
-							class="u-block-hover__additional--partially-slide-up text-center g-z-index-1 mt-auto">
-							<div class="u-block-hover__visible g-pa-25">
-								<h2 class="h4 g-color-white g-font-weight-400 mb-3">
-									<a
-										class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
-										href="page-our-stores-2.html">캔디크러쉬 사가 : Redive</a>
-								</h2>
-								<h2
-									class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
-									‘캔디크러쉬사가’의 화끈한 Redive</h2>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">업데이트
-									날짜</span> <span
-									class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2">&#183;</span>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">2021-05-05</span>
-							</div>
-
-							<a
-								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
-								href="page-single-product-1.html">게임 상세보기</a>
-						</div>
-						<a class="u-link-v2" href="page-single-product-1.html"></a>
-					</article>
-					<!-- End Blog Background Overlay Blocks -->
+				</c:forEach>
+				</div>
+				</div>
 				</div>
 				
-		
-				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
-					<!-- Blog Background Overlay Blocks -->
-					<article class="u-block-hover">
-						<div class="g-bg-cover g-bg-white-gradient-opacity-v1--after">
-							<img
-								class="d-flex align-items-end u-block-hover__main--mover-down"
-								src="/resources/static/user/assets/img-temp/650x650/img1.jpg"
-								alt="Image Description">
-						</div>
-						<div
-							class="u-block-hover__additional--partially-slide-up text-center g-z-index-1 mt-auto">
-							<div class="u-block-hover__visible g-pa-25">
-								<h2 class="h4 g-color-white g-font-weight-400 mb-3">
-									<a
-										class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
-										href="page-our-stores-2.html">캔디크러쉬 사가 : Redive</a>
-								</h2>
-								<h2
-									class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
-									‘캔디크러쉬사가’의 화끈한 Redive</h2>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">업데이트
-									날짜</span> <span
-									class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2">&#183;</span>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">2021-05-05</span>
-							</div>
 
-							<a
-								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
-								href="page-single-product-1.html">게임 상세보기</a>
-						</div>
-						<a class="u-link-v2" href="page-single-product-1.html"></a>
-					</article>
-					<!-- End Blog Background Overlay Blocks -->
-				</div>
-			</div>
-		</div>
+				
 		<!-- chuchun game -->
-
-		<!-- Categories -->
-		<div class="container g-pt-100 g-pb-70">
-			<div class="text-center mx-auto g-max-width-600 g-mb-50">
-				<h2 class="g-color-black mb-4">
-					<span class="u-icon-v1 g-color-lightred g-pb-15"> <i
-						class="icon-christmas-021 u-line-icon-pro"></i>
-					</span> 카테고리 <span class="u-icon-v1 g-color-lightred g-pb-15"> <i
-						class="icon-christmas-021 u-line-icon-pro"></i>
-					</span>
-				</h2>
-				<p class="lead">카테고리 별로 정리되어 있는 게임들을 한눈에 구경해보세요 :)</p>
-			</div>
-			<div class="row g-mx-minus-10">
-				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
-					<article class="u-block-hover">
-						<img class="w-100 u-block-hover__main--zoom-v1 g-mb-minus-8"
-							src="/resources/static/user/assets/img-temp/650x850/img1.jpg"
-							alt="Image Description">
-						<div class="g-pos-abs g-bottom-30 g-left-30">
-							<span class="d-block g-color-black">Category 1</span>
-							<h2 class="h1 mb-0">슈팅</h2>
-						</div>
-						<a class="u-link-v2" href="catalogue-page.html"></a>
-					</article>
-				</div>
-
-				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
-					<article class="u-block-hover">
-						<img class="w-100 u-block-hover__main--zoom-v1 g-mb-minus-8"
-							src="/resources/static/user/assets/img-temp/650x850/img1.jpg"
-							alt="Image Description">
-						<div class="g-pos-abs g-bottom-30 g-left-30">
-							<span class="d-block g-color-black">Category 2</span>
-							<h2 class="h1 mb-0">액션</h2>
-						</div>
-						<a class="u-link-v2" href="catalogue-page.html"></a>
-					</article>
-				</div>
-
-				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
-					<article class="u-block-hover">
-						<img class="w-100 u-block-hover__main--zoom-v1 g-mb-minus-8"
-							src="/resources/static/user/assets/img-temp/650x850/img1.jpg"
-							alt="Image Description">
-						<div class="g-pos-abs g-bottom-30 g-left-30">
-							<span class="d-block g-color-black">Category 3</span>
-							<h2 class="h1 mb-0">아케이드</h2>
-						</div>
-						<a class="u-link-v2" href="catalogue-page.html"></a>
-					</article>
-				</div>
-			</div>
-		</div>
-		<!-- End Categories -->
-
-		<!-- Products -->
-		<div class="container g-pb-100">
-			<div class="text-center mx-auto g-max-width-600 g-mb-50">
-				<h2 class="g-color-black mb-4">
-					<span class="u-icon-v1 g-color-darkred g-pb-15"> <i
-						class="icon-christmas-038 u-line-icon-pro"></i>
-					</span> 최근 업데이트 <span class="u-icon-v1 g-color-darkred g-pb-15"> <i
-						class="icon-christmas-038 u-line-icon-pro"></i>
-					</span>
-				</h2>
-				<p class="lead">최근에 입점한 따끈따끈한 신상 게임들을 만나보세요!</p>
-			</div>
-
-			<div id="carouselCus1" class="js-carousel g-pb-100 g-mx-minus-10"
-				data-infinite="true" data-slides-show="4" data-lazy-load="ondemand"
-				data-arrows-classes="u-arrow-v1 g-pos-abs g-bottom-0 g-width-45 g-height-45 g-color-gray-dark-v5 g-bg-secondary g-color-white--hover g-bg-primary--hover rounded"
-				data-arrow-left-classes="fa fa-angle-left g-left-10"
-				data-arrow-right-classes="fa fa-angle-right g-right-10"
-				data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-20 text-center">
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
-								</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">
-								</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-						
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-			</div>
-		</div>
+				
+				
 		<!-- End Products -->
 
 		<!-- Categories -->
@@ -1153,16 +719,18 @@
 				data-arrow-left-classes="fa fa-angle-left g-left-10"
 				data-arrow-right-classes="fa fa-angle-right g-right-10"
 				data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-20 text-center">
+				<c:forEach var="HottestGameList" items="${HottestGameList}">
 				<div class="js-slide">
 					<div class="g-px-10">
 						<!-- Product -->
 						<figure class="g-pos-rel g-mb-20">
 							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
+								data-lazy="${HottestGameList.gameThumbImage}"
 								alt="Image Description">
 
 							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
+								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
+								-${HottestGameList.gameDiscountRate}%</span>
 							<a class="u-link-v2" href="page-single-product-1.html"></a>
 						</figure>
 
@@ -1171,12 +739,14 @@
 							<div class="d-flex flex-column">
 								<h4 class="h6 g-color-black mb-1">
 									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
+										href="page-single-product-1.html"> ${HottestGameList.gameTitle} </a>
 								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
+								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${HottestGameList.gameDev}</span>
+								<span class="g-color-black g-font-size-17">
+								 <c:if test="${ HottestGameList.gameDiscountRate ne '0'}">
+		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${HottestGameList.gamePrice}</del>
+		                        </c:if>
+									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${HottestGameList.gamePrice * (100-HottestGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
 								</span>
 							</div>
 							<!-- End Product Info -->
@@ -1192,269 +762,14 @@
 							</ul>
 							<!-- End Products Icons -->
 						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
+						</div>
 						</div>
 						<!-- End Product -->
+						</c:forEach>
 					</div>
 				</div>
 
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="/resources/static/user/assets/img-temp/480x700/img2.jpg"
-								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">-40%</span>
-							<a class="u-link-v2" href="page-single-product-1.html"></a>
-						</figure>
-
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="page-single-product-1.html"> 게임명 </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">게임사</span>
-								<span class="g-color-black g-font-size-17"> <del
-										class="g-font-size-12 g-color-gray-dark-v5">&#8361;33,000</del>
-									&#8361;30,000
-								</span>
-							</div>
-							<!-- End Product Info -->
-
-							<!-- Products Icons -->
-							<ul class="list-inline media-body text-right">
-								<li class="list-inline-item align-middle mx-0"><a
-									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
-									href="page-wishlist-1.html" data-toggle="tooltip"
-									data-placement="top" title="위시리스트 담기"> <i
-										class="icon-finance-100 u-line-icon-pro"></i>
-								</a></li>
-							</ul>
-							<!-- End Products Icons -->
-						</div>
-						<!-- End Product -->
-					</div>
-				</div>
-			</div>
-		</div>
+			
 		<!-- End Products -->
 
 		<!-- Footer -->

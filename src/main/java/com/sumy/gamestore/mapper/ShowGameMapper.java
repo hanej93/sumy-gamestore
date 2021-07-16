@@ -33,12 +33,10 @@ public interface ShowGameMapper {  //메인 페이지
 		public List<GameInfo> selectAllUsersGame();
 	
 	//추천 게임
-	@Select("select * from game_info order by game_id desc limit 3")
+	@Select("select * from game_info order by game_sale_count desc limit 3")
 	public List<GameInfo> selectRecommendGame();
 	
-	//카테고리
-	@Select("select * from game_info order by game_id desc limit 3")
-	public List<GameInfo> selectCategoryGame();
+	
 	
 	//최근 업데이트
 	@Select("select * from game_info order by game_id desc limit 7")

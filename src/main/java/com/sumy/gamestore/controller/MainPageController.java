@@ -54,8 +54,7 @@ public class MainPageController {
 		List<GameInfo> RecommendGameList = showGameService.selectRecommendGame();
 		model.addAttribute("RecommendGameList", RecommendGameList);
 		
-		List<GameInfo> CategoryGameList = showGameService.selectCategoryGame();
-		model.addAttribute("CategoryGameList", CategoryGameList);
+		
 		
 		
 		

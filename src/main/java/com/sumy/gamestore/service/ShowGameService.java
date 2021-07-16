@@ -45,10 +45,7 @@ public class ShowGameService { //메인 페이지
 		return showGameMapper.selectRecommendGame();
 	}
 	
-	//카테고리
-	public List<GameInfo> selectCategoryGame() {
-		return showGameMapper.selectCategoryGame();
-	}
+	
 	
 	//최근 업데이트
 	public List<GameInfo> selectRecentUpdateGame() {
