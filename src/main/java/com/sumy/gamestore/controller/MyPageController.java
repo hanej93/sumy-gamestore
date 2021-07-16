@@ -29,6 +29,7 @@ public class MyPageController {
 	@PostMapping("/profileImgUpdate")
 	public String profileImgUpdate(@RequestPart(value = "file", required = false) MultipartFile file) {
 		System.out.println("프로필이미지 변경중");
+		return null;
 	}
 
 	// 주문 내역 화면
