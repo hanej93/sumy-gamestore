@@ -19,8 +19,9 @@ public class QuestionUserController {
 	
 	//메인 페이지
 	@ResponseBody
-	@PostMapping("/questionModal")
+	@PostMapping("/user/questionModal")
 	public String test1(QuestionList questionList) {
+		System.out.println("문의하기 데이터 : "+questionList);
 		int row = questionUserService.questionInsert(questionList);
 		return "문의하기 성공";
 		//문의 하기 설정

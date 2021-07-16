@@ -86,17 +86,18 @@ $(document).on('ready', function() {
 			return false;
 		}
 		
-		var queryString = $("form[name=questionForm]").serialize();
+		var queryString = $("form[name=questionModal]").serialize();
 		console.log("쿼리스트링" + queryString);
 		$.ajax({
 			type: 'post',
-			url: '/user/profileNickNameUpdate',
+			url: '/user/questionModal',
 			data: queryString,
 			dataType: 'json',
 			error: function(xhr, status, error) {
+				console.log(xhr+status+error);
 			},
 			success: function(json) {
-				console.log("닉네임 변경 성공");
+				console.log(json);
 			}
 		});
 		alert('문의하기를 완료하였습니다.');

@@ -152,7 +152,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form name="questionForm" method="post">
+				<form name="questionForm">
 					<input type="text" name="userId"
 						value="${principal.user.userId}" style="display: none;">
 					<label class="g-mb-10">문의 제목</label>

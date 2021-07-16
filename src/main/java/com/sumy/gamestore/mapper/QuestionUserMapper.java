@@ -10,7 +10,7 @@ import com.sumy.gamestore.model.QuestionList;
 public interface QuestionUserMapper {
 	
 	@Insert("insert into question_list"
-			+ "values(#{questionId}, #{userId}, #{questionTitle}, #{questionText}"
+			+ "values(0, #{userId}, #{questionTitle}, #{questionText}"
 			+ ", #{questionWriteDate}, #{questionAnswerYn}, #{questionReadYn}, #{questionImage1}"
 			+ ", #{questionImage2},#{questionImage3})")
 	public int insertQuestion(QuestionList question);

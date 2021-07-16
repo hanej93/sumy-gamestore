@@ -1,6 +1,9 @@
 package com.sumy.gamestore.service;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,10 @@ public class QuestionUserService {
 	private QuestionUserMapper questionUserMapper;
 	
 	public int questionInsert(QuestionList question) {
+		question.setQuestionWriteDate(LocalDateTime.now());//문의등록 시간 보여줌
+		question.setQuestionAnswerYn(0);//문의등록 응답여부
+		question.setQuestionReadYn(0);//문의등록 확인여부
+		question.setQuestionImage1(null);
 		return questionUserMapper.insertQuestion(question);
 	}
 
