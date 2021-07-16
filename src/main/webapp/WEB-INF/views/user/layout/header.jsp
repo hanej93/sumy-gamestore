@@ -207,7 +207,7 @@
 								<div class="g-brd-top g-brd-white-opacity-0_3 g-pa-15 g-pb-20">
 									<div
 										class="d-flex flex-row align-items-center justify-content-between g-font-size-18">
-										<a href="page-wishlist-1"
+										<a href="/user/wishlist"
 											class="btn u-btn-outline-primary rounded-0 g-width-120">위시리스트</a>
 										<a href="#" class="btn u-btn-primary rounded-0 g-width-120">Checkout</a>
 									</div>

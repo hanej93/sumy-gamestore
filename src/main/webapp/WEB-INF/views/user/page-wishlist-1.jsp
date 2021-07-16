@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,16 +105,17 @@
 							</thead>
 
 							<tbody>
+							<c:forEach items="${viewAll }" var="wishList">
 								<!-- Item-->
 								<tr class="g-brd-bottom g-brd-gray-light-v4">
 									<td class="text-left g-py-25"><img
 										class="d-inline-block g-width-100 mr-4"
 										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
 										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
+											<h4 class="h6 g-color-black">${wishList.gameTitle }</h4>
 											<ul
 												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-												<li>게임사 : 라이엇</li>
+												<li>게임사 : ${wishList.gameDev }</li>
 											</ul>
 										</div></td>
 									<td class="text-right g-color-black">
@@ -123,164 +132,7 @@
 									</td>
 								</tr>
 								<!-- End Item-->
-
-								<!-- Item-->
-								<tr class="g-brd-bottom g-brd-gray-light-v4">
-									<td class="text-left g-py-25"><img
-										class="d-inline-block g-width-100 mr-4"
-										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
-										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
-											<ul
-												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-												<li>게임사 : 라이엇</li>
-											</ul>
-										</div></td>
-									<td class="text-right g-color-black">
-										<div class="d-flex flex-column">
-											<del
-												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
-											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
-												&#8361;32,000 <span
-												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-													<i class="mt-auto fa fa-trash"></i>
-											</span>
-											</span>
-										</div>
-									</td>
-								</tr>
-								<!-- End Item-->
-
-								<!-- Item-->
-								<tr class="g-brd-bottom g-brd-gray-light-v4">
-									<td class="text-left g-py-25"><img
-										class="d-inline-block g-width-100 mr-4"
-										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
-										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
-											<ul
-												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-												<li>게임사 : 라이엇</li>
-											</ul>
-										</div></td>
-									<td class="text-right g-color-black">
-										<div class="d-flex flex-column">
-											<del
-												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
-											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
-												&#8361;32,000 <span
-												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-													<i class="mt-auto fa fa-trash"></i>
-											</span>
-											</span>
-										</div>
-									</td>
-								</tr>
-								<!-- End Item-->
-								<!-- Item-->
-								<tr class="g-brd-bottom g-brd-gray-light-v4">
-									<td class="text-left g-py-25"><img
-										class="d-inline-block g-width-100 mr-4"
-										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
-										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
-											<ul
-												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-												<li>게임사 : 라이엇</li>
-											</ul>
-										</div></td>
-									<td class="text-right g-color-black">
-										<div class="d-flex flex-column">
-											<del
-												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
-											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
-												&#8361;32,000 <span
-												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-													<i class="mt-auto fa fa-trash"></i>
-											</span>
-											</span>
-										</div>
-									</td>
-								</tr>
-								<!-- End Item-->
-								<!-- Item-->
-								<tr class="g-brd-bottom g-brd-gray-light-v4">
-									<td class="text-left g-py-25"><img
-										class="d-inline-block g-width-100 mr-4"
-										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
-										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
-											<ul
-												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-												<li>게임사 : 라이엇</li>
-											</ul>
-										</div></td>
-									<td class="text-right g-color-black">
-										<div class="d-flex flex-column">
-											<del
-												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
-											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
-												&#8361;32,000 <span
-												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-													<i class="mt-auto fa fa-trash"></i>
-											</span>
-											</span>
-										</div>
-									</td>
-								</tr>
-								<!-- End Item-->
-								<!-- Item-->
-								<tr class="g-brd-bottom g-brd-gray-light-v4">
-									<td class="text-left g-py-25"><img
-										class="d-inline-block g-width-100 mr-4"
-										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
-										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
-											<ul
-												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-												<li>게임사 : 라이엇</li>
-											</ul>
-										</div></td>
-									<td class="text-right g-color-black">
-										<div class="d-flex flex-column">
-											<del
-												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
-											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
-												&#8361;32,000 <span
-												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-													<i class="mt-auto fa fa-trash"></i>
-											</span>
-											</span>
-										</div>
-									</td>
-								</tr>
-								<!-- End Item-->
-								<!-- Item-->
-								<tr class="g-brd-bottom g-brd-gray-light-v4">
-									<td class="text-left g-py-25"><img
-										class="d-inline-block g-width-100 mr-4"
-										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
-										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
-											<ul
-												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
-												<li>게임사 : 라이엇</li>
-											</ul>
-										</div></td>
-									<td class="text-right g-color-black">
-										<div class="d-flex flex-column">
-											<del
-												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
-											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
-												&#8361;32,000 <span
-												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
-													<i class="mt-auto fa fa-trash"></i>
-											</span>
-											</span>
-										</div>
-									</td>
-								</tr>
-								<!-- End Item-->
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
