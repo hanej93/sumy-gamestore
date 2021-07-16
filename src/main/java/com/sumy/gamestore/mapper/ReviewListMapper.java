@@ -43,6 +43,9 @@ public interface ReviewListMapper {
 			+ " where review_id = #{reviewId}")
 	public int updateReview(ReviewList reviewList);
 	
+	@Delete("delete from report_list where review_id = #{reviewId}")
+	public int deleteReportList(int reviewId);
+	
 	@Delete("delete from review_list where review_id = #{reviewId}")
 	public int deleteReview(int reviewId);
 	

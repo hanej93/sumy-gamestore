@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -73,6 +74,15 @@ public class SingleProductApiController {
 										   .build();
 										   
 		reportListService.댓글신고추가(inputReport);
+		
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	@DeleteMapping("/sumy/game/review")
+	public ResponseDto<Integer> deleteReview(@RequestBody ReviewList reviewList){
+		System.out.println(reviewList);
+										   
+		reviewListService.리뷰삭제(reviewList.getReviewId());
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

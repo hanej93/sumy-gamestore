@@ -65,6 +65,7 @@ public class ReviewListService {
 	}
 	
 	public int 리뷰삭제(int reviewId) {
+		reviewListMapper.deleteReportList(reviewId);
 		return reviewListMapper.deleteReview(reviewId);
 	}
 }
