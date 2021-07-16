@@ -40,8 +40,7 @@ public interface GameInfoMapper {
 			+ "where game_id = #{gameId}")		
 	public int updateGame(GameInfo game);
 	
-	@Delete("delete from game_Info where game_id = #{gameId}")
-	public int deleteGame(int gameId);
+
 	
 	@Delete("delete from report_list where game_id = #{gameId}")
 	public int deleteReportList(int gameId);
@@ -49,12 +48,15 @@ public interface GameInfoMapper {
 	@Delete("delete from review_list where game_id = #{gameId}")
 	public int deleteReview(int gameId);
 
-	@Delete("delete from purchased_game_list where game_id = #{gameId}")
-	public int deletePurchasedGameList(int gameId);
-	
 	@Delete("delete from wishlist_game where game_id = #{gameId}")
 	public int deleteWishListGame(int gameId);
 
+	@Delete("delete from purchased_game_list where game_id = #{gameId}")
+	public int deletePurchasedGameList(int gameId);
+	
+	@Delete("delete from game_Info where game_id = #{gameId}")
+	public int deleteGame(int gameId);
+	
 	// ================================================
 	
 	//@Select("select count(*) from game_info")

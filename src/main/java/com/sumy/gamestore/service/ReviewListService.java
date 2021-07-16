@@ -42,6 +42,9 @@ public class ReviewListService {
 		return reviewListMapper.countReviewByGameIdAndUserName(gameId, userInfo.getUserId());
 	}
 	
+	public int 리뷰작성(ReviewList reviewList){
+		return reviewListMapper.insertReview(reviewList);
+	}
 	
 	public List<ReviewUserDto> 리뷰검색_게임아이디(int gameId, PagingVO vo){
 		return reviewListMapper.selectReviewByGameId(gameId, vo);

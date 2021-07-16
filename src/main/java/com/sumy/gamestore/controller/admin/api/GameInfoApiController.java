@@ -20,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sumy.gamestore.dto.ResponseDto;
 import com.sumy.gamestore.model.GameInfo;
+import com.sumy.gamestore.model.PurchasedGameList;
 import com.sumy.gamestore.model.ReviewList;
+import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.GameInfoService;
 import com.sumy.gamestore.service.ReviewListService;
 
@@ -157,11 +159,16 @@ public class GameInfoApiController {
 	}
 
 	@DeleteMapping("/admin/game/list")
-	public ResponseDto<Integer> deleteGame(@RequestBody GameInfo gameInfo, ReviewList reviewList ) {
+	public ResponseDto<Integer> deleteGame(@RequestBody GameInfo gameInfo, ReviewList reviewList,
+		WishlistGame wishlistGame, PurchasedGameList purchasedGameList) {
 		
 		System.out.println(gameInfo.getGameId());
+//		gameInfoService.리포트삭제();		
+		gameInfoService.리뷰삭제(reviewList.getGameId());
+		gameInfoService.위시리스트삭제(wishlistGame.getGameId());
+		gameInfoService.구매한게임삭제(purchasedGameList.getGameId());
 		gameInfoService.게임삭제(gameInfo.getGameId());
-		reviewListService.리뷰삭제(reviewList.getReviewId());
+
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

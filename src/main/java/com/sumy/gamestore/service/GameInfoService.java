@@ -38,6 +38,25 @@ public class GameInfoService {
 		return gameInfoMapper.updateGame(gameInfo);
 	}
 	
+	
+	
+	//트랜잭션 구현 고려
+//	public int 리포트삭제(int gameId) {
+//		return gameInfoMapper.deleteReportList(gameId);
+//	}
+	
+	public int 리뷰삭제(int gameId) {
+		return gameInfoMapper.deleteReview(gameId);
+	}
+
+	public int 위시리스트삭제(int gameId) {
+		return gameInfoMapper.deleteWishListGame(gameId);
+	}
+	
+	public int 구매한게임삭제(int gameId) {
+		return gameInfoMapper.deletePurchasedGameList(gameId);
+	}
+	
 	public int 게임삭제(int gameId) {
 		return gameInfoMapper.deleteGame(gameId);
 	}

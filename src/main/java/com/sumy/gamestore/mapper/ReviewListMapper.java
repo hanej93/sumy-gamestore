@@ -3,6 +3,7 @@ package com.sumy.gamestore.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -17,6 +18,18 @@ public interface ReviewListMapper {
 	
 	@Select("select * from review_list where review_id = #{reviewId}")
 	public ReviewList selectOneByReviewId(int reviewId);
+	
+	@Insert("insert into review_list values("
+			+ "#{reviewId}, "
+			+ "#{gameId}, "
+			+ "#{userId}, "
+			+ "#{reviewText}, "
+			+ "#{reviewLikeCount}, "
+			+ "#{reviewReportCount}, "
+			+ "#{reviewStarRating}, "
+			+ "#{reviewWriteDate}, "
+			+ "#{reviewUpdateDate})")
+	public int insertReview(ReviewList reviewList);
 	
 	@Update("update review_list set "
 			+ "game_id=#{gameId}, "
