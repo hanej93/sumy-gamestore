@@ -239,7 +239,7 @@
 													<c:when test="${principal.user.userId == review.userId }">
 														<button class="dropdown-item reviewUpdateBtn">댓글
 															수정</button>
-														<button class="dropdown-item reviewDeleteBtn">댓글
+														<button reviewId="${review.reviewId}" class="dropdown-item reviewDeleteBtn">댓글
 															삭제</button>
 													</c:when>
 													<c:otherwise>

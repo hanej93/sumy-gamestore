@@ -63,7 +63,7 @@ $(document).on('ready', function() {
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
-			//alert('리뷰 수정을 완료하였습니다.');
+			alert('리뷰 수정을 완료하였습니다.');
 			location.reload();
 		}).fail(function(error){ 
 			console.log(error); 
@@ -77,7 +77,26 @@ $(document).on('ready', function() {
 		if (!confirm('리뷰를 삭제하시겠습니까?')) {
 			return false;
 		}
-		alert('리뷰를 삭제를 완료하였습니다.');
+		
+		let data = {
+			reviewId:$(this).attr("reviewId")
+		};
+		
+		
+		$.ajax({
+			type:"DELETE",
+			url:"/sumy/game/review",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			alert('리뷰를 삭제를 완료하였습니다.');
+			location.reload();
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+		
 	});
 
 
@@ -155,10 +174,6 @@ $(document).on('ready', function() {
 			return false;
 		}
 		
-		console.log($(this).attr("gameId"));
-		console.log($(this).attr("userId"));
-		console.log($(riviewInsertTestarea).val());
-		console.log($("#reviewWriteStar").children('.g-color-primary').length);
 		
 		let data = {
 			gameId:$(this).attr("gameId"),
