@@ -163,9 +163,9 @@
 			<div class="g-mb-20 g-mt-20 g-mb-0--md">
 				<div class="col-md-2 g-mb-30">
 					<select id="keywordOpt-select" class="form-control rounded g-py-12">
-						<option value="titleContent" >제목+내용</option>
-						<option value="title" >제목</option>
-						<option value="content" >내용</option>
+						<option <c:if test="${paging.keywordOpt == 'titleContent'}">selected</c:if> value="titleContent">제목+내용</option>
+						<option <c:if test="${paging.keywordOpt == 'title'}">selected</c:if> value="title" >제목</option>
+						<option <c:if test="${paging.keywordOpt == 'content'}">selected</c:if> value="content" >내용</option>
 					</select>
 				</div>
 				<div class="col-md-7 g-mb-30">
