@@ -85,7 +85,7 @@
 				<div class="col-lg-5 g-mb-50">
 					<!-- Products Block -->
 					<div
-						class="rounded g-brd-around g-brd-gray-light-v4 g-overflow-x-scroll g-overflow-x-visible--lg g-pa-30">
+						class="js-custom-scroll g-height-500 rounded g-brd-around g-brd-gray-light-v4 g-overflow-x-scroll g-overflow-x-visible--lg g-pa-30">
 						<table class="text-center w-100">
 							<thead
 								class="h6 g-brd-bottom g-brd-gray-light-v4 g-color-black text-uppercase">
@@ -151,6 +151,110 @@
 								</tr>
 								<!-- End Item-->
 
+								<!-- Item-->
+								<tr class="g-brd-bottom g-brd-gray-light-v4">
+									<td class="text-left g-py-25"><img
+										class="d-inline-block g-width-100 mr-4"
+										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
+										<div class="d-inline-block align-middle">
+											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
+											<ul
+												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
+												<li>게임사 : 라이엇</li>
+											</ul>
+										</div></td>
+									<td class="text-right g-color-black">
+										<div class="d-flex flex-column">
+											<del
+												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
+											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
+												&#8361;32,000 <span
+												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
+													<i class="mt-auto fa fa-trash"></i>
+											</span>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<!-- End Item-->
+								<!-- Item-->
+								<tr class="g-brd-bottom g-brd-gray-light-v4">
+									<td class="text-left g-py-25"><img
+										class="d-inline-block g-width-100 mr-4"
+										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
+										<div class="d-inline-block align-middle">
+											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
+											<ul
+												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
+												<li>게임사 : 라이엇</li>
+											</ul>
+										</div></td>
+									<td class="text-right g-color-black">
+										<div class="d-flex flex-column">
+											<del
+												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
+											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
+												&#8361;32,000 <span
+												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
+													<i class="mt-auto fa fa-trash"></i>
+											</span>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<!-- End Item-->
+								<!-- Item-->
+								<tr class="g-brd-bottom g-brd-gray-light-v4">
+									<td class="text-left g-py-25"><img
+										class="d-inline-block g-width-100 mr-4"
+										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
+										<div class="d-inline-block align-middle">
+											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
+											<ul
+												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
+												<li>게임사 : 라이엇</li>
+											</ul>
+										</div></td>
+									<td class="text-right g-color-black">
+										<div class="d-flex flex-column">
+											<del
+												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
+											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
+												&#8361;32,000 <span
+												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
+													<i class="mt-auto fa fa-trash"></i>
+											</span>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<!-- End Item-->
+								<!-- Item-->
+								<tr class="g-brd-bottom g-brd-gray-light-v4">
+									<td class="text-left g-py-25"><img
+										class="d-inline-block g-width-100 mr-4"
+										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
+										<div class="d-inline-block align-middle">
+											<h4 class="h6 g-color-black">캔디크러쉬 사가</h4>
+											<ul
+												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
+												<li>게임사 : 라이엇</li>
+											</ul>
+										</div></td>
+									<td class="text-right g-color-black">
+										<div class="d-flex flex-column">
+											<del
+												class="priceBefore g-font-size-12 g-color-gray-dark-v5 mr-3">&#8361;35,000</del>
+											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
+												&#8361;32,000 <span
+												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
+													<i class="mt-auto fa fa-trash"></i>
+											</span>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<!-- End Item-->
 								<!-- Item-->
 								<tr class="g-brd-bottom g-brd-gray-light-v4">
 									<td class="text-left g-py-25"><img
@@ -348,6 +452,8 @@
 
       // initialization of HSScrollBar component
       $.HSCore.components.HSScrollBar.init($('.js-scrollbar'));
+      
+      $.HSCore.components.HSScrollBar.init($('.js-custom-scroll'));
 
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
