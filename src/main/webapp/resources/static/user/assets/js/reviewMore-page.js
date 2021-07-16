@@ -98,7 +98,7 @@ $(document).on('ready', function() {
 		let data = {
 			reviewId:reviewId,
 			reportFromUserId:$(this).attr("principalUserId"),
-			reportText:$(declarationTextStr).children('.g-color-primary').length
+			reportText:$(declarationTextStr).val()
 		};
 		
 		$.ajax({
@@ -154,7 +154,35 @@ $(document).on('ready', function() {
 		if (!confirm('리뷰 작성을 완료하시겠습니까?')) {
 			return false;
 		}
-		alert('리뷰 작성을 완료하였습니다.');
-		$(this).parents().children('form[name=reviewInsertForm]').css('display', 'none');
+		
+		console.log($(this).attr("gameId"));
+		console.log($(this).attr("userId"));
+		console.log($(riviewInsertTestarea).val());
+		console.log($("#reviewWriteStar").children('.g-color-primary').length);
+		
+		let data = {
+			gameId:$(this).attr("gameId"),
+			userId:$(this).attr("userId"),
+			reviewText:$(riviewInsertTestarea).val(),
+			reviewStarRating:$("#reviewWriteStar").children('.g-color-primary').length
+		};
+		
+		
+		$.ajax({
+			type:"POST",
+			url:"/sumy/game/review",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			alert('리뷰 작성을 완료하였습니다.');
+			location.reload();
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+		
+		
+		/*$(this).parents().children('form[name=reviewInsertForm]').css('display', 'none');*/
 	});
 });

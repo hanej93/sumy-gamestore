@@ -136,48 +136,45 @@
 
 		<!-- Review write -->
 		<form name="reviewInsertForm" style="display: none;">
-			<div class="container g-mb-100">
-				<h2 class="h4 mb-5">리뷰 작성</h2>
-				
-					타입 : ${principal} <br>
-					ID : ${principal.user} <br>
-					PW : ${principal.user.userId} <br>
-												<br>
-
-				<div class="g-mb-30">
-					<textarea id="riviewInsertTestarea"
-						class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-						rows="5" placeholder="리뷰를 작성해주세요."></textarea>
-				</div>
-
-				<div class="row align-items-center">
-					<div class="col-5 col-sm-4 col-md-3">
-						<button id="reviewUpdateCompleteBtn"
-							class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
-							type="button" role="button">작성 완료</button>
+			<c:if test="${userReviewCnt == 0 }">
+				<div class="container g-mb-100">
+					<h2 class="h4 mb-5">리뷰 작성</h2>
+					
+					<div class="g-mb-30">
+						<textarea id="riviewInsertTestarea"
+							class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
+							rows="5" placeholder="리뷰를 작성해주세요."></textarea>
 					</div>
-
-					<!-- Rating -->
-					<div class="col-5 col-sm-4 col-md-3">
-						<h3 class="h6 mb-1">별점:</h3>
-
-						<ul
-							class="u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
-							data-hover-classes="g-color-primary">
-							<li class="g-color-primary g-line-height-1_4"><i
-								class="fa fa-star"></i></li>
-							<li class="g-color-primary g-line-height-1_4"><i
-								class="fa fa-star"></i></li>
-							<li class="g-color-primary g-line-height-1_4"><i
-								class="fa fa-star"></i></li>
-							<li class="g-color-primary g-line-height-1_4"><i
-								class="fa fa-star"></i></li>
-							<li class="g-line-height-1_4"><i class="fa fa-star"></i></li>
-						</ul>
-						<!-- End Rating -->
+	
+					<div class="row align-items-center">
+						<div class="col-5 col-sm-4 col-md-3">
+							<button id="reviewUpdateCompleteBtn" userId = "${principal.user.userId }" gameId= "${gameInfo.gameId }"
+								class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
+								type="button" role="button">작성 완료</button>
+						</div>
+	
+						<!-- Rating -->
+						<div class="col-5 col-sm-4 col-md-3">
+							<h3 class="h6 mb-1">별점:</h3>
+	
+							<ul id = "reviewWriteStar"
+								class="js-rating u-rating-v1 g-font-size-20 g-color-gray-light-v3 mb-0"
+								data-hover-classes="g-color-primary">
+								<li class="g-color-primary g-line-height-1_4"><i
+									class="fa fa-star"></i></li>
+								<li class="g-color-primary g-line-height-1_4"><i
+									class="fa fa-star"></i></li>
+								<li class="g-color-primary g-line-height-1_4"><i
+									class="fa fa-star"></i></li>
+								<li class="g-color-primary g-line-height-1_4"><i
+									class="fa fa-star"></i></li>
+								<li class="g-line-height-1_4"><i class="fa fa-star"></i></li>
+							</ul>
+							<!-- End Rating -->
+						</div>
 					</div>
 				</div>
-			</div>
+			</c:if>
 		</form>
 		<!-- end Review write -->
 
@@ -228,11 +225,15 @@
 											
 											<div class="btn-group g-mr-10 g-mb-15">
 												<button class="btn btn-primary btn-sm dropdown-toggle"
-													type="button" data-toggle="dropdown" aria-haspopup="true"
+													type="button" 
+													<sec:authorize access="isAuthenticated()">
+													data-toggle="dropdown" 
+													</sec:authorize>
+													aria-haspopup="true"
 													aria-expanded="false">
 													<i class="align-middle icon-layers u-line-icon-pro"></i>
 												</button>
-												<sec:authorize access="isAuthenticated()">
+												
 												<div class="dropdown-menu">
 												<c:choose>
 													<c:when test="${principal.user.userId == review.userId }">
@@ -249,7 +250,7 @@
 												</c:choose>
 														<!-- <div class="dropdown-divider"></div> -->
 												</div>
-												</sec:authorize>
+												
 											</div>
 											
 											<!-- End Small Button Group -->

@@ -37,9 +37,9 @@ public class ReviewListService {
 	}
 	
 	// 리뷰테이블에 유저아이디 갯수
-	public int 유저아이디개수_이메일(String email, int gameId) {
-		UserInfo userInfo = userInfoMapper.findByUserEmail(email);
-		return reviewListMapper.countReviewByGameIdAndUserName(gameId, userInfo.getUserId());
+	public int 유저아이디개수_이메일(int userId, int gameId) {
+		// UserInfo userInfo = userInfoMapper.findByUserEmail(email);
+		return reviewListMapper.countReviewByGameIdAndUserName(userId, gameId);
 	}
 	
 	public int 리뷰작성(ReviewList reviewList){

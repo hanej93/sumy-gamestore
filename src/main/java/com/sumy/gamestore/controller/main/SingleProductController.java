@@ -1,6 +1,8 @@
 package com.sumy.gamestore.controller.main;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,8 @@ public class SingleProductController {
 	@Autowired
 	ReviewListService reviewListService;
 	
+	
+	
 	@GetMapping("/sumy/single-product/{gameId}")
 	public String showSingleProduct(@PathVariable int gameId, Model model) {
 		
@@ -34,11 +38,13 @@ public class SingleProductController {
 		return "user/page-single-product-1";
 	}
 	
+	
 	@GetMapping("/sumy/single-product/{gameId}/review")
 	public String showReview(@PathVariable int gameId, PagingVO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage
-			, @RequestParam(value="principal", required=false)PrincipalDetail principal) {
+			, Authentication authentication
+	/* , @AuthenticationPrincipal PrincipalDetail principal */) {
 		
 		int total = reviewListService.리뷰총개수_게임아이디(gameId, vo);
 		if (nowPage == null && cntPerPage == null) {
@@ -54,9 +60,13 @@ public class SingleProductController {
 		model.addAttribute("gameInfo", gameInfoService.게임검색(gameId));
 		model.addAttribute("reviewList", reviewListService.리뷰검색_게임아이디(gameId, vo));
 		
-		if(principal != null) {
+//		PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
+		System.out.println(gameId);
+		if(authentication != null) {
+			PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
+			System.out.println("쿼리문 결과: " + reviewListService.유저아이디개수_이메일(principal.getUser().getUserId(), gameId));
 			// 로그인한 아이디로 리뷰조회 갯수 -> 0이면 리뷰 작성 가능!
-			model.addAttribute("userReviewCnt", reviewListService.유저아이디개수_이메일(principal.getUsername(), gameId));
+			model.addAttribute("userReviewCnt", reviewListService.유저아이디개수_이메일(principal.getUser().getUserId(), gameId));
 		}
 		return "user/reviewMore-page";
 	}

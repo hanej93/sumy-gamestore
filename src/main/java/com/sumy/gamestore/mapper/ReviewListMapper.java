@@ -73,9 +73,9 @@ public interface ReviewListMapper {
 	@Select("select count(*) from review_list r "
 			+ "join user_info u "
 			+ "on r.user_id = u.user_id "
-			+ "where game_id = #{gameId} "
-			+ "and user_id = #{userId}")
-	public int countReviewByGameIdAndUserName(int gameId, int userId);
+			+ "where r.user_id = #{userId} "
+			+ "and game_id = #{gameId}")
+	public int countReviewByGameIdAndUserName(@Param("userId") int userId, @Param("gameId") int gameId);
 	
 //	@Select("select count(*) from review_list")
 	public int countReviewList(PagingVO vo);

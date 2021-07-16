@@ -37,6 +37,26 @@ public class SingleProductApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
+	@PostMapping("/sumy/game/review")
+	public ResponseDto<Integer> writeReview(@RequestBody ReviewList reviewList){
+		System.out.println(reviewList);
+		ReviewList inputReview = ReviewList.builder()
+										   .reviewId(0)
+										   .gameId(reviewList.getGameId())
+										   .userId(reviewList.getUserId())
+										   .reviewText(reviewList.getReviewText())
+										   .reviewLikeCount(0)
+										   .reviewReportCount(0)
+										   .reviewStarRating(reviewList.getReviewStarRating())
+										   .reviewWriteDate(LocalDateTime.now())
+										   .reviewUpdateDate(LocalDateTime.now())
+										   .build();
+		
+		reviewListService.리뷰작성(inputReview);
+										   
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
 	
 	
 	@PostMapping("/sumy/game/review/report")
