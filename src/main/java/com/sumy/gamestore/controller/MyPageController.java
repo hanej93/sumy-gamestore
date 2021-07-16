@@ -44,6 +44,20 @@ public class MyPageController {
 		System.out.println("MyPageController 들어옴");
 		return "주소수정";
 	}
+	
+	// 주소 api 화면(popup)
+	@GetMapping("/jusoPopup")
+	public String test17() {
+
+		return "user/jusoPopup";
+	}
+
+	// 주소 api 화면(popup)
+	@PostMapping("/jusoPopup")
+	public String test18() {
+
+		return "user/jusoPopup"; 
+	}
 
 	// 프로필 사진 업데이트
 	@PostMapping("/profileImgUpdate")
@@ -51,21 +65,6 @@ public class MyPageController {
 		System.out.println("프로필이미지 변경중");
 		return null;
 	}
-
-	// 주문 내역 화면
-	@GetMapping("/orders")
-	public String test9() {
-		System.out.println("주문내역");
-		return "user/page-orders-1";
-	}
-
-	// 위시리스트 화면
-	@GetMapping("/wishlist")
-	public String test15() {
-		System.out.println("위시리스트");
-		return "user/page-wishlist-1";
-	}
-
 	// 아직 안 쓰는 화면 : 결제 정보 저장 화면
 	@GetMapping("/payment-options")
 	public String test13() {

@@ -218,7 +218,7 @@
 										</div>
 										<div class="input-group-append p-0">
 											<button
-												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25">우편번호
+												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"  onclick="goPopup()" type="button">우편번호
 												찾기</button>
 											<!-- 주소 팝업 버튼 -->
 										</div>
