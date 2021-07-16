@@ -36,7 +36,10 @@ public class NewsController {
 		} else if (cntPerPage == null) {
 			cntPerPage = "5";
 		}
+		String keywordOpt = vo.getKeywordOpt();
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword());
+		vo.setKeywordOpt(keywordOpt);
+		
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", newsListService.한페이지뉴스리스트(vo));
 		

@@ -9,8 +9,15 @@
  		
  		<trim prefix="WHERE" prefixOverrides="AND|OR">
 
-			<if test="keyword != null and keyword != '' ">
+			<if test="keyword != null and keyword != '' and (keywordOpt == '' or keywordOpt == 'title')">
 				AND news_title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="keyword != null and keyword != '' and (keywordOpt == 'content')">
+				AND news_text like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="keyword != null and keyword != '' and (keywordOpt == 'titleContent')">
+				AND news_title like CONCAT('%', #{keyword}, '%')
+				OR news_text like CONCAT('%', #{keyword}, '%')
 			</if>
 		</trim>
 		order by news_id desc limit #{start}, #{cntPage}

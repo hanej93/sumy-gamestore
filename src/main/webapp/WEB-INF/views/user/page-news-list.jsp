@@ -16,7 +16,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="favicon.ico">
+<!-- <link rel="shortcut icon" href="favicon.ico"> -->
 
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
@@ -125,7 +125,7 @@
 					<c:if test="${paging.startPage != 1 }">
 						<li class="list-inline-item"><a
 							class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-mr-15"
-							href="#" aria-label="Next"> <span aria-hidden="true"> <i
+							href="/sumy/news/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&keywordOpt=${paging.keywordOpt}" aria-label="Next"> <span aria-hidden="true"> <i
 									class="fa fa-angle-left"></i>
 							</span> <span class="sr-only">Before</span>
 						</a></li>
@@ -136,12 +136,12 @@
 		                	<c:when test="${p != paging.nowPage }">
 						               <li class="list-inline-item hidden-down"><a
 								class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
-								href="#">2</a></li>
+								href="/sumy/news/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&keywordOpt=${paging.keywordOpt}">${p }</a></li>
 			                </c:when>
 			                <c:when test="${p == paging.nowPage }">
 						                <li class="list-inline-item hidden-down"><a
 								class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded-circle g-pa-5"
-								href="#">1</a></li>
+								href="#">${p }</a></li>
 			                </c:when>
 		                </c:choose>
 	                </c:forEach>
@@ -149,7 +149,7 @@
 	                <c:if test="${paging.endPage != paging.lastPage}">
 						<li class="list-inline-item"><a
 							class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-ml-15"
-							href="#" aria-label="Next"> <span aria-hidden="true"> <i
+							href="/sumy/news/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&keywordOpt=${paging.keywordOpt}" aria-label="Next"> <span aria-hidden="true"> <i
 									class="fa fa-angle-right"></i>
 							</span> <span class="sr-only">Next</span>
 						</a></li>
@@ -182,7 +182,7 @@
 						<div class="input-group-append g-brd-none g-py-0">
 							<button id="news-search-btn"
 								class="btn u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25"
-								type="submit">뉴스 조회</button>
+								type="button">뉴스 조회</button>
 						</div>
 					</form>
 					<!-- End Search Form -->
@@ -271,5 +271,6 @@
       });
     });
   </script>
+  <script src="/resources/static/user/assets/js/page-news-list.js"></script>
 </body>
 </html>
