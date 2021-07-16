@@ -304,7 +304,7 @@
 								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
 								href="page-our-stores-2.html">뉴스 더보기</a>
 						</div>
-						<a class="u-link-v2" href="page-our-stores-1/gameId = 18"></a>
+						<a class="u-link-v2" href="#"></a>
 					</article>
 					<!-- End Blog Background Overlay Blocks -->
 				</div>
