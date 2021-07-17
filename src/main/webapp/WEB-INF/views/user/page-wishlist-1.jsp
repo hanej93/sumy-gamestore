@@ -118,9 +118,9 @@
 								<tr class="g-brd-bottom g-brd-gray-light-v4">
 									<td class="text-left g-py-25"><img
 										class="d-inline-block g-width-100 mr-4"
-										src="/resources/static/user/assets/img-temp/150x150/img6.jpg" alt="Image Description">
+										src="${wishList.gameThumbImage }" alt="Image Description">
 										<div class="d-inline-block align-middle">
-											<h4 class="h6 g-color-black">${wishList.gameTitle }</h4>
+											<a href="/sumy/single-product/${wishList.gameId }" class="u-link-v5 g-color-black g-color-primary--hover">${wishList.gameTitle }</a>
 											<ul
 												class="list-unstyled g-color-gray-dark-v4 g-font-size-12 g-line-height-1_6 mb-0">
 												<li>게임사 : ${wishList.gameDev }</li>

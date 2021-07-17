@@ -42,7 +42,7 @@
 				<div
 					class="row flex-column flex-sm-row justify-content-between align-items-center text-uppercase g-font-weight-100 g-color-white g-font-size-16 g-mx-0--lg">
 					<div class="col-auto">
-						<li class="list-inline-item g-mx-30"><a href="home-page">
+						<li class="list-inline-item g-mx-30"><a href="/">
 								<img src="/resources/static/user/assets/img/logo/logo-y.png"
 								alt="logo.png" height="60px">
 						</a></li>
@@ -54,7 +54,7 @@
 							href="/sumy/news/list"> NEWS </a></li>
 						<li class="list-inline-item g-mx-15"><a
 							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-							href="qna"> FAQ </a></li>
+							href="/qna"> FAQ </a></li>
 							<c:if test="${principal.user.userAuthorityRate eq 'ROLE_ADMIN' }">
 								<li class="list-inline-item g-mx-15"><a
 								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
@@ -235,7 +235,7 @@
 						<c:if test="${principal != null}">
 							<li class="list-inline-item g-mx-15"><a
 								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-								href="#">Logout</a></li>
+								href="/logout">Logout</a></li>
 							<li class="list-inline-item g-mx-15"><a
 								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
 								href="/user/login-security">Mypage</a></li>
