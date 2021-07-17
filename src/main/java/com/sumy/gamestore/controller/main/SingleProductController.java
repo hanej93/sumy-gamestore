@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sumy.gamestore.config.auth.PrincipalDetail;
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.model.GameInfo;
 import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.GameInfoService;
 import com.sumy.gamestore.service.ReviewListService;
@@ -48,11 +49,14 @@ public class SingleProductController {
 			}
 		}
 		
+		// 관련게임 조회
+		GameInfo inputGameInfo = gameInfoService.게임검색(gameId);
 		
-		
-		model.addAttribute("gameInfo", gameInfoService.게임검색(gameId));
+		model.addAttribute("gameInfo", inputGameInfo);
 		model.addAttribute("reviewList", reviewListService.리뷰검색_게임아이디_5(gameId));
 		model.addAttribute("gameCategoryList", gameInfoService.카테고리이름검색(gameId));
+		model.addAttribute("relatedGameList", gameInfoService.관련게임검색(inputGameInfo.getGameCategoryId1()));
+		
 		
 		System.out.println(gameInfoService.게임검색(gameId));
 		System.out.println(reviewListService.리뷰검색_게임아이디_5(gameId));

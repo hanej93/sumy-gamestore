@@ -48,18 +48,18 @@
 						</a></li>
 						<li class="list-inline-item g-mx-15"><a
 							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-							href="catalogue-page"> 전체 </a></li>
+							href="/catalogue"> 전체 </a></li>
 						<li class="list-inline-item g-mx-15"><a
 							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-							href="sumy/news/list"> NEWS </a></li>
+							href="/sumy/news/list"> NEWS </a></li>
 						<li class="list-inline-item g-mx-15"><a
 							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
 							href="qna"> FAQ </a></li>
-						<c:if test="${principal != null}"><!-- 관리자 조건 추가 -->
-							<li class="list-inline-item g-mx-15"><a
-							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-							href="qna"> 관리자 화면 </a></li>
-						</c:if>
+							<c:if test="${principal.user.userAuthorityRate eq 'ROLE_ADMIN' }">
+								<li class="list-inline-item g-mx-15"><a
+								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
+								href="/admin/game/list"> 관리자 화면 </a></li>
+							</c:if>
 					</div>
 
 
@@ -79,10 +79,10 @@
 							</a>
 
 							<!-- Search Form -->
-							<form id="searchform-1"
+							<form id="searchform-1" action="/catalogue"
 								class="u-searchform-v1 u-dropdown--css-animation u-dropdown--hidden g-bg-black g-pa-10 g-mt-10 g-box-shadow-none">
 								<div class="input-group g-brd-primary--focus">
-									<input
+									<input name="keyword"
 										class="form-control rounded-0 u-form-control g-brd-gray-light-v3"
 										type="search" placeholder="게임 제목 검색">
 

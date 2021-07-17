@@ -69,6 +69,15 @@ public interface GameInfoMapper {
 			+ " or category_id = (select game_category_id4 from game_info where game_id = #{gameId} )")
 	public List<String> selectCategoryNameByCategoryId(int gameId);
 	
+	@Select("select * from game_info"
+			+ " where game_category_id1 = #{categoryId}"
+			+ " or game_category_id2 = #{categoryId}"
+			+ " or game_category_id3 = #{categoryId}"
+			+ " or game_category_id4 = #{categoryId}"
+			+ " order by game_id desc"
+			+ " limit 7;")
+	public List<GameInfo> selectRelatedGameInfo(int categoryId);
+	
 	// ================================================
 	
 	//@Select("select count(*) from game_info")
@@ -76,6 +85,8 @@ public interface GameInfoMapper {
 
 	//@Select("select * from game_info order by game_id desc limit #{start}, #{cntPage}")
 	public List<GameInfo> selectGameList(PagingVO vo);
+
+	
 	
 	
 }

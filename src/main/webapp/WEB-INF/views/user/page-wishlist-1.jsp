@@ -170,13 +170,13 @@
 						<div class="d-flex justify-content-between mb-2">
 							<span class="g-color-black">상품 금액</span> <span
 								class="g-color-black g-font-weight-300"><span
-								id="wishTotalPriceBefore1"><c:out value="${originalTotalPrice }"/></span> &#8361;</span>
+								id="wishTotalPriceBefore1"><fmt:formatNumber value="${originalTotalPrice }" type="number" pattern="###,###,###,###,###,###"/></span> &#8361;</span>
 						</div>
 
 						<div class="d-flex justify-content-between mb-2">
 							<span class="g-color-black">할인 금액</span> <span
 								class="g-font-weight-300 g-color-lightred">- <span
-								id="wishTotalDiscountRate1"><c:out value="${originalTotalPrice - finalTotalPrice }"/></span> &#8361;
+								id="wishTotalDiscountRate1"><fmt:formatNumber value="${originalTotalPrice - finalTotalPrice }" type="number" pattern="###,###,###,###,###,###"/></span> &#8361;
 							</span>
 						</div>
 
@@ -185,7 +185,7 @@
 						<div class="d-flex justify-content-between mb-2">
 							<span class="g-color-black">전체 주문 금액</span> <span
 								class="g-color-primary g-font-weight-700 g-font-size-16 g-line-height-1_2"><span
-								id="wishTotalPriceAfter1"><c:out value="${finalTotalPrice }"/></span> &#8361;</span>
+								id="wishTotalPriceAfter1"><fmt:formatNumber value="${finalTotalPrice }" type="number" pattern="###,###,###,###,###,###"/></span> &#8361;</span>
 						</div>
 					</aside>
 					<button

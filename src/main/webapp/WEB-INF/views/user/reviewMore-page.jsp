@@ -70,7 +70,7 @@
 			<div class="container">
 				<ul class="u-list-inline">
 					<li class="list-inline-item g-mr-5"><a
-						class="u-link-v5 g-color-text" href="catalogue-page.html">게임
+						class="u-link-v5 g-color-text" href="/catalogue">게임
 							카탈로그 목록</a> <i class="g-color-gray-light-v2 g-ml-5 fa fa-angle-right"></i>
 					</li>
 					<li class="list-inline-item g-mr-5"><a

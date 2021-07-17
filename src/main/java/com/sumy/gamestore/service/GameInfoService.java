@@ -61,4 +61,8 @@ public class GameInfoService {
 	public List<String> 카테고리이름검색(int gameId){
 		return gameInfoMapper.selectCategoryNameByCategoryId(gameId);
 	}
+
+	public List<GameInfo> 관련게임검색(int categoryId) {
+		return gameInfoMapper.selectRelatedGameInfo(categoryId);
+	}
 }

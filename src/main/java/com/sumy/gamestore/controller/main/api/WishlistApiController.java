@@ -28,9 +28,6 @@ public class WishlistApiController {
 	@PostMapping("/user/wishlist")
 	public int insertWishlist(@RequestBody int gameId, Authentication authentication){
 		
-		System.out.println("출력확인");
-		System.out.println(gameId);
-		
 		if(authentication != null) {
 			PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
 			int userId = principal.getUser().getUserId();
