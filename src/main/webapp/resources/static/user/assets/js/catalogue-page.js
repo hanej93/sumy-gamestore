@@ -22,8 +22,7 @@ $(document).on('ready', function() {
 	$("#catalogueFilterResetBtn").click(function() {
 		$("h3:contains('별점')").next().children().addClass('g-color-primary click');
 		$("h3:contains('별점')").next().children().last().removeClass('g-color-primary click');
-		var slider = $("h3:contains('가격')").next().children();
-		$("#rangeSliderAmount3").text("20000 - 40000");
+		$.HSCore.components.HSSlider.init('#rangeSlider1');
 	});
 
 });

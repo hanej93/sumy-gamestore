@@ -33,6 +33,7 @@
 		<property name="configLocation" value="/WEB-INF/config/mybatis_config.xml"/>
 		<property name="mapperLocations">
 			<list>
+				<value>classpath:com/sumy/gamestore/mapper/GameListMapperTest.xml</value>
 				<value>classpath:com/sumy/gamestore/mapper/GameListMapper.xml</value>
 				<value>classpath:com/sumy/gamestore/mapper/NewsListMapper.xml</value>
 				<value>classpath:com/sumy/gamestore/mapper/UserListMapper.xml</value>
