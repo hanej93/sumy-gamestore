@@ -25,13 +25,18 @@
 							data-target="#aboutSumyModal">회사소개</a></li>
 						<li class="list-inline-item g-mx-30"><a
 							class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
+							id="aboutSumyBtn" type='button' data-toggle="modal"
+						data-target="#questionForSumyModal" data-dismiss="modal"
+						aria-label="Close">문의하기</a></li>
+						<!-- <li class="list-inline-item g-mx-30"><a
+							class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
 							href="#">이용약관</a></li>
 						<li class="list-inline-item g-mx-30"><a
 							class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
 							href="#">개인정보처리방침</a></li>
 						<li class="list-inline-item g-mx-30"><a
 							class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
-							href="#">스토어 환불 정책</a></li>
+							href="#">스토어 환불 정책</a></li> -->
 					</ul>
 				</div>
 			</div>
@@ -141,7 +146,8 @@
 
 <!-- 문의하기 모달 내용 시작 -->
 <div class="modal fade" id="questionForSumyModal" tabindex="-1"
-	aria-labelledby="declarationModalLabel" aria-hidden="true" style="overflow-y:auto;">
+	aria-labelledby="declarationModalLabel" aria-hidden="true"
+	style="overflow-y: auto;">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -153,11 +159,10 @@
 			</div>
 			<div class="modal-body">
 				<form name="questionForm">
-					<input type="number" name="userId"
-						value="${principal.user.userId}" style="display: none;">
-					<input type="text" name="questionImage1"
-						value="" style="display: none;">
-					<label class="g-mb-10">문의 제목</label>
+					<input type="number" name="userId" value="${principal.user.userId}"
+						style="display: none;"> <input type="text"
+						name="questionImage1" value="" style="display: none;"> <label
+						class="g-mb-10">문의 제목</label>
 					<div class="g-mb-10">
 						<input id="questionForSumyModalTitle" name="questionTitle"
 							class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
@@ -176,7 +181,8 @@
 							<!-- Plain File Input -->
 							<div class="form-group mb-0">
 								<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-									<input id="questionImgInput" class="questionFileInput" type="file"> <i
+									<input id="questionImgInput" class="questionFileInput"
+									type="file"> <i
 									class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
 									<span class="js-value">이미지 첨부하기</span>
 								</label>
@@ -197,8 +203,7 @@
 				<div class="row g-mx-minus-5 g-mb-20">
 					<button id="questionForSumyBtn"
 						class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
-						type="button" aria-label="Close">
-						문의하기</button>
+						type="button" aria-label="Close">문의하기</button>
 					<button
 						class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
 						data-dismiss="modal" aria-label="Close" type="button">닫기
