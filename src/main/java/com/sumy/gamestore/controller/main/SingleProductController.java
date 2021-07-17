@@ -31,6 +31,7 @@ public class SingleProductController {
 		
 		model.addAttribute("gameInfo", gameInfoService.게임검색(gameId));
 		model.addAttribute("reviewList", reviewListService.리뷰검색_게임아이디_5(gameId));
+		model.addAttribute("gameCategoryList", gameInfoService.카테고리이름검색(gameId));
 		
 		System.out.println(gameInfoService.게임검색(gameId));
 		System.out.println(reviewListService.리뷰검색_게임아이디_5(gameId));

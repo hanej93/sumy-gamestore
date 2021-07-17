@@ -57,4 +57,8 @@ public class GameInfoService {
 		
 		return gameInfoMapper.deleteGame(gameId);
 	}
+	
+	public List<String> 카테고리이름검색(int gameId){
+		return gameInfoMapper.selectCategoryNameByCategoryId(gameId);
+	}
 }

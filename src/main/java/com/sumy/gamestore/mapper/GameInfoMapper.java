@@ -59,6 +59,16 @@ public interface GameInfoMapper {
 	@Delete("delete from game_Info where game_id = #{gameId}")
 	public int deleteGame(int gameId);
 	
+	
+	@Select("select category_name"
+			+ " from category_list"
+			+ " where"
+			+ " category_id = (select game_category_id1 from game_info where game_id = #{gameId} )"
+			+ " or category_id = (select game_category_id2 from game_info where game_id = #{gameId} )"
+			+ " or category_id = (select game_category_id3 from game_info where game_id = #{gameId} )"
+			+ " or category_id = (select game_category_id4 from game_info where game_id = #{gameId} )")
+	public List<String> selectCategoryNameByCategoryId(int gameId);
+	
 	// ================================================
 	
 	//@Select("select count(*) from game_info")

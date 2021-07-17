@@ -209,8 +209,20 @@
 								<span>개발사:</span> <span class="float-right g-color-black">${gameInfo.gameDev }</span>
 							</li>
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
-								<span>태그:</span> <span class="float-right g-color-black">폭력,
-									어드벤쳐, 슈팅</span>
+								<span>태그: </span>
+								<c:set var="comma" value=", "/>
+								<span class="float-right g-color-black">
+								<c:forEach items="${gameCategoryList }" var="gameCategory" varStatus="status">
+									<c:choose>
+										<c:when test="${status.first }">
+											${gameCategory }
+										</c:when>
+										<c:otherwise>
+											, ${gameCategory }
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								</span>
 							</li>
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
 								<span>출시일:</span> <span class="float-right g-color-black">
