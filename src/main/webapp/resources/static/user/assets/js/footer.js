@@ -67,11 +67,31 @@ $(document).on('ready', function() {
 	$("#questionImgInput").change(function() {
 		console.log('버튼이벤트 감지'+this);
 		readURL2(this);
+		var form = $('form[name=questionForm]')[0];
+		var formData = new FormData(form);
+		console.log("파일 업로드 시작");
+		formData.append('file', $('#questionImgInput')[0].files[0]);
+		console.log($('#questionImgInput'));
+		$.ajax({
+			type: 'POST',
+			url: '/user/questionImgAdd',
+			enctype: "multipart/form-data",
+			processData: false,
+			contentType: false,
+			data: formData,
+		}).done(function(result) {
+			console.log("파일 저장 위치"+result);
+			$('form[name=questionForm] input[name=questionImage1]').val(result);
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
+		console.log($('input[name=questionImage1]').val());
 	});
 
-
+	console.log($("form[name=questionForm] input[name=userId]").val());
 	//문의하기 버튼
 	$('#questionForSumyBtn').on('click', function() {
+		
 		if ($('#questionForSumyModalTitle').val() == "") {
 			alert('문의할 내용의 제목을 입력해주세요.');
 			return false;
@@ -86,7 +106,7 @@ $(document).on('ready', function() {
 			return false;
 		}
 		
-		var queryString = $("form[name=questionModal]").serialize();
+		var queryString = $("form[name=questionForm]").serialize();
 		console.log("쿼리스트링" + queryString);
 		$.ajax({
 			type: 'post',
@@ -101,6 +121,11 @@ $(document).on('ready', function() {
 			}
 		});
 		alert('문의하기를 완료하였습니다.');
+		$('#questionForSumyModalTitle').val("");
+		$('#questionForSumyModalContents').val("");
+		$('#questionImgInput').val("");
+		$('#questionImg').attr('src', "/resources/static/assets/img-temp/500x320/img1.png");
+		$("#questionForSumyModal").modal('hide');
 	});
 	
 	//프로필 사진 변경 버튼

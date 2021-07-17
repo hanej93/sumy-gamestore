@@ -153,8 +153,10 @@
 			</div>
 			<div class="modal-body">
 				<form name="questionForm">
-					<input type="text" name="userId"
+					<input type="number" name="userId"
 						value="${principal.user.userId}" style="display: none;">
+					<input type="text" name="questionImage1"
+						value="" style="display: none;">
 					<label class="g-mb-10">문의 제목</label>
 					<div class="g-mb-10">
 						<input id="questionForSumyModalTitle" name="questionTitle"
@@ -174,8 +176,7 @@
 							<!-- Plain File Input -->
 							<div class="form-group mb-0">
 								<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-									<input id="questionImgInput" name="questionImage1" class="questionFileInput"
-									name="file-attachment" type="file"> <i
+									<input id="questionImgInput" class="questionFileInput" type="file"> <i
 									class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
 									<span class="js-value">이미지 첨부하기</span>
 								</label>
