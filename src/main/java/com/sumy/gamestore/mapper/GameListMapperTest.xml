@@ -41,8 +41,14 @@
 			<if test="keyword != null and keyword != '' ">
 				AND game_title like CONCAT('%', #{keyword}, '%')
 			</if>
+			
+			<if test='discountFilter == "y" '>
+				AND game_discount_rate > 0
+			</if>
+			
 			<if test="categoryListFilter != null and categoryListFilter != '' ">
-				AND game_category_id1 in
+				AND (
+				game_category_id1 in
 				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
@@ -58,6 +64,7 @@
 				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
+				)
 			</if>
 			
 			<if test="lowPriceFilter != null and lowPriceFilter != '' and lowPriceFilter != '0'">
@@ -115,8 +122,14 @@
 			<if test="keyword != null and keyword != '' ">
 				AND game_title like CONCAT('%', #{keyword}, '%')
 			</if>
+			
+			<if test='discountFilter == "y" '>
+				AND game_discount_rate > 0
+			</if>
+			
 			<if test="categoryListFilter != null and categoryListFilter != '' ">
-				AND game_category_id1 in
+				AND( 
+				game_category_id1 in
 				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
@@ -132,6 +145,7 @@
 				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
+				)
 			</if>
 			
 			<if test="lowPriceFilter != null and lowPriceFilter != '' and lowPriceFilter != '0'">

@@ -296,10 +296,16 @@
 						<!-- Pagination -->
 						<nav class="g-mb-100" aria-label="Page Navigation">
 							<ul class="list-inline mb-0">
+								
 								<c:if test="${paging.startPage != 1 }">
 									<li class="list-inline-item"><a
 										class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-mr-15"
-										href="/catalogue?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}" aria-label="Next"> <span aria-hidden="true">
+										href="/catalogue?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}
+										&orderOpt=${paging.orderOpt}&lowPriceFilter=${paging.lowPriceFilter}&highPriceFilter=${paging.highPriceFilter}&starFilter=${paging.starFilter}&discountFilter=${paging.discountFilter}
+										<c:forEach items="${paging.categoryListFilter }" var="categoryFilter">
+											&categoryListFilter=${categoryFilter }
+										</c:forEach>
+											" aria-label="Next"> <span aria-hidden="true">
 												<i class="fa fa-angle-left"></i>
 										</span> <span class="sr-only">Before</span>
 									</a></li>
@@ -309,12 +315,22 @@
 										<c:when test="${p == paging.nowPage }">
 											<li class="list-inline-item hidden-down"><a
 												class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded-circle g-pa-5"
-												href="/catalogue?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+												href="/catalogue?nowPage=${p}&cntPerPage=${paging.cntPerPage}
+												&orderOpt=${paging.orderOpt}&lowPriceFilter=${paging.lowPriceFilter}&highPriceFilter=${paging.highPriceFilter}&starFilter=${paging.starFilter}&discountFilter=${paging.discountFilter}
+												<c:forEach items="${paging.categoryListFilter }" var="categoryFilter">
+													&categoryListFilter=${categoryFilter }
+												</c:forEach>
+												">${p }</a></li>
 										</c:when>
 										<c:when test="${p != paging.nowPage }">
 											<li class="list-inline-item hidden-down"><a
 												class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
-												href="/catalogue?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p }</a></li>
+												href="/catalogue?nowPage=${p}&cntPerPage=${paging.cntPerPage}
+												&orderOpt=${paging.orderOpt}&lowPriceFilter=${paging.lowPriceFilter}&highPriceFilter=${paging.highPriceFilter}&starFilter=${paging.starFilter}&discountFilter=${paging.discountFilter}
+												<c:forEach items="${paging.categoryListFilter }" var="categoryFilter">
+													&categoryListFilter=${categoryFilter }
+												</c:forEach>
+												">${p }</a></li>
 										</c:when>
 									</c:choose>
 								</c:forEach>	
@@ -322,7 +338,12 @@
 								<c:if test="${paging.endPage != paging.lastPage}">					
 								<li class="list-inline-item"><a
 									class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-ml-15"
-									href="/catalogue?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}" aria-label="Next"> <span aria-hidden="true">
+									href="/catalogue?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}
+									&orderOpt=${paging.orderOpt}&lowPriceFilter=${paging.lowPriceFilter}&highPriceFilter=${paging.highPriceFilter}&starFilter=${paging.starFilter}&discountFilter=${paging.discountFilter}
+									<c:forEach items="${paging.categoryListFilter }" var="categoryFilter">
+										&categoryListFilter=${categoryFilter }
+									</c:forEach>
+									" aria-label="Next"> <span aria-hidden="true">
 											<i class="fa fa-angle-right"></i>
 									</span> <span class="sr-only">Next</span>
 								</a></li>
@@ -347,12 +368,13 @@
 							<ul class="list-unstyled">
 								<li class="my-3"><a
 									class="d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-									href="#">전체상품 <span class="float-right g-font-size-12">${countGameListAll }</span></a>
+									href="/catalogue">전체상품 <span class="float-right g-font-size-12">${countGameListAll }</span></a>
 								</li>
 								<li class="my-3"><a
 									class="d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-									href="#">할인상품 <span class="float-right g-font-size-12">${countGameListDiscount }</span></a>
+									href="/catalogue?discountFilter=y">할인상품 <span class="float-right g-font-size-12">${countGameListDiscount }</span></a>
 								</li>
+								
 							</ul>
 						</div>
 						<!-- End Categories -->
@@ -372,11 +394,11 @@
 									data-result-container="rangeSliderAmount3" data-range="true"
 									data-default="
 									<c:choose>
-										<c:when test="${not empty paging.lowPriceFilter  }">${paging.lowPriceFilter }</c:when>
+										<c:when test="${paging.lowPriceFilter ne 0  }">${paging.lowPriceFilter }</c:when>
 										<c:otherwise>0</c:otherwise>
 									</c:choose>,
 									<c:choose>
-										<c:when test="${not empty paging.highPriceFilter  }">${paging.highPriceFilter }</c:when>
+										<c:when test="${paging.highPriceFilter ne 0  }">${paging.highPriceFilter }</c:when>
 										<c:otherwise>60000</c:otherwise>
 									</c:choose>
 									" data-min="0" data-max="60000"
@@ -556,6 +578,11 @@
     });
 
 
+  </script>
+  
+  <script>
+	var discountFilter = "${paging.discountFilter}";
+	console.log(discountFilter);
   </script>
 </body>
 </html>

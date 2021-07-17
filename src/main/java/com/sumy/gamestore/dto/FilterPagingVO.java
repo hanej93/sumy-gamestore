@@ -11,6 +11,7 @@ public class FilterPagingVO{
 	private int lowPriceFilter;
 	private int highPriceFilter;
 	private int starFilter;
+	private String discountFilter = "";
 	private List<Integer> categoryListFilter;
 	
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, 마지막페이지, SQL쿼리에 쓸 start, end
@@ -26,7 +27,7 @@ public class FilterPagingVO{
 	
 	
 	public FilterPagingVO(int total, int nowPage, int cntPerPage, String keyword, String orderOpt
-			, int lowPriceFilter, int highPriceFilter, int starFilter, List<Integer> categoryListFilter) {
+			, int lowPriceFilter, int highPriceFilter, int starFilter, String discountFilter, List<Integer> categoryListFilter) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
 		setTotal(total);
@@ -38,6 +39,7 @@ public class FilterPagingVO{
 		setLowPriceFilter(lowPriceFilter);
 		setHighPriceFilter(highPriceFilter);
 		setStarFilter(starFilter);
+		setDiscountFilter(discountFilter);
 		setCategoryListFilter(categoryListFilter);
 	}
 	
