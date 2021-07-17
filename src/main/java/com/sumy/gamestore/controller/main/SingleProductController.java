@@ -89,6 +89,14 @@ public class SingleProductController {
 		System.out.println(gameId);
 		if(authentication != null) {
 			PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
+			int userId = principal.getUser().getUserId();
+			int exists =  wishListService.위시리스트유무(userId, gameId);
+						
+			if(exists > 0 ) {
+				model.addAttribute("existsWishlist", exists);
+			} else {
+				model.addAttribute("existsWishlist", null);
+			}
 			
 			System.out.println("쿼리문 결과: " + reviewListService.유저아이디개수_이메일(principal.getUser().getUserId(), gameId));
 			// 로그인한 아이디로 리뷰조회 갯수 -> 0이면 리뷰 작성 가능!

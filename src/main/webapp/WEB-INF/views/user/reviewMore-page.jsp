@@ -120,12 +120,24 @@
 							</button>
 						</div>
 						<div class="col g-px-5 g-mb-10">
-							<button
-								class="btn btn-block u-btn-outline-black g-brd-gray-dark-v5 g-brd-black--hover g-color-gray-dark-v4 g-color-white--hover g-font-size-12 text-uppercase g-py-15 g-px-25"
-								type="button" onclick="location.href='page-wishlist-1.html'">
-								위시리스트 담기 <i
-									class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
-							</button>
+							<c:choose>
+									<c:when test="${empty existsWishlist }">
+										<button id="wishlist-btn" gameId="${gameInfo.gameId }"
+											class="btn btn-block btn-outline-secondary g-font-size-12 text-uppercase g-py-15 g-px-25"
+											>
+											위시리스트 담기 <i
+												class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
+										</button>
+									</c:when>
+									<c:otherwise>
+										<button id="wishlist-btn" gameId="${gameInfo.gameId }"
+											class="btn btn-block btn-secondary g-font-size-12 text-uppercase g-py-15 g-px-25"
+											>
+											위시리스트 있음 <i
+												class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
+										</button>
+									</c:otherwise>
+								</c:choose>
 						</div>
 					</div>
 					<!-- End Buttons -->

@@ -183,8 +183,27 @@ $(document).on('ready', function() {
 			console.log(error); 
 			alert(JSON.stringify(error));
 		});
+	});
+	
+	// 위시리스트 추가/삭제
+	$("#wishlist-btn").on("click", function(){
 		
+		let gameId = $(this).attr("gameId");
 		
-		/*$(this).parents().children('form[name=reviewInsertForm]').css('display', 'none');*/
+		$.ajax({
+			type:"POST",
+			url:"/user/wishlist",
+			data:JSON.stringify(gameId),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			if(resp == 1){
+				$("#wishlist-btn").toggleClass('btn-secondary');
+				$("#wishlist-btn").toggleClass('btn-outline-secondary');
+			}
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
 	});
 });
