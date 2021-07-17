@@ -35,23 +35,23 @@ public class TestController2 {
 	}
 
 	// Q&A화면
-	@GetMapping("page-help-1")
+	@GetMapping("qna")
 	public String test5() {
 
 		return "user/page-help-1";
 	}
 
 	// 뉴스 화면
-	@GetMapping("page-our-stores-1")
-	public String test10() {
-
-		return "user/page-our-stores-1";
-	}
-
-	// 뉴스 상세 화면
-	@GetMapping("page-our-stores-2")
-	public String test11() {
-
-		return "user/page-our-stores-2";
-	}
+//	@GetMapping("page-our-stores-1")
+//	public String test10() {
+//
+//		return "user/page-our-stores-1";
+//	}
+//
+//	// 뉴스 상세 화면
+//	@GetMapping("page-our-stores-2")
+//	public String test11() {
+//
+//		return "user/page-our-stores-2";
+//	}
 }

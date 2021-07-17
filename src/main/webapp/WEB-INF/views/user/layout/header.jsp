@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <html>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <head>
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">
@@ -15,7 +21,8 @@
 <!-- CSS Implementing Plugins -->
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/icon-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="/resources/static/assets/vendor/animate.css">
+<link rel="stylesheet"
+	href="/resources/static/assets/vendor/animate.css">
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
 
@@ -35,7 +42,7 @@
 				<div
 					class="row flex-column flex-sm-row justify-content-between align-items-center text-uppercase g-font-weight-100 g-color-white g-font-size-16 g-mx-0--lg">
 					<div class="col-auto">
-						<li class="list-inline-item g-mx-30"><a href="home-page-1">
+						<li class="list-inline-item g-mx-30"><a href="home-page">
 								<img src="/resources/static/user/assets/img/logo/logo-y.png"
 								alt="logo.png" height="60px">
 						</a></li>
@@ -44,10 +51,10 @@
 							href="catalogue-page"> 전체 </a></li>
 						<li class="list-inline-item g-mx-15"><a
 							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-							href="page-our-stores-1"> NEWS </a></li>
+							href="sumy/news/list"> NEWS </a></li>
 						<li class="list-inline-item g-mx-15"><a
 							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-							href="page-help-1"> FAQ </a></li>
+							href="qna"> FAQ </a></li>
 					</div>
 
 
@@ -119,8 +126,7 @@
 														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
 														Glasses</a>
 												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">1
-													x $400.00</small>
+												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
 											</div>
 										</div>
 
@@ -144,8 +150,7 @@
 														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
 														Glasses</a>
 												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">1
-													x $400.00</small>
+												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
 											</div>
 										</div>
 
@@ -169,8 +174,7 @@
 														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
 														Glasses</a>
 												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">1
-													x $400.00</small>
+												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
 											</div>
 										</div>
 
@@ -194,8 +198,7 @@
 														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
 														Glasses</a>
 												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">1
-													x $400.00</small>
+												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
 											</div>
 										</div>
 
@@ -203,23 +206,32 @@
 									</div>
 									<!-- End Product -->
 								</div>
-
-								<div class="g-brd-top g-brd-white-opacity-0_3 g-pa-15 g-pb-20">
-									<div
-										class="d-flex flex-row align-items-center justify-content-between g-font-size-18">
+								<c:if test="${principal != null}">
+									<div class="g-brd-top g-brd-white-opacity-0_3 g-pa-15 g-pb-20">
+										<!-- <a href="/user/wishlist"
+											class="btn u-btn-outline-primary rounded-0 g-width-120">위시리스트</a> -->
 										<a href="/user/wishlist"
-											class="btn u-btn-outline-primary rounded-0 g-width-120">위시리스트</a>
-										<a href="#" class="btn u-btn-primary rounded-0 g-width-120">Checkout</a>
+											class="btn btn-block u-btn-primary rounded-0 g-py-10">위시리스트
+											가기</a>
 									</div>
-								</div>
+								</c:if>
 							</div>
 						</div>
 						<!-- End Basket -->
 
-
-						<li class="list-inline-item g-mx-15"><a
-							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
-							href="page-login-1">Login</a></li>
+						<c:if test="${principal == null}">
+							<li class="list-inline-item g-mx-15"><a
+								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
+								href="/sumy/login">Login</a></li>
+						</c:if>
+						<c:if test="${principal != null}">
+							<li class="list-inline-item g-mx-15"><a
+								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
+								href="#">Logout</a></li>
+							<li class="list-inline-item g-mx-15"><a
+								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
+								href="/user/login-security">Mypage</a></li>
+						</c:if>
 					</div>
 				</div>
 			</div>
