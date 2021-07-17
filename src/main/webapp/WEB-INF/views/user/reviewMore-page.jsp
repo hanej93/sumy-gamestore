@@ -462,6 +462,7 @@
 
 	<!-- JS Customization -->
 	<script src="/resources/static/user/assets/js/reviewMore-page.js"></script>
+	<script src="/resources/static/user/assets/js/footer.js"></script>
 
 	<script>
     $(document).on('ready', function () {

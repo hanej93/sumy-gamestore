@@ -295,6 +295,7 @@
 
 	<!-- JS Customization -->
 	<script src="/resources/static/user/assets/js/page-wishlist-1.js"></script>
+	<script src="/resources/static/user/assets/js/footer.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>

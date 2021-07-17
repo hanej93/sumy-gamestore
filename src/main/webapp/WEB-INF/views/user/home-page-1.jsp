@@ -923,6 +923,9 @@
 	<script src="/resources/static/assets/js/components/hs.header.js"></script>
 	<script src="/resources/static/assets/js/components/hs.countdown.js"></script>
 	<script src="/resources/static/assets/js/components/hs.count-qty.js"></script>
+	
+	<!-- JS Customization -->
+	<script src="/resources/static/user/assets/js/footer.js"></script>
 
 
 	<!-- JS Plugins Init. -->

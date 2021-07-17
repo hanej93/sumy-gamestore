@@ -223,8 +223,8 @@
 	<script src="/resources/static/assets/js/components/hs.go-to.js"></script>
 
 	<!-- JS Customization -->
-	<script
-		src="/resources/static/user/assets/js/page-password-recovery-1.js"></script>
+	<script src="/resources/static/user/assets/js/page-password-recovery-1.js"></script>
+	<script src="/resources/static/user/assets/js/footer.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>
