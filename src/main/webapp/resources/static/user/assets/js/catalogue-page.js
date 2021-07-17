@@ -41,7 +41,6 @@ let catalogue = {
 		url = url + "&discountFilter=" + discountFilter;
 		
 		$('input[name=categoryListFilter]:checked').each(function(){
-			console.log($(this).val());
 			url = url + "&categoryListFilter=" + $(this).val();
 		});
 

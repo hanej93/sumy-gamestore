@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sumy.gamestore.dto.WishlistGameInfoDto;
 import com.sumy.gamestore.mapper.WishlistMapper;
+import com.sumy.gamestore.model.WishlistGame;
 
 @Service
 public class WishListService {
@@ -15,9 +16,12 @@ public class WishListService {
 	private WishlistMapper wishlistMapper;
 	
 	public List<WishlistGameInfoDto> selectWishListByUserId(int userId) {
-		System.out.println(userId);
 		return wishlistMapper.selectWishList(userId);
 		
+	}
+	
+	public int 위시리스트추가(WishlistGame wishlistGame) {
+		return wishlistMapper.insertWishlist(wishlistGame);
 	}
 	
 }
