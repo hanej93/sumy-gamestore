@@ -1,17 +1,4 @@
 
-/*** 
- **
- *
- 
-	page-single-product-1.html(게임 상세 화면) custom script
-	작성자 : 김명주
-	작성일 : 2021-07-01
-
-***
-**
-*/
-
-
 $(document).on('ready', function() {
 	//리뷰 수정하기 : p, textarea toggle
 	$('.reviewUpdateBtn').on('click', function() {

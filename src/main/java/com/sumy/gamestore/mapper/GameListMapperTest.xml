@@ -43,19 +43,19 @@
 			</if>
 			<if test="categoryListFilter != null and categoryListFilter != '' ">
 				AND game_category_id1 in
-				<foreach item="item" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
 				OR game_category_id2 in
-				<foreach item="item" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
 				OR game_category_id3 in
-				<foreach item="item" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
 				OR game_category_id4 in
-				<foreach item="item" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
 			    	 #{category}
 				</foreach>
 			</if>
