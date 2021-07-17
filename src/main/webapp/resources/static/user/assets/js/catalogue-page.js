@@ -1,31 +1,48 @@
+let catalogue = {
 
-/*** 
- **
- *
- 
-	catalogue-page.html(카탈로그 화면) custom script
-	제목 : 필터인덱스2
-	작성자 : 한의진
-	작성일 : 2021-06-25
-	기능: 필터 초기화 이벤트
-	설명:
-	1. 초기화 버튼을 눌렀을 때 별 4개로 초기화
-	2. 가격 20000 - 40000으로 초기화
-
-***
-**
-*/
-
-
-
-$(document).on('ready', function() {
-	$("#catalogueFilterResetBtn").click(function() {
+	init: function(){	
+		$("#catalogueFilterResetBtn").on('click',()=> {
+			this.clearFilter();
+		});
+		
+		$("catalogueFilterApplyBtn").on('click',()=> {
+			
+		});
+		
+		$("#orderOpt").on('change',()=>{
+			this.search();
+		});
+	},
+	
+	clearFilter:function(){
 		$("h3:contains('별점')").next().children().addClass('g-color-primary click');
 		$("h3:contains('별점')").next().children().last().removeClass('g-color-primary click');
 		$.HSCore.components.HSSlider.init('#rangeSlider1');
-	});
+	},
+	
+	search: function(){
+				
+		var url = "/catalogue";
 
-});
+		url = url + "?nowPage=" + 1;
+
+		url = url + "&orderOpt=" + $('#orderOpt').val();
+		
+		/*url = url + "&lowPriceFilter=" + $('#lowPriceFilter').val();
+		
+		url = url + "&highPriceFilter=" + $('#highPriceFilter').val();
+		
+		url = url + "&starFilter=" + $('#starFilter').val();
+		
+		url = url + "&categoryListFilter=" + $('#categoryListFilter').val();*/
+
+		location.href = url;
+	
+	}
+
+}
+
+catalogue.init();
 
 
 

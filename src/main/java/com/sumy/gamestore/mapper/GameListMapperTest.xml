@@ -71,7 +71,7 @@
 		
 		group by g.game_id
 		
-		<if test="starFilter != null and starFilter != '' ">
+		<if test="starFilter != null and starFilter != '' and starFilter != '0'">
 			having round(avg(review_star_rating)) = #{starFilter}
 		</if>
 		
@@ -85,7 +85,7 @@
 		order by AVG(review_star_rating) desc
 		</if>
 		<if test="orderOpt == 'dictionary' ">
-		order by game_title desc
+		order by game_title
 		</if>
 		<if test="orderOpt == 'priceAsc' ">
 		order by (game_price * (100 - game_discount_rate) / 100)

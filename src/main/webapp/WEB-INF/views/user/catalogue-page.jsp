@@ -93,13 +93,15 @@
 
 								<!-- Secondary Button -->
 								<div class="d-inline-block ml-2">
-									<select class="form-control rounded g-py-12">
-										<option value="hit">인기순</option>
-										<option value="star">별점순</option>
-										<option value="dictionary">가나다순</option>
-										<option value="priceAsc">가격오름차순</option>
-										<option value="priceDesc">가격내림차순</option>
-										<option value="discount">할인율높은순</option>
+									<select id="orderOpt" 
+									class="form-control rounded g-py-12">
+										<option <c:if test="${paging.orderOpt == ''}">selected</c:if> value="">최신등록순</option>
+										<option <c:if test="${paging.orderOpt == 'hit'}">selected</c:if> value="hit">인기순</option>
+										<option <c:if test="${paging.orderOpt == 'star'}">selected</c:if> value="star">별점순</option>
+										<option <c:if test="${paging.orderOpt == 'dictionary'}">selected</c:if> value="dictionary">가나다순</option>
+										<option <c:if test="${paging.orderOpt == 'priceAsc'}">selected</c:if> value="priceAsc">가격오름차순</option>
+										<option <c:if test="${paging.orderOpt == 'priceDesc'}">selected</c:if> value="priceDesc">가격내림차순</option>
+										<option <c:if test="${paging.orderOpt == 'discount'}">selected</c:if> value="discount">할인율높은순</option>
 									</select>
 								</div>
 								<!-- End Secondary Button -->

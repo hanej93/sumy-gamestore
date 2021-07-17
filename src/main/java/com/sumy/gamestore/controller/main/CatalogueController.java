@@ -1,5 +1,7 @@
 package com.sumy.gamestore.controller.main;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,9 @@ public class CatalogueController {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "9";
 		}
-		vo = new FilterPagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword());
+		vo = new FilterPagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), vo.getKeyword(),
+				vo.getOrderOpt(), vo.getLowPriceFilter(), vo.getHighPriceFilter(), vo.getStarFilter(), vo.getCategoryListFilter());
+		
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", gameInfoService.한페이지게임리스트(vo));
 		
