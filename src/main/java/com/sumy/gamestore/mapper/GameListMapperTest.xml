@@ -101,16 +101,54 @@
  	</select>
  	
  	<select id="countGameList" parameterType="com.sumy.gamestore.dto.FilterPagingVO" resultType="int">
- 		select count(*) from game_info 
+ 		select count(*)
+ 		from(
+ 		select count(*)
+ 		from game_info g
+ 		
+ 		join review_list r
+ 		on g.game_id = r.game_id
+ 		
+ 		
  		<trim prefix="WHERE" prefixOverrides="AND|OR">
 
-			<if test="	keyword != null and keyword != '' ">
-			
+			<if test="keyword != null and keyword != '' ">
 				AND game_title like CONCAT('%', #{keyword}, '%')
-
 			</if>
-
+			<if test="categoryListFilter != null and categoryListFilter != '' ">
+				AND game_category_id1 in
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+			    	 #{category}
+				</foreach>
+				OR game_category_id2 in
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+			    	 #{category}
+				</foreach>
+				OR game_category_id3 in
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+			    	 #{category}
+				</foreach>
+				OR game_category_id4 in
+				<foreach item="category" index="index" collection="categoryListFilter" open="(" separator="," close=")">
+			    	 #{category}
+				</foreach>
+			</if>
+			
+			<if test="lowPriceFilter != null and lowPriceFilter != '' and lowPriceFilter != '0'">
+				AND game_price &gt;= #{lowPriceFilter}
+			</if>
+			<if test="highPriceFilter != null and highPriceFilter != '' and highPriceFilter != '60000'">
+				AND game_price <![CDATA[<=]]> #{highPriceFilter}
+			</if>
+			
 		</trim>
+		
+		group by g.game_id
+		
+		<if test="starFilter != null and starFilter != '' and starFilter != '0'">
+			having round(avg(review_star_rating)) = #{starFilter}
+		</if>
+		) as tb
 
  	</select>
  	
