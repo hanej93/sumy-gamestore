@@ -370,8 +370,19 @@
 								</span>
 								<div id="rangeSlider1" class="u-slider-v1-3"
 									data-result-container="rangeSliderAmount3" data-range="true"
-									data-default="0, 60000" data-min="0" data-max="60000"
+									data-default="
+									<c:choose>
+										<c:when test="${not empty paging.lowPriceFilter  }">${paging.lowPriceFilter }</c:when>
+										<c:otherwise>0</c:otherwise>
+									</c:choose>,
+									<c:choose>
+										<c:when test="${not empty paging.highPriceFilter  }">${paging.highPriceFilter }</c:when>
+										<c:otherwise>60000</c:otherwise>
+									</c:choose>
+									" data-min="0" data-max="60000"
 									data-step="5000"></div>
+									
+									
 							</div>
 						</div>
 						<!-- End Pricing -->
@@ -386,15 +397,14 @@
 							<ul id="starFilter"
 								class="js-rating u-rating-v1 g-line-height-1 g-font-size-20 g-color-gray-light-v3 mb-0"
 								data-hover-classes="g-color-primary">
-								<li class=""><i class="fa fa-star"></i>
-								</li>
-								<li class=""><i class="fa fa-star"></i>
-								</li>
-								<li class=""><i class="fa fa-star"></i>
-								</li>
-								<li class=""><i class="fa fa-star"></i>
-								</li>
-								<li><i class="fa fa-star"></i></li>
+								<c:forEach begin="1" end="${paging.starFilter }" step="1">
+									<li class="g-color-primary g-line-height-1_4 click"><i
+										class="fa fa-star"></i></li>
+								</c:forEach>
+								<c:forEach begin="1" end="${5 - (paging.starFilter) }" step="1">
+									<li class="g-line-height-1_4"><i class="fa fa-star"></i>
+									</li>
+								</c:forEach>
 							</ul>
 						</div>
 						<!-- End Rating -->
@@ -428,7 +438,11 @@
 										<c:forEach items="${categoryListGroupById }" var="categoryCount">
 											<li class="my-2"><label
 											class="form-check-inline u-check d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover g-pl-30">
-												<input value="${categoryCount.categoryId }" name="categoryListFilter"
+												<input 
+												<c:forEach items="${paging.categoryListFilter}" var="category">
+													<c:if test="${category eq categoryCount.categoryId}">checked</c:if>
+												</c:forEach>
+												value="${categoryCount.categoryId }" name="categoryListFilter"
 												class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0"
 												type="checkbox"> <span
 												class="d-block u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
