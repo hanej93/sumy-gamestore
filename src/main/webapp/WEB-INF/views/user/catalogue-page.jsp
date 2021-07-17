@@ -94,11 +94,12 @@
 								<!-- Secondary Button -->
 								<div class="d-inline-block ml-2">
 									<select class="form-control rounded g-py-12">
-										<option>인기순</option>
-										<option>가나다순</option>
-										<option>가격오름차순</option>
-										<option>가격내림차순</option>
-										<option>할인율높은순</option>
+										<option value="hit">인기순</option>
+										<option value="star">별점순</option>
+										<option value="dictionary">가나다순</option>
+										<option value="priceAsc">가격오름차순</option>
+										<option value="priceDesc">가격내림차순</option>
+										<option value="discount">할인율높은순</option>
 									</select>
 								</div>
 								<!-- End Secondary Button -->

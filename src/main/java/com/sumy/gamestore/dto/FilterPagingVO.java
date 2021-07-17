@@ -8,8 +8,8 @@ import lombok.Data;
 @Data
 public class FilterPagingVO{
 	
-	private int lowPirceFilter;
-	private int highPirceFilter;
+	private int lowPriceFilter;
+	private int highPriceFilter;
 	private int starFilter;
 	private List<Integer> categoryListFilter;
 	
@@ -19,12 +19,13 @@ public class FilterPagingVO{
 	
 	// keyword
 	private String keyword = "";
+	private String orderOpt = "";
 	
 	public FilterPagingVO() {
 	}
 	
 	
-	public FilterPagingVO(int total, int nowPage, int cntPerPage, String keyword
+	public FilterPagingVO(int total, int nowPage, int cntPerPage, String keyword, String orderOpt
 			, int lowPriceFilter, int highPriceFilter, int starFilter, List<Integer> categoryListFilter) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
@@ -33,8 +34,9 @@ public class FilterPagingVO{
 		calcStartEndPage(getNowPage(), cntPage);
 		calcStartEnd(getNowPage(), getCntPerPage());
 		setKeyword(keyword);
-		setLowPirceFilter(lowPriceFilter);
-		setHighPirceFilter(highPriceFilter);
+		setOrderOpt(orderOpt);
+		setLowPriceFilter(lowPriceFilter);
+		setHighPriceFilter(highPriceFilter);
 		setStarFilter(starFilter);
 		setCategoryListFilter(categoryListFilter);
 	}
