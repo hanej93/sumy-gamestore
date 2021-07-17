@@ -71,15 +71,6 @@ main{
 				type="video/mp4">
 			<strong>Your browser does not support the video tag.</strong>
 		</video>
-		<!-- Header -->
-		<header id="js-header"
-			class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance"
-			data-header-fix-moment="300">
-			<!-- Top Bar -->
-			<jsp:include page="layout/header.jsp"/>
-			<!-- End Top Bar -->
-		</header>
-		<!-- End Header -->
 
 		<!-- Login -->
 		<section class="container g-pt-20">

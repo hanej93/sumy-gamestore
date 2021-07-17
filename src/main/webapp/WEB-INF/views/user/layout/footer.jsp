@@ -10,7 +10,7 @@
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
-<footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
+<footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20" style="min-height: 200px;">
 	<div class="g-ml-30">
 		<div>
 			<div class="col-md-8 text-center text-md-left g-mb-10 g-mb-0--md">
@@ -23,11 +23,13 @@
 							class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
 							id="aboutSumyBtn" type='button' data-toggle="modal"
 							data-target="#aboutSumyModal">회사소개</a></li>
-						<li class="list-inline-item g-mx-30"><a
-							class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
-							id="aboutSumyBtn" type='button' data-toggle="modal"
-						data-target="#questionForSumyModal" data-dismiss="modal"
-						aria-label="Close">문의하기</a></li>
+						<c:if test="${principal != null}">
+							<li class="list-inline-item g-mx-30"><a
+								class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
+								id="aboutSumyBtn" type='button' data-toggle="modal"
+								data-target="#questionForSumyModal" data-dismiss="modal"
+								aria-label="Close">문의하기</a></li>
+						</c:if>
 						<!-- <li class="list-inline-item g-mx-30"><a
 							class="g-color-white-opacity-0_8 g-color-white--hover g-text-underline--none--hover"
 							href="#">이용약관</a></li>
@@ -41,7 +43,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-4 align-self-center">
+			<!-- <div class="col-md-4 align-self-center">
 				<ul class="list-inline text-center text-md-right mb-0">
 					<li class="list-inline-item g-mx-10" data-toggle="tooltip"
 						data-placement="top" title="Facebook"><a href="#"
@@ -74,7 +76,7 @@
 							class="fa fa-dribbble"></i>
 					</a></li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </footer>
@@ -127,18 +129,16 @@
 				</div>
 
 			</div>
-			<div class="modal-footer justify-content-center">
-				<div class="row g-mx-minus-5 g-mb-20">
-					<button class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
-						type="button" data-toggle="modal"
-						data-target="#questionForSumyModal" data-dismiss="modal"
-						aria-label="Close">문의하기</button>
-					<button
-						class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-						data-dismiss="modal" aria-label="Close" type="button">닫기
-					</button>
+			<c:if test="${principal != null}">
+				<div class="modal-footer justify-content-center">
+					<div class="row g-mx-minus-5 g-mb-20">
+						<button class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
+							type="button" data-toggle="modal"
+							data-target="#questionForSumyModal" data-dismiss="modal"
+							aria-label="Close">문의하기</button>
+					</div>
 				</div>
-			</div>
+			</c:if>
 		</div>
 	</div>
 </div>

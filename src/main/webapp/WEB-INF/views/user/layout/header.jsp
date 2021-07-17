@@ -55,6 +55,11 @@
 						<li class="list-inline-item g-mx-15"><a
 							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
 							href="qna"> FAQ </a></li>
+						<c:if test="${principal != null}"><!-- 관리자 조건 추가 -->
+							<li class="list-inline-item g-mx-15"><a
+							class="g-color-white g-color-primary--hover g-text-underline--none--hover"
+							href="qna"> 관리자 화면 </a></li>
+						</c:if>
 					</div>
 
 
@@ -91,122 +96,123 @@
 							<!-- End Search Form -->
 						</div>
 						<!-- End Search -->
-						<!-- Basket -->
-						<div class="u-basket d-inline-block g-valign-middle g-pt-2">
-							<a href="#" id="basket-bar-invoker"
-								class="u-icon-v1 g-color-white g-text-underline--none--hover g-width-20 g-height-20 g-mr-40"
-								aria-controls="basket-bar" aria-haspopup="true"
-								aria-expanded="false" data-dropdown-event="hover"
-								data-dropdown-target="#basket-bar"
-								data-dropdown-type="css-animation" data-dropdown-duration="300"
-								data-dropdown-hide-on-scroll="false"
-								data-dropdown-animation-in="fadeIn"
-								data-dropdown-animation-out="fadeOut"> <span
-								class="u-badge-v1--sm g-color-white g-bg-primary g-rounded-50x">3</span>
-								<i class="fa fa-shopping-cart"></i>
-							</a>
+						<c:if test="${principal != null}">
+							<!-- Basket -->
+							<div class="u-basket d-inline-block g-valign-middle g-pt-2">
+								<a href="#" id="basket-bar-invoker"
+									class="u-icon-v1 g-color-white g-text-underline--none--hover g-width-20 g-height-20 g-mr-40"
+									aria-controls="basket-bar" aria-haspopup="true"
+									aria-expanded="false" data-dropdown-event="hover"
+									data-dropdown-target="#basket-bar"
+									data-dropdown-type="css-animation" data-dropdown-duration="300"
+									data-dropdown-hide-on-scroll="false"
+									data-dropdown-animation-in="fadeIn"
+									data-dropdown-animation-out="fadeOut"> <span
+									class="u-badge-v1--sm g-color-white g-bg-primary g-rounded-50x">3</span>
+									<i class="fa fa-shopping-cart"></i>
+								</a>
 
-							<div id="basket-bar"
-								class="u-basket__bar u-dropdown--css-animation u-dropdown--hidden g-text-transform-none g-bg-black g-brd-top g-brd-2 g-brd-primary g-color-main g-mt-13"
-								aria-labelledby="basket-bar-invoker">
-								<div class="js-scrollbar g-height-280">
-									<!-- Product -->
-									<div class="u-basket__product g-brd-white-opacity-0_3">
-										<div class="row align-items-center no-gutters">
-											<div class="col-4 g-pr-20">
-												<a href="#" class="u-basket__product-img"> <img
-													src="/resources/static/user/assets/img-temp/150x150/img1.jpg"
-													alt="Image Description">
-												</a>
+								<div id="basket-bar"
+									class="u-basket__bar u-dropdown--css-animation u-dropdown--hidden g-text-transform-none g-bg-black g-brd-top g-brd-2 g-brd-primary g-color-main g-mt-13"
+									aria-labelledby="basket-bar-invoker">
+									<div class="js-scrollbar g-height-280">
+										<!-- Product -->
+										<div class="u-basket__product g-brd-white-opacity-0_3">
+											<div class="row align-items-center no-gutters">
+												<div class="col-4 g-pr-20">
+													<a href="#" class="u-basket__product-img"> <img
+														src="/resources/static/user/assets/img-temp/150x150/img1.jpg"
+														alt="Image Description">
+													</a>
+												</div>
+
+												<div class="col-8">
+													<h6 class="g-font-weight-600 g-mb-0">
+														<a href="#"
+															class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
+															Glasses</a>
+													</h6>
+													<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
+												</div>
 											</div>
 
-											<div class="col-8">
-												<h6 class="g-font-weight-600 g-mb-0">
-													<a href="#"
-														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
-														Glasses</a>
-												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
-											</div>
+											<button class="u-basket__product-remove" type="button">&times;</button>
 										</div>
+										<!-- End Product -->
 
-										<button class="u-basket__product-remove" type="button">&times;</button>
-									</div>
-									<!-- End Product -->
+										<!-- Product -->
+										<div class="u-basket__product g-brd-white-opacity-0_3">
+											<div class="row align-items-center no-gutters">
+												<div class="col-4 g-pr-20">
+													<a href="#" class="u-basket__product-img"> <img
+														src="/resources/static/user/assets/img-temp/150x150/img2.jpg"
+														alt="Image Description">
+													</a>
+												</div>
 
-									<!-- Product -->
-									<div class="u-basket__product g-brd-white-opacity-0_3">
-										<div class="row align-items-center no-gutters">
-											<div class="col-4 g-pr-20">
-												<a href="#" class="u-basket__product-img"> <img
-													src="/resources/static/user/assets/img-temp/150x150/img2.jpg"
-													alt="Image Description">
-												</a>
+												<div class="col-8">
+													<h6 class="g-font-weight-600 g-mb-0">
+														<a href="#"
+															class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
+															Glasses</a>
+													</h6>
+													<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
+												</div>
 											</div>
 
-											<div class="col-8">
-												<h6 class="g-font-weight-600 g-mb-0">
-													<a href="#"
-														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
-														Glasses</a>
-												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
-											</div>
+											<button class="u-basket__product-remove" type="button">&times;</button>
 										</div>
+										<!-- End Product -->
 
-										<button class="u-basket__product-remove" type="button">&times;</button>
-									</div>
-									<!-- End Product -->
+										<!-- Product -->
+										<div class="u-basket__product g-brd-white-opacity-0_3">
+											<div class="row align-items-center no-gutters">
+												<div class="col-4 g-pr-20">
+													<a href="#" class="u-basket__product-img"> <img
+														src="/resources/static/user/assets/img-temp/150x150/img3.jpg"
+														alt="Image Description">
+													</a>
+												</div>
 
-									<!-- Product -->
-									<div class="u-basket__product g-brd-white-opacity-0_3">
-										<div class="row align-items-center no-gutters">
-											<div class="col-4 g-pr-20">
-												<a href="#" class="u-basket__product-img"> <img
-													src="/resources/static/user/assets/img-temp/150x150/img3.jpg"
-													alt="Image Description">
-												</a>
+												<div class="col-8">
+													<h6 class="g-font-weight-600 g-mb-0">
+														<a href="#"
+															class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
+															Glasses</a>
+													</h6>
+													<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
+												</div>
 											</div>
 
-											<div class="col-8">
-												<h6 class="g-font-weight-600 g-mb-0">
-													<a href="#"
-														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
-														Glasses</a>
-												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
-											</div>
+											<button class="u-basket__product-remove" type="button">&times;</button>
 										</div>
+										<!-- End Product -->
 
-										<button class="u-basket__product-remove" type="button">&times;</button>
-									</div>
-									<!-- End Product -->
+										<!-- Product -->
+										<div class="u-basket__product g-brd-white-opacity-0_3">
+											<div class="row align-items-center no-gutters">
+												<div class="col-4 g-pr-20">
+													<a href="#" class="u-basket__product-img"> <img
+														src="/resources/static/user/assets/img-temp/150x150/img4.jpg"
+														alt="Image Description">
+													</a>
+												</div>
 
-									<!-- Product -->
-									<div class="u-basket__product g-brd-white-opacity-0_3">
-										<div class="row align-items-center no-gutters">
-											<div class="col-4 g-pr-20">
-												<a href="#" class="u-basket__product-img"> <img
-													src="/resources/static/user/assets/img-temp/150x150/img4.jpg"
-													alt="Image Description">
-												</a>
+												<div class="col-8">
+													<h6 class="g-font-weight-600 g-mb-0">
+														<a href="#"
+															class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
+															Glasses</a>
+													</h6>
+													<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
+												</div>
 											</div>
 
-											<div class="col-8">
-												<h6 class="g-font-weight-600 g-mb-0">
-													<a href="#"
-														class="g-color-white g-color-white--hover g-text-underline--none--hover">Black
-														Glasses</a>
-												</h6>
-												<small class="g-color-gray-dark-v5 g-font-size-14">$400.00</small>
-											</div>
+											<button class="u-basket__product-remove" type="button">&times;</button>
 										</div>
-
-										<button class="u-basket__product-remove" type="button">&times;</button>
+										<!-- End Product -->
 									</div>
-									<!-- End Product -->
-								</div>
-								<c:if test="${principal != null}">
+
 									<div class="g-brd-top g-brd-white-opacity-0_3 g-pa-15 g-pb-20">
 										<!-- <a href="/user/wishlist"
 											class="btn u-btn-outline-primary rounded-0 g-width-120">위시리스트</a> -->
@@ -214,10 +220,12 @@
 											class="btn btn-block u-btn-primary rounded-0 g-py-10">위시리스트
 											가기</a>
 									</div>
-								</c:if>
+
+								</div>
+
 							</div>
-						</div>
-						<!-- End Basket -->
+							<!-- End Basket -->
+						</c:if>
 
 						<c:if test="${principal == null}">
 							<li class="list-inline-item g-mx-15"><a
