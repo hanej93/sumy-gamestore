@@ -35,9 +35,26 @@ public class UpdateUserService {
 		return userInfo;//성공 시 객체 반환
 	}
 	
+	//비밀번호 찾기 이메일 체크
+	public int selectUserEmail(UserInfo userInfo) {
+		System.out.println("정보수정 전 객체 내용 : "+userInfo.getUserEmail());
+		UserInfo selectUser = updateUserMapper.selectUserEmail(userInfo);
+		
+		if(selectUser==null) {
+			System.out.println("select된 email 없음");
+			
+			return 0;
+		}
+		System.out.println("정보수정 완료 객체 내용"+selectUser.getUserId());
+		System.out.println("정보수정 완료 객체 내용"+selectUser.getUserEmail());
+		return selectUser.getUserId();
+	}
+	
 	//비밀번호 업데이트
 	public UserInfo insertUserPassword(UserInfo userInfo) {
-		System.out.println("정보수정 전 객체 내용 : "+userInfo.getUserPassword());
+		System.out.println("서비스에서 받은 유저 아이디 : "+userInfo.getUserId());
+		System.out.println("서비스에서 받은 유저 이메일 : "+userInfo.getUserEmail());
+		System.out.println("서비스에서 받은 유저 비밀번호 : "+userInfo.getUserPassword());
 		int row = updateUserMapper.insertUserPassword(userInfo);
 		if(!(row>0)) {
 			System.out.println("updateUserMapper.insertUserPassword(userInfo) 반영된 줄 수 : "+row);

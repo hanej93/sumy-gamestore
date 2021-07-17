@@ -53,6 +53,7 @@
 	    <sec:authentication property="principal" var="principal"/>
 	</sec:authorize>
 	<main class="g-pt-80">
+		<input id="userId" type="text" value="${principal.user.userId}" style="display:none;">
 		<input id="hideEmail" type="text" value="${principal.user.userEmail}" style="display:none;">
 		<header id="js-header"
 			class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance"
@@ -136,10 +137,15 @@
 							<div id="loginSecurityPwdUpdate">
 
 								<div class="form-group g-mb-20">
-								<input type="text" name="userId"
+								<input type="text" id="upuserId" name="userId"
                                  value="${principal.user.userId}" 
                                  style="display: none;">
-									<label class="g-mb-10">새 비밀번호</label> 
+                                 	<label class="g-mb-10">로그인 이메일</label> 
+                                 	<input
+											id="loginSecurityUpdateEmail"
+											class="form-control form-control-md rounded g-py-15 g-px-15"
+											type="text" readonly="readonly">
+									<label class="g-mb-10 g-mt-20">새 비밀번호</label> 
 									<input
 											id="loginSecurityUpdateNewPwd"
 											name="userPassword"

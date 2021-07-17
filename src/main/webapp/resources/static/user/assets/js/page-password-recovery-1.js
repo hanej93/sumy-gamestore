@@ -10,11 +10,11 @@
 //6. 비밀번호와 비밀번호 확인 매칭의 true/false 함수
 //   사용처 - page-signup-1.html(회원가입)
 function mathPwAndRePw(password, rePassword) {
-   if (password != rePassword) {
-      return false;
-   } else {
-      return true;
-   }
+	if (password != rePassword) {
+		return false;
+	} else {
+		return true;
+	}
 }
 
 //1. 이메일 정규식 매칭 함수
@@ -95,36 +95,59 @@ $(document).ready(function() {
 		if ($('#hideEmail').val() == "") {
 			removeErrorAndSuccess($('#userEmail'));
 			addSuccess($('#userEmail'));
-			$('#userEmail').parent().parent().children('small').html('이메일을 보내고 있습니다. 잠시만 기다려주세요..');
+
 			$.ajax({
-				type: "GET",
-				url: "checkMail?mail=" + $('#userEmail').val(),
+				type: "POST",
+				url: "/selectEmail",
+				data: {"userEmail": $('#userEmail').val()},
 				error: function(error) {
 					alert("이메일을 확인해주세요.");
 					return false;
 				},
 
 				success: function(result) {
-					alert("인증 이메일을 전송했습니다.");
-					emailCode = result;//인증코드 담는 변수
-					console.log(emailCode);
-					//인증번호 두 번째 입력 시 value 초기화
-					$('#emailCertificationInput').val('');
-					//이메일 유효성 통과했을 시 error클래스 있다면 삭제
+					if (result==0) {
+						removeErrorAndSuccess($('#userEmail'));
+						addError($('#userEmail'));
+						$('#userEmail').parent().parent().children('small').html('등록된 이메일이 아닙니다.');
+						return false;
+					}
+					$('#upuserId').val(result);
 					removeErrorAndSuccess($('#userEmail'));
-					addSuccess($('#userEmail'));
-					$('#userEmail').parent().parent().children('small').html('해당 이메일로 전송된 인증번호를 입력해주세요.');
-					$('#userEmail').attr('readonly', true);
-					$('#emailCertificationSendBtn').text('재인증');
-					$('#emailCertificationNumInput').css('display', 'block');
+					$('#userEmail').parent().parent().children('small').html('이메일을 보내고 있습니다. 잠시만 기다려주세요..');
+					$.ajax({
+						type: "GET",
+						url: "checkMail?mail=" + $('#userEmail').val(),
+						error: function(error) {
+							alert("이메일을 확인해주세요.");
+							return false;
+						},
+
+						success: function(result) {
+							alert("인증 이메일을 전송했습니다.");
+							emailCode = result;//인증코드 담는 변수
+							console.log(emailCode);
+							//인증번호 두 번째 입력 시 value 초기화
+							$('#emailCertificationInput').val('');
+							//이메일 유효성 통과했을 시 error클래스 있다면 삭제
+							removeErrorAndSuccess($('#userEmail'));
+							addSuccess($('#userEmail'));
+							$('#userEmail').parent().parent().children('small').html('해당 이메일로 전송된 인증번호를 입력해주세요.');
+							$('#userEmail').attr('readonly', true);
+							$('#emailCertificationSendBtn').text('재인증');
+							$('#emailCertificationNumInput').css('display', 'block');
+						}
+					});
 				}
 			});
+
 		} else {//로그인 되어있을 때
 			//작성한 이메일과 로그인된 이메일이 일치하지 않을 때
 			if ($('#userEmail').val() != $('#hideEmail').val()) {
 				addError($('#userEmail')); $('#userEmail').parent().parent().children('small').html('로그인 이메일과 같은 이메일이어야 합니다.');
 				return false;
 			}
+
 			//이메일 인증번호 보내는 시간이 너무 길어서 문구 띄워주기
 			removeErrorAndSuccess($('#userEmail'));
 			addSuccess($('#userEmail'));
@@ -186,6 +209,7 @@ $(document).ready(function() {
 		$('#emailReBox').css('display', 'none');
 		$('#rePasswordFirst').css('display', 'none');
 		$('#rePasswordLast').css('display', 'block');
+		$('#loginSecurityUpdateEmail').val($('#userEmail').val());
 	});
 
 	//현재 비밀번호 수정 입력 pocus 시 password off
@@ -279,7 +303,11 @@ $(document).ready(function() {
 			}
 		});
 		alert('비밀번호 수정을 완료하였습니다.');
-		location.href="/user/login-security";
+		if($('#userId').val()==""){
+			location.href = "/home-page";
+			return false;
+		}
+		location.href = "/user/login-security";
 	});
 
 	//비밀번호 수정취소 : update review
@@ -289,16 +317,7 @@ $(document).ready(function() {
 		}
 		alert('비밀번호 수정을 취소하였습니다.');
 
-		$('#rePasswordFirst').css('display', 'block');
-		$('#rePasswordLast').css('display', 'none');
-		//success 클래스 활성화 되있을 시 비활성화
-		removeErrorAndSuccess($('#userEmail'));
-		$('#userEmail').val("");
-		$('#emailCertificationSendBox').css('display', 'block');
-		$('#emailReBox').css('display', 'none');
-		$('#userEmail').attr('readonly', false);
-		$('#emailCertificationSendBtn').text('인증');
-		$('#emailCertificationNumInput').css('display', 'none');
+		location.reload();
 
 
 	});

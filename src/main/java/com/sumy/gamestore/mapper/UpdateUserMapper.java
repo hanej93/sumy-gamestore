@@ -36,8 +36,12 @@ public interface UpdateUserMapper {
 	public int insertUserPhoneNumber(UserInfo userInfo);
 	
 	// update user_info user_pwdRecoveryUpdate
-		@Update("update user_info set user_password = #{userPassword} where user_id = #{userId}")
-		public int pwdRecoveryUpdate(UserInfo userInfo);
+	@Update("update user_info set user_password = #{userPassword} where user_id = #{userId}")
+	public int pwdRecoveryUpdate(UserInfo userInfo);
+	
+	// select user_info user_pwdRecoveryUpdate
+	@Select("select user_id, user_email from user_info where user_email = #{userEmail}")
+	public UserInfo selectUserEmail(UserInfo userInfo);
 
 
 
