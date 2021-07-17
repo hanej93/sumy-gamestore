@@ -24,4 +24,12 @@ public class WishListService {
 		return wishlistMapper.insertWishlist(wishlistGame);
 	}
 	
+	public int 위시리스트유무(int userId, int gameId) {
+		return wishlistMapper.countWishlistByIds(userId, gameId);
+	}
+	
+	public int 위시리스트삭제(int userId, int gameId) {
+		return wishlistMapper.deleteWishlistByIds(userId, gameId);
+	}
+	
 }

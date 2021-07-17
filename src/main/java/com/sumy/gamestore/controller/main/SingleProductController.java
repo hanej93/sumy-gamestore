@@ -1,5 +1,7 @@
 package com.sumy.gamestore.controller.main;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sumy.gamestore.config.auth.PrincipalDetail;
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.GameInfoService;
 import com.sumy.gamestore.service.ReviewListService;
+import com.sumy.gamestore.service.WishListService;
 
 @Controller
 public class SingleProductController {
@@ -24,10 +28,27 @@ public class SingleProductController {
 	@Autowired
 	ReviewListService reviewListService;
 	
+	@Autowired
+	WishListService wishListService;
 	
 	
 	@GetMapping("/sumy/single-product/{gameId}")
-	public String showSingleProduct(@PathVariable int gameId, Model model) {
+	public String showSingleProduct(@PathVariable int gameId, Model model, Authentication authentication) {
+		
+		if(authentication != null) {
+			PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
+			int userId = principal.getUser().getUserId();
+			
+			int exists =  wishListService.위시리스트유무(userId, gameId);
+			
+			if(exists > 0 ) {
+				model.addAttribute("existsWishlist", exists);
+			} else {
+				model.addAttribute("existsWishlist", null);
+			}
+		}
+		
+		
 		
 		model.addAttribute("gameInfo", gameInfoService.게임검색(gameId));
 		model.addAttribute("reviewList", reviewListService.리뷰검색_게임아이디_5(gameId));

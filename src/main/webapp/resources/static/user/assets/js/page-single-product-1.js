@@ -1,14 +1,3 @@
-/*** 
- **
- *
- 
-	page-single-product-1.html(게임 상세 화면) custom script
-	작성자 : 김명주
-	작성일 : 2021-07-01
-
-***
-**
-*/
 
 
 $(document).on('ready', function() {
@@ -141,5 +130,28 @@ $(document).on('ready', function() {
 		$("#details").toggleClass("line--clamp");
 		$('#detailsBtn').text($('#detailsBtn').text() == '자세히 보기' ? '간략히 보기' : '자세히 보기');
 	});
+	
+	// 위시리스트 추가/삭제
+	$("#wishlist-btn").on("click", function(){
+		
+		let gameId = $(this).attr("gameId");
+		
+		$.ajax({
+			type:"POST",
+			url:"/user/wishlist",
+			data:JSON.stringify(gameId),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			if(resp == 1){
+				$("#wishlist-btn").toggleClass('btn-secondary');
+				$("#wishlist-btn").toggleClass('btn-outline-secondary');
+			}
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+	});
 
+	
 });
