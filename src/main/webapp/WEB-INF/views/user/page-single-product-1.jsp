@@ -89,26 +89,37 @@
 						data-arrow-left-classes="fa fa-angle-left g-left-40"
 						data-arrow-right-classes="fa fa-angle-right g-right-40"
 						data-nav-for="#carouselCus2">
+						<c:if test="${not empty gameInfo.gameIntroImage1}">
 						<div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
 							<img class="img-fluid w-100"
 								src="${gameInfo.gameIntroImage1}" alt="Image Description">
 						</div>
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage2}">
 						<div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
 							<img class="img-fluid w-100"
 								src="${gameInfo.gameIntroImage2}" alt="Image Description">
 						</div>
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage3}">
 						<div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
 							<img class="img-fluid w-100"
 								src="${gameInfo.gameIntroImage3}" alt="Image Description">
 						</div>
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage4}">
 						<div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
 							<img class="img-fluid w-100"
 								src="${gameInfo.gameIntroImage4}" alt="Image Description">
 						</div>
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage5}">
 						<div class="js-slide g-bg-cover g-bg-black-opacity-0_1--after">
 							<img class="img-fluid w-100"
 								src="${gameInfo.gameIntroImage5}" alt="Image Description">
 						</div>
+						</c:if>
+						
 					</div>
 
 					<div id="carouselCus2"
@@ -116,30 +127,36 @@
 						data-infinite="true" data-center-mode="true" data-slides-show="3"
 						data-is-thumbs="true" data-focus-on-select="false"
 						data-nav-for="#carouselCus1">
+						<c:if test="${not empty gameInfo.gameIntroImage1}">
 						<div class="js-slide g-cursor-pointer g-px-5">
 							<img class="img-fluid" src="${gameInfo.gameIntroImage1}"
 								alt="Image Description">
 						</div>
-
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage2}">
 						<div class="js-slide g-cursor-pointer g-px-5">
 							<img class="img-fluid" src="${gameInfo.gameIntroImage2}"
 								alt="Image Description">
 						</div>
-
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage3}">
 						<div class="js-slide g-cursor-pointer g-px-5">
 							<img class="img-fluid" src="${gameInfo.gameIntroImage3}"
 								alt="Image Description">
 						</div>
-
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage4}">
 						<div class="js-slide g-cursor-pointer g-px-5">
 							<img class="img-fluid" src="${gameInfo.gameIntroImage4}"
 								alt="Image Description">
 						</div>
-
+						</c:if>
+						<c:if test="${not empty gameInfo.gameIntroImage5}">
 						<div class="js-slide g-cursor-pointer g-px-5">
 							<img class="img-fluid" src="${gameInfo.gameIntroImage5}"
 								alt="Image Description">
 						</div>
+						</c:if>
 					</div>
 					<!-- End Carousel -->
 				</div>

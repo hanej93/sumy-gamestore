@@ -40,17 +40,17 @@ public class GameInfoApiController {
 			, @RequestPart(value = "file", required = false) MultipartFile file
 			, @RequestPart(value = "files", required = false) List<MultipartFile> files) {
 		System.out.println("===========================================");
-		System.out.println("썸머노트!!!");
-		System.out.println(gameInfo.getGameMainText());
+//		System.out.println("썸머노트!!!");
+//		System.out.println(gameInfo.getGameMainText());
 		
 		
-//		System.out.println("===========================================");
-//		System.out.println(file.getOriginalFilename());
-//		System.out.println("-------------------------------------------");
-//		for (MultipartFile multipartFile : files) {
-//			System.out.println(multipartFile.getOriginalFilename());
-//		}
-//		System.out.println("===========================================");
+		System.out.println("===========================================");
+		System.out.println(file.getOriginalFilename());
+		System.out.println("-------------------------------------------");
+		for (MultipartFile multipartFile : files) {
+			System.out.println(multipartFile.getOriginalFilename());
+		}
+		System.out.println("===========================================");
 		
 		// 파일 있는지 확인
 		if (file == null || file.isEmpty()) {
@@ -105,19 +105,26 @@ public class GameInfoApiController {
 			// 실제 저장되는 위치
 			String previewImgPathname = uploadFilePath + previewImgName;
 			// 가상 가상 파일 위치 - ex) /upload/2021-07-07/파일명.jpg
-			String previewImgResourcePathname = "/upload/" + currentDate + "/" + filename;
+			String previewImgResourcePathname = "/upload/" + currentDate + "/" + previewImgName;
 
 			File previewImgDest = new File(previewImgPathname);
 
 			try {
 				previewImg.transferTo(previewImgDest);
-				previewImgList.add(previewImgResourcePathname);
+				//previewImgList.add(previewImgResourcePathname);
 				previewImgList.set(index++, previewImgResourcePathname);
+				
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
 		}
-
+		System.out.println("------------------------------------");
+		System.out.println(previewImgList.get(0));
+		System.out.println(previewImgList.get(1));
+		System.out.println(previewImgList.get(2));
+		System.out.println(previewImgList.get(3));
+		System.out.println("------------------------------------");
+		
 		GameInfo addGame =
 		GameInfo.builder() 
 				.gameId(0)
