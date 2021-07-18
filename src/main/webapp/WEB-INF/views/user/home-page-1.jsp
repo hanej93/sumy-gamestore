@@ -302,7 +302,7 @@
 
 							<a
 								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
-								href="page-our-stores-2.html">뉴스 더보기</a>
+								href="/sum/news/${newsList.newsId }">뉴스 더보기</a>
 						</div>
 						<a class="u-link-v2" href="#"></a>
 					</article>
@@ -407,10 +407,11 @@
 							<img class="img-fluid"
 								data-lazy="${DiscountGameList.gameThumbImage}"
 								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
-								-${DiscountGameList.gameDiscountRate}%</span>
+							<c:if test="${DiscountGameList.gameDiscountRate > 0}">
+								<span
+									class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
+									-${DiscountGameList.gameDiscountRate}%</span>
+							</c:if>
 							<a class="u-link-v2" href="/sumy/single-product/${DiscountGameList.gameId}"></a>
 						</figure>
 
@@ -727,10 +728,11 @@
 							<img class="img-fluid"
 								data-lazy="${HottestGameList.gameThumbImage}"
 								alt="Image Description">
-
-							<span
-								class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
+							<c:if test="${HottestGameList.gameDiscountRate > 0 }">
+								<span
+									class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
 								-${HottestGameList.gameDiscountRate}%</span>
+							</c:if>
 							<a class="u-link-v2" href="/sumy/single-product/${HottestGameList.gameId}"></a>
 						</figure>
 
