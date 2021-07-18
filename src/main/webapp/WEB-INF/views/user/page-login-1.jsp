@@ -116,7 +116,7 @@ main{
 								<div class="col align-self-center">
 									<label
 										class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-13 g-pl-25 mb-0">
-										<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0"
+										<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="remember-me"
 										type="checkbox"> <span
 										class="d-block u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
 											<i class="fa" data-check-icon="&#xf00c"></i>
