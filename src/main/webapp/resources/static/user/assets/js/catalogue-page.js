@@ -15,8 +15,6 @@ let catalogue = {
 	},
 	
 	clearFilter:function(){
-		$("h3:contains('별점')").next().children().addClass('g-color-primary click');
-		$("h3:contains('별점')").next().children().last().removeClass('g-color-primary click');
 		$("#starFilter").children().removeClass('g-color-primary');
 		
 		$.HSCore.components.HSSlider.init('#rangeSlider1');

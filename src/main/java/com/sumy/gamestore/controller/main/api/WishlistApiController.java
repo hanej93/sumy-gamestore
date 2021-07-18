@@ -1,10 +1,12 @@
 package com.sumy.gamestore.controller.main.api;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sumy.gamestore.config.auth.PrincipalDetail;
 import com.sumy.gamestore.dto.ResponseDto;
+import com.sumy.gamestore.dto.WishlistGameInfoDto;
 import com.sumy.gamestore.model.ReviewList;
 import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.WishListService;
@@ -63,5 +66,6 @@ public class WishlistApiController {
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+	
 	
 }
