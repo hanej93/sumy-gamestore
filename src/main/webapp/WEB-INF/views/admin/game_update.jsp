@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Title -->
-  <title>User Contacts | Unify - Responsive Website Template</title>
+  <title>Sumy GameStore 게임 수정</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -94,7 +96,8 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
-                      <input id="inputGroup-4_2"
+                      <input id="gameId" type="hidden" value="${gameInfo.gameId }">
+                      <input id="gameTitle" value="${gameInfo.gameTitle }"
                         class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10"
                         type="text" placeholder="게임명을 입력해주세요." maxlength="100">
                     </div>
@@ -111,7 +114,7 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
-                      <input id="inputGroup-4_2"
+                      <input id="gameDev" value="${gameInfo.gameDev }"
                         class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10"
                         type="text" placeholder="제작사명을 입력해주세요." maxlength="100">
                     </div>
@@ -126,21 +129,22 @@
 
                     <div
                       class="form-group u-select--v3 g-pos-rel g-brd-none g-brd-bottom g-brd-gray-light-v7 rounded-0 mb-0">
-                      <select class="js-select u-select--v3-select u-sibling w-100 g-pl-0--child" required="required"
+                      <select id="gameRate"
+                      class="js-select u-select--v3-select u-sibling w-100 g-pl-0--child" required="required"
                         title="게임 등급 선택" style="display: none;">
-                        <option value="selectListItem1"
+                        <option value="전체" <c:if test="${gameInfo.gameRate eq '전체' }">selected</c:if>
                           data-content='<span class="d-flex align-items-center w-100"><i class="icon-hotel-restaurant-088 u-line-icon-pro g-font-size-18 g-mr-15"></i><span>전체 이용가</span></span>'>
                           전체 이용가
                         </option>
-                        <option value="selectListItem2"
+                        <option value="12세" <c:if test="${gameInfo.gameRate eq '12세' }">selected</c:if>
                           data-content='<span class="d-flex align-items-center w-100"><i class="fa fa-soccer-ball-o g-font-size-18 g-mr-15"></i><span>12세 이용가</span></span>'>
                           12세 이용가
                         </option>
-                        <option value="selectListItem3"
+                        <option value="15세" <c:if test="${gameInfo.gameRate eq '15세' }">selected</c:if>
                           data-content='<span class="d-flex align-items-center w-100"><i class="icon-hotel-restaurant-002 u-line-icon-pro g-font-size-18 g-mr-15"></i><span>15세 이용가</span></span>'>
                           15세 이용가
                         </option>
-                        <option value="selectListItem4"
+                        <option value="18세" <c:if test="${gameInfo.gameRate eq '18세' }">selected</c:if>
                           data-content='<span class="d-flex align-items-center w-100"><i class="icon-hotel-restaurant-089 u-line-icon-pro g-font-size-18 g-mr-15"></i><span>청소년 이용 불가</span></span>'>
                           청소년 이용 불가
                         </option>
@@ -165,7 +169,10 @@
                   <!-- 이미지 선택 시작 -->
                   <div class="form-group mb-20 g-brd-bottom g-brd-gray-light-v7 rounded-0">
                     <label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-                      <input id="fileAttachment" name="file-attachment" type="file" accept=".gif,.jpg,.jpeg,.png">
+                    <form id="fileForm" enctype="multipart/form-data">
+                      <input
+                      id="fileAttachment" name="thumbnail" type="file" accept=".gif,.jpg,.jpeg,.png">
+                    </form>
                       <i class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
                       <span class="js-value" id="imgExplain">이미지 파일을 첨부해주세요.</span>
                     </label>
@@ -182,7 +189,7 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
-                      <input id="sumy-game-input-price"
+                      <input id="sumy-game-input-price" value="${gameInfo.gamePrice }"
                         class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10"
                         type="text" maxlength="8" style="text-align:right"
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
@@ -203,7 +210,7 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
-                      <input id="sumy-game-discount-rate"
+                      <input id="sumy-game-discount-rate" value="${gameInfo.gameDiscountRate }"
                         class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10"
                         type="text" style="text-align:right"
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
@@ -241,31 +248,46 @@
                     <div class="col-md-6">
                       <div class="form-group g-mb-10">
                         <label class="u-check g-pl-25">
-                          <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <input id="category" value="1" 
+                          <c:if test="${gameInfo.gameCategoryId1 eq '1'  
+                         			or gameInfo.gameCategoryId2 eq '1'
+                         			or gameInfo.gameCategoryId3 eq '1'
+                         			or gameInfo.gameCategoryId4 eq '1'}">checked</c:if>
+                          class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          Canada
+                          액션
                         </label>
                       </div>
 
                       <div class="form-group g-mb-10">
                         <label class="u-check g-pl-25">
-                          <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <input id="category" value="2"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '2'  
+                         			or gameInfo.gameCategoryId2 eq '2'
+                         			or gameInfo.gameCategoryId3 eq '2'
+                         			or gameInfo.gameCategoryId4 eq '2'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          United Kingdom
+                          어드벤쳐
                         </label>
                       </div>
 
-                      <div class="form-group g-mb-10 g-mb-0--md">
+                      <div class="form-group g-mb-10 g-mb-10--md">
                         <label class="u-check g-pl-25">
-                          <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <input id="category" value="3"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '3'  
+                         			or gameInfo.gameCategoryId2 eq '3'
+                         			or gameInfo.gameCategoryId3 eq '3'
+                         			or gameInfo.gameCategoryId4 eq '3'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          Australia
+                          인디
                         </label>
                       </div>
                     </div>
@@ -275,31 +297,144 @@
                     <div class="col-md-6">
                       <div class="form-group g-mb-10">
                         <label class="u-check g-pl-25">
-                          <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <input id="category" value="4"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '4'  
+                         			or gameInfo.gameCategoryId2 eq '4'
+                         			or gameInfo.gameCategoryId3 eq '4'
+                         			or gameInfo.gameCategoryId4 eq '4'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          USA
+                          RPG
                         </label>
                       </div>
 
                       <div class="form-group g-mb-10">
                         <label class="u-check g-pl-25">
-                          <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <input id="category" value="5"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '5'  
+                         			or gameInfo.gameCategoryId2 eq '5'
+                         			or gameInfo.gameCategoryId3 eq '5'
+                         			or gameInfo.gameCategoryId4 eq '5'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          New Zealand
+                          퍼즐
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10 g-mb-20--md">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="6"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '6'  
+                         			or gameInfo.gameCategoryId2 eq '6'
+                         			or gameInfo.gameCategoryId3 eq '6'
+                         			or gameInfo.gameCategoryId4 eq '6'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          1인칭
+                        </label>
+                      </div>
+                    </div>
+                    <!-- End Right Column -->
+                    
+                    <!-- Left Column -->
+                    <div class="col-md-6">
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="7"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '7'  
+                         			or gameInfo.gameCategoryId2 eq '7'
+                         			or gameInfo.gameCategoryId3 eq '7'
+                         			or gameInfo.gameCategoryId4 eq '7'}">checked</c:if>
+                          class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          내레이션
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="8"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '8'  
+                         			or gameInfo.gameCategoryId2 eq '8'
+                         			or gameInfo.gameCategoryId3 eq '8'
+                         			or gameInfo.gameCategoryId4 eq '8'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          전략
                         </label>
                       </div>
 
                       <div class="form-group g-mb-10 g-mb-0--md">
                         <label class="u-check g-pl-25">
-                          <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <input id="category" value="9"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '9'  
+                         			or gameInfo.gameCategoryId2 eq '9'
+                         			or gameInfo.gameCategoryId3 eq '9'
+                         			or gameInfo.gameCategoryId4 eq '9'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                           <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
                             <i class="fa" data-check-icon=""></i>
                           </div>
-                          Sweden
+                          슈팅
+                        </label>
+                      </div>
+                    </div>
+                    <!-- End Left Column -->
+                    
+                    <!-- Right Column -->
+                    <div class="col-md-6">
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="10"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '10'  
+                         			or gameInfo.gameCategoryId2 eq '10'
+                         			or gameInfo.gameCategoryId3 eq '10'
+                         			or gameInfo.gameCategoryId4 eq '10'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          시뮬레이션
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="11"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '11'  
+                         			or gameInfo.gameCategoryId2 eq '11'
+                         			or gameInfo.gameCategoryId3 eq '11'
+                         			or gameInfo.gameCategoryId4 eq '11'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          전투
+                        </label>
+                      </div>
+
+                      <div class="form-group g-mb-10 g-mb-0--md">
+                        <label class="u-check g-pl-25">
+                          <input id="category" value="12"
+                          <c:if test="${gameInfo.gameCategoryId1 eq '12'  
+                         			or gameInfo.gameCategoryId2 eq '12'
+                         			or gameInfo.gameCategoryId3 eq '12'
+                         			or gameInfo.gameCategoryId4 eq '12'}">checked</c:if>
+                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon=""></i>
+                          </div>
+                          도시 건설
                         </label>
                       </div>
                     </div>
@@ -318,8 +453,9 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
-                      <textarea id="inputGroup-4_2" class="form-control form-control-md rounded-0 g-color-gray-dark-v6"
-                        type="text" placeholder="게임설명을 입력해주세요." rows="4" maxlength="200"></textarea>
+                      <textarea id="gameSubText"
+                       class="form-control form-control-md rounded-0 g-color-gray-dark-v6"
+                        type="text" placeholder="게임설명을 입력해주세요." rows="4" maxlength="200">${gameInfo.gameSubText }</textarea>
                     </div>
                   </div>
                   <!-- 게임설명 끝 -->
@@ -334,8 +470,9 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
-                      <textarea id="summernote" class="form-control form-control-md rounded-0 g-color-gray-dark-v6"
-                        type="text" placeholder="게임본문을 입력해주세요."></textarea>
+                      <textarea
+                      id="summernote" class="form-control form-control-md rounded-0 g-color-gray-dark-v6"
+                        type="text" placeholder="게임본문을 입력해주세요.">${gameInfo.gameMainText }</textarea>
 
                     </div>
                   </div>
@@ -376,8 +513,10 @@
                   <!-- 이미지 선택 시작 -->
                   <div class="form-group mb-20 g-brd-bottom g-brd-gray-light-v7 rounded-0 g-mb-30">
                     <label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-                      <input id="input-multiple-image" name="file-attachment" type="file" accept=".gif,.jpg,.jpeg,.png"
+                    <form>
+                      <input id="input-multiple-image" name="files" type="file" accept=".gif,.jpg,.jpeg,.png"
                         multiple>
+                    </form>
                       <i class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
                       <span id="imgExplainMulti" class="js-value">이미지 파일을 첨부해주세요.</span>
                     </label>
@@ -393,8 +532,8 @@
             <div class="justify-content-center row align-items-center">
               <a href="${pageContext.request.contextPath }/admin/game/list" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
                 data-dismiss="modal">돌아가기</a>
-              <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                data-toggle="modal" data-target="#exampleModal" data-dismiss="modal">수정</a>
+              <a id="btn-game-add-parent" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
+                data-toggle="modal" data-dismiss="modal">수정</a>
             </div>
 
           </div>
@@ -403,7 +542,7 @@
 
         <div class="align-items-center g-line-height-1 justify-content-center">
 
-          <!-- 게임 수정 모달 내용 시작 -->
+          <!-- 게임 추가 모달 내용 시작 -->
           <div class="modal fade justify-content-center" id="exampleModal" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog  modal-dialog-scrollable">
@@ -412,8 +551,8 @@
                   <div class="row justify-content-center g-mx-5">
                     <div class="col-12 g-mt-10 g-mb-30">게임을 수정 하시겠습니까?</div>
                     <div>
-                      <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                        data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal">수정</a>
+                      <a id="btn-game-update" href="" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
+                        data-toggle="modal" data-dismiss="modal">수정</a>
                       <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
                         data-dismiss="modal">닫기</a>
                     </div>
@@ -422,9 +561,9 @@
               </div>
             </div>
           </div>
-          <!-- 게임 수정 모달 내용 끝 -->
+          <!-- 게임 추가 모달 내용 끝 -->
 
-          <!-- 수정 완료 팝업 시작-->
+          <!-- 추가 완료 팝업 시작-->
           <div class="modal fade justify-content-center" id="exampleModal2" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
@@ -433,76 +572,19 @@
                   <div class="row justify-content-center g-mx-5">
                     <div class="col-12 g-mt-10 g-mb-30">게임 수정을 완료하였습니다.</div>
                     <div>
-                      <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-font-size-14"
-                        data-dismiss="modal">확인</a>
+                      <a href="/admin/game/list" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-font-size-14"
+                        >확인</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 수정 완료 팝업 끝-->
+          <!-- 추가 완료 팝업 끝-->
 
-           <!-- Footer -->
-          <footer id="footer"
-            class="u-footer--bottom-sticky g-bg-white g-color-gray-dark-v6 g-brd-top g-brd-gray-light-v7 g-pa-20">
-            <div class="row align-items-center">
-              <!-- Footer Nav -->
-              <div class="col-md-4 g-mb-10 g-mb-0--md">
-                <ul class="list-inline text-center text-md-left mb-0">
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="#">FAQ</a>
-                  </li>
-                  <li class="list-inline-item">
-                    <span class="g-color-gray-dark-v6">|</span>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="#">Support</a>
-                  </li>
-                  <li class="list-inline-item">
-                    <span class="g-color-gray-dark-v6">|</span>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="#">Contact Us</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- End Footer Nav -->
 
-              <!-- Footer Socials -->
-              <div class="col-md-4 g-mb-10 g-mb-0--md">
-                <ul class="list-inline g-font-size-16 text-center mb-0">
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-facebook g-color-secondary--hover">
-                      <i class="fa fa-facebook-square"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-google-plus g-color-secondary--hover">
-                      <i class="fa fa-google-plus"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-black g-color-secondary--hover">
-                      <i class="fa fa-github"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-twitter g-color-secondary--hover">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!-- End Footer Socials -->
-
-              <!-- Footer Copyrights -->
-              <div class="col-md-4 text-center text-md-right">
-                <small class="d-block g-font-size-default">&copy; 2020 Htmlstream. All Rights Reserved.</small>
-              </div>
-              <!-- End Footer Copyrights -->
-            </div>
-          </footer>
+          <!-- Footer -->
+          <jsp:include page="layout/footer.jsp" />
           <!-- End Footer -->
           
         </div>
@@ -550,8 +632,8 @@
 
     <!-- JS Custom -->
     <!-- <script src="/resources/static/assets/js/custom.js"></script> -->
-
-    <!-- 썸머노트 스크립트 -->
+	
+	<!-- 썸머노트 스크립트 -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <!-- include summernote-ko-KR -->
 	<script src="/resources/static/etc/summernote-ko-KR.js"></script>
@@ -757,11 +839,14 @@
           }
         });
 
-      //sidebar 메뉴 액티브
+        //sidebar 메뉴 액티브
         $("#gameSidebar").addClass("has-active");
         
       });
     </script>
+    
+    <script src="/resources/static/etc/admin-game-add.js"></script>
+    
 </body>
 
 </html>

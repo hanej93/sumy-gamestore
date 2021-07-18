@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sumy.gamestore.dto.PagingVO;
+import com.sumy.gamestore.model.GameInfo;
 import com.sumy.gamestore.service.GameInfoService;
 
 @Controller
@@ -44,10 +46,13 @@ public class GameListController {
 		return "admin/game_add";
 	}
 	
-	@GetMapping("/game/update")
-	public String updateGame() {
+	@GetMapping("/game/update/{gameId}")
+	public String updateGame(@PathVariable int gameId, Model model) {
+		
+		model.addAttribute("gameInfo", gameInfoService.게임검색(gameId));
 		
 		return "admin/game_update";
 	}
+	
 	
 }

@@ -94,6 +94,7 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
+                      <input id="gameId" type="hidden" value="${gameInfo.gameId }">
                       <input id="gameTitle"
                         class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10"
                         type="text" placeholder="게임명을 입력해주세요." maxlength="100">

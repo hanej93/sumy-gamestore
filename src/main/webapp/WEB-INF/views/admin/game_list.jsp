@@ -582,7 +582,7 @@
                     <td
                       class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm g-pr-25">
                       <div class="d-flex align-items-center justify-content-center g-line-height-1">
-                        <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover g-mr-15" href="${pageContext.request.contextPath }/admin/game/update">
+                        <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover g-mr-15" href="${pageContext.request.contextPath }/admin/game/update/${gameInfo.gameId}">
                           <i class="hs-admin-pencil g-font-size-18"></i>
                         </a>
 
