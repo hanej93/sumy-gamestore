@@ -5,7 +5,7 @@
 
 <head>
   <!-- Title -->
-  <title>User Contacts | Unify - Responsive Website Template</title>
+  <title>뉴스 정보 수정화면</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -86,6 +86,7 @@
                 <!-- 뉴스 제목 시작 -->
                 <div class="g-mb-30">
                   <label class="" for="inputGroup-4_2">
+                  
                     <h5>뉴스 제목</h5>
                   </label>
 
@@ -93,7 +94,8 @@
                     <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                       <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                     </span>
-                    <input id="inputGroup-4_2"
+                    <input id="newsId" type="hidden" value="${newsList.newsId }">
+                    <input id="newsTitle" value="${newsList.newsTitle}"
                       class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10"
                       type="text" placeholder="뉴스제목을 입력해주세요." maxlength="100">
                   </div>
@@ -110,7 +112,7 @@
                     <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                       <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                     </span>
-                    <input id="inputGroup-4_2"
+                    <input id="newsSubTitle" value="${newsList.newsSubTitle }"
                       class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10"
                       type="text" placeholder="뉴스 부제목을 입력해주세요." maxlength="100">
                   </div>
@@ -127,7 +129,9 @@
                 <!-- 이미지 선택 시작 -->
                 <div class="form-group g-mb-40 g-brd-bottom g-brd-gray-light-v7 rounded-0">
                   <label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
-                    <input id="fileAttachment" name="file-attachment" type="file">
+                  <form id="fileForm" enctype="multipart/form-data">
+                    <input id="fileAttachment" name="file" type="file">
+                   </form>
                     <i class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
                     <span class="js-value" id="imgExplain">이미지 파일을 첨부해주세요.</span>
                   </label>
@@ -147,7 +151,7 @@
                     <!-- Textarea Resizable -->
                     <div class="g-mb-20 g-mx-0">
                       <!-- <label class="g-mb-10" for="inputGroup2_2">Textarea resizable</label> -->
-                      <textarea id="summernote" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4"></textarea>
+                      <textarea id="summernote" class="form-control form-control-md rounded-0 g-color-gray-dark-v6" rows="4">${newsList.newsText }</textarea>
                     </div>
                   </div>
                 </div>
@@ -158,7 +162,7 @@
               
               <div class="justify-content-center row align-items-center">
                 <a href="${pageContext.request.contextPath }/admin/news/list" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">돌아가기</a>
-                <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal">수정</a>
+                <a id="btn-news-add-parent" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14">수정</a>
               </div>
 
             </div>
@@ -179,16 +183,17 @@
                   <div class="row justify-content-center g-mx-5">
                     <div class="col-12 g-mt-10 g-mb-30">뉴스를 수정 하시겠습니까?</div>
                     <div>
-                      <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal">수정</a>
+                      <a id="btn-news-update" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-toggle="modal"  data-dismiss="modal">수정</a>
                       <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14" data-dismiss="modal">닫기</a>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
           <!-- 뉴스 수정 모달 내용 끝 -->
-          
+
           <!-- 수정 완료 팝업 시작-->
           <div class="modal fade justify-content-center" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -196,9 +201,9 @@
               <div class="modal-content">
                 <div class="modal-body">
                   <div class="row justify-content-center g-mx-5">
-                    <div class="col-12 g-mt-10 g-mb-30">뉴스 수정을 완료하였습니다.</div>
+                    <div class="col-12 g-mt-10 g-mb-30">뉴스 수정를 완료하였습니다.</div>
                       <div>
-                        <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-font-size-14" data-dismiss="modal">확인</a>
+                        <a href="/admin/news/list" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-font-size-14">확인</a>
                       </div>
                   </div>
                 </div>
@@ -206,71 +211,13 @@
             </div>
           </div>
           <!-- 수정 완료 팝업 끝-->
-
-           <!-- Footer -->
-          <footer id="footer"
-            class="u-footer--bottom-sticky g-bg-white g-color-gray-dark-v6 g-brd-top g-brd-gray-light-v7 g-pa-20">
-            <div class="row align-items-center">
-              <!-- Footer Nav -->
-              <div class="col-md-4 g-mb-10 g-mb-0--md">
-                <ul class="list-inline text-center text-md-left mb-0">
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="#">FAQ</a>
-                  </li>
-                  <li class="list-inline-item">
-                    <span class="g-color-gray-dark-v6">|</span>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="#">Support</a>
-                  </li>
-                  <li class="list-inline-item">
-                    <span class="g-color-gray-dark-v6">|</span>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="#">Contact Us</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- End Footer Nav -->
-
-              <!-- Footer Socials -->
-              <div class="col-md-4 g-mb-10 g-mb-0--md">
-                <ul class="list-inline g-font-size-16 text-center mb-0">
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-facebook g-color-secondary--hover">
-                      <i class="fa fa-facebook-square"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-google-plus g-color-secondary--hover">
-                      <i class="fa fa-google-plus"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-black g-color-secondary--hover">
-                      <i class="fa fa-github"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item g-mx-10">
-                    <a href="#" class="g-color-twitter g-color-secondary--hover">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!-- End Footer Socials -->
-
-              <!-- Footer Copyrights -->
-              <div class="col-md-4 text-center text-md-right">
-                <small class="d-block g-font-size-default">&copy; 2020 Htmlstream. All Rights Reserved.</small>
-              </div>
-              <!-- End Footer Copyrights -->
-            </div>
-          </footer>
-          <!-- End Footer -->	
           
-          </div>
-        </div>
+          <!-- Footer -->
+          <jsp:include page="layout/footer.jsp" />
+          <!-- End Footer -->
+          
+      	  </div>
+      	</div>
       </section>
     </main>
 
@@ -410,9 +357,9 @@
         
       });
     </script>
-    
-    <script src="/resources/static/etc/admin-news-update.js"></script>
-    
+         
+    <script src="/resources/static/etc/admin-news-add.js"></script>
+   
 </body>
 
 </html>

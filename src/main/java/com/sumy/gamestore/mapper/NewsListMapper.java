@@ -20,9 +20,9 @@ public interface NewsListMapper {
 	@Select("select * from news_list where news_id = #{newsId}")
 	public NewsList selectOneByNewsId(int newsId);
 	
-	@Update("update set news_title = #{newsTitle}, news_sub_title = #{newsSubTitle}, news_thumb_image = #{newsThumbImage}, "
+	@Update("update news_list set news_title = #{newsTitle}, news_sub_title = #{newsSubTitle}, news_thumb_image = #{newsThumbImage}, "
 			+ "news_text = #{newsText}, news_write_date = #{newsWriteDate}, news_update_date = #{newsUpdateDate} "
-			+ "from news_list where news_id = #{newsId}")
+			+ "where news_id = #{newsId}")
 	public int updateNews(NewsList News);
 	
 	@Delete("delete from news_list where news_id = #{newsId}")

@@ -4,6 +4,10 @@ let newsAdd = {
 			this.add();
 		});
 		
+		$("#btn-news-update").on("click",()=>{
+			this.update();
+		});
+		
 		$("#btn-news-add-parent").on("click",()=>{
 			this.valid();
 		});
@@ -71,7 +75,39 @@ let newsAdd = {
 		$('#exampleModal').modal('show');
 		
 		
-	}
+	},
+	
+	update: function(){
+		let data = {
+			newsId:$("#newsId").val(),
+			newsTitle:$("#newsTitle").val(),			
+			newsSubTitle:$("#newsSubTitle").val(),		
+			newsText:$("#summernote").val()			
+		};
+		
+		console.log(data);
+		
+		var form =$('#fileForm')[0];
+		var formData = new FormData(form);
+		
+		
+		formData.append('newsList', new Blob([JSON.stringify(data)] , {type: "application/json"}));
+		formData.append('file', $('#fileAttachment'));
+									
+		
+		$.ajax({
+            type: 'PUT',
+            url: '/admin/news/update',
+			enctype: "multipart/form-data",
+            processData: false,
+            contentType:false,
+            data: formData,
+        }).done(function() {
+            $("#exampleModal2").modal('show');
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+		});
+	},
 	
 	
 }

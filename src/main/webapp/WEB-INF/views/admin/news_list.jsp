@@ -159,7 +159,7 @@
                     <td
                       class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-10--sm">
                       <div class="align-items-center g-line-height-1 justify-content-center">
-                        <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" href="${pageContext.request.contextPath }/admin/news/update">
+                        <a class="u-link-v5 g-color-gray-light-v6 g-color-secondary--hover" href="${pageContext.request.contextPath }/admin/news/update/${newsList.newsId}">
                           <i class="hs-admin-pencil g-font-size-18"></i>
                         </a>
                         
