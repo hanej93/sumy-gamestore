@@ -32,7 +32,7 @@
  		
  		from game_info g
  		
- 		join review_list r
+ 		left join review_list r
  		on g.game_id = r.game_id
  		
  		
@@ -113,7 +113,7 @@
  		select count(*)
  		from game_info g
  		
- 		join review_list r
+ 		left join review_list r
  		on g.game_id = r.game_id
  		
  		
