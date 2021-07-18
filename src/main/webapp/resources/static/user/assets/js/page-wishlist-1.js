@@ -69,6 +69,8 @@ $(document).ready(function() {
 
 	var arrAfterSumResult = arrSum(priceAfterArr);//배열넣으면 덧셈해주는 함수 결과 가져옴.
 	var totalDiscountRate = arrBeforeSumResult - arrAfterSumResult;
+	
+	$('#totalAmount').val(arrAfterSumResult);
 
 	$('#wishTotalNum').text(delPriceAfter.length);
 	$('#wishTotalPriceBefore').text(forComma(arrBeforeSumResult));

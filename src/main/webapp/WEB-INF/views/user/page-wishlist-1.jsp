@@ -111,11 +111,10 @@
 							
 							
 							<c:forEach items="${viewAll }" var="wishList">
-							
 							<c:set var= "originalTotalPrice" value="${originalTotalPrice + wishList.gamePrice}" scope="request"/>
 							<c:set var= "finalTotalPrice" value="${finalTotalPrice + wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}" scope="request"/>
 								<!-- Item-->
-								<tr class="g-brd-bottom g-brd-gray-light-v4">
+								<tr class="tr_child g-brd-bottom g-brd-gray-light-v4">
 									<td class="text-left g-py-25"><img
 										class="d-inline-block g-width-100 mr-4"
 										src="${wishList.gameThumbImage }" alt="Image Description">
@@ -143,6 +142,16 @@
 											</span>
 											</span>
 											
+										</div>
+										<div><!-- 사용 다 하면 display:none; -->
+											<label>위시리스트 ID : </label>
+											<input type="number" class="packWishlistId" value="${wishList.wishlistId}"><br>
+											<label>게임 ID : </label>
+											<input type="number" class="packGameId" value="${wishList.gameId}"><br>
+											<label>게임 타이틀 : </label>
+											<input type="text" class="packGameTitle" value="${wishList.gameTitle}"><br>
+											<label>다른 계정 로긴 유저 제공사 : </label>
+											<input type="number" class="packGamePrice" value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}"><br>
 										</div>
 									</td>
 								</tr>
@@ -188,7 +197,21 @@
 								id="wishTotalPriceAfter1"><fmt:formatNumber value="${finalTotalPrice }" type="number" pattern="###,###,###,###,###,###"/></span> &#8361;</span>
 						</div>
 					</aside>
-					<button
+					<div><!-- 사용 다 하면 display:none; -->
+						<label>유저 아이디 : </label>
+						<input type="number" name="userId" value="${principal.user.userId}"><br>
+						<label>유저 이메일 : </label>
+						<input type="text" name="userEmail" value="${principal.user.userEmail}"><br>
+						<label>유저 이름 : </label>
+						<input type="text" name="userName" value="${principal.user.userName}"><br>
+						<label>다른 계정 로긴 유저 제공사 : </label>
+						<input type="text" name="userProvider" value="${principal.user.userProvider}"><br>
+						<label>다른 계정 로긴 유저 토큰 : </label>
+						<input type="text" name="userToken" value="${principal.user.userToken}"><br>
+						<label>총 결제 금액 : </label>
+						<input type="number" id="totalAmount" name="totalAmount" value=""><br>
+					</div>
+					<button id="kakaoPayApiBtn"
 						class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
 						type="button">결제</button>
 				</div>
@@ -296,6 +319,7 @@
 	<!-- JS Customization -->
 	<script src="/resources/static/user/assets/js/page-wishlist-1.js"></script>
 	<script src="/resources/static/user/assets/js/footer.js"></script>
+	<script src="/resources/static/user/assets/js/payment.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>
