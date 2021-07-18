@@ -104,7 +104,7 @@
 		order by game_discount_rate desc 
 		</if>
 		
-		limit #{start}, #{cntPage}
+		limit #{start}, #{cntPerPage}
  	</select>
  	
  	<select id="countGameList" parameterType="com.sumy.gamestore.dto.FilterPagingVO" resultType="int">

@@ -16,6 +16,10 @@ public class PagingVO {
 	private String readerYn = "";
 	private String reportReadYn = "";
 	private String keywordOpt = "";
+	private String orderOpt = "";
+	
+	// 로그인된 유저아이디
+	private int loginUserId;
 	
 	public PagingVO() {
 	}

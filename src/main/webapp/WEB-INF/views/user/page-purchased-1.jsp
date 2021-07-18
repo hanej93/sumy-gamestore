@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,13 +103,13 @@
 									class="g-pos-abs g-top-0 g-left-0 g-z-index-3 g-px-13 g-py-10">
 									<i
 									class="g-color-gray-dark-v4 g-font-size-12 icon-education-045 u-line-icon-pro"></i>
-								</span> <input
+								</span> <input id="mygame-title-search" value="${paging.keyword }"
 									class="form-control u-form-control g-brd-around g-brd-gray-light-v3 g-brd-primary--focus g-font-size-13 g-rounded-left-5 g-pl-35 g-pa-0"
 									type="search" placeholder="게임 이름으로 검색">
 								<div class="input-group-append g-brd-none g-py-0">
-									<button
+									<button id="mygame-title-search-btn"
 										class="btn u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25"
-										type="submit">보유 조회</button>
+										type="button">보유 조회</button>
 								</div>
 							</form>
 							<!-- End Search Form -->
@@ -111,16 +119,17 @@
 					<div class="mb-5">
 						<h3 class="h6 d-inline-block">
 							<span class="g-color-gray-dark-v4 g-font-weight-400">내가
-								보유한 게임</span> <span class="g-font-weight-400">2 건</span>
+								보유한 게임</span> <span class="g-font-weight-400">${purchasedGameCount } 건</span>
 						</h3>
 
 						<!-- Secondary Button -->
 						<div class="d-inline-block ml-2">
-							<select class="form-control rounded g-py-12">
-								<option>구매한 날짜순</option>
-								<option>가나다순</option>
-								<option>가격오름차순</option>
-								<option>가격내림차순</option>
+							<select id="orderOpt" 
+							class="form-control rounded g-py-12">
+								<option value="">구매한 날짜순</option>
+								<option value="dictionary" <c:if test="${paging.orderOpt eq 'dictionary' }">selected</c:if>>가나다순</option>
+								<option value="priceAsc" <c:if test="${paging.orderOpt eq 'priceAsc'}">selected</c:if>>가격오름차순</option>
+								<option value="priceDesc" <c:if test="${paging.orderOpt eq 'priceDesc'}">selected</c:if>>가격내림차순</option>
 							</select>
 						</div>
 						<!-- End Secondary Button -->
@@ -128,12 +137,14 @@
 
 					<!-- Order Block -->
 					<div class="g-brd-around g-brd-gray-light-v4 rounded g-mb-30">
+						<!-- 게시글 반복 시작 -->
+       					<c:forEach items="${viewAll }" var="purchasedGameList">
 						<header class="g-bg-gray-light-v5 g-pa-20">
 							<div class="row">
 								<div class="col-sm-3 col-md-4 ml-auto text-sm-right">
 									<h4
 										class="g-color-gray-dark-v4 g-font-weight-400 g-font-size-12 text-uppercase g-mb-2">
-										주문 ID : <span>333</span>
+										주문 ID : <span>${purchasedGameList.purchasedGameId }</span>
 									</h4>
 								</div>
 							</div>
@@ -144,24 +155,32 @@
 							<div class="row">
 								<div class="col-md-8">
 									<div class="mb-4">
-										<h3 class="h5 mb-1">캔디크러쉬 사가</h3>
+										<h3 class="h5 mb-1">${purchasedGameList.gameTitle }</h3>
 										<p class="g-color-gray-dark-v4 g-font-size-13">
-											게임사 : <span>라이엇</span>
+											게임사 : <span>${purchasedGameList.gameDev }</span>
 										</p>
 									</div>
 
 									<div class="row">
 										<div class="col-4 col-sm-3 g-mb-30">
 											<img class="img-fluid"
-												src="/resources/static/user/assets/img-temp/150x150/img9.jpg"
+												src="${purchasedGameList.gameThumbImage }"
 												alt="Image Description">
 										</div>
 
 										<div class="col-8 col-sm-9 g-mb-30">
-											<span class="d-block g-color-lightred mb-2">&#8361;32,000</span>
-											<span
-												class="d-block g-color-gray-dark-v4 g-font-size-13 mb-2">2021-12-12
-												13:12:11 구매함.</span>
+										<c:if test="${ purchasedGameList.gameDiscountRate ne '0'}">
+											<del class="g-font-size-12 g-color-gray-dark-v5 mr-3">
+											&#8361;<fmt:formatNumber value="${purchasedGameList.gamePrice}" type="number"/>
+											</del>
+										</c:if>
+										<span class="g-color-gray-dark-v2 g-font-size-15">
+											&#8361;<fmt:formatNumber value="${purchasedGameList.gamePrice * (100-purchasedGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/>
+										</span>
+										<!-- <span class="d-block g-color-lightred mb-2">&#8361;32,000</span> -->
+										
+										<span
+											class="d-block g-color-gray-dark-v4 g-font-size-13 mb-2">${purchasedGameList.purchasedWriteDate }</span>
 										</div>
 									</div>
 								</div>
@@ -169,191 +188,55 @@
 								<div class="col-md-4">
 									<a
 										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25 mb-4"
-										href="page-single-product-1.html">게임 상세보기</a>
+										href="/sumy/single-product/${purchasedGameList.gameId }">게임 상세보기</a>
 								</div>
 							</div>
 						</div>
 						<!-- End Order Content -->
-					</div>
-					<!-- End Order Block -->
-
-					<!-- Order Block -->
-					<div class="g-brd-around g-brd-gray-light-v4 rounded g-mb-30">
-						<header class="g-bg-gray-light-v5 g-pa-20">
-							<div class="row">
-								<div class="col-sm-3 col-md-4 ml-auto text-sm-right">
-									<h4
-										class="g-color-gray-dark-v4 g-font-weight-400 g-font-size-12 text-uppercase g-mb-2">
-										주문 ID : <span>333</span>
-									</h4>
-								</div>
-							</div>
-						</header>
-
-						<!-- Order Content -->
-						<div class="g-pa-20">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="mb-4">
-										<h3 class="h5 mb-1">캔디크러쉬 사가</h3>
-										<p class="g-color-gray-dark-v4 g-font-size-13">
-											게임사 : <span>라이엇</span>
-										</p>
-									</div>
-
-									<div class="row">
-										<div class="col-4 col-sm-3 g-mb-30">
-											<img class="img-fluid"
-												src="/resources/static/user/assets/img-temp/150x150/img9.jpg"
-												alt="Image Description">
-										</div>
-
-										<div class="col-8 col-sm-9 g-mb-30">
-											<span class="d-block g-color-lightred mb-2">&#8361;32,000</span>
-											<span
-												class="d-block g-color-gray-dark-v4 g-font-size-13 mb-2">2021-12-12
-												13:12:11 구매함.</span>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<a
-										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25 mb-4"
-										href="page-single-product-1.html">게임 상세보기</a>
-								</div>
-							</div>
-						</div>
-						<!-- End Order Content -->
-					</div>
-					<!-- End Order Block -->
-
-					<!-- Order Block -->
-					<div class="g-brd-around g-brd-gray-light-v4 rounded g-mb-30">
-						<header class="g-bg-gray-light-v5 g-pa-20">
-							<div class="row">
-								<div class="col-sm-3 col-md-4 ml-auto text-sm-right">
-									<h4
-										class="g-color-gray-dark-v4 g-font-weight-400 g-font-size-12 text-uppercase g-mb-2">
-										주문 ID : <span>333</span>
-									</h4>
-								</div>
-							</div>
-						</header>
-
-						<!-- Order Content -->
-						<div class="g-pa-20">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="mb-4">
-										<h3 class="h5 mb-1">캔디크러쉬 사가</h3>
-										<p class="g-color-gray-dark-v4 g-font-size-13">
-											게임사 : <span>라이엇</span>
-										</p>
-									</div>
-
-									<div class="row">
-										<div class="col-4 col-sm-3 g-mb-30">
-											<img class="img-fluid"
-												src="/resources/static/user/assets/img-temp/150x150/img9.jpg"
-												alt="Image Description">
-										</div>
-
-										<div class="col-8 col-sm-9 g-mb-30">
-											<span class="d-block g-color-lightred mb-2">&#8361;32,000</span>
-											<span
-												class="d-block g-color-gray-dark-v4 g-font-size-13 mb-2">2021-12-12
-												13:12:11 구매함.</span>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<a
-										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25 mb-4"
-										href="page-single-product-1.html">게임 상세보기</a>
-								</div>
-							</div>
-						</div>
-						<!-- End Order Content -->
-					</div>
-					<!-- End Order Block -->
-
-					<!-- Order Block -->
-					<div class="g-brd-around g-brd-gray-light-v4 rounded g-mb-30">
-						<header class="g-bg-gray-light-v5 g-pa-20">
-							<div class="row">
-								<div class="col-sm-3 col-md-4 ml-auto text-sm-right">
-									<h4
-										class="g-color-gray-dark-v4 g-font-weight-400 g-font-size-12 text-uppercase g-mb-2">
-										주문 ID : <span>333</span>
-									</h4>
-								</div>
-							</div>
-						</header>
-
-						<!-- Order Content -->
-						<div class="g-pa-20">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="mb-4">
-										<h3 class="h5 mb-1">캔디크러쉬 사가</h3>
-										<p class="g-color-gray-dark-v4 g-font-size-13">
-											게임사 : <span>라이엇</span>
-										</p>
-									</div>
-
-									<div class="row">
-										<div class="col-4 col-sm-3 g-mb-30">
-											<img class="img-fluid"
-												src="/resources/static/user/assets/img-temp/150x150/img9.jpg"
-												alt="Image Description">
-										</div>
-
-										<div class="col-8 col-sm-9 g-mb-30">
-											<span class="d-block g-color-lightred mb-2">&#8361;32,000</span>
-											<span
-												class="d-block g-color-gray-dark-v4 g-font-size-13 mb-2">2021-12-12
-												13:12:11 구매함.</span>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<a
-										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25 mb-4"
-										href="page-single-product-1.html">게임 상세보기</a>
-								</div>
-							</div>
-						</div>
-						<!-- End Order Content -->
+						</c:forEach>
 					</div>
 					<!-- End Order Block -->
 
 					<!-- Pagination -->
 					<nav class="g-mt-100" aria-label="Page Navigation">
 						<ul class="list-inline mb-0">
-							<li class="list-inline-item"><a
-								class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-mr-15"
-								href="#" aria-label="Next"> <span aria-hidden="true">
-										<i class="fa fa-angle-left"></i>
-								</span> <span class="sr-only">Before</span>
-							</a></li>
-							<li class="list-inline-item hidden-down"><a
-								class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded-circle g-pa-5"
-								href="#">1</a></li>
-							<li class="list-inline-item hidden-down"><a
-								class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
-								href="#">2</a></li>
+							<c:if test="${paging.startPage != 1 }">
+								<li class="list-inline-item"><a
+									class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-mr-15"
+									href="/user/purchased?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&orderOpt=${paging.orderOpt}" aria-label="Next"> <span aria-hidden="true">
+											<i class="fa fa-angle-left"></i>
+									</span> <span class="sr-only">Before</span>
+								</a></li>
+							</c:if>
+							<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+				                <c:choose>
+				                	<c:when test="${p != paging.nowPage }">
+										<li class="list-inline-item hidden-down"><a
+											class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded-circle g-pa-5"
+											href="/user/purchased?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&orderOpt=${paging.orderOpt}">${p }</a></li>
+									</c:when>
+									<c:when test="${p == paging.nowPage }">
+										<%-- <li class="list-inline-item hidden-down"><a
+											class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
+											href="#">${p }</a></li> --%>
+											<li class="list-inline-item hidden-down"><span
+											class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 active"
+											>${p }</span></li>
+					                </c:when>
+				                </c:choose>
+			                </c:forEach>
+			                
+			                <c:if test="${paging.endPage != paging.lastPage}">
 							<li class="list-inline-item"><a
 								class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-ml-15"
-								href="#" aria-label="Next"> <span aria-hidden="true">
+								href="/user/purchased?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&orderOpt=${paging.orderOpt}"  aria-label="Next"> <span aria-hidden="true">
 										<i class="fa fa-angle-right"></i>
 								</span> <span class="sr-only">Next</span>
 							</a></li>
-							<li class="list-inline-item float-right"><span
+							<<li class="list-inline-item float-right"><span
 								class="u-pagination-v1__item-info g-color-gray-dark-v4 g-font-size-12 g-pa-5">Page
-									1 of 2</span></li>
+									${paging.nowPage } of ${paging.lastPage }</span></li>
+							</c:if>
 						</ul>
 					</nav>
 					<!-- End Pagination -->
@@ -504,5 +387,6 @@
       $("ul.list-unstyled.mb-0 li").eq(1).children().first().addClass("active").addClass("g-color-primary--parent-active").addClass("g-bg-gray-light-v5--active");
     });
   </script>
+  <script src="/resources/static/user/assets/js/page-purchased-1.js"></script>
 </body>
 </html>
