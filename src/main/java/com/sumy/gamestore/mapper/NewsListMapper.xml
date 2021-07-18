@@ -20,7 +20,7 @@
 				OR news_text like CONCAT('%', #{keyword}, '%')
 			</if>
 		</trim>
-		order by news_id desc limit #{start}, #{cntPage}
+		order by news_id desc limit #{start}, #{cntPerPage}
 		
 
  	</select>

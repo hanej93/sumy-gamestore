@@ -49,7 +49,7 @@
 				AND report_read_yn = 0
 			</if>
 		</trim>
-		order by report_id desc limit #{start}, #{cntPage}
+		order by report_id desc limit #{start}, #{cntPerPage}
 		
 
  	</select>

@@ -63,14 +63,14 @@ public interface ReviewListMapper {
 			+ "join user_info u "
 			+ "on r.user_id = u.user_id "
 			+ "where game_id = #{gameId} "
-			+ "order by review_update_date desc limit #{vo.start}, #{vo.cntPage}")
+			+ "order by review_update_date desc limit #{vo.start}, #{vo.cntPerPage}")
 	public List<ReviewUserDto> selectReviewByGameId(@Param("gameId") int gameId,@Param("vo") PagingVO vo);
 	
 	@Select("select count(*) from review_list r "
 			+ "join user_info u "
 			+ "on r.user_id = u.user_id "
 			+ "where game_id = #{gameId} "
-			+ "order by review_update_date desc limit #{vo.start}, #{vo.cntPage}")
+			+ "order by review_update_date desc")
 	public int countReviewByGameId(@Param("gameId") int gameId,@Param("vo") PagingVO vo);
 	
 	@Select("select count(*) from review_list r "

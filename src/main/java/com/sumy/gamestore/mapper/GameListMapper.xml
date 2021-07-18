@@ -13,7 +13,7 @@
 				AND game_title like CONCAT('%', #{keyword}, '%')
 			</if>
 		</trim>
-		order by game_id desc limit #{start}, #{cntPage}
+		order by game_id desc limit #{start}, #{cntPerPage}
 		
 
  	</select>

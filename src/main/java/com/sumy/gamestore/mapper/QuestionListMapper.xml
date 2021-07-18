@@ -29,7 +29,7 @@
 				AND question_answer_yn = 0
 			</if>
 		</trim>
-		order by question_id desc limit #{start}, #{cntPage}
+		order by question_id desc limit #{start}, #{cntPerPage}
 		
 
  	</select>
