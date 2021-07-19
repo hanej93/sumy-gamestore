@@ -148,11 +148,11 @@
               <h4 class="text-uppercase g-font-size-default g-letter-spacing-0_5 g-mr-20 g-mb-0">필터</h4>
             </div>
 
-
-            <!-- Filters -->
+<!-- 
+            Filters
             <form class="g-brd-left--lg g-brd-gray-light-v4 g-pt-40 g-px-20">
               <div class="g-pl-15--lg g-pt-60">
-                <!-- Categories -->
+                Categories
                 <div class="g-mb-30">
                   <h3 class="h5 mb-3">이벤트</h3>
 
@@ -167,12 +167,12 @@
                     </li>
                   </ul>
                 </div>
-                <!-- End Categories -->
+                End Categories
 
                 <hr class="g-bg-white">
 
-                <!-- 필터인덱스3 -->
-                <!-- Pricing -->
+                필터인덱스3
+                Pricing
                 <div class="g-mb-30">
                   <h3 class="h5 mb-3">가격</h3>
 
@@ -183,12 +183,12 @@
                     </div>
                   </div>
                 </div>
-                <!-- End Pricing -->
+                End Pricing
 
 
                 <hr class="g-bg-white">
 
-                <!-- Rating -->
+                Rating
                 <div class="g-mb-30">
                   <h3 class="h5 mb-3">별점</h3>
 
@@ -211,14 +211,14 @@
                     </li>
                   </ul>
                 </div>
-                <!-- End Rating -->
+                End Rating
 
 
 
 
                 <div id="accordion-12" class="u-accordion u-accordion-color-white" role="tablist"
                   aria-multiselectable="true">
-                  <!-- Card -->
+                  Card
                   <div class="g-brd-none rounded-0 g-mb-15">
                     <div id="accordion-12-heading-01" class="u-accordion__header g-pa-0" role="tab">
                       <h5 class="mb-0">
@@ -299,7 +299,7 @@
                       </ul>
                     </div>
                   </div>
-                  <!-- End Card -->
+                  End Card
                 </div>
 
                 <hr class="g-bg-white">
@@ -309,11 +309,11 @@
                   <button class="btn u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25 g-mx-15"
                     type="button">적용</button>
                 </div>
-                <!-- 필터인덱스1 -->
+                필터인덱스1
               </div>
             </form>
-            <!-- End Filters -->
-
+            End Filters
+ -->
 
           </div>
           <!-- 필터 종료 -->
@@ -455,14 +455,14 @@
                 </a>
                 <!-- Top Activity Toggler -->
 
-                <a id="activityInvoker"
+               <!--  <a id="activityInvoker"
                   class="g-pos-rel g-width-50 g-height-50 g-font-size-20 btn btn-lg u-btn-outline-darkgray g-mx-20 g-color-primary g-color-secondary--hover g-bg-white g-brd-gray-light-v3"
                   href="#" aria-controls="activityMenu" aria-haspopup="true" aria-expanded="false"
                   data-dropdown-event="click" data-dropdown-target="#activityMenu" data-dropdown-type="css-animation"
                   data-dropdown-animation-in="fadeInRight" data-dropdown-animation-out="fadeOutRight"
                   data-dropdown-duration="300">
                   <i class="hs-admin-align-right g-absolute-centered"></i>
-                </a>
+                </a> -->
                 <!-- End Top Activity Toggler -->
               </div>
             </div>

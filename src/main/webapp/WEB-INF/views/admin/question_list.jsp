@@ -42,6 +42,9 @@
 
   <!-- CSS Customization -->
   <link rel="stylesheet" href="/resources/static/assets/css/custom.css">
+  
+  <!-- 썸머 노트 -->
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -511,6 +514,23 @@
 
     <!-- JS Custom -->
     <!-- <script src="/resources/static/assets/js/custom.js"></script> -->
+    
+    <!-- 썸머노트 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <!-- include summernote-ko-KR -->
+	<script src="/resources/static/etc/summernote-ko-KR.js"></script>
+
+    <!-- 썸머노트 설정 -->
+    <script>
+      $("textarea[id^='answerText']").summernote({
+        placeholder: '답변 내용을 작성해주세요',
+        tabsize: 2,
+        height: 150,
+        lang: 'ko-KR',
+        
+      });
+     
+    </script>
 
     <!-- JS Plugins Init. -->
     <script>
@@ -544,9 +564,9 @@
 
       	//sidebar 메뉴 액티브
         $("#questionSidebar").addClass("has-active");
-        
+        $(".note-editing-area").attr('style', 'text-align: left !important');
       });
-
+		
     </script>
 	<script src="/resources/static/etc/admin-question-list.js"></script>
 	
