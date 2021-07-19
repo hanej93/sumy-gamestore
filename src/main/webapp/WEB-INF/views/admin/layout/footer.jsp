@@ -8,7 +8,7 @@
       <div class="col-md-4 g-mb-10 g-mb-0--md">
         <ul class="list-inline text-center text-md-left mb-0">
           <li class="list-inline-item">
-            <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="#">FAQ</a>
+            <a class="g-color-gray-dark-v6 g-color-secondary--hover" href="/qna">FAQ</a>
           </li>
           <li class="list-inline-item">
             <span class="g-color-gray-dark-v6">|</span>
@@ -55,7 +55,7 @@
 
       <!-- Footer Copyrights -->
       <div class="col-md-4 text-center text-md-right">
-        <small class="d-block g-font-size-default">&copy; 2020 Htmlstream. All Rights Reserved.</small>
+        <small class="d-block g-font-size-default">2021 © All Rights Reserved.</small>
       </div>
       <!-- End Footer Copyrights -->
     </div>

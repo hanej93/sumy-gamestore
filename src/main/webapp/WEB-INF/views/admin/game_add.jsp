@@ -745,50 +745,6 @@
         });
         // 멀티 이미지 미리보기 끝
 
-
-        // 할인된 가격 스크립트 시작
-        $("#sumy-game-input-price").on("blur", function () {
-          const inputPrice = $("#sumy-game-input-price").val();
-          const inputPriceNonComma = inputPrice.split(',').join('');
-
-          const discountRate = $("#sumy-game-discount-rate").val();
-          const resultPriceObject = $("#sumy-game-result-price");
-          const resultPriceVal = Math.round(inputPriceNonComma * (100 - discountRate) / 100);
-          const currencyInput = inputPriceNonComma.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          const currencyResult = resultPriceVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          $("#sumy-game-input-price").val(currencyInput);
-          resultPriceObject.val(currencyResult);
-        });
-
-        $("#sumy-game-discount-rate").on("blur", function () {
-          const inputPrice = $("#sumy-game-input-price").val();
-          const inputPriceNonComma = inputPrice.split(',').join('');
-
-          let discountRate = Math.floor($("#sumy-game-discount-rate").val());
-          $("#sumy-game-discount-rate").val(discountRate);
-          if (discountRate > 100) {
-            $("#sumy-game-discount-rate").val(100);
-            discountRate = 100;
-          }
-
-          const resultPriceObject = $("#sumy-game-result-price");
-          const resultPriceVal = Math.round(inputPriceNonComma * (100 - discountRate) / 100);
-          const currencyInput = inputPriceNonComma.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          const currencyResult = resultPriceVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          $("#sumy-game-input-price").val(currencyInput);
-          resultPriceObject.val(currencyResult);
-        });
-        // 할인된 가격 스크립트 끝
-
-        $("#sumy-game-category input[type='checkbox']").on("click", function () {
-
-          var count = $("#sumy-game-category input[type='checkbox']:checked").length;
-          if (count > 4) {
-            $(this).prop("checked", false);
-            alert("카테고리는 4개까지 선택 가능 합니다.");
-          }
-        });
-
         //sidebar 메뉴 액티브
         $("#gameSidebar").addClass("has-active");
         

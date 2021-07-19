@@ -153,8 +153,8 @@ let userInfo = {
 		let warningNum = plusBtn.parent().children("span").text();
 		
         if(warningNum < 3){
-            plusBtn.parent().children("span").text(Number(warningNum)+1);
         }
+        plusBtn.parent().children("span").text(Number(warningNum)+1);
 
 	},
 	

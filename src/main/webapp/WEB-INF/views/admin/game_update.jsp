@@ -231,7 +231,7 @@
                       <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-40 h-100 opacity-0 g-opacity-1--success">
                         <i class="hs-admin-check g-absolute-centered g-font-size-default g-color-secondary"></i>
                       </span>
-                      <input id="sumy-game-result-price"
+                      <input id="sumy-game-result-price" value="${gameInfo.gamePrice * (100 - gameInfo.gameDiscountRate) / 100 }"
                         class="form-control form-control-md g-brd-none g-brd-bottom g-brd-gray-light-v7 g-brd-gray-light-v3--focus rounded-0 px-0 g-py-10 g-bg-white"
                         type="text" maxlength="8" style="text-align:right" readonly="readonly">
                       <div class="input-group-append">
@@ -795,52 +795,6 @@
         });
         // 멀티 이미지 미리보기 끝
 
-
-        // 할인된 가격 스크립트 시작
-        $("#sumy-game-input-price").on("blur", function () {
-          const inputPrice = $("#sumy-game-input-price").val();
-          const inputPriceNonComma = inputPrice.split(',').join('');
-
-          const discountRate = $("#sumy-game-discount-rate").val();
-          const resultPriceObject = $("#sumy-game-result-price");
-          const resultPriceVal = Math.round(inputPriceNonComma * (100 - discountRate) / 100);
-          const currencyInput = inputPriceNonComma.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          const currencyResult = resultPriceVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          $("#sumy-game-input-price").val(currencyInput);
-          resultPriceObject.val(currencyResult);
-        });
-
-        $("#sumy-game-discount-rate").on("blur", function () {
-          const inputPrice = $("#sumy-game-input-price").val();
-          const inputPriceNonComma = inputPrice.split(',').join('');
-
-          let discountRate = Math.floor($("#sumy-game-discount-rate").val());
-          $("#sumy-game-discount-rate").val(discountRate);
-          if (discountRate > 100) {
-            $("#sumy-game-discount-rate").val(100);
-            discountRate = 100;
-          }
-
-          const resultPriceObject = $("#sumy-game-result-price");
-          const resultPriceVal = Math.round(inputPriceNonComma * (100 - discountRate) / 100);
-          const currencyInput = inputPriceNonComma.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          const currencyResult = resultPriceVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          $("#sumy-game-input-price").val(currencyInput);
-          resultPriceObject.val(currencyResult);
-        });
-        // 할인된 가격 스크립트 끝
-
-        $("#sumy-game-category input[type='checkbox']").on("click", function () {
-
-          var count = $("#sumy-game-category input[type='checkbox']:checked").length;
-          if (count > 4) {
-            $(this).prop("checked", false);
-            alert("카테고리는 4개까지 선택 가능 합니다.");
-          }
-        });
-
-        //sidebar 메뉴 액티브
-        $("#gameSidebar").addClass("has-active");
         
       });
     </script>
