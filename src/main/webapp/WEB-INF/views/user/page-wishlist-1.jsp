@@ -197,7 +197,7 @@
 								id="wishTotalPriceAfter1"><fmt:formatNumber value="${finalTotalPrice }" type="number" pattern="###,###,###,###,###,###"/></span> &#8361;</span>
 						</div>
 					</aside>
-					<div style="display:none;"><!-- 사용 다 하면 display:none; -->
+					<form name="wishListForm" style="display: none;"><!-- 사용 다 하면 display:none; -->
 						<label>유저 아이디 : </label>
 						<input type="number" name="userId" value="${principal.user.userId}"><br>
 						<label>유저 이메일 : </label>
@@ -210,7 +210,7 @@
 						<input type="text" name="userToken" value="${principal.user.userToken}"><br>
 						<label>총 결제 금액 : </label>
 						<input type="number" id="totalAmount" name="totalAmount" value=""><br>
-					</div>
+					</form>
 					<button id="kakaoPayApiBtn"
 						class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
 						type="button">결제</button>
