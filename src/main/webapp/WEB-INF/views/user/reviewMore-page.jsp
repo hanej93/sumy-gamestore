@@ -124,12 +124,16 @@
 									<c:when test="${empty existsWishlist }">
 										<button id="wishlist-btn" gameId="${gameInfo.gameId }"
 											class="btn btn-block u-btn-bluegray g-font-size-12 text-uppercase g-py-15 g-px-25"
+											 data-toggle="tooltip" data-placement="top" data-original-title="해당 게임이 위시리스트에 담겨졌습니다."
+											 data-trigger="manual" 
 											><span>위시리스트 담기</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
 										</button>
 									</c:when>
 									<c:otherwise>
 										<button id="wishlist-btn" gameId="${gameInfo.gameId }"
 											class="btn btn-block u-btn-black g-font-size-12 text-uppercase g-py-15 g-px-25"
+											data-toggle="tooltip" data-placement="top" data-original-title="해당 게임이 위시리스트에서 제거되었습니다."
+											 data-trigger="manual" 
 											><span>위시리스트 있음</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
 										</button>
 									</c:otherwise>

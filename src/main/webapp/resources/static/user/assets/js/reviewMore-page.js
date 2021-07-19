@@ -216,6 +216,22 @@ $(document).on('ready', function() {
 			if(resp == 1){
 				$("#wishlist-btn").toggleClass('u-btn-bluegray');
 				$("#wishlist-btn").toggleClass('u-btn-black');
+				//$('#wishlist-btn span').text($('#wishlist-btn span').text() == '위시리스트 담기' ? '위시리스트 있음' : '위시리스트 담기');
+				if($('#wishlist-btn span').text() == '위시리스트 담기'){
+					$('#wishlist-btn span').text('위시리스트 있음');
+					$("#wishlist-btn").attr('data-original-title','해당 게임이 위시리스트에 담겨졌습니다.');
+					$("#wishlist-btn").tooltip('show');
+					setTimeout(function() {
+					    $("#wishlist-btn").tooltip('hide');
+					}, 1000);
+				} else {
+					$('#wishlist-btn span').text('위시리스트 담기');
+					$("#wishlist-btn").attr('data-original-title','해당 게임이 위시리스트에서 제거되었습니다.');
+					$("#wishlist-btn").tooltip('show');
+					setTimeout(function() {
+					    $("#wishlist-btn").tooltip('hide');
+					}, 1000);
+				}
 			}
 		}).fail(function(error){ 
 			console.log(error); 
