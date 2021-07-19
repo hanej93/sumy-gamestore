@@ -143,17 +143,17 @@
 											</span>
 											
 										</div>
-										<form name="wishlistdata" style="display:none;"><!-- 사용 다 하면 display:none; -->
+										<form name="wishlistdata"><!-- 사용 다 하면 display:none; -->
 											<label>위시리스트 ID : </label>
-											<input type="number" name="wishlistId" class="packWishlistId" value="${wishList.wishlistId}"><br>
+											<input type="number" class="packWishlistId" value="${wishList.wishlistId}"><br>
 											<label>게임 ID : </label>
-											<input type="number" name="gameId" class="packGameId" value="${wishList.gameId}"><br>
+											<input type="number" class="packGameId" value="${wishList.gameId}"><br>
 											<label>유저 아이디 : </label>
-											<input type="number" name="userId" class="packUserId" value="${principal.user.userId}"><br>
+											<input type="number" class="packUserId" value="${principal.user.userId}"><br>
 											<label>게임 타이틀 : </label>
-											<input type="text" name="gameTitle" class="packGameTitle" value="${wishList.gameTitle}"><br>
+											<input type="text" class="packGameTitle" value="${wishList.gameTitle}"><br>
 											<label>게임 가격 : </label>
-											<input type="number" name="gamePrice" class="value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}"><br>
+											<input type="number" class="packGamePrice" value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}"><br>
 										</form>
 									</td>
 								</tr>
