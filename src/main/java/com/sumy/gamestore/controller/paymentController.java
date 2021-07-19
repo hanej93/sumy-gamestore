@@ -41,12 +41,6 @@ public class paymentController {
 	// public String kakaoPayApi(@RequestParam("totalAmount") String totalAmount,
 	// WishlistGame wishlistGame, GameInfo gameInfo, UserInfo userInfo) {
 	public String kakaoPayApi(@RequestBody List<Map<String, String>> wishList) {
-//		System.out.println("paymentController의 /user/kakaoPayApi 컨트롤러에서 받은 totalAmount값 :"+totalAmount);
-//		System.out.println("paymentController의 /user/kakaoPayApi 컨트롤러에서 받은 wishlistGame값 :\n"+"WishlistId : "+wishlistGame.getWishlistId());
-//		System.out.println("paymentController의 /user/kakaoPayApi 컨트롤러에서 받은 gameInfo값 : \n"+"GameId : "+gameInfo.getGameId()+"GameTitle : "+gameInfo.getGameTitle());
-//		System.out.println("paymentController의 /user/kakaoPayApi 컨트롤러에서 받은 userInfo값 : \n"+"UserId : "+userInfo.getUserId()+"UserEmail : "+userInfo.getUserEmail()+"UserProvider : "+userInfo.getUserProvider()+"UserToken : "+userInfo.getUserToken()+"UserName : "+userInfo.getUserName());
-		System.out.println(wishList);
-		System.out.println(wishList);
 		int totalAmount = 0;
 		for (Map<String, String> mapItem : wishList) {
 			System.out.println("wishList map으로 받은 객체" + mapItem);
@@ -62,9 +56,7 @@ public class paymentController {
 			connectApiServer.setRequestProperty("Authorization", "KakaoAK 9cb0490eb67feb2d83123c719ec179d0");// 카카오api서버에 보낼 데이터 default setting1
 			connectApiServer.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");// 카카오api서버에 보낼 데이터 default setting2
 			connectApiServer.setDoOutput(true);// 카카오api서버에 보낼 데이터가 있는가? true=yes
-			String sendParam = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount="
-					+ totalAmount
-					+ "&tax_free_amount=0&vat_amount=0&approval_url=http://localhost:8080/user/orderSuccess&fail_url=http://localhost:8080/user/orderFail&cancel_url=http://localhost:8080/user/orderCancel";
+			String sendParam = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount=20000&tax_free_amount=0&vat_amount=0&approval_url=http://localhost:8080/user/orderSuccess&fail_url=http://localhost:8080/user/orderFail&cancel_url=http://localhost:8080/user/orderCancel";
 			OutputStream packing = connectApiServer.getOutputStream(); // 카카오api서버에 데이터 전송할 친구 설정
 			DataOutputStream packingData = new DataOutputStream(packing); // 카카오api서버에 데이터 전송할 친구한테 데이터 보내주는 애 설정
 			packingData.writeBytes(sendParam);

@@ -93,7 +93,7 @@
 				<div class="col-lg-5 g-mb-50">
 					<!-- Products Block -->
 					<div
-						class="js-custom-scroll g-height-500 rounded g-brd-around g-brd-gray-light-v4 g-overflow-x-scroll g-overflow-x-visible--lg g-pa-30">
+						class="rounded g-brd-around g-brd-gray-light-v4 g-overflow-x-scroll g-overflow-x-visible--lg g-pa-30">
 						<table class="text-center w-100">
 							<thead
 								class="h6 g-brd-bottom g-brd-gray-light-v4 g-color-black text-uppercase">
@@ -143,7 +143,7 @@
 											</span>
 											
 										</div>
-										<div><!-- 사용 다 하면 display:none; -->
+										<div style="display:none;"><!-- 사용 다 하면 display:none; -->
 											<label>위시리스트 ID : </label>
 											<input type="number" class="packWishlistId" value="${wishList.wishlistId}"><br>
 											<label>게임 ID : </label>
@@ -151,7 +151,7 @@
 											<label>게임 타이틀 : </label>
 											<input type="text" class="packGameTitle" value="${wishList.gameTitle}"><br>
 											<label>다른 계정 로긴 유저 제공사 : </label>
-											<input type="number" class="packGamePrice" value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}"><br>
+											<input type="number" class="value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}"><br>
 										</div>
 									</td>
 								</tr>
@@ -197,7 +197,7 @@
 								id="wishTotalPriceAfter1"><fmt:formatNumber value="${finalTotalPrice }" type="number" pattern="###,###,###,###,###,###"/></span> &#8361;</span>
 						</div>
 					</aside>
-					<div><!-- 사용 다 하면 display:none; -->
+					<div style="display:none;"><!-- 사용 다 하면 display:none; -->
 						<label>유저 아이디 : </label>
 						<input type="number" name="userId" value="${principal.user.userId}"><br>
 						<label>유저 이메일 : </label>
