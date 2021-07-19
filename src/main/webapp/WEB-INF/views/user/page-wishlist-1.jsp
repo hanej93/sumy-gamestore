@@ -143,7 +143,7 @@
 											</span>
 											
 										</div>
-										<form name="wishlistdata"><!-- 사용 다 하면 display:none; -->
+										<form name="wishlistdata" style="display:none;"><!-- 사용 다 하면 display:none; -->
 											<label>위시리스트 ID : </label>
 											<input type="number" class="packWishlistId" value="${wishList.wishlistId}"><br>
 											<label>게임 ID : </label>
