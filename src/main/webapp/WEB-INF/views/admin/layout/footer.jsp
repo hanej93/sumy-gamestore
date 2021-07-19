@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- Footer -->
   <footer id="footer"
     class="u-footer--bottom-sticky g-bg-white g-color-gray-dark-v6 g-brd-top g-brd-gray-light-v7 g-pa-20">
@@ -58,4 +60,46 @@
       <!-- End Footer Copyrights -->
     </div>
   </footer>
+<script src="/resources/static/admin/assets/vendor/jquery/jquery.min.js"></script>
+<script>
+
+	let pageName = $("#pageName").text();
+	if(pageName == '게임 관리'){
+		$("#gameSidebar").addClass('has-active');
+		$("#gameSidebar>a").addClass('g-color-primary');
+		$("#gameSidebar i:first").addClass('g-color-primary');
+	}
+	if(pageName == '고객 관리'){
+		$("#userSidebar").addClass('has-active');
+		$("#userSidebar>a").addClass('g-color-primary');
+		$("#userSidebar i:first").addClass('g-color-primary');
+	}
+	if(pageName == '문의 관리'){
+		$("#questionSidebar").addClass('has-active');
+		$("#questionSidebar>a").addClass('g-color-primary');
+		$("#questionSidebar i:first").addClass('g-color-primary');
+	}
+	if(pageName == '신고 관리'){
+		$("#warningSidebar").addClass('has-active');
+		$("#warningSidebar>a").addClass('g-color-primary');
+		$("#warningSidebar i:first").addClass('g-color-primary');
+	}
+	if(pageName == '뉴스 관리'){
+		$("#newsSidebar").addClass('has-active');
+		$("#newsSidebar>a").addClass('g-color-primary');
+		$("#newsSidebar i:first").addClass('g-color-primary');
+	}
+	
+	
+		/* has-active 
+			
+		gameSidebar 게임 관리
+		userSidebar 유저 관리
+		questionSidebar 문의 관리
+		warningSidebar 신고 관리
+		newsSidebar 뉴스 관리
+		
+		*/
+	
+</script>
 <!-- End Footer -->
