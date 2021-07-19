@@ -16,6 +16,7 @@ let catalogue = {
 	
 	clearFilter:function(){
 		$("#starFilter").children().removeClass('g-color-primary');
+		$("#starFilter").children().removeClass('click');
 		
 		$.HSCore.components.HSSlider.init('#rangeSlider1');
 	},
