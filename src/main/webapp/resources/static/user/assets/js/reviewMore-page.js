@@ -106,7 +106,7 @@ $(document).on('ready', function() {
 			return false;
 		}
 
-		if (!confirm("'" + declarationNameStr + "' 님을 신고하시겠습니까?")) {
+		if (!confirm("'" + $(declarationNameStr).text() + "' 님을 신고하시겠습니까?")) {
 			return false;
 		}
 		let data = {
