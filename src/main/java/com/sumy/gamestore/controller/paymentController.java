@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,9 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sumy.gamestore.model.GameInfo;
+import com.sumy.gamestore.model.PurchasedGameList;
 import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.MyPageService;
+import com.sumy.gamestore.service.PaymentService;
 import com.sumy.gamestore.service.UpdateUserService;
 
 @Controller
@@ -34,19 +38,24 @@ public class paymentController {
 
 	@Autowired
 	MyPageService myPageService;
+	
+	@Autowired
+	PaymentService paymentService;
 
 	// 결제하기
 	@RequestMapping("/user/kakaoPayApi")
 	@ResponseBody
 	// public String kakaoPayApi(@RequestParam("totalAmount") String totalAmount,
 	// WishlistGame wishlistGame, GameInfo gameInfo, UserInfo userInfo) {
-	public String kakaoPayApi(@RequestBody List<Map<String, String>> wishList) {
+	public String kakaoPayApi(@RequestBody List<Map<String, String>> wishList, UserInfo userInfo) {
+		System.out.println("user 들어왔는지 확인 : "+userInfo);
 		int totalAmount = 0;
 		for (Map<String, String> mapItem : wishList) {
 			System.out.println("wishList map으로 받은 객체" + mapItem);
-			totalAmount = Integer.parseInt(mapItem.get("packGamePrice"));
+			totalAmount = Integer.parseInt(mapItem.get("packGamePrice"));//카카오페이 api에 보낼 total금액 만들기
 		}
 		System.out.println(totalAmount);
+
 		try {
 			// Output
 			URL urlAddress = new URL("https://kapi.kakao.com/v1/payment/ready");// 카카오api서버 URL로 생성
@@ -83,7 +92,26 @@ public class paymentController {
 
 	// 결제 성공 시
 	@RequestMapping("/user/orderSuccess")
-	public String orderSuccess() {
+	public String orderSuccess(WishlistGame wishList, UserInfo userInfo, GameInfo gameInfo) {
+		System.out.println("user 들어왔는지 확인 : "+userInfo);
+		System.out.println("wishList 들어왔는지 확인 : "+wishList);
+		System.out.println("gameInfo 들어왔는지 확인 : "+gameInfo);
+
+//		GameInfo gameInfo = new GameInfo();//payment service에 보낼 데이터 만들기
+//		gameInfo.setGameId(Integer.parseInt(mapItem.get("packGameId")));
+//		gameInfo.setGameTitle(mapItem.get("packGameTitle"));
+//		gameInfo.setGamePrice(Integer.parseInt(mapItem.get("packGamePrice")));
+//		WishlistGame wishGame = new WishlistGame();
+//		wishGame.setWishlistId(Integer.parseInt(mapItem.get("packWishlistId")));
+//		
+//		System.out.println("gameInfoList에 넣기전 gameInfo 데이터 : "+gameInfo);//set한 gamedata 확인하기!
+//		System.out.println("wishListGame에 넣기전 wishGame 데이터 : "+wishGame);//set한 wishdata 확인하기!
+//		gameInfoList.add(gameInfo);
+//		wishListGame.add(wishGame);
+//		purchasedGameList.add(new PurchasedGameList(0,gameInfo.getGameId(),userInfo.getUserId(),LocalDateTime.now()));
+		
+//		paymentService.insertPurchasedGame(new PurchasedGameList(0,));
+		
 		return "user/page-order-completed-s";
 	}
 
