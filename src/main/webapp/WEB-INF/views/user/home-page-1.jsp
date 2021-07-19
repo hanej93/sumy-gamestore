@@ -336,10 +336,10 @@
 				
 			<c:forEach var="FreeGameList" items="${FreeGameList}">
 				<div class="js-slide">
-					<div class="g-px-10">
+					<div class="g-px-10" >
 						<!-- Product -->
 						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
+							<img class="img-fluid" style="min-height: 320px; height: 320px;"
 								data-lazy="${FreeGameList.gameThumbImage}"
 								alt="Image Description">
 							<a class="u-link-v2" href="/sumy/single-product/${FreeGameList.gameId}"></a>
@@ -404,8 +404,10 @@
 					<div class="g-px-10">
 						<!-- Product -->
 						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
+							<img class="img-fluid" style="min-height: 340px; height: 340px;"
 								data-lazy="${DiscountGameList.gameThumbImage}"
+								
+								
 								alt="Image Description">
 							<c:if test="${DiscountGameList.gameDiscountRate > 0}">
 								<span

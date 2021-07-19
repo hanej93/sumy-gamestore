@@ -117,7 +117,7 @@
 								<div class="col-6 col-lg-4 g-mb-30">
 									<!-- Product -->
 									<figure class="g-pos-rel g-mb-20 g-height-350">
-										<img class="img-fluid" src="${gameInfo.gameThumbImage }"
+										<img class="img-fluid" src="${gameInfo.gameThumbImage }" style="min-height: 320px; height: 320px;"
 											alt="Image Description">
 										<c:if test="${gameInfo.gameDiscountRate > 0}">
 										<span
