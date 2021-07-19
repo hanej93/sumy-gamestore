@@ -214,8 +214,8 @@ $(document).on('ready', function() {
 			dataType:"json" 
 		}).done(function(resp){ 
 			if(resp == 1){
-				$("#wishlist-btn").toggleClass('btn-secondary');
-				$("#wishlist-btn").toggleClass('btn-outline-secondary');
+				$("#wishlist-btn").toggleClass('u-btn-bluegray');
+				$("#wishlist-btn").toggleClass('u-btn-black');
 			}
 		}).fail(function(error){ 
 			console.log(error); 

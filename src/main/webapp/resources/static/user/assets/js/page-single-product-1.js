@@ -144,8 +144,10 @@ $(document).on('ready', function() {
 			dataType:"json" 
 		}).done(function(resp){ 
 			if(resp == 1){
-				$("#wishlist-btn").toggleClass('btn-secondary');
-				$("#wishlist-btn").toggleClass('btn-outline-secondary');
+				$("#wishlist-btn").toggleClass('u-btn-bluegray');
+				$("#wishlist-btn").toggleClass('u-btn-black');
+				$('#wishlist-btn span').text($('#wishlist-btn span').text() == '위시리스트 담기' ? '위시리스트 있음' : '위시리스트 담기');
+				
 			}
 		}).fail(function(error){ 
 			console.log(error); 
