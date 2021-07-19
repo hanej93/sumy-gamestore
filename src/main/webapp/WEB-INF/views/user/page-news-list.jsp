@@ -102,14 +102,23 @@
 									<div class="col-lg-8 g-mb-150"></div>
 	
 									<div class="col g-mb-30">
-										<span class="d-block g-color-text mb-2">작성일 : <span>${newsList.newsWriteDate }</span></span> <span class="d-block g-color-text mb-4">수정일 :
-											<span>${newsList.newsUpdateDate }</span>
+										<span class="d-block g-color-text mb-2">작성일 : 
+											<span>
+												<fmt:parseDate value="${newsList.newsWriteDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+	      				 					</span>
+										</span>
+										<span class="d-block g-color-text mb-4">수정일 :
+											<span>
+												<fmt:parseDate value="${newsList.newsUpdateDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+											</span>
 										</span>
 									</div>
 	
 								</div>
 								<div class="col g-mb-30">
-									<img class="img-fluid" src="${newsThumbImage }"
+									<img class="img-fluid" src="${newsList.newsThumbImage }"
 										alt="Image Description" width="200px">
 								</div>
 							</div>

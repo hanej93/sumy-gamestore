@@ -476,6 +476,7 @@
 								<img class="d-flex w-100"
 									src="${NewGameList.gameThumbImage}"
 									alt="Image Description">
+								<a class="u-link-v2" href="/sumy/single-product/${NewGameList.gameId}"></a>
 
 							</div>
 							<!-- End Article Image -->
@@ -521,6 +522,7 @@
 								<img class="d-flex w-100"
 									src="${MostReviewGameList.gameThumbImage}"
 									alt="Image Description">
+								<a class="u-link-v2" href="/sumy/single-product/${MostReviewGameList.gameId}"></a>
 							</div>
 							<!-- End Article Image -->
 
@@ -566,6 +568,7 @@
 								<img class="d-flex w-100"
 									src="${AllUsersGameList.gameThumbImage}"
 									alt="Image Description">
+								<a class="u-link-v2" href="/sumy/single-product/${AllUsersGameList.gameId}"></a>
 							</div>
 							<!-- End Article Image -->
 
