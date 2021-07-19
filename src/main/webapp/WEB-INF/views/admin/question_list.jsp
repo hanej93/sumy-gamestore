@@ -342,7 +342,7 @@
                                   <div class="col-12 g-mt-10 g-mb-30">답변을 전송하시겠습니까?</div>
                                   <div>
                                     <a id="mailSendBtn${questionList.questionId }" questionId="${questionList.questionId }" href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
-                                      data-toggle="modal" aria-label="Close">전송</a>
+                                      data-toggle="modal" aria-label="Close" data-dismiss="modal">전송</a>
                                     <a href="#" class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-font-size-14"
                                       data-dismiss="modal">닫기</a>
                                   </div>

@@ -54,6 +54,10 @@ public class QuestionListApiController {
 		System.out.println("Text : " + questionUserDto.getQuestionText());
 		questionMailSendService.sendMail(questionUserDto.getUserEmail(), questionUserDto.getQuestionText());
 		
+		QuestionList answerQuestion = questionListService.문의검색(questionUserDto.getQuestionId());
+		answerQuestion.setQuestionAnswerYn(1);
+		questionListService.문의수정(answerQuestion);
+		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	

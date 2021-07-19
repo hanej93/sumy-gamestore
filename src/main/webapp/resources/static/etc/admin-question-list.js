@@ -44,12 +44,20 @@ let questionList = {
 		});
 		
 		// 모달이 꺼졌을 때 페이지 리로드
-		$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
+		/*$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
 			location.reload();
-		});
+		});*/
 		
-		$("#exampleModal3").on('hidden.bs.modal', function () {
+		/*$("#exampleModal3").on('hidden.bs.modal', function () {
 			$("[id^='exampleModal1']").modal('hide');
+		});*/
+		
+		$("[id^='exampleModal2']").on('hidden.bs.modal', function () {
+			$("[id^='exampleModal1']").modal('hide');
+		});
+				
+		$("[id^='exampleModal3']").on('hidden.bs.modal', function () {
+			location.reload();
 		});
 		
 		$("[id^='mailSendBtn']").on('click', function(){
@@ -159,6 +167,7 @@ let questionList = {
 		let answerTextStr = "#answerText" + questionId;
 		
 		let data = {
+			questionId:questionId,
 			userEmail:$(emailStr).text(),
 			questionText:$(answerTextStr).val()
 		}
@@ -170,7 +179,6 @@ let questionList = {
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
-			$("[id^='exampleModal2']").modal("hide");
 			$("#exampleModal3").modal("show");
 			
 			console.log(resp);
