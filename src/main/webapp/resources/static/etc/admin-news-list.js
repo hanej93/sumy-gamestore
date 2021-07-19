@@ -3,6 +3,14 @@ let newsList = {
 		$('#news-title-search-btn').on('click', ()=>{
 			this.search();
 		});
+		
+		$('#news-title-search').keydown((key) => {
+ 
+		    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+		        this.search();
+		    }
+ 
+    	});
 
 		// 해당 리포트 삭제
 		$("[id^='delBtn']").on("click",function(){

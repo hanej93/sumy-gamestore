@@ -3,6 +3,14 @@ let questionList = {
 		$('#question-title-search-btn').on('click', ()=>{
 			this.search();
 		});
+		
+		$('#question-title-search').keydown((key) => {
+ 
+		    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+		        this.search();
+		    }
+ 
+    	});
 
 		$('#readerYn-select').on('change', ()=>{
 			this.search();

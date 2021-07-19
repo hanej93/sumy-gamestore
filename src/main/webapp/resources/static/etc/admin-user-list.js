@@ -4,6 +4,14 @@ let userInfo = {
 			this.search();
 		});
 		
+		$('#user-nickname-search').keydown((key) => {
+ 
+		    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+		        this.search();
+		    }
+ 
+    	});
+		
 		//블랙리스트 
 		$('#blacklistYn-select').on('change', ()=>{
 			this.search();

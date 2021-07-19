@@ -49,7 +49,14 @@ let mygameList = {
 		$("#orderOpt").on('change', ()=>{
 			this.search();
 		});
-
+		
+	    $('#mygame-title-search').keydown((key) => {
+ 
+		    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+		        this.search();
+		    }
+ 
+    	});
 		// 확인 버튼의 모달이 꺼졌을 때 페이지 리로드
 		/*$("#exampleModal4").on('hidden.bs.modal', function () {
 			location.reload();			

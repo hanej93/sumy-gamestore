@@ -98,7 +98,7 @@
 					<div class="row justify-content-end g-mb-20 g-mb-0--md">
 						<div class="col-md-7 g-mb-30">
 							<!-- Search Form -->
-							<form class="input-group g-pos-rel">
+							<div class="input-group g-pos-rel">
 								<span
 									class="g-pos-abs g-top-0 g-left-0 g-z-index-3 g-px-13 g-py-10">
 									<i
@@ -111,7 +111,7 @@
 										class="btn u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25"
 										type="button">보유 조회</button>
 								</div>
-							</form>
+							</div>
 							<!-- End Search Form -->
 						</div>
 					</div>
@@ -210,12 +210,12 @@
 							</c:if>
 							<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
 				                <c:choose>
-				                	<c:when test="${p != paging.nowPage }">
+				                	<c:when test="${p == paging.nowPage }">
 										<li class="list-inline-item hidden-down"><a
 											class="active u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--active g-color-white g-bg-primary--active g-font-size-12 rounded-circle g-pa-5"
 											href="/user/purchased?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&orderOpt=${paging.orderOpt}">${p }</a></li>
 									</c:when>
-									<c:when test="${p == paging.nowPage }">
+									<c:when test="${p != paging.nowPage }">
 										<%-- <li class="list-inline-item hidden-down"><a
 											class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
 											href="#">${p }</a></li> --%>

@@ -25,6 +25,10 @@ $(document).on('ready', function() {
 			return false;
 		}
 		
+		let reviewId = $(this).attr('reviewId');
+		let updateWriteTextStr = "#updateWriteText" + reviewId;
+		let updateWriteStarStr = "#updateWriteStar" + reviewId;
+		
 		
 		if($(updateWriteStarStr).children('.g-color-primary').length == 0){
 			alert("별점을 입력해주세요.");
@@ -38,9 +42,7 @@ $(document).on('ready', function() {
 		$(this).parents().children($('.media-body')).children('p').css('display', 'block');
 		$(this).parents().children($('.media-body')).children('form[name=reviewForm]').css('display', 'none');
 		
-		let reviewId = $(this).attr('reviewId');
-		let updateWriteTextStr = "#updateWriteText" + reviewId;
-		let updateWriteStarStr = "#updateWriteStar" + reviewId;
+		
 
 
 		let data = {

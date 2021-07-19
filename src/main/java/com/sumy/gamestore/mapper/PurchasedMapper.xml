@@ -45,7 +45,21 @@
 				AND g.game_title like CONCAT('%', #{keyword}, '%')
 			</if>
 		</trim>
-		order by purchased_game_id desc limit #{start}, #{cntPage}
+		
+		<if test="orderOpt == null or orderOpt == '' ">
+		order by purchased_game_id desc  
+		</if>
+		<if test="orderOpt == 'dictionary' ">
+		order by game_title
+		</if>
+		<if test="orderOpt == 'priceAsc' ">
+		order by (game_price * (100 - game_discount_rate) / 100)
+		</if>
+		<if test="orderOpt == 'priceDesc' ">
+		order by (game_price * (100 - game_discount_rate) / 100) desc
+		</if>
+		
+		limit #{start}, #{cntPerPage}
 		
 
  	</select>
@@ -65,21 +79,6 @@
 				AND g.game_title like CONCAT('%', #{keyword}, '%')
 			</if>
 		</trim>
-		
-		
-		<if test="orderOpt == null or orderOpt == '' ">
-		order by purchased_game_id desc  
-		</if>
-		<if test="orderOpt == 'dictionary' ">
-		order by game_title
-		</if>
-		<if test="orderOpt == 'priceAsc' ">
-		order by (game_price * (100 - game_discount_rate) / 100)
-		</if>
-		<if test="orderOpt == 'priceDesc' ">
-		order by (game_price * (100 - game_discount_rate) / 100) desc
-		</if>
-		limit #{start}, #{cntPage}
 		
  	</select>
  	

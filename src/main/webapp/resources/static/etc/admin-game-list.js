@@ -5,6 +5,14 @@ let gameList = {
 		$('#game-title-search-btn').on('click', ()=>{
 			this.search();
 		});
+		
+		$('#game-title-search').keydown((key) => {
+ 
+		    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+		        this.search();
+		    }
+ 
+    	});
 
 		//게임 삭제
 		$("[id^='delBtn']").on("click",function(){

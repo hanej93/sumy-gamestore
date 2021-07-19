@@ -6,6 +6,14 @@ let reportList = {
 			this.search();
 		});
 		
+		$('#report-nickname-search').keydown((key) => {
+ 
+		    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+		        this.search();
+		    }
+ 
+    	});
+		
 		// 읽음 상태에 따른 조회
 		$('#reportReadYn-select').on('change', ()=>{
 			this.search();
