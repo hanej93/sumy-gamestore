@@ -162,7 +162,7 @@
                   <h5 class="g-my-20">썸네일 이미지</h5>
                   <!-- 이미지 썸네일 시작 -->
                   <div class="row justify-content-center g-mb-30 g-bg-gray-light-v9 rounded-0 g-mx-0">
-                    <img id="preview-image" class="img-fluid g-height-300" src="/resources/static/assets/img-temp/500x600/img1.jpg">
+                    <img id="preview-image" class="img-fluid g-height-300" src="/upload/default_img.jpg">
                   </div>
                   <!-- 이미지 썸네일 끝 -->
 
@@ -495,17 +495,17 @@
                   <div class="g-bg-gray-light-v9 rounded-0 g-mb-30">
                     <div class="row justify-content-center">
                       <img id="preview-image-0" class="col-4 g-py-5" height="300px"
-                        src="/resources/static/assets/img-temp/500x600/img1.jpg">
+                        src="/upload/default_img.jpg">
                       <img id="preview-image-1" class="col-4 g-py-5" height="300px"
-                        src="/resources/static/assets/img-temp/500x600/img1.jpg">
+                        src="/upload/default_img.jpg">
                     </div>
                     <div class="row justify-content-center">
                       <img id="preview-image-2" class="col-4 g-py-5" height="300px"
-                        src="/resources/static/assets/img-temp/500x600/img1.jpg">
+                        src="/upload/default_img.jpg">
                       <img id="preview-image-3" class="col-4 g-py-5" height="300px"
-                        src="/resources/static/assets/img-temp/500x600/img1.jpg">
+                        src="/upload/default_img.jpg">
                       <img id="preview-image-4" class="col-4 g-py-5" height="300px"
-                        src="/resources/static/assets/img-temp/500x600/img1.jpg">
+                        src="/upload/default_img.jpg">
                     </div>
                   </div>
                   <!-- End Rounded Text Inputs -->

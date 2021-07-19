@@ -36,7 +36,7 @@
 		  
           <!-- Messages/Notifications/Top Search Bar/Top User -->
           <div class="col-auto d-flex g-py-12 g-pl-40--lg ml-auto">
-			<a class="col-auto g-color-white g-font-size-16" href="/">메인화면</a>
+			<a class="col-auto g-color-white g-font-size-16 g-color-primary--hover g-mt-8" href="/">메인화면</a>
             <!-- Top User -->
             <div class="col-auto d-flex g-pt-5 g-pt-0--sm g-pl-10 g-pl-20--sm">
               <div class="g-pos-rel g-px-10--lg">
@@ -50,7 +50,7 @@
                       src="${principal.user.userProfileImage }" alt="Image description">
                   </span>
                   <span class="g-pos-rel g-top-2">
-                    <span class="g-hidden-sm-down">${principal.user.userNickname }</span>
+                    <span class="g-hidden-sm-down g-color-primary--hover">${principal.user.userNickname }</span>
                     <i class="hs-admin-angle-down g-pos-rel g-top-2 g-ml-10"></i>
                   </span>
                 </a>

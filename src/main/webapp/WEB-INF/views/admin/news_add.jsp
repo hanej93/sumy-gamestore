@@ -120,7 +120,7 @@
                 <h5 class="g-my-20">썸네일 이미지</h5>
                 <!-- 이미지 썸네일 시작 -->
                 <div class="row justify-content-center g-mb-30 g-bg-gray-light-v9 rounded-0 g-mx-0">
-                    <img id="preview-image" class="img-fluid g-height-300" src="/resources/static/assets/img-temp/500x600/img1.jpg">  
+                    <img id="preview-image" class="img-fluid g-height-300" src="/upload/default_img.jpg">  
                 </div>
                 <!-- 이미지 썸네일 끝 -->
 
@@ -332,7 +332,7 @@
               alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
               $("#fileAttachment").val('');
               $("#imgExplain").text("이미지 파일을 첨부해주세요.");
-              $("#preview-image").attr('src', "/resources/static/assets/img-temp/500x600/img1.jpg");
+              $("#preview-image").attr('src', "/upload/default_img.jpg");
               return false;
             }
           }
@@ -343,7 +343,7 @@
         inputImage.addEventListener("change", e => {
           if( $("#fileAttachment").val() == ""){
             $("#imgExplain").text("이미지 파일을 첨부해주세요.");
-            $("#preview-image").attr('src', "/resources/static/assets/img-temp/500x600/img1.jpg");
+            $("#preview-image").attr('src', "/upload/default_img.jpg");
           }
           checkImgEffective();
           readImage(e.target);
