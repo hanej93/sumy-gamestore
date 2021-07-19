@@ -2,29 +2,41 @@
 
 $(function() {
 	var total;
-	if($('#wishTotalPriceAfter1').html().replace(/,/g, '')<=0){
-		total = "1";
-	}
+
 
 	//결제 api 호출
 	$('#kakaoPayApiBtn').click(function() {
-		$.ajax({
-			type: "POST",
-			url: '/user/kakaoPayApi',
-			data: total,
-			contentType: "application/json;charset=utf-8",
-			dataType: "json",
-			success: function(result) {
-				if(result=="free"){
-					free();
+		if ($('#wishTotalPriceAfter1').html().replace(/,/g, '') <= 0) {
+			$.ajax({
+				type: "POST",
+				url: '/user/orderSuccess',
+				dataType: "text",
+				success: function(result) {
+					console.log("0원 결제 성공");
+					location.href="/user/orderSuccess";
+				},
+				error: function(err) {
+					console.log("err" + err);
 				}
-				var resultBox = result.next_redirect_pc_url;
-				window.open(resultBox);
-				/*successPost();//결제 완료 컨트롤러로 넘겨주는 애*/
-			},
-			error: function(err) {
-				console.log("err"+err);
-			}
-		})
+			})
+		}else {
+			$.ajax({
+				type: "POST",
+				url: '/user/kakaoPayApi',
+				data: total,
+				contentType: "application/json;charset=utf-8",
+				dataType: "json",
+				success: function(result) {
+					if (result == "free") {
+						free();
+					}
+					var resultBox = result.next_redirect_pc_url;
+					window.open(resultBox);
+				},
+				error: function(err) {
+					console.log("err" + err);
+				}
+			})
+		}
 	});
 });

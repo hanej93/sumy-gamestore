@@ -89,18 +89,18 @@ public class PaymentController {
 	public String orderSuccess(Authentication authentication) {
 		paymentService.insertPurchasedGame(authentication);
 		
-		return "user/page-order-completed-s";
+		return "/user/page-order-completed-s";
 	}
 
 	// 결제 실패 시
 	@RequestMapping("/user/orderFail")
 	public String orderFail() {
-		return "user/page-order-completed-f";
+		return "/user/page-order-completed-f";
 	}
 	
 	// 결제 취소 시
 	@RequestMapping("/user/orderCancel")
 	public String orderCancel() {
-		return "user/page-order-completed-c";
+		return "/user/page-order-completed-c";
 	}
 }
