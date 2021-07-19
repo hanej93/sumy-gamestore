@@ -29,4 +29,7 @@ public interface WishlistMapper {
 	@Delete("delete from wishlist_game where user_id=#{userId} and game_id=#{gameId}")
 	public int deleteWishlistByIds(@Param(value = "userId") int userId,@Param(value = "gameId") int gameId);
 	
+	@Delete("delete from wishlist_game where wishlist_id = #{wishlistId}")
+	public int deletewishListbyId(int wishlistId);
+	
 }

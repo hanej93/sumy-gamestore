@@ -32,4 +32,8 @@ public class WishListService {
 		return wishlistMapper.deleteWishlistByIds(userId, gameId);
 	}
 	
+	public int 위시리스트삭제_위시리스트아이디(int wishlistId) {
+		return wishlistMapper.deletewishListbyId(wishlistId);
+	}
+	
 }

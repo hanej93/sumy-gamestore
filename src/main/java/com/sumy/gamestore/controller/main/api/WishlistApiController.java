@@ -62,7 +62,7 @@ public class WishlistApiController {
 	@DeleteMapping("/user/wishlist")
 	public ResponseDto<Integer> deleteWishlist(@RequestBody WishlistGame wishlistGame){
 		
-		
+		wishListService.위시리스트삭제_위시리스트아이디(wishlistGame.getWishlistId());
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

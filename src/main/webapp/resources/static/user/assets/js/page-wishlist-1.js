@@ -81,6 +81,26 @@ $(document).ready(function() {
 		if (!confirm('선택된 리스트를 삭제하시겠습니까?')) {
 			return false;
 		}
-		alert('선택된 위시리스트를 삭제했습니다.');
+		
+		let data = {
+			wishlistId:$(this).attr("wishlistId")
+		};
+		
+		
+		$.ajax({
+			type:"DELETE",
+			url:"/user/wishlist",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			alert('선택된 위시리스트를 삭제했습니다.');
+			location.reload();
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+		
+		
 	});
 });

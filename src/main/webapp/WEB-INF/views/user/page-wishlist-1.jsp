@@ -137,24 +137,12 @@
 											
 											<span class="priceAfter g-color-gray-dark-v2 g-font-size-13">
 												&#8361;<fmt:formatNumber value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/> <span
-												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer">
+												class="deleteWish g-color-gray-dark-v4 g-color-black--hover g-cursor-pointer" wishlistId=${wishList.wishlistId } >
 													<i class="mt-auto fa fa-trash"></i>
 											</span>
 											</span>
 											
 										</div>
-										<form name="wishlistdata" style="display:none;"><!-- 사용 다 하면 display:none; -->
-											<label>위시리스트 ID : </label>
-											<input type="number" class="packWishlistId" value="${wishList.wishlistId}"><br>
-											<label>게임 ID : </label>
-											<input type="number" class="packGameId" value="${wishList.gameId}"><br>
-											<label>유저 아이디 : </label>
-											<input type="number" class="packUserId" value="${principal.user.userId}"><br>
-											<label>게임 타이틀 : </label>
-											<input type="text" class="packGameTitle" value="${wishList.gameTitle}"><br>
-											<label>게임 가격 : </label>
-											<input type="number" class="packGamePrice" value="${wishList.gamePrice * (100-wishList.gameDiscountRate) / 100}"><br>
-										</form>
 									</td>
 								</tr>
 								<!-- End Item-->
@@ -199,20 +187,6 @@
 								id="wishTotalPriceAfter1"><fmt:formatNumber value="${finalTotalPrice }" type="number" pattern="###,###,###,###,###,###"/></span> &#8361;</span>
 						</div>
 					</aside>
-					<form name="wishListForm" style="display: none;"><!-- 사용 다 하면 display:none; -->
-						<label>유저 아이디 : </label>
-						<input type="number" name="userId" value="${principal.user.userId}"><br>
-						<label>유저 이메일 : </label>
-						<input type="text" name="userEmail" value="${principal.user.userEmail}"><br>
-						<label>유저 이름 : </label>
-						<input type="text" name="userName" value="${principal.user.userName}"><br>
-						<label>다른 계정 로긴 유저 제공사 : </label>
-						<input type="text" name="userProvider" value="${principal.user.userProvider}"><br>
-						<label>다른 계정 로긴 유저 토큰 : </label>
-						<input type="text" name="userToken" value="${principal.user.userToken}"><br>
-						<label>총 결제 금액 : </label>
-						<input type="number" id="totalAmount" name="totalAmount" value=""><br>
-					</form>
 					<button id="kakaoPayApiBtn"
 						class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
 						type="button">결제</button>
