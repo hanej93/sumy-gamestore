@@ -148,6 +148,8 @@
 											<input type="number" name="wishlistId" class="packWishlistId" value="${wishList.wishlistId}"><br>
 											<label>게임 ID : </label>
 											<input type="number" name="gameId" class="packGameId" value="${wishList.gameId}"><br>
+											<label>유저 아이디 : </label>
+											<input type="number" name="userId" value="${principal.user.userId}"><br>
 											<label>게임 타이틀 : </label>
 											<input type="text" name="gameTitle" class="packGameTitle" value="${wishList.gameTitle}"><br>
 											<label>게임 가격 : </label>
