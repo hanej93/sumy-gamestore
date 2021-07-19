@@ -14,6 +14,7 @@ import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.dto.WishlistGameInfoDto;
 import com.sumy.gamestore.mapper.GameInfoMapper;
 import com.sumy.gamestore.mapper.PaymentMapper;
+import com.sumy.gamestore.mapper.PurchasedMapper;
 import com.sumy.gamestore.model.GameInfo;
 import com.sumy.gamestore.model.PurchasedGameList;
 import com.sumy.gamestore.model.WishlistGame;
@@ -29,6 +30,9 @@ public class PaymentService {
 	
 	@Autowired
 	GameInfoService gameInfoService;
+	
+	@Autowired
+	PurchasedMapper purchasedMapper;
 	
 	@Transactional 
 	public int insertPurchasedGame(Authentication authentication) {
@@ -74,5 +78,16 @@ public class PaymentService {
 	public int deleteWish(WishlistGame wishlistGame) {
 		int row = paymentMapper.deleteWish(wishlistGame);
 		return row;
+	}
+	
+	public boolean selectPurchasedGameYN(Authentication authentication, int gameId) {
+		PrincipalDetail principal = (PrincipalDetail)authentication.getPrincipal();
+		int userId = principal.getUser().getUserId();
+		int purchasedCnt = purchasedMapper.countPurchasedGameListByIds(userId, gameId);
+		if(purchasedCnt>0) {
+			System.out.println("서비스 : 유저가 이미 게임을 구매함");
+			return false;
+		}
+		return true;
 	}
 }

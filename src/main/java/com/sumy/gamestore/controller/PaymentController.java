@@ -103,4 +103,15 @@ public class PaymentController {
 	public String orderCancel() {
 		return "/user/page-order-completed-c";
 	}
+	
+	//유저가 게임을 구매했는지 안했는지 확인해야할 시
+	@ResponseBody
+	@RequestMapping("/user/selectPurchasedGameYN")
+	public boolean selectPurchasedGameYN(Authentication authentication, int gameId) {
+		if(!paymentService.selectPurchasedGameYN(authentication, gameId)) {
+			System.out.println("컨트롤러 : 유저가 이미 게임을 구매함.");
+			return false;
+		}
+		return true;
+	}
 }
