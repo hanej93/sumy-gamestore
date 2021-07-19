@@ -26,6 +26,6 @@ public interface PaymentMapper {
 	public int updateGameSaleCountAndGameTotalEarnings(GameInfo gameInfo);
 	
 	//wishlist에서 삭제하기
-	@Delete("delete from wishlist_game where wishlist_id = #{wishlistId}")
+	@Delete("delete from wishlist_game where wishlist_id = #{wishlistId} and game_id=#{gameId} and user_id=#{userId}")
 	public int deleteWish(WishlistGame wishlistGame);
 }
