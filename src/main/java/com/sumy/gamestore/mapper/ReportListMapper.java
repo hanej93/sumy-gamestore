@@ -37,6 +37,9 @@ public interface ReportListMapper {
 	@Delete("delete from report_list where report_id = #{reportId}")
 	public int deleteReport(int reportId);
 	
+	@Select("select count(*) from report_list where review_id = #{reviewId}")
+	public int countReportByReviewId(int reviewId);
+	
 	// ================================================
 	
 //	@Select("select count(*) from report_list")

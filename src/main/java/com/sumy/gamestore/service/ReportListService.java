@@ -43,4 +43,8 @@ public class ReportListService {
 		return reportListMapper.insertReport(reportList);
 	}
 	
+	public int 신고개수_리뷰(int reviewId) {
+		return reportListMapper.countReportByReviewId(reviewId);
+	}
+	
 }

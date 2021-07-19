@@ -24,6 +24,14 @@ $(document).on('ready', function() {
 			alert("수정할 리뷰 내용이 없습니다.");
 			return false;
 		}
+		
+		
+		if($(updateWriteStarStr).children('.g-color-primary').length == 0){
+			alert("별점을 입력해주세요.");
+			return false;
+		}
+		
+		
 		if (!confirm('리뷰 수정을 완료하시겠습니까?')) {
 			return false;
 		}
@@ -33,9 +41,7 @@ $(document).on('ready', function() {
 		let reviewId = $(this).attr('reviewId');
 		let updateWriteTextStr = "#updateWriteText" + reviewId;
 		let updateWriteStarStr = "#updateWriteStar" + reviewId;
-		console.log(reviewId);
-		console.log($(updateWriteTextStr).val());
-		console.log($(updateWriteStarStr).children('.g-color-primary').length);
+
 
 		let data = {
 			reviewId:reviewId,
@@ -157,9 +163,17 @@ $(document).on('ready', function() {
 			alert('리뷰를 입력해주세요.');
 			return false;
 		}
+		
+		if($("#reviewWriteStar").children('.g-color-primary').length == 0){
+			alert("별점을 입력해주세요.");
+			return false;
+		}
+		
 		if (!confirm('리뷰 작성을 완료하시겠습니까?')) {
 			return false;
 		}
+		
+		
 		
 		
 		let data = {

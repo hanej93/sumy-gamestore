@@ -74,6 +74,9 @@ public class SingleProductApiController {
 										   .build();
 										   
 		reportListService.댓글신고추가(inputReport);
+		ReviewList review = reviewListService.리뷰검색(reportList.getReviewId());
+		review.setReviewReportCount(reportListService.신고개수_리뷰(reportList.getReviewId()));
+		reviewListService.리뷰수정(review);
 		
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

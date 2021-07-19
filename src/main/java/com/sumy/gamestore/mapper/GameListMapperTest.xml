@@ -68,10 +68,10 @@
 			</if>
 			
 			<if test="lowPriceFilter != null and lowPriceFilter != '' and lowPriceFilter != '0'">
-				AND game_price &gt;= #{lowPriceFilter}
+				AND (game_price * (100 - game_discount_rate) &gt;= #{lowPriceFilter}
 			</if>
 			<if test="highPriceFilter != null and highPriceFilter != '' and highPriceFilter != '60000'">
-				AND game_price <![CDATA[<=]]> #{highPriceFilter}
+				AND (game_price * (100 - game_discount_rate) <![CDATA[<=]]> #{highPriceFilter}
 			</if>
 			
 		</trim>
