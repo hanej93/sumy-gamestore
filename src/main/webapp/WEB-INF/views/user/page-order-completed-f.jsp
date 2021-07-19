@@ -74,8 +74,8 @@
 				</span>
 
 				<div class="mb-5">
-					<h2 class="mb-4">처리 완료</h2>
-					<p>Sumy Web의 서비스 처리가 완료되었습니다. 이용해주셔서 감사합니다!</p>
+					<h2 class="mb-4">결제 실패</h2>
+					<p>Sumy Web의 서비스 처리에 실패했습니다. 다시 시도해주세요.</p>
 					<p>
 						다른 문의사항이 있으시다면 고객센터 번호 <a href="#">1599-1515</a>로 전화주시면 신속히
 						도와드리겠습니다.
@@ -84,7 +84,7 @@
 
 				<a
 					class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"
-					href="home-page-1.html">계속 쇼핑하기</a>
+					href="/home-page">계속 쇼핑하기</a>
 			</div>
 		</div>
 
