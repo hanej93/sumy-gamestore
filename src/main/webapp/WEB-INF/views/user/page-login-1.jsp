@@ -150,9 +150,9 @@ main{
 										type="button" href="javascript:kakaoLogin();">카카오톡 로그인</a>
 								</div>
 								<div class="col-6">
-									<button
+									<a href="${ naverUrl}"
 										class="btn btn-block u-btn-white g-color-green g-brd-green g-font-size-12 text-uppercase g-py-12 g-px-25 ml-2"
-										type="button">네이버 로그인</button>
+										type="button">네이버 로그인</a>
 								</div>
 							</div>
 						</form>
