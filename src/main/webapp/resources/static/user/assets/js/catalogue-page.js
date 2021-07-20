@@ -12,6 +12,10 @@ let catalogue = {
 		$("#orderOpt").on('change',()=>{
 			this.search();
 		});
+		
+		$("[id^='wishlistBtn']").on('click',function() {
+			catalogue.wishlist();
+		});
 	},
 	
 	clearFilter:function(){
@@ -45,6 +49,31 @@ let catalogue = {
 
 		location.href = url;
 	
+	},
+	
+	wishlist:function(){
+		if (!confirm('위시리스트를 추가하시겠습니까?')) {
+			return false;
+		}
+		
+		let data = {
+			reviewId:$(this).attr("reviewId")
+		};
+		
+		
+		$.ajax({
+			type:"DELETE",
+			url:"/sumy/game/review",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			alert('리뷰를 삭제를 완료하였습니다.');
+			location.reload();
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
 	}
 
 }

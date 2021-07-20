@@ -99,7 +99,7 @@
 						<c:if test="${principal != null}">
 							<!-- Basket -->
 							<div class="u-basket d-inline-block g-valign-middle g-pt-2">
-								<a href="/user/wishlist" id="basket-bar-invoker"
+								<!-- <a href="/user/wishlist" id="basket-bar-invoker"
 									class="u-icon-v1 g-color-white g-text-underline--none--hover g-width-20 g-height-20 g-mr-40"
 									aria-controls="basket-bar" aria-haspopup="true"
 									aria-expanded="false" data-dropdown-event="hover"
@@ -109,6 +109,11 @@
 									data-dropdown-animation-in="fadeIn"
 									data-dropdown-animation-out="fadeOut"> <span
 									class="u-badge-v1--sm g-color-white g-bg-primary g-rounded-50x">3</span>
+									<i class="fa fa-shopping-cart"></i>
+								</a> -->
+								
+								<a href="/user/wishlist" id="basket-bar-invoker"
+									class="u-icon-v1 g-color-white g-text-underline--none--hover g-width-20 g-height-20 g-mr-40">
 									<i class="fa fa-shopping-cart"></i>
 								</a>
 

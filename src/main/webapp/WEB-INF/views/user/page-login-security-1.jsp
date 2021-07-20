@@ -288,7 +288,7 @@
 						</div>
 					</div>
 
-					<button
+					<button id="WithdrawalBtn" userId="${principal.user.userId }"
 						class="btn u-btn-white g-color-primary g-brd-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
 						type="button">회원 탈퇴</button>
 				</div>

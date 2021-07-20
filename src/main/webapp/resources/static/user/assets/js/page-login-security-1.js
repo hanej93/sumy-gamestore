@@ -245,5 +245,31 @@ $(document).on('ready', function() {
 		$('#loginSecurityNumberBtn').css('display', 'inline-block');
 		$('#loginSecurityNumber').css('display', 'block');
 	});
+	
+	// 회원 탈퇴
+	$('#WithdrawalBtn').on('click', function() {
+		
+		if (!confirm('회원탈퇴를 진행하시겠습니까?')) {
+			return false;
+		}
+		let data = {
+			userId:$(this).attr('userId')
+		}
+		
+		$.ajax({
+			type:"DELETE", 
+			url:"/admin/user/list",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			alert('정상적으로 계정이 탈퇴되었습니다.');
+			location.href = "/logout";		
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+	});
+		
 
 });
