@@ -1,6 +1,10 @@
 package com.sumy.gamestore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +28,9 @@ public class MyPageController {
 
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
 	// 회원 정보 수정 화면
 	@GetMapping("/user/login-security")
@@ -35,6 +42,11 @@ public class MyPageController {
 	@PostMapping("/user/profileNickNameUpdate")
 	public String profileNickNameUpdate(UserInfo userInfo) {
 		myPageService.insertUserNickname(userInfo);
+		
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return "닉네임수정";
 	}
 
@@ -42,6 +54,11 @@ public class MyPageController {
 	@PostMapping("/user/profileAddressUpdate")
 	public String profileAddressUpdate(UserInfo userInfo) {
 		myPageService.insertUserAddress(userInfo);
+		
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return "주소수정";
 	}
 
@@ -61,6 +78,11 @@ public class MyPageController {
 	@PostMapping("/user/profilePhonesUpdate")
 	public String profilePhonesUpdate(UserInfo userInfo) {
 		myPageService.insertUserPhoneNumber(userInfo);
+		
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return "연락처수정";
 	}
 
@@ -97,6 +119,11 @@ public class MyPageController {
 		userInfo.setUserPassword(encodePS);// 암호화
 
 		updateUserService.pwdRecoveryUpdate(userInfo);
+		
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return "비밀번호수정";
 	}
 
