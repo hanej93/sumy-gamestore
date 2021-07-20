@@ -473,10 +473,12 @@
 							class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
 							<!-- Article Image -->
 							<div class="g-max-width-100 g-mr-15">
-								<img class="d-flex w-100"
+								
+								<a href="/sumy/single-product/${NewGameList.gameId}">
+									<img class="d-flex w-100"
 									src="${NewGameList.gameThumbImage}"
 									alt="Image Description">
-								<a class="u-link-v2" href="/sumy/single-product/${NewGameList.gameId}"></a>
+								</a>
 
 							</div>
 							<!-- End Article Image -->
@@ -519,10 +521,11 @@
 							class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
 							<!-- Article Image -->
 							<div class="g-max-width-100 g-mr-15">
-								<img class="d-flex w-100"
+								<a href="/sumy/single-product/${MostReviewGameList.gameId}">
+									<img class="d-flex w-100"
 									src="${MostReviewGameList.gameThumbImage}"
 									alt="Image Description">
-								<a class="u-link-v2" href="/sumy/single-product/${MostReviewGameList.gameId}"></a>
+								</a>
 							</div>
 							<!-- End Article Image -->
 
@@ -565,10 +568,11 @@
 							class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
 							<!-- Article Image -->
 							<div class="g-max-width-100 g-mr-15">
-								<img class="d-flex w-100"
+								<a href="/sumy/single-product/${AllUsersGameList.gameId}">
+									<img class="d-flex w-100"
 									src="${AllUsersGameList.gameThumbImage}"
 									alt="Image Description">
-								<a class="u-link-v2" href="/sumy/single-product/${AllUsersGameList.gameId}"></a>
+								</a>
 							</div>
 							<!-- End Article Image -->
 
