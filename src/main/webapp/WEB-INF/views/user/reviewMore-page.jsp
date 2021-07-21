@@ -228,7 +228,7 @@
 											<!-- End Rating -->
 
 											<span class="d-block g-color-gray-dark-v5 g-font-size-11">
-												<fmt:parseDate value="${review.reviewUpdateDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+												<fmt:parseDate value="${review.reviewUpdateDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
       											<fmt:formatDate value="${dateFmt}"  pattern="yyyy년 MM월 dd일"/>
 											</span>
 										</div>

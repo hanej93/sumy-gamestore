@@ -153,8 +153,8 @@
                       <span class="">${newsList.newsTitle}</span>
                     </td>
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
-                      <fmt:parseDate value="${newsList.newsWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-      					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+                      <fmt:parseDate value="${newsList.newsWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+      					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/>
                      </td>
                     <td
                       class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-10--sm">

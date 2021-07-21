@@ -213,8 +213,8 @@
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-      				  <fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+                      <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+      				  <fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/>
                     </td>
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
                       <!-- Toggles Views -->
@@ -271,8 +271,8 @@
                                   <div class="col-12 g-my-15">이름 : ${questionList.userName }</div>
                                   <div class="col-12 g-my-15">닉네임 : ${questionList.userNickname }</div>
                                   <div class="col-12 g-my-15">이메일 : <span id="email${questionList.questionId }">${questionList.userEmail }</span></div>
-                                  <div class="col-12 g-my-15">등록일 : <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-      				  <fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/></div>
+                                  <div class="col-12 g-my-15">등록일 : <fmt:parseDate value="${questionList.questionWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+      				  <fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/></div>
                                 </div>
                                 <h5 class="modal-title ml-auto" id="exampleModalLabel">${questionList.questionTitle }</h5>
                                 <hr class="g-mx-20 g-my-10">

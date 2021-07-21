@@ -190,8 +190,8 @@
                     </td>
                     <td
                       class="g-hidden-sm-down g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md g-px-5 g-px-10--sm">
-                      <fmt:parseDate value="${reportList.reportWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-      					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+                      <fmt:parseDate value="${reportList.reportWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+      					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/>
                     </td>
                     <td class="g-valign-middle g-brd-top-none g-brd-bottom g-brd-gray-light-v7 g-py-15 g-py-30--md">
                       <!-- Toggles Views -->
@@ -237,8 +237,8 @@
                                   <div class="col-12 g-my-10">닉네임 : ${reportList.fromUserNickname}</div>
                                   <div class="col-12 g-my-10">이메일 : ${reportList.fromUserEmail}</div>
                                   <div class="col-12 g-my-10">신고등록일 : 
-                                  	<fmt:parseDate value="${reportList.reportWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-      								<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/></div>
+                                  	<fmt:parseDate value="${reportList.reportWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+      								<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/></div>
                                 </div>
                                 <h5 class="modal-title ml-auto g-my-10" id="exampleModalLabel">신고 사유</h5>
                                 <div class="g-mb-20 g-px-20">

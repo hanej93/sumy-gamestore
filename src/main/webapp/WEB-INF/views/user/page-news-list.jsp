@@ -104,14 +104,14 @@
 									<div class="col g-mb-30">
 										<span class="d-block g-color-text mb-2">작성일 : 
 											<span>
-												<fmt:parseDate value="${newsList.newsWriteDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+												<fmt:parseDate value="${newsList.newsWriteDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/>
 	      				 					</span>
 										</span>
 										<span class="d-block g-color-text mb-4">수정일 :
 											<span>
-												<fmt:parseDate value="${newsList.newsUpdateDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
-		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm:ss"/>
+												<fmt:parseDate value="${newsList.newsUpdateDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/>
 											</span>
 										</span>
 									</div>

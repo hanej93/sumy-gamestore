@@ -255,7 +255,7 @@
 							</li>
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
 								<span>출시일:</span> <span class="float-right g-color-black">
-									<fmt:parseDate value="${gameInfo.gameReleaseDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+									<fmt:parseDate value="${gameInfo.gameReleaseDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
       								<fmt:formatDate value="${dateFmt}"  pattern="yyyy-MM-dd"/>
 								</span>
 							</li>
@@ -330,7 +330,7 @@
 											<!-- End Rating -->
 
 											<span class="d-block g-color-gray-dark-v5 g-font-size-11">
-												<fmt:parseDate value="${review.reviewUpdateDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+												<fmt:parseDate value="${review.reviewUpdateDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
       											<fmt:formatDate value="${dateFmt}"  pattern="yyyy년 MM월 dd일"/>
 											</span>
 										</div>
