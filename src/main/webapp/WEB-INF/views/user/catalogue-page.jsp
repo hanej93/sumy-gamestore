@@ -150,6 +150,8 @@
 										</div>
 										<!-- End Product Info -->
 		
+										<!-- 위시리스트 아이콘 -->
+										<%-- 
 										<!-- Products Icons -->
 										<ul class="list-inline media-body text-right">
 											<li class="list-inline-item align-middle mx-0"><a id="wishlistBtn${gameInfo.gameId }" gameId="${gameInfo.gameId }"
@@ -160,6 +162,8 @@
 											</a></li>
 										</ul>
 										<!-- End Products Icons -->
+										 --%>
+										
 									</div>
 									<!-- End Product -->
 								</div>
