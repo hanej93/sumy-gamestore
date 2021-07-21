@@ -195,7 +195,7 @@
 						class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20 text-center g-bg-gray-light-v5"
 						style="height: 360px">
 						<img id="questionImg" class="img-fluid"
-							src="/resources/static/user/assets/img-temp/500x320/img1.png"
+							src="/upload/default_img.jpg"
 							alt="이미지 찾기를 실행해주세요." style="height: 100%">
 					</div>
 			</div>
