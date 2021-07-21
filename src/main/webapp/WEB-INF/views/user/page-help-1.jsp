@@ -44,6 +44,11 @@
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
 
+<!-- CSS Global Icons -->
+<!-- Favicon -->
+<link rel="shortcut icon" href="/resources/static/favicon.ico">
+<link rel="stylesheet" href="/resources/static/assets/vendor/icon-hs/style.css">
+
 <!-- CSS Unify Theme -->
 <link rel="stylesheet"
 	href="/resources/static/user/assets/css/styles.e-commerce.css">

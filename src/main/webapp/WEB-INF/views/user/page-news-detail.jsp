@@ -17,6 +17,11 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
 
+<!-- CSS Global Icons -->
+<!-- Favicon -->
+<link rel="shortcut icon" href="/resources/static/favicon.ico">
+<link rel="stylesheet" href="/resources/static/assets/vendor/icon-hs/style.css">
+
 <!-- Google Fonts -->
 <link rel="stylesheet"
 	href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,900">
