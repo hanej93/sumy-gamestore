@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,21 +39,24 @@ import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.GameInfoService;
 import com.sumy.gamestore.service.MyPageService;
-import com.sumy.gamestore.service.PaymentService;
+import com.sumy.gamestore.service.SinglePaymentService;
 import com.sumy.gamestore.service.UpdateUserService;
 import com.sumy.gamestore.service.WishListService;
 
 @Controller
-public class PaymentController {
+public class SinglePaymentController {
 	
 	@Autowired
-	PaymentService paymentService;
+	SinglePaymentService singlePaymentService;
 
 	// 결제하기
-	@RequestMapping("/user/kakaoPayApi")
+	@RequestMapping("/user/kakaoPayApi2")
 	@ResponseBody
-	public String kakaoPayApi(@RequestBody String totalAmount) {
-		
+	public String kakaoPayApi(HttpServletRequest request, GameInfo gameinfo) {
+		HttpSession session = request.getSession();
+		session.setAttribute("gameId", gameinfo.getGameId());
+		System.out.println("결제쪽 컨트롤러 전체 금액"+gameinfo.getGamePrice());
+		System.out.println("결제쪽 컨트롤러 게임 아이디"+gameinfo.getGameId());
 		try {
 			// Output
 			URL urlAddress = new URL("https://kapi.kakao.com/v1/payment/ready");// 카카오api서버 URL로 생성
@@ -59,7 +66,7 @@ public class PaymentController {
 			connectApiServer.setRequestProperty("Authorization", "KakaoAK 9cb0490eb67feb2d83123c719ec179d0");// 카카오api서버에 보낼 데이터 default setting1
 			connectApiServer.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");// 카카오api서버에 보낼 데이터 default setting2
 			connectApiServer.setDoOutput(true);// 카카오api서버에 보낼 데이터가 있는가? true=yes
-			String sendParam = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount="+totalAmount+"&tax_free_amount=0&vat_amount=0&approval_url=http://localhost:8080/user/orderSuccess&fail_url=http://localhost:8080/user/orderFail&cancel_url=http://localhost:8080/user/orderCancel";
+			String sendParam = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount="+gameinfo.getGamePrice()+"&tax_free_amount=0&vat_amount=0&approval_url=http://localhost:8080/user/orderSuccess2&fail_url=http://localhost:8080/user/orderFail2&cancel_url=http://localhost:8080/user/orderCancel2";
 			OutputStream packing = connectApiServer.getOutputStream(); // 카카오api서버에 데이터 전송할 친구 설정
 			DataOutputStream packingData = new DataOutputStream(packing); // 카카오api서버에 데이터 전송할 친구한테 데이터 보내주는 애 설정
 			packingData.writeBytes(sendParam);
@@ -70,6 +77,7 @@ public class PaymentController {
 			if (result == 200) {// 성공 시
 				orderReception = connectApiServer.getInputStream();
 			} else {// 실패 시
+				System.out.println("결제 통신 실패");
 				orderReception = connectApiServer.getErrorStream();
 			}
 			InputStreamReader orderReceptionReader = new InputStreamReader(orderReception);// 받은애 읽기
@@ -85,22 +93,37 @@ public class PaymentController {
 	}
 
 	// 결제 성공 시
-	@RequestMapping("/user/orderSuccess")
-	public String orderSuccess(Authentication authentication) {
-		paymentService.insertPurchasedGame(authentication);
+	@RequestMapping("/user/orderSuccess2")
+	public String orderSuccess(HttpServletRequest request, Authentication authentication) {
+		HttpSession session = request.getSession();
+		int gameId = (int)session.getAttribute("gameId");
+		System.out.println("성공쪽 컨트롤러 게임 아이디"+gameId);
+		singlePaymentService.insertPurchasedGame(authentication, gameId);
 		
 		return "/user/page-order-completed-s";
 	}
 
 	// 결제 실패 시
-	@RequestMapping("/user/orderFail")
+	@RequestMapping("/user/orderFail2")
 	public String orderFail() {
 		return "/user/page-order-completed-f";
 	}
 	
 	// 결제 취소 시
-	@RequestMapping("/user/orderCancel")
+	@RequestMapping("/user/orderCancel2")
 	public String orderCancel() {
 		return "/user/page-order-completed-c";
+	}
+	
+	//유저가 게임을 구매했는지 안했는지 확인해야할 시
+	@ResponseBody
+	@PostMapping("/user/selectPurchasedGameYN")
+	public boolean selectPurchasedGameYN(@RequestBody int gameId, Authentication authentication) {
+		System.out.println(gameId);
+		if(!singlePaymentService.selectPurchasedGameYN(authentication, gameId)) {
+			System.out.println("컨트롤러 : 유저가 이미 게임을 구매함.");
+			return false;
+		}
+		return true;
 	}
 }

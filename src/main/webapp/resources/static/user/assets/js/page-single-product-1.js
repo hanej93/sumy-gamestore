@@ -4,18 +4,22 @@ let singleProduct = {
 		// 이벤트
 
 	},
-	purchase: function() {
-		console.log("singleProduct 호출중");
-		var total = $('#wishTotalPriceAfter1').html().replace(/[,₩]/g, '');
+	purchase: function(gameId) {
+		console.log("ajax 보내기 전 gameId : "+$("form[name='singlePaymentForm'] input[name='gameId']").val());
+		console.log("ajax 보내기 전 gamePrice : "+$("form[name='singlePaymentForm'] input[name='gamePrice']").val());
+		$("form[name='singlePaymentForm'] input[name='gamePrice']").val(Math.floor($("form[name='singlePaymentForm'] input[name='gamePrice']").val()));
+		var singlePaymentForm = $("form[name='singlePaymentForm']").serialize();
+		
 
-		if (total <= 0) {
+		if ($("form[name='singlePaymentForm'] input[name='gamePrice']").val() <= 0) {
 			$.ajax({
 				type: "POST",
-				url: '/user/orderSuccess',
-				dataType: "text",
+				url: '/user/orderSuccess2',
+				data:singlePaymentForm,
+				dataType: "json",
 				success: function(result) {
 					console.log("0원 결제 성공");
-					location.href="/user/orderSuccess";
+					location.href="/user/orderSuccess2";
 				},
 				error: function(err) {
 					console.log("err" + err);
@@ -24,9 +28,8 @@ let singleProduct = {
 		}else {
 			$.ajax({
 				type: "POST",
-				url: '/user/kakaoPayApi',
-				data: total,
-				contentType: "application/json;charset=utf-8",
+				url: '/user/kakaoPayApi2',
+				data:singlePaymentForm,
 				dataType: "json",
 				success: function(result) {
 					if (result == "free") {
@@ -57,7 +60,7 @@ $(document).on('ready', function() {
 			contentType:"application/json;charset=utf-8", 
 			dataType:"json" 
 		}).done(function(resp){ 
-			singleProduct.purchase();
+			singleProduct.purchase(gameId);
 			console.log(resp);
 		}).fail(function(error){ 
 			console.log(error); 
