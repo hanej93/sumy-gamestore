@@ -147,7 +147,7 @@ main{
 								<div class="col-6">
 									<a
 										class="btn btn-block u-btn-yellow g-font-size-12 text-uppercase g-py-12 g-px-25 mr-2"
-										type="button" href="javascript:kakaoLogin();">카카오톡 로그인</a>
+										type="button" href="${kakaoUrl }">카카오톡 로그인</a>
 								</div>
 								<div class="col-6">
 									<a href="${ naverUrl}"

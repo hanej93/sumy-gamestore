@@ -2,20 +2,19 @@ package com.sumy.gamestore.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.Principal;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.sumy.gamestore.auth.kakao.KakaoController;
 import com.sumy.gamestore.auth.naver.NaverLoginVO;
 import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.service.JoinedUserService;
@@ -71,41 +72,79 @@ public class LoginController {
 		JSONObject response_obj = (JSONObject) jsonObj.get("response");
 		// response의 nickname값 파싱
 		System.out.println(response_obj);
-		//birthday":"02-03",
-		//"profile_image":"https:\/\/ssl.pstatic.net\/static\/pwe\/address\/img_profile.png",
-		//"gender":"M",
-		//"birthyear":"1993",
-		//"nickname":"Swing",
-		//"mobile":"010-4905-0238",
-		//"name":"한의진",
-		//"id":"cX9_6GbeuqT3iDGIAszdClYzAGn6khwMqGtghIZjlFg",
-		//"age":"20-29",
-		//"email":"hanej93@naver.com",
-		//"mobile_e164":"+821049050238"
+		// birthday":"02-03",
+		// "profile_image":"https:\/\/ssl.pstatic.net\/static\/pwe\/address\/img_profile.png",
+		// "gender":"M",
+		// "birthyear":"1993",
+		// "nickname":"Swing",
+		// "mobile":"010-4905-0238",
+		// "name":"한의진",
+		// "id":"cX9_6GbeuqT3iDGIAszdClYzAGn6khwMqGtghIZjlFg",
+		// "age":"20-29",
+		// "email":"hanej93@naver.com",
+		// "mobile_e164":"+821049050238"
 		String user_name = (String) response_obj.get("nickname");
 		String user_id = (String) response_obj.get("email");
 		String user_phone = (String) response_obj.get("mobile");
 		System.out.println("이름: " + user_name);
 		System.out.println("이메일: " + user_id);
 		System.out.println("폰번: " + user_phone);
-		
+
 		// 이메일로 회원 검색 없으면 회원가입
-		
+
 		// 로그인 처리(시큐리티 객체에 담음)
 //		Authentication authentication = authenticationManager
 //				.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), cosKey));
 //		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
+
 		return "redirect:/";
 	}
+
+	@RequestMapping(value = "/auth/kakao/callback", produces = "application/json", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request,
+			HttpServletResponse response, HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView(); // 결과값을 node에 담아줌
+		JsonNode node = KakaoController.getAccessToken(code); // accessToken에 사용자의 로그인한 모든 정보가 들어있음
+		JsonNode accessToken = node.get("access_token"); // 사용자의 정보
+		JsonNode userInfo = KakaoController.getKakaoUserInfo(accessToken);
+		String kemail = null;
+		String kname = null;
+		String kgender = null;
+		String kbirthday = null;
+		String kage = null;
+		String kimage = null; // 유저정보 카카오에서 가져오기 Get properties
+		JsonNode properties = userInfo.path("properties");
+		JsonNode kakao_account = userInfo.path("kakao_account");
+		System.out.println(kakao_account);
+		System.out.println(properties);
+		kemail = kakao_account.path("email").asText();
+		kname = properties.path("nickname").asText();
+		kimage = properties.path("profile_image").asText();
+		kgender = kakao_account.path("gender").asText();
+		kbirthday = kakao_account.path("birthday").asText();
+		kage = kakao_account.path("age_range").asText();
+//		session.setAttribute("kemail", kemail);
+//		session.setAttribute("kname", kname);
+//		session.setAttribute("kimage", kimage);
+//		session.setAttribute("kgender", kgender);
+//		session.setAttribute("kbirthday", kbirthday);
+//		session.setAttribute("kage", kage);
+//		mav.setViewName("main");
+		return "redirect:/";
+	}// end kakaoLogin()
 
 	// 로그인 화면
 	@GetMapping("/sumy/login")
 	public String test1(Model model, HttpSession session) {
 
 		String naverAuthUrl = naverLoginVO.getAuthorizationUrl(session);
-		model.addAttribute("naverUrl",naverAuthUrl);
-		
+		model.addAttribute("naverUrl", naverAuthUrl);
+
+		String kakaoUrl = KakaoController.getAuthorizationUrl(session);
+
+		model.addAttribute("kakaoUrl", kakaoUrl);
+
 		return "user/page-login-1";
 	}
 
