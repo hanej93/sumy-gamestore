@@ -12,6 +12,11 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +38,7 @@ import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.service.JoinedUserService;
 import com.sumy.gamestore.service.LoginUserService;
 import com.sumy.gamestore.service.MailSendService;
+import com.sumy.gamestore.service.UserInfoService;
 
 @Controller
 //@RequestMapping("/sumy")
@@ -42,9 +48,15 @@ public class LoginController {
 
 	@Autowired
 	JoinedUserService joinedUserService;
+	
+	@Autowired
+	UserInfoService userInfoService;
 
 	@Autowired
 	NaverLoginVO naverLoginVO;
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
 
 	@Autowired
 	LoginUserService loginUserService;
@@ -72,31 +84,48 @@ public class LoginController {
 		JSONObject response_obj = (JSONObject) jsonObj.get("response");
 		// response의 nickname값 파싱
 		System.out.println(response_obj);
-		// birthday":"02-03",
-		// "profile_image":"https:\/\/ssl.pstatic.net\/static\/pwe\/address\/img_profile.png",
-		// "gender":"M",
-		// "birthyear":"1993",
-		// "nickname":"Swing",
-		// "mobile":"010-4905-0238",
-		// "name":"한의진",
-		// "id":"cX9_6GbeuqT3iDGIAszdClYzAGn6khwMqGtghIZjlFg",
-		// "age":"20-29",
-		// "email":"hanej93@naver.com",
-		// "mobile_e164":"+821049050238"
-		String user_name = (String) response_obj.get("nickname");
-		String user_id = (String) response_obj.get("email");
-		String user_phone = (String) response_obj.get("mobile");
-		System.out.println("이름: " + user_name);
-		System.out.println("이메일: " + user_id);
-		System.out.println("폰번: " + user_phone);
 
-		// 이메일로 회원 검색 없으면 회원가입
+		String userEmail = (String) response_obj.get("email");
+		String rawPassword = (String) response_obj.get("id");
+		String userPassword = bcryptPasswordEncoder.encode(rawPassword);
+		
+		if(userInfoService.유저검색_이메일(userEmail) == null) {
+		
+			String userProvider = "naver";
+			String userNickname = (String) response_obj.get("nickname");
+			String userProfileImage = (String) response_obj.get("profile_image");
+			String userPhoneNumber = (String) response_obj.get("mobile");
+			String userName = (String) response_obj.get("name");
+			String userBirthDateStr = (String) response_obj.get("birthyear") + "-" + (String) response_obj.get("birthday");
+			LocalDate userBirthDate = LocalDate.parse(userBirthDateStr);
+			int gender = 0;
+			if (((String) response_obj.get("birthyear")).equals('M')) {
+				gender = 1;
+			} else {
+				gender = 0;
+			}
+			UserInfo joinUser 
+				= UserInfo.builder()
+						  .userId(0)
+						  .userEmail(userEmail)
+						  .userPassword(userPassword)
+						  .userProvider(userProvider)
+						  .userNickname(userNickname)
+						  .userProfileImage(userProfileImage)
+						  .userPhoneNumber(userPhoneNumber)
+						  .userName(userName)
+						  .userBirthDate(userBirthDate)
+						  .userGender(gender)
+						  .userJoinedDate(LocalDate.now())
+						  .build();
+			joinedUserService.addUser(joinUser);
+		}
+		
 
-		// 로그인 처리(시큐리티 객체에 담음)
-//		Authentication authentication = authenticationManager
-//				.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), cosKey));
-//		SecurityContextHolder.getContext().setAuthentication(authentication);
-
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(userEmail, rawPassword));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return "redirect:/";
 	}
 

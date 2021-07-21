@@ -182,6 +182,10 @@
 								<s class="g-color-gray-dark-v4 g-font-weight-500 g-font-size-16">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice}" type="number"/></s>
 							</c:if>
 						</div>
+						<form name="singlePaymentForm" style="display:none;">
+							<input value="${gameInfo.gameId}" type="text" name="gameId">
+							<input value="${gameInfo.gamePrice * (100-gameInfo.gameDiscountRate) / 100}" type="number" name="gamePrice" pattern="replace(/,/g, '')">
+						</form>
 						<!-- End Price -->
 						<c:if test="${purchasedGame ne 1 }">
 						<!-- Buttons -->

@@ -31,6 +31,11 @@ public class UserInfoService {
 		return userInfo;
 	}
 	
+	public UserInfo 유저검색_이메일(String userEmail) {
+		UserInfo userInfo = userInfoMapper.findByUserEmail(userEmail);
+		return userInfo;
+	}
+	
 	public int 유저수정(UserInfo userInfo) {
 		return userInfoMapper.updateUser(userInfo);
 	}

@@ -153,7 +153,7 @@
 										<div class="g-mb-30">
 											<input type="text" name="userId"
 												value="${principal.user.userId}" style="display: none;">
-											<input type="text" name="userPassword"
+											<input type="hidden" name="userPassword"
 												value="">
 											<textarea id="loginSecurityNickNameTextArea"
 												name="userNickname"
@@ -231,7 +231,7 @@
 									<form name="addressForm">
 										<input type="text" name="userId"
 											value="${principal.user.userId}" style="display: none;">
-										<input type="text" name="userPassword"
+										<input type="hidden" name="userPassword"
 												value="">
 										<h3 class="h5 mb-3">주소 변경</h3>
 										<div class="row no-gutters g-mb-10">
@@ -292,10 +292,10 @@
 										style="display: none;">
 										<input type="text" name="userId"
 											value="${principal.user.userId}" style="display: none;">
-										<input type="text" name="userPassword"
+										<input type="hidden" name="userPassword"
 												value="">
 										<div class="g-mb-30">
-											<input id="loginSecurityNumberUpdate" name="userPhoneNumber"
+											<input id="loginSecurityNumberUpdate" name="userPhoneNumber" value="${principal.user.userPhoneNumber}"
 												class="form-control g-brd-gray-light-v4 g-brd-primary--focus g-color-text rounded g-py-13 g-px-15"
 												type="text" placeholder="연락처 - 빼고 입력"
 												oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">

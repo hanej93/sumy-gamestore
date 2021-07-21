@@ -17,15 +17,16 @@ import com.sumy.gamestore.model.WishlistGame;
 
 @Mapper
 public interface PaymentMapper {
-	//purchased_game_list 추가
+	// purchased_game_list 추가
 	@Insert("insert into purchased_game_list values(#{purchasedGameId}, #{gameId}, #{userId}, #{purchasedWriteDate})")
 	public int insertPurchasedGame(PurchasedGameList purchasedGameList);
-	
-	//game데이터 업데이트
+
+	// game데이터 업데이트
 	@Update("update game_info set game_sale_count = #{gameSaleCount}, game_total_earnings = #{gameTotalEarnings} where game_id = #{gameId}")
 	public int updateGameSaleCountAndGameTotalEarnings(GameInfo gameInfo);
-	
-	//wishlist에서 삭제하기
+
+	// wishlist에서 삭제하기
 	@Delete("delete from wishlist_game where wishlist_id = #{wishlistId} and game_id=#{gameId} and user_id=#{userId}")
 	public int deleteWish(WishlistGame wishlistGame);
+
 }
