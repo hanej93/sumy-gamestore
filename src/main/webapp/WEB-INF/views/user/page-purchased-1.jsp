@@ -180,7 +180,9 @@
 										<!-- <span class="d-block g-color-lightred mb-2">&#8361;32,000</span> -->
 										
 										<span
-											class="d-block g-color-gray-dark-v4 g-font-size-13 mb-2">${purchasedGameList.purchasedWriteDate }</span>
+											class="d-block g-color-gray-dark-v4 g-font-size-13 mb-2">
+											구매날짜 : <fmt:parseDate value="${purchasedGameList.purchasedWriteDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+											<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/></span>
 										</div>
 									</div>
 								</div>

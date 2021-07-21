@@ -52,25 +52,25 @@ let questionList = {
 		});
 		
 		// 모달이 꺼졌을 때 페이지 리로드
-		/*$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
+		$("[id^='exampleModal1']").on('hidden.bs.modal', function () {
 			location.reload();
-		});*/
+		});
 		
 		/*$("#exampleModal3").on('hidden.bs.modal', function () {
 			$("[id^='exampleModal1']").modal('hide');
 		});*/
 		
-		$("[id^='exampleModal2']").on('hidden.bs.modal', function () {
-			$("[id^='exampleModal1']").modal('hide');
+		$("[id^='mailSendBtn']").on('click', function(){
+			let questionId = $(this).attr('questionId');
+			questionList.sendMail(questionId);
 		});
 				
 		$("[id^='exampleModal3']").on('hidden.bs.modal', function () {
 			location.reload();
 		});
 		
-		$("[id^='mailSendBtn']").on('click', function(){
-			let questionId = $(this).attr('questionId');
-			questionList.sendMail(questionId);
+		$("[id^='exampleModal2']").on('hidden.bs.modal', function () {
+			//$("[id^='exampleModal1']").modal('hide');
 		});
 		
 	},
