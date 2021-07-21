@@ -72,7 +72,7 @@
 					<div class="align-self-center ml-auto">
 						<ul class="u-list-inline">
 							<li class="list-inline-item g-mr-5"><a
-								class="u-link-v5 g-color-text" href="page-login-security-1.html">마이페이지</a>
+								class="u-link-v5 g-color-text" href="/user/login-security">마이페이지</a>
 								<i class="g-color-gray-light-v2 g-ml-5 fa fa-angle-right"></i></li>
 							<li class="list-inline-item g-color-primary"><span>위시리스트</span>
 							</li>
@@ -229,7 +229,7 @@
 								class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20 text-center"
 								style="height: 360px">
 								<img id="blah" class="img-fluid"
-									src="/resources/static/user/assets/img-temp/500x320/img1.png" style="height: 100%;"
+									src="/upload/default_img.jpg" style="height: 100%;"
 									alt="이미지 찾기를 실행해주세요.">
 							</div>
 						</form>
