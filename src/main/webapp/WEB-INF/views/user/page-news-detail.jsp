@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,8 +106,12 @@
 						<!-- News Info -->
 						<div class="col g-mb-30">
 							<h2 class="h4 mb-3 mt-3">${news.newsTitle }</h2>
-							<span class="g-color-text mr-10">작성일 : <span>${news.newsWriteDate }</span></span> 
-							<span class="g-color-text">수정일 : <span>${news.newsUpdateDate }</span></span>
+							<span class="g-color-text mr-10">작성일 : <span>
+							<fmt:parseDate value="${news.newsWriteDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+		  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/></span></span> 
+							<span class="g-color-text">수정일 : <span>
+							<fmt:parseDate value="${news.newsUpdateDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+		  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/></span></span>
 							<div class="row">
 								<div class="col-lg-12 g-mt-30 g-mb-30">
 									<h3 class="h5 g-color-gray-dark-v3">${news.newsSubTitle }</h3>
@@ -132,20 +138,20 @@
 			<nav class="g-mt-20 g-mb-40" aria-label="Page Navigation">
 				<div class="text-center">
 					<ul class="list-inline mb-0">
-						<li class="list-inline-item"><a
+						<!-- <li class="list-inline-item"><a
 							class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-mr-15"
 							href="#" aria-label="Next"> <span aria-hidden="true">
 									<i class="fa fa-angle-left"></i>
 							</span> <span class="sr-only">Before</span>
-						</a></li>
+						</a></li> -->
 						<li class="list-inline-item hidden-down"><a
 							href="/sumy/news/list" class="g-color-black">목록보기</a></li>
-						<li class="list-inline-item"><a
+						<!-- <li class="list-inline-item"><a
 							class="u-pagination-v1__item g-width-30 g-height-30 g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 g-ml-15"
 							href="#" aria-label="Next"> <span aria-hidden="true">
 									<i class="fa fa-angle-right"></i>
 							</span> <span class="sr-only">Next</span>
-						</a></li>
+						</a></li> -->
 					</ul>
 				</div>
 			</nav>
