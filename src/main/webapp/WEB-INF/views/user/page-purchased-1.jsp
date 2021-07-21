@@ -76,7 +76,7 @@
 					<div class="align-self-center ml-auto">
 						<ul class="u-list-inline">
 							<li class="list-inline-item g-mr-5"><a
-								class="u-link-v5 g-color-text" href="page-login-security-1.html">마이페이지</a>
+								class="u-link-v5 g-color-text" href="/user/login-security">마이페이지</a>
 								<i class="g-color-gray-light-v2 g-ml-5 fa fa-angle-right"></i></li>
 							<li class="list-inline-item g-color-primary"><span>내가
 									보유한 게임</span></li>
