@@ -9,17 +9,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sumy.gamestore.config.auth.PrincipalDetail;
 import com.sumy.gamestore.model.UserInfo;
 import com.sumy.gamestore.service.MyPageService;
 import com.sumy.gamestore.service.UpdateUserService;
+import com.sumy.gamestore.service.UserInfoService;
 
 @Controller
 public class MyPageController {
 
+	@Autowired
+	UserInfoService userInfoService;
+	
 	@Autowired
 	MyPageService myPageService;
 
@@ -41,7 +47,10 @@ public class MyPageController {
 	// 닉네임 업데이트
 	@PostMapping("/user/profileNickNameUpdate")
 	public String profileNickNameUpdate(UserInfo userInfo) {
+		System.out.println(userInfo);
 		myPageService.insertUserNickname(userInfo);
+		
+		UserInfo loginUser = userInfoService.유저검색(userInfo.getUserId());
 		
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
@@ -53,6 +62,7 @@ public class MyPageController {
 	// 주소 업데이트
 	@PostMapping("/user/profileAddressUpdate")
 	public String profileAddressUpdate(UserInfo userInfo) {
+		System.out.println(userInfo);
 		myPageService.insertUserAddress(userInfo);
 		
 		Authentication authentication = authenticationManager
@@ -77,6 +87,7 @@ public class MyPageController {
 	// 연락처 업데이트
 	@PostMapping("/user/profilePhonesUpdate")
 	public String profilePhonesUpdate(UserInfo userInfo) {
+		System.out.println(userInfo);
 		myPageService.insertUserPhoneNumber(userInfo);
 		
 		Authentication authentication = authenticationManager
@@ -125,6 +136,22 @@ public class MyPageController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		return "비밀번호수정";
+	}
+	
+	// 수정하기전 비밀번호 체크
+	@PostMapping("/user/update/checkPwd")
+	@ResponseBody
+	public int checkPassword(@RequestBody UserInfo userInfo) {
+		System.out.println("유저비밀번호" + userInfo.getUserPassword());
+		System.out.println("유저아이디" + userInfo.getUserId());
+		UserInfo loginUser = userInfoService.유저검색(userInfo.getUserId());
+		String inputPassword = userInfo.getUserPassword();
+		String loginPassword = loginUser.getUserPassword();
+		if(bcryptPasswordEncoder.matches(inputPassword, loginPassword)) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	// 아직 사용 안하는 컨트롤러 두 개

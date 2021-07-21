@@ -57,6 +57,40 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
 
 $(document).on('ready', function() {
+	
+	//비밀번호 확인 버튼
+	$('#passwordBtn').on('click', function() {
+		// 사용자가 입력한 비밀번호
+		let data = {
+			userId:$("form[name='nickNameForm'] input[name='userId']").val(),
+			userPassword:$("#passwordMath").val()
+		}
+		
+		$.ajax({
+			type:"POST", 
+			url:"/user/update/checkPwd",
+			data:JSON.stringify(data),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			// resp == 1 이면 display block;
+			// 아니면 비밀번호가 틀렸다는 표시
+			if(resp==1){
+				alert("비밀번호 확인에 성공하셨습니다.");
+				$("#psBefore").css('display', 'none');
+				$("#psAfetr").css('display', 'block');
+				$("input[name='userPassword']").val($('#passwordMath').val());
+			}else{
+				alert("비밀번호를 잘못 입력하셨습니다.");
+			}
+			
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+		
+	});
+	
 
 	//이름 수정 버튼
 	$('#loginSecurityNameBtn').on('click', function() {
@@ -83,7 +117,7 @@ $(document).on('ready', function() {
 
 		$.ajax({
 			type: 'post',
-			url: '/questionModal',
+			url: '/user/profileNickNameUpdate',
 			data: queryString,
 			dataType: 'json',
 			error: function(xhr, status, error) {

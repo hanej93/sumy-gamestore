@@ -98,199 +98,229 @@
 				<!-- Login & Security -->
 				<div class="col-lg-9 g-mb-50">
 					<!-- 영선이 div -->
-
-					<!-- Info -->
-					<div
-						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
-						<div class="row">
-							<div class="col-8">
-								<span class="d-block g-color-text g-font-size-13 mb-1">이메일(ID)</span>
-								<span class="d-block">${principal.user.userEmail}</span>
-							</div>
-						</div>
-
-						<hr class="g-brd-gray-light-v4 g-my-20">
-
-						<div class="row">
-							<div class="col-8">
-								<span class="d-block g-color-text g-font-size-13 mb-1">이름</span>
-								<span class="d-block">${principal.user.userName}</span>
-							</div>
-						</div>
-					</div>
-
-					<div id="loginSecurityNowNickDiv"
-						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
-						<div class="row">
-							<div class="col-12">
-								<span class="d-block g-color-text g-font-size-13 mb-1">별명</span>
-								<span id="loginSecurityStarName">${principal.user.userNickname}</span>
-								<div class="text-right">
-									<a id="loginSecurityNameBtn"
-										class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a></a>
+					<div id="psBefore" class="container g-pt-30 g-pb-30">
+						<form name="addressForm">
+							<input type="text" name="userId" value="26"
+								style="display: none;">
+							<h3 class="h5 mb-3">비밀번호 확인</h3>
+							<div class="row no-gutters g-mb-10">
+								<div class="input-group col-6">
+									<input id="passwordMath" name="userPassword"
+										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
+										type="password" placeholder="비밀번호 입력">
 								</div>
-								<form name="nickNameForm" style="display: none;">
-									<div class="g-mb-30">
-										<input type="text" name="userId"
-											value="${principal.user.userId}" style="display: none;">
-										<textarea id="loginSecurityNickNameTextArea"
-											name="userNickname"
-											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
-											rows="5" placeholder="별명을 작성해주세요."></textarea>
-									</div>
-									<div class="row align-items-center">
-										<div class="col-8">
-											<button id="loginSecurityCancelBtn"
-												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 nickNameFormDelete g-mr-10"
-												type="button" role="button">취소</button>
-											<button id="loginSecurityUpdateBtn"
-												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 nickNameFormComplete"
-												type="button" role="button">수정 완료</button>
-										</div>
-									</div>
-								</form>
+								<div class="input-group-append p-0">
+									<button id="passwordBtn"
+										class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"
+										type="button">확인</button>
+									<!-- 주소 팝업 버튼 -->
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- Info -->
+					<div id="psAfetr" style="display: none">
+						<div
+							class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
+							<div class="row">
+								<div class="col-8">
+									<span class="d-block g-color-text g-font-size-13 mb-1">이메일(ID)</span>
+									<span class="d-block">${principal.user.userEmail}</span>
+								</div>
+							</div>
+
+							<hr class="g-brd-gray-light-v4 g-my-20">
+
+							<div class="row">
+								<div class="col-8">
+									<span class="d-block g-color-text g-font-size-13 mb-1">이름</span>
+									<span class="d-block">${principal.user.userName}</span>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div id="loginSecurityNowPwdDiv"
-						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
-						<div class="row">
-							<div class="col-8">
-								<span class="d-block g-color-text g-font-size-13 mb-1">비밀번호
-									변경</span> <span
-									class="d-block g-font-weight-600 g-color-primary g-font-size-10 g-mt-20">비밀번호
-									변경을 하기 위해선, 이메일 인증이 필요합니다.</span>
-								<!-- <input type="password" id="loginSecurityNowPwd"
+						<div id="loginSecurityNowNickDiv"
+							class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
+							<div class="row">
+								<div class="col-12">
+									<span class="d-block g-color-text g-font-size-13 mb-1">별명</span>
+									<span id="loginSecurityStarName">${principal.user.userNickname}</span>
+									<div class="text-right">
+										<a id="loginSecurityNameBtn"
+											class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a></a>
+									</div>
+									<form name="nickNameForm" style="display: none;">
+										<div class="g-mb-30">
+											<input type="text" name="userId"
+												value="${principal.user.userId}" style="display: none;">
+											<input type="text" name="userPassword"
+												value="">
+											<textarea id="loginSecurityNickNameTextArea"
+												name="userNickname"
+												class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"
+												rows="5" placeholder="별명을 작성해주세요."></textarea>
+										</div>
+										<div class="row align-items-center">
+											<div class="col-8">
+												<button id="loginSecurityCancelBtn"
+													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 nickNameFormDelete g-mr-10"
+													type="button" role="button">취소</button>
+												<button id="loginSecurityUpdateBtn"
+													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 nickNameFormComplete"
+													type="button" role="button">수정 완료</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<div id="loginSecurityNowPwdDiv"
+							class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
+							<div class="row">
+								<div class="col-8">
+									<span class="d-block g-color-text g-font-size-13 mb-1">비밀번호
+										변경</span> <span
+										class="d-block g-font-weight-600 g-color-primary g-font-size-10 g-mt-20">비밀번호
+										변경을 하기 위해선, 이메일 인증이 필요합니다.</span>
+									<!-- <input type="password" id="loginSecurityNowPwd"
 									value="asdf!@1234" readonly="readonly"
 									class="form-control form-control-md rounded"> -->
+								</div>
+							</div>
+							<div class="text-right">
+								<a href="/sumy/password-recovery"
+									class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">변경</a>
 							</div>
 						</div>
-						<div class="text-right">
-							<a href="/sumy/password-recovery"
-								class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">변경</a>
-						</div>
-					</div>
 
-					<div id="loginSecurityAddressDiv"
-						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
-						<div class="row">
-							<div class="col-8">
-								<span class="d-block g-color-text g-font-size-13 mb-1">주소</span>
-								<span class="d-block"> <!-- Addresses --> <!-- Address -->
-									<address class="media">
-										<div class="d-flex mr-3">
-											<span class="u-icon-v1 g-color-gray-dark-v4"><i
-												class="icon-real-estate-027 u-line-icon-pro"></i></span>
-										</div>
-										<div>
-											<div id="loginSecurityAddressNow01"
-												class="media-body g-color-text">${principal.user.userZipCode}</div>
-											<div id="loginSecurityAddressNow02"
-												class="media-body g-color-text">${principal.user.userAddress}</div>
-											<div id="loginSecurityAddressNow03"
-												class="media-body g-color-text">${principal.user.userDetailAddress}</div>
-										</div>
-									</address> <!-- End Address --> <!-- End Addresses -->
+						<div id="loginSecurityAddressDiv"
+							class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
+							<div class="row">
+								<div class="col-8">
+									<span class="d-block g-color-text g-font-size-13 mb-1">주소</span>
+									<span class="d-block"> <!-- Addresses --> <!-- Address -->
+										<address class="media">
+											<div class="d-flex mr-3">
+												<span class="u-icon-v1 g-color-gray-dark-v4"><i
+													class="icon-real-estate-027 u-line-icon-pro"></i></span>
+											</div>
+											<div>
+												<div id="loginSecurityAddressNow01"
+													class="media-body g-color-text">${principal.user.userZipCode}</div>
+												<div id="loginSecurityAddressNow02"
+													class="media-body g-color-text">${principal.user.userAddress}</div>
+												<div id="loginSecurityAddressNow03"
+													class="media-body g-color-text">${principal.user.userDetailAddress}</div>
+											</div>
+										</address> <!-- End Address --> <!-- End Addresses -->
 
-								</span>
-							</div>
-							<div class="col-4 text-right g-mt-80">
-								<a id="loginSecurityAddressBtn"
-									class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a>
+									</span>
+								</div>
+								<div class="col-4 text-right g-mt-80">
+									<a id="loginSecurityAddressBtn"
+										class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div id="loginSecurityAddressBlock" style="display: none;"
-						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
-						<div class="row">
-							<div class="col-8">
-								<form name="addressForm">
-									<input type="text" name="userId"
+						<div id="loginSecurityAddressBlock" style="display: none;"
+							class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
+							<div class="row">
+								<div class="col-8">
+									<form name="addressForm">
+										<input type="text" name="userId"
 											value="${principal.user.userId}" style="display: none;">
-									<h3 class="h5 mb-3">주소 변경</h3>
-									<div class="row no-gutters g-mb-10">
-										<div class="input-group col-6">
-											<input id="loginSecurityAddressUpdate01" name="userZipCode"
+										<input type="text" name="userPassword"
+												value="">
+										<h3 class="h5 mb-3">주소 변경</h3>
+										<div class="row no-gutters g-mb-10">
+											<div class="input-group col-6">
+												<input id="loginSecurityAddressUpdate01" name="userZipCode"
+													class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
+													type="text" placeholder="우편번호 입력" readonly="readonly">
+											</div>
+											<div class="input-group-append p-0">
+												<button
+													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"
+													onclick="goPopup()" type="button">우편번호 찾기</button>
+												<!-- 주소 팝업 버튼 -->
+											</div>
+										</div>
+
+										<div class="g-mb-10">
+											<input id="loginSecurityAddressUpdate02" name="userAddress"
 												class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
-												type="text" placeholder="우편번호 입력" readonly="readonly">
+												type="text" placeholder="주소 입력">
 										</div>
-										<div class="input-group-append p-0">
-											<button
-												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25"  onclick="goPopup()" type="button">우편번호
-												찾기</button>
-											<!-- 주소 팝업 버튼 -->
+
+										<div class="g-mb-10">
+											<input id="loginSecurityAddressUpdate03"
+												name="userDetailAddress"
+												class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
+												type="text" placeholder="상세주소 입력">
 										</div>
-									</div>
-
-									<div class="g-mb-10">
-										<input id="loginSecurityAddressUpdate02" name="userAddress"
-											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
-											type="text" placeholder="주소 입력">
-									</div>
-
-									<div class="g-mb-10">
-										<input id="loginSecurityAddressUpdate03" name="userDetailAddress"
-											class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 rounded g-py-15 g-px-15"
-											type="text" placeholder="상세주소 입력">
-									</div>
-									<div class="col-8">
-										<button id="loginSecurityCancelAddressBtn"
-											class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 g-mr-10"
-											type="button" role="button">취소</button>
-										<button id="loginSecurityUpdateAddressBtn"
-											class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
-											type="button" role="button">수정 완료</button>
-									</div>
-								</form>
-							</div>
-
-
-						</div>
-					</div>
-
-					<div
-						class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
-						<div class="row">
-							<div id="loginSecurityNumberDiv" class="col-8">
-								<span class="d-block g-color-text g-font-size-13 mb-1">연락처</span>
-								<span id="loginSecurityNumber">${principal.user.userPhoneNumber}</span>
-							</div>
-
-							<div class="col-4 text-right g-mt-35">
-								<a id="loginSecurityNumberBtn"
-									class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a>
-							</div>
-							<div class="col-8">
-								<form id="loginSecurityNumberForm" name="phoneForm" style="display: none;">
-									<input type="text" name="userId"
-											value="${principal.user.userId}" style="display: none;">
-									<div class="g-mb-30">
-										<input id="loginSecurityNumberUpdate" name="userPhoneNumber"
-											class="form-control g-brd-gray-light-v4 g-brd-primary--focus g-color-text rounded g-py-13 g-px-15"
-											type="text" placeholder="연락처 - 빼고 입력" maxlength="11"
-											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-									</div>
-									<div class="row align-items-center">
 										<div class="col-8">
-											<button id="loginSecurityCancelNumberBtn"
+											<button id="loginSecurityCancelAddressBtn"
 												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 g-mr-10"
 												type="button" role="button">취소</button>
-											<button id="loginSecurityUpdateNumberBtn"
+											<button id="loginSecurityUpdateAddressBtn"
 												class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
 												type="button" role="button">수정 완료</button>
 										</div>
+									</form>
+								</div>
 
-									</div>
-								</form>
+
 							</div>
 						</div>
-					</div>
+
+						<div
+							class="g-brd-around g-brd-gray-light-v4 rounded g-pa-30 g-mb-30">
+							<div class="row">
+								<div id="loginSecurityNumberDiv" class="col-8">
+									<span class="d-block g-color-text g-font-size-13 mb-1">연락처</span>
+									<span id="loginSecurityNumber">${principal.user.userPhoneNumber}</span>
+								</div>
+
+								<div class="col-4 text-right g-mt-35">
+									<a id="loginSecurityNumberBtn"
+										class="btn g-brd-around g-brd-gray-light-v3 g-color-gray-dark-v3 g-bg-gray-light-v5 g-bg-gray-light-v4--hover g-font-size-13 rounded g-px-18 g-py-7">수정</a>
+								</div>
+								<div class="col-8">
+									<form id="loginSecurityNumberForm" name="phoneForm"
+										style="display: none;">
+										<input type="text" name="userId"
+											value="${principal.user.userId}" style="display: none;">
+										<input type="text" name="userPassword"
+												value="">
+										<div class="g-mb-30">
+											<input id="loginSecurityNumberUpdate" name="userPhoneNumber"
+												class="form-control g-brd-gray-light-v4 g-brd-primary--focus g-color-text rounded g-py-13 g-px-15"
+												type="text" placeholder="연락처 - 빼고 입력"
+												oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+										</div>
+										<div class="row align-items-center">
+											<div class="col-8">
+												<button id="loginSecurityCancelNumberBtn"
+													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25 g-mr-10"
+													type="button" role="button">취소</button>
+												<button id="loginSecurityUpdateNumberBtn"
+													class="btn u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
+													type="button" role="button">수정 완료</button>
+											</div>
+
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 
 					<button id="WithdrawalBtn" userId="${principal.user.userId }"
 						class="btn u-btn-white g-color-primary g-brd-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
 						type="button">회원 탈퇴</button>
+					</div>
+
 				</div>
 
 
