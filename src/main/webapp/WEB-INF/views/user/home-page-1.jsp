@@ -297,14 +297,17 @@
 									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">작성일</span>
 								<span class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2">&#183;</span>
 								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">${newsList.newsWriteDate}</span>
+									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
+									<fmt:parseDate value="${newsList.newsWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
+									<fmt:formatDate value="${dateFmt}"  pattern="yyyy년 MM월 dd일"/>
+									</span>
 							</div>
 
 							<a
 								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
-								href="/sum/news/${newsList.newsId }">뉴스 더보기</a>
+								href="/sumy/news/${newsList.newsId }">뉴스 더보기</a>
 						</div>
-						<a class="u-link-v2" href="#"></a>
+						<a class="u-link-v2" href="/sumy/news/${newsList.newsId }"></a>
 					</article>
 					<!-- End Blog Background Overlay Blocks -->
 				</div>
