@@ -49,7 +49,7 @@ public class PaymentController {
 	@RequestMapping("/user/kakaoPayApi")
 	@ResponseBody
 	public String kakaoPayApi(@RequestBody String totalAmount) {
-		
+		System.out.println(totalAmount);
 		try {
 			// Output
 			URL urlAddress = new URL("https://kapi.kakao.com/v1/payment/ready");// 카카오api서버 URL로 생성
@@ -70,6 +70,7 @@ public class PaymentController {
 			if (result == 200) {// 성공 시
 				orderReception = connectApiServer.getInputStream();
 			} else {// 실패 시
+				System.out.println("결제 통신 실패");
 				orderReception = connectApiServer.getErrorStream();
 			}
 			InputStreamReader orderReceptionReader = new InputStreamReader(orderReception);// 받은애 읽기
@@ -106,8 +107,9 @@ public class PaymentController {
 	
 	//유저가 게임을 구매했는지 안했는지 확인해야할 시
 	@ResponseBody
-	@RequestMapping("/user/selectPurchasedGameYN")
-	public boolean selectPurchasedGameYN(Authentication authentication, int gameId) {
+	@PostMapping("/user/selectPurchasedGameYN")
+	public boolean selectPurchasedGameYN(@RequestBody int gameId, Authentication authentication) {
+		System.out.println(gameId);
 		if(!paymentService.selectPurchasedGameYN(authentication, gameId)) {
 			System.out.println("컨트롤러 : 유저가 이미 게임을 구매함.");
 			return false;

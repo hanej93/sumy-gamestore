@@ -177,44 +177,48 @@
 								class="g-color-gray-dark-v5 g-font-weight-400 g-font-size-12 text-uppercase mb-2">게임
 								가격</h2>
 
-							<span class="g-color-black g-font-weight-500 g-font-size-30 mr-2">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice * (100-gameInfo.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
+							<span id="wishTotalPriceAfter1" class="g-color-black g-font-weight-500 g-font-size-30 mr-2">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice * (100-gameInfo.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
 							<c:if test="${ gameInfo.gameDiscountRate ne '0'}">
 								<s class="g-color-gray-dark-v4 g-font-weight-500 g-font-size-16">&#8361;<fmt:formatNumber value="${gameInfo.gamePrice}" type="number"/></s>
 							</c:if>
 						</div>
 						<!-- End Price -->
-
+						<c:if test="${purchasedGame ne 1 }">
 						<!-- Buttons -->
-						<div class="row g-mx-minus-5 g-mb-20">
-							<div class="col g-px-5 g-mb-10">
-								<button
-									class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
-									type="button">
-									구매 <i class="align-middle ml-2 icon-wallet u-line-icon-pro"></i>
-								</button>
+						
+							<div class="row g-mx-minus-5 g-mb-20">
+								<div class="col g-px-5 g-mb-10">
+									<button id="purchaseBtn" gameId='${gameInfo.gameId }' 
+										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
+										type="button">
+										구매 <i class="align-middle ml-2 icon-wallet u-line-icon-pro"></i>
+									</button>
+								</div>
+								<div class="col g-px-5 g-mb-10">
+									
+										<c:choose>
+											<c:when test="${empty existsWishlist }">
+												<button id="wishlist-btn" gameId="${gameInfo.gameId }"
+													class="btn btn-block u-btn-bluegray g-font-size-12 text-uppercase g-py-15 g-px-25"
+													 data-toggle="tooltip" data-placement="top" data-original-title="해당 게임이 위시리스트에 담겨졌습니다."
+													 data-trigger="manual" 
+													><span>위시리스트 담기</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
+												</button>
+											</c:when>
+											<c:otherwise>
+												<button id="wishlist-btn" gameId="${gameInfo.gameId }"
+													class="btn btn-block u-btn-black g-font-size-12 text-uppercase g-py-15 g-px-25"
+													data-toggle="tooltip" data-placement="top" data-original-title="해당 게임이 위시리스트에서 제거되었습니다."
+													 data-trigger="manual" 
+													><span>위시리스트 있음</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
+												</button>
+											</c:otherwise>
+										</c:choose>
+									
+								</div>
 							</div>
-							<div class="col g-px-5 g-mb-10">
-								<c:choose>
-									<c:when test="${empty existsWishlist }">
-										<button id="wishlist-btn" gameId="${gameInfo.gameId }"
-											class="btn btn-block u-btn-bluegray g-font-size-12 text-uppercase g-py-15 g-px-25"
-											 data-toggle="tooltip" data-placement="top" data-original-title="해당 게임이 위시리스트에 담겨졌습니다."
-											 data-trigger="manual" 
-											><span>위시리스트 담기</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
-										</button>
-									</c:when>
-									<c:otherwise>
-										<button id="wishlist-btn" gameId="${gameInfo.gameId }"
-											class="btn btn-block u-btn-black g-font-size-12 text-uppercase g-py-15 g-px-25"
-											data-toggle="tooltip" data-placement="top" data-original-title="해당 게임이 위시리스트에서 제거되었습니다."
-											 data-trigger="manual" 
-											><span>위시리스트 있음</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
-										</button>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-						<!-- End Buttons -->
+							<!-- End Buttons -->
+						</c:if>
 					</div>
 				</div>
 			</div>

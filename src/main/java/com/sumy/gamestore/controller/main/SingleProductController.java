@@ -16,6 +16,7 @@ import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.model.GameInfo;
 import com.sumy.gamestore.model.WishlistGame;
 import com.sumy.gamestore.service.GameInfoService;
+import com.sumy.gamestore.service.PurchasedService;
 import com.sumy.gamestore.service.ReviewListService;
 import com.sumy.gamestore.service.WishListService;
 
@@ -32,6 +33,9 @@ public class SingleProductController {
 	@Autowired
 	WishListService wishListService;
 	
+	@Autowired
+	PurchasedService purchasedService;
+	
 	
 	@GetMapping("/sumy/single-product/{gameId}")
 	public String showSingleProduct(@PathVariable int gameId, Model model, Authentication authentication) {
@@ -41,6 +45,10 @@ public class SingleProductController {
 			int userId = principal.getUser().getUserId();
 			
 			int exists =  wishListService.위시리스트유무(userId, gameId);
+			
+			int purchased = purchasedService.구매한게임유무(userId, gameId);
+			
+			model.addAttribute("purchasedGame", purchased);
 			
 			if(exists > 0 ) {
 				model.addAttribute("existsWishlist", exists);

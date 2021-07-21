@@ -1,12 +1,12 @@
 /*-카카오페이 ajax 비동기 통신 부분-*/
 
 $(function() {
-	var total;
+	var total = $('#wishTotalPriceAfter1').html().replace(/,/g, '');
 
 
 	//결제 api 호출
 	$('#kakaoPayApiBtn').click(function() {
-		if ($('#wishTotalPriceAfter1').html().replace(/,/g, '') <= 0) {
+		if (total <= 0) {
 			$.ajax({
 				type: "POST",
 				url: '/user/orderSuccess',
