@@ -460,6 +460,7 @@
 
 	<!-- JS Customization -->
 	<script src="/resources/static/assets/js/custom.js"></script>
+	<script src="/resources/static/user/assets/js/footer.js"></script>
 
 	<!-- JS Plugins Init. -->
 	<script>

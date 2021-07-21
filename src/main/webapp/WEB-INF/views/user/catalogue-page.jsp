@@ -372,7 +372,9 @@
 		<!-- End Products -->
 
 		<!-- Footer -->
-		<jsp:include page="layout/footer.jsp"/>
+		<footer class="g-bg-main-light-v1">
+			<jsp:include page="layout/footer.jsp" />
+		</footer>
 		<!-- End Footer -->
 
 		<a class="js-go-to u-go-to-v2" href="#" data-type="fixed"

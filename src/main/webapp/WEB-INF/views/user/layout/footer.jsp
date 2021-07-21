@@ -10,11 +10,11 @@
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
-<footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20" style="min-height: 200px;">
-	<div class="g-ml-30">
+<footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20 text-center justify-content-center d-flex align-items-center" style="min-height: 65px;">
+	<div class="g-ml-30 ">
 		<div>
-			<div class="col-md-8 text-center text-md-left g-mb-10 g-mb-0--md">
-				<div class="d-lg-flex">
+			<div class="text-center text-md-left g-mb-10 g-mb-0--md justify-content-center">
+				<div class="d-lg-flex justify-content-center ">
 					<small
 						class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">2021
 						© All Rights Reserved.</small>

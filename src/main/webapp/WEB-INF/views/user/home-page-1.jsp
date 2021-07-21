@@ -787,7 +787,9 @@
 		<!-- End Products -->
 
 		<!-- Footer -->
-		<jsp:include page="layout/footer.jsp" />
+		<footer class="g-bg-main-light-v1">
+			<jsp:include page="layout/footer.jsp" />
+		</footer>
 		<!-- End Footer -->
 
 		<!-- Go To Top -->
