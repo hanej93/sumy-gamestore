@@ -333,6 +333,6 @@ public class LoginController {
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
 		userInfo.setUserPassword(encodePS);// 암호화
 		int total = joinedUserService.addUser(userInfo);
-		return "sumy/home-page-1";
+		return "redirect:/sumy/login";
 	}
 }
