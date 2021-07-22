@@ -1,5 +1,13 @@
 package com.sumy.gamestore.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,7 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sumy.gamestore.config.auth.PrincipalDetail;
 import com.sumy.gamestore.model.UserInfo;
@@ -25,7 +35,7 @@ public class MyPageController {
 
 	@Autowired
 	UserInfoService userInfoService;
-	
+
 	@Autowired
 	MyPageService myPageService;
 
@@ -34,7 +44,7 @@ public class MyPageController {
 
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -49,13 +59,13 @@ public class MyPageController {
 	public String profileNickNameUpdate(UserInfo userInfo) {
 		System.out.println(userInfo);
 		myPageService.insertUserNickname(userInfo);
-		
+
 		UserInfo loginUser = userInfoService.유저검색(userInfo.getUserId());
-		
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
+
 		return "닉네임수정";
 	}
 
@@ -64,11 +74,11 @@ public class MyPageController {
 	public String profileAddressUpdate(UserInfo userInfo) {
 		System.out.println(userInfo);
 		myPageService.insertUserAddress(userInfo);
-		
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
+
 		return "주소수정";
 	}
 
@@ -89,11 +99,11 @@ public class MyPageController {
 	public String profilePhonesUpdate(UserInfo userInfo) {
 		System.out.println(userInfo);
 		myPageService.insertUserPhoneNumber(userInfo);
-		
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
+
 		return "연락처수정";
 	}
 
@@ -102,19 +112,19 @@ public class MyPageController {
 	public String pwdRecovery() {
 		return "user/page-login-security-1";
 	}
-	
-	//비밀번호 변경할 이메일 찾기(로그인 안한 유저)
+
+	// 비밀번호 변경할 이메일 찾기(로그인 안한 유저)
 	@PostMapping("/selectEmail")
 	@ResponseBody
 	public int selectEmail(@RequestParam(value = "userEmail") String userEmail) {
-		System.out.println("컨트롤러에서 받은 유저 이메일 : "+userEmail);
+		System.out.println("컨트롤러에서 받은 유저 이메일 : " + userEmail);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUserEmail(userEmail);
 		int result = updateUserService.selectUserEmail(userInfo);
-		if(result==0) {
+		if (result == 0) {
 			return 0;
 		}
-		
+
 		return result;
 	}
 
@@ -122,22 +132,22 @@ public class MyPageController {
 	@PostMapping("/user/pwdRecoveryUpdate")
 	@ResponseBody
 	public String pwdRecoveryUpdate(UserInfo userInfo) {
-		System.out.println("컨트롤러에서 받은 유저 아이디 : "+userInfo.getUserId());
-		System.out.println("컨트롤러에서 받은 유저 이메일 : "+userInfo.getUserEmail());
-		System.out.println("컨트롤러에서 받은 유저 비밀번호 : "+userInfo.getUserPassword());
+		System.out.println("컨트롤러에서 받은 유저 아이디 : " + userInfo.getUserId());
+		System.out.println("컨트롤러에서 받은 유저 이메일 : " + userInfo.getUserEmail());
+		System.out.println("컨트롤러에서 받은 유저 비밀번호 : " + userInfo.getUserPassword());
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
-		System.out.println("인코딩 된 비밀번호 : "+encodePS);
+		System.out.println("인코딩 된 비밀번호 : " + encodePS);
 		userInfo.setUserPassword(encodePS);// 암호화
 
 		updateUserService.pwdRecoveryUpdate(userInfo);
-		
-		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
+
 		return "비밀번호수정";
 	}
-	
+
 	// 수정하기전 비밀번호 체크
 	@PostMapping("/user/update/checkPwd")
 	@ResponseBody
@@ -147,7 +157,7 @@ public class MyPageController {
 		UserInfo loginUser = userInfoService.유저검색(userInfo.getUserId());
 		String inputPassword = userInfo.getUserPassword();
 		String loginPassword = loginUser.getUserPassword();
-		if(bcryptPasswordEncoder.matches(inputPassword, loginPassword)) {
+		if (bcryptPasswordEncoder.matches(inputPassword, loginPassword)) {
 			return 1;
 		} else {
 			return 0;
@@ -157,15 +167,53 @@ public class MyPageController {
 	// 아직 사용 안하는 컨트롤러 두 개
 
 	// 프로필 사진 업데이트
-//	@PostMapping("/profileImgUpdate")
-//	public String profileImgUpdate() {
-//		System.out.println("프로필이미지 변경중");
-//		return null;
-//	}
-//	// 아직 안 쓰는 화면 : 결제 정보 저장 화면
-//	@GetMapping("/payment-options")
-//	public String test13() {
-//		System.out.println("결제정보");
-//		return "user/page-payment-options-1";
-//	}
+	@ResponseBody
+	@PostMapping("/user/profileImgUpdate")
+	public String profileImgUpdate(@RequestPart(value = "file", required = false) MultipartFile file) {
+		System.out.println("프로필이미지 변경중");
+		System.out.println(file);
+		if (file == null || file.isEmpty()) {
+			System.out.println("파일이 없음");
+		}
+		// 현재 날짜 조회 - ex) 2021-07-07
+		String currentDate = LocalDate.now().toString();
+		// 파일 저장 경로 (현재 날짜를 포함) - ex) C:/upload/2021-07-07/
+		String uploadFilePath = "C:\\upload\\" + currentDate + "/";
+
+		// 파일 확장자 ex) jpg, png ..
+		String prefix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1,
+				file.getOriginalFilename().length());
+
+		// 랜덤아이디로 파일명 생성
+		String filename = UUID.randomUUID().toString() + "." + prefix;
+
+		// 폴더가 없다면 생성
+		File folder = new File(uploadFilePath);
+		if (!folder.isDirectory()) {
+			folder.mkdirs();
+		}
+
+		// 실제 저장되는 위치
+		String pathname = uploadFilePath + filename;
+		// 가상 가상 파일 위치 - ex) /upload/2021-07-07/파일명.jpg
+		String resourcePathname = "/upload/" + currentDate + "/" + filename;
+		File dest = new File(pathname);
+		try {
+			file.transferTo(dest);
+
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resourcePathname;
+	}
+	@PostMapping("/user/profileImgUpdateDB")
+	public String profileImgUpdateDB(Authentication authentication, @RequestBody String result) {
+		PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
+		int userId = principal.getUser().getUserId();
+		System.out.println("컨트롤러에서 받은 유저아이디"+userId);
+		System.out.println("컨트롤러에서 받은 값"+result.toString());
+		myPageService.insertUserProfileImage(userId, result.toString());
+		return "프로필 변경 성공";
+	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -16,8 +17,8 @@ import com.sumy.gamestore.model.UserInfo;
 public interface UpdateUserMapper {
 
 	// update user_info user_profile_image
-	@Update("update user_info set user_profile_image = #{userProfileImage} where user_id = #{userId}")
-	public int insertUserProfileImage(UserInfo userInfo);
+	@Update("update user_info set user_profile_image = #{path} where user_id = #{userId}")
+	public int insertUserProfileImage(@Param("userId") int userId, @Param("path") String path);
 
 	// update user_info user_nickname
 	@Update("update user_info set user_nickname = #{userNickname} where user_id = #{userId}")

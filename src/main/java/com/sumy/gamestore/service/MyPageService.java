@@ -12,15 +12,10 @@ public class MyPageService {
 	UpdateUserMapper updateUserMapper;
 	
 	//프로필 이미지 업데이트
-	public UserInfo insertUserProfileImage(UserInfo userInfo) {
-		System.out.println("정보수정 전 객체 내용 : "+userInfo.getUserProfileImage());
-		int row = updateUserMapper.insertUserProfileImage(userInfo);
-		if(!(row>0)) {
-			System.out.println("updateUserMapper.insertUserProfileImage(userInfo) 반영된 줄 수 : "+row);
-			System.out.println("정보수정 완료 객체 내용"+userInfo.getUserProfileImage());
-			return null;
-		}
-		return userInfo;//성공 시 객체 반환
+	public int insertUserProfileImage(int userId, String result) {
+//		System.out.println("정보수정 전 객체 내용 : "+userId.getUserProfileImage());
+		int row = updateUserMapper.insertUserProfileImage(userId, result);
+		return row;//성공 시 객체 반환
 	}
 	
 	//닉네임 업데이트

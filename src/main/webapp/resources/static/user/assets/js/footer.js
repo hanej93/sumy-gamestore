@@ -15,7 +15,7 @@
 $(document).on('ready', function() {
 	var targetUrl;
 	function readURL(input) {
-		console.log('미리보기 함수 호출'+input);
+		console.log('미리보기 함수 호출' + input);
 		if (input.files && input.files[0]) {
 			var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
 			reader.onload = function(e) {
@@ -31,9 +31,9 @@ $(document).on('ready', function() {
 			//File내용을 읽어 dataURL형식의 문자열로 저장
 		}
 	} //readURL()--
-	
+
 	function readURL2(input) {
-		console.log('미리보기 함수 호출2'+input);
+		console.log('미리보기 함수 호출2' + input);
 		if (input.files && input.files[0]) {
 			console.log('되냐?1');
 			var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
@@ -50,22 +50,34 @@ $(document).on('ready', function() {
 		}
 	} //readURL()--
 	
+	function updateDB(result){
+		$.ajax({
+			type: 'POST',
+			url: '/user/profileImgUpdateDB',
+			data: result,
+			dataType: "text"
+		}).done(function(result) {
+			console.log("파일 DB전송 성공");
+		}).fail(function(error) {
+		});
+	}
+
 	//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드-프로필?
 	$("#imgInp").change(function() {
 		//alert(this.value); //선택한 이미지 경로 표시
 		readURL(this);
 	});
-	
+
 	//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드-프로필?
 	$("#blah2").change(function() {
-		console.log('버튼이벤트 감지'+this);
+		console.log('버튼이벤트 감지' + this);
 		//alert(this.value); //선택한 이미지 경로 표시
 		readURL(this);
 	});
-	
+
 	//문의하기
 	$("#questionImgInput").change(function() {
-		console.log('버튼이벤트 감지'+this);
+		console.log('버튼이벤트 감지' + this);
 		readURL2(this);
 		var form = $('form[name=questionForm]')[0];
 		var formData = new FormData(form);
@@ -80,7 +92,7 @@ $(document).on('ready', function() {
 			contentType: false,
 			data: formData,
 		}).done(function(result) {
-			console.log("파일 저장 위치"+result);
+			console.log("파일 저장 위치" + result);
 			$('form[name=questionForm] input[name=questionImage1]').val(result);
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
@@ -91,7 +103,7 @@ $(document).on('ready', function() {
 	console.log($("form[name=questionForm] input[name=userId]").val());
 	//문의하기 버튼
 	$('#questionForSumyBtn').on('click', function() {
-		
+
 		if ($('#questionForSumyModalTitle').val() == "") {
 			alert('문의할 내용의 제목을 입력해주세요.');
 			return false;
@@ -105,7 +117,7 @@ $(document).on('ready', function() {
 		if (!confirm('문의하기를 완료하시겠습니까?')) {
 			return false;
 		}
-		
+
 		var queryString = $("form[name=questionForm]").serialize();
 		console.log("쿼리스트링" + queryString);
 		$.ajax({
@@ -114,7 +126,7 @@ $(document).on('ready', function() {
 			data: queryString,
 			dataType: 'json',
 			error: function(xhr, status, error) {
-				console.log(xhr+status+error);
+				console.log(xhr + status + error);
 			},
 			success: function(json) {
 				console.log(json);
@@ -127,16 +139,21 @@ $(document).on('ready', function() {
 		$('#questionImg').attr('src', "/resources/static/assets/img-temp/500x320/img1.png");
 		$("#questionForSumyModal").modal('hide');
 	});
-	
+
 	//프로필 사진 변경 버튼
 	$('#profileUpdateBtn').on('click', function() {
-		var form = $('#fileForm')[0];
+		var form = $('form[name=fileForm]')[0];
 		var formData = new FormData(form);
-
+		console.log("파일 업로드 시작");
 		formData.append('file', $('#imgInp')[0].files[0]);
+
+		//formData에 attach 됬는지 확인하는 방법!
+		for (var pair of formData.entries()) {
+			console.log(pair[0]+ ', ' + pair[1]); 
+		}
 		$.ajax({
 			type: 'POST',
-			url: '/sumy/profileImgAdd',
+			url: '/user/profileImgUpdate',
 			enctype: "multipart/form-data",
 			processData: false,
 			contentType: false,
@@ -146,17 +163,19 @@ $(document).on('ready', function() {
 			if (!confirm('프로필 변경을 완료하시겠습니까?')) {
 				alert('프로필 변경을 취소하였습니다.');
 			}
-			$('#userProfileImage').attr('value', result);
 			alert('프로필 변경을 완료하였습니다.');
+			$('#userProfileImage').attr('value', result);
+			console.log("파일 c:upload에 저장 후 result 값:"+ result);
+			updateDB(result);
 			$("#profileUpdateModal").modal('hide');
 			$('#blah2').attr('src', targetUrl);
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
 	});
-	
-	
-	
+
+
+
 	// =============================================
-	
+
 });
