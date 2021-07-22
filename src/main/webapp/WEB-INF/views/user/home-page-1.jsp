@@ -368,8 +368,10 @@
 								</span>
 							</div>
 							<!-- End Product Info -->
-
-							<!-- Products Icons -->
+							
+							<!-- 위시리스트 아이콘 -->
+							<!-- 
+							Products Icons
 							<ul class="list-inline media-body text-right">
 								<li class="list-inline-item align-middle mx-0"><a
 									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
@@ -378,7 +380,9 @@
 										class="icon-finance-100 u-line-icon-pro"></i>
 								</a></li>
 							</ul>
-							<!-- End Products Icons -->
+							End Products Icons
+							 -->
+							 
 						</div>
 						<!-- End Product -->
 					</div>
@@ -416,7 +420,6 @@
 							<img class="img-fluid" style="min-height: 340px; height: 340px;"
 								data-lazy="${DiscountGameList.gameThumbImage}"
 								
-								
 								alt="Image Description">
 							<c:if test="${DiscountGameList.gameDiscountRate > 0}">
 								<span
@@ -442,8 +445,10 @@
 								</span>
 							</div>
 							<!-- End Product Info -->
-
-							<!-- Products Icons -->
+							
+							<!-- 위시리스트 아이콘 -->
+							<!-- 
+							Products Icons
 							<ul class="list-inline media-body text-right">
 								<li class="list-inline-item align-middle mx-0"><a
 									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
@@ -452,7 +457,9 @@
 										class="icon-finance-100 u-line-icon-pro"></i>
 								</a></li>
 							</ul>
-							<!-- End Products Icons -->
+							End Products Icons
+ 							-->
+ 														
 						</div>
 						<!-- End Product -->
 					</div>
@@ -770,8 +777,10 @@
 								</span>
 							</div>
 							<!-- End Product Info -->
-
-							<!-- Products Icons -->
+							
+							<!-- 위시리스트 아이콘 -->
+							<!-- 
+							Products Icons
 							<ul class="list-inline media-body text-right">
 								<li class="list-inline-item align-middle mx-0"><a
 									class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
@@ -780,7 +789,9 @@
 										class="icon-finance-100 u-line-icon-pro"></i>
 								</a></li>
 							</ul>
-							<!-- End Products Icons -->
+							End Products Icons
+							 -->
+							
 						</div>
 						</div>
 						</div>

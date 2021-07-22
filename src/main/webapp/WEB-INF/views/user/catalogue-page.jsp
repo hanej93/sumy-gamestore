@@ -19,6 +19,11 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+<!-- CSS Global Icons -->
+<!-- Favicon -->
+<link rel="shortcut icon" href="/resources/static/favicon.ico">
+<link rel="stylesheet" href="/resources/static/assets/vendor/icon-hs/style.css">
+
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/bootstrap/bootstrap.min.css">
@@ -150,6 +155,8 @@
 										</div>
 										<!-- End Product Info -->
 		
+										<!-- 위시리스트 아이콘 -->
+										<%-- 
 										<!-- Products Icons -->
 										<ul class="list-inline media-body text-right">
 											<li class="list-inline-item align-middle mx-0"><a id="wishlistBtn${gameInfo.gameId }" gameId="${gameInfo.gameId }"
@@ -160,6 +167,8 @@
 											</a></li>
 										</ul>
 										<!-- End Products Icons -->
+										 --%>
+										
 									</div>
 									<!-- End Product -->
 								</div>

@@ -89,21 +89,25 @@ public class LoginController {
 		String rawPassword = (String) response_obj.get("id");
 		String userPassword = bcryptPasswordEncoder.encode(rawPassword);
 		
-		if(userInfoService.유저검색_이메일(userEmail) == null) {
+		String userProvider = "naver";
+		String userNickname = (String) response_obj.get("nickname");
+		String userProfileImage = (String) response_obj.get("profile_image");
+		String userPhoneNumber = (String) response_obj.get("mobile");
+		String userName = (String) response_obj.get("name");
+		String userBirthDateStr = (String) response_obj.get("birthyear") + "-" + (String) response_obj.get("birthday");
+		LocalDate userBirthDate = LocalDate.parse(userBirthDateStr);
+		int gender = 0;
+		if (((String) response_obj.get("gender")).equals("M")) {
+			gender = 1;
+		} else {
+			gender = 0;
+		}
 		
-			String userProvider = "naver";
-			String userNickname = (String) response_obj.get("nickname");
-			String userProfileImage = (String) response_obj.get("profile_image");
-			String userPhoneNumber = (String) response_obj.get("mobile");
-			String userName = (String) response_obj.get("name");
-			String userBirthDateStr = (String) response_obj.get("birthyear") + "-" + (String) response_obj.get("birthday");
-			LocalDate userBirthDate = LocalDate.parse(userBirthDateStr);
-			int gender = 0;
-			if (((String) response_obj.get("birthyear")).equals('M')) {
-				gender = 1;
-			} else {
-				gender = 0;
-			}
+		UserInfo userInfo = userInfoService.유저검색_이메일(userEmail);
+		
+		if(userInfo == null) {
+			
+			
 			UserInfo joinUser 
 				= UserInfo.builder()
 						  .userId(0)
@@ -119,6 +123,12 @@ public class LoginController {
 						  .userJoinedDate(LocalDate.now())
 						  .build();
 			joinedUserService.addUser(joinUser);
+		}
+		
+		UserInfo updatePwdUser = userInfoService.유저검색_이메일(userEmail);
+		if(!bcryptPasswordEncoder.matches(rawPassword, updatePwdUser.getUserPassword()) ) {
+			updatePwdUser.setUserPassword(userPassword);
+			userInfoService.유저수정(updatePwdUser);
 		}
 		
 
@@ -150,9 +160,20 @@ public class LoginController {
 		kemail = kakao_account.path("email").asText();
 		kname = properties.path("nickname").asText();
 		kimage = properties.path("profile_image").asText();
+		String kprovider = "kakao";
 		kgender = kakao_account.path("gender").asText();
-		kbirthday = kakao_account.path("birthday").asText();
-		kage = kakao_account.path("age_range").asText();
+		int gender = 0;
+		if(kgender.equals("male")) {
+			gender = 1;
+		} else {
+			gender = 0;
+		}
+		
+		String rawPassword = "sumy1234!@#$";
+		String userPassword = bcryptPasswordEncoder.encode(rawPassword);
+		
+//		kbirthday = kakao_account.path("birthday").asText();
+//		kage = kakao_account.path("age_range").asText();
 //		session.setAttribute("kemail", kemail);
 //		session.setAttribute("kname", kname);
 //		session.setAttribute("kimage", kimage);
@@ -160,6 +181,37 @@ public class LoginController {
 //		session.setAttribute("kbirthday", kbirthday);
 //		session.setAttribute("kage", kage);
 //		mav.setViewName("main");
+		
+		UserInfo kuserInfo = userInfoService.유저검색_이메일(kemail);
+		
+		if(kuserInfo == null) {
+			UserInfo joinUser 
+			= UserInfo.builder()
+					  .userId(0)
+					  .userEmail(kemail)
+					  .userPassword(userPassword)
+					  .userProvider(kprovider)
+					  .userNickname(kname)
+					  .userProfileImage(kimage)
+					  .userName(kname)
+					  .userBirthDate(LocalDate.now())
+					  .userGender(gender)
+					  .userJoinedDate(LocalDate.now())
+					  .build();
+			joinedUserService.addUser(joinUser);
+		}
+		
+		
+		UserInfo updatePwdUser = userInfoService.유저검색_이메일(kemail);
+		if(!bcryptPasswordEncoder.matches(rawPassword, updatePwdUser.getUserPassword()) ) {
+			updatePwdUser.setUserPassword(userPassword);
+			userInfoService.유저수정(updatePwdUser);
+		}
+		
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(kemail, rawPassword));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 		return "redirect:/";
 	}// end kakaoLogin()
 
