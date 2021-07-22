@@ -705,7 +705,7 @@
 							보러가기</span>
 					</div>
 
-					<a class="u-link-v2" href="page-single-product-1.html"></a>
+					<a class="u-link-v2" href="/sumy/single-product/45"></a>
 				</div>
 
 				<div
@@ -719,7 +719,7 @@
 							또는 로컬 WiFi에서 4~15명의 플레이어와 함께 플레이하며 우주선을 타고 떠나는 여행을 준비하세요!</h4>
 						<a
 							class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
-							href="page-single-product-1.html">지금 구매</a>
+							href="/sumy/single-product/45">지금 구매</a>
 					</div>
 				</div>
 			</div>
