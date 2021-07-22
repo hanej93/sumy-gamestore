@@ -55,12 +55,12 @@
 					class="u-icon-v1 g-color-gray-dark-v5 mr-2"><i
 						class="icon-finance-100 u-line-icon-pro"></i></span> 위시리스트
 			</a></li>
-			<li class="g-py-3"><a
+			<!-- <li class="g-py-3"><a
 				class="d-block align-middle u-link-v5 g-color-text g-color-primary--hover g-bg-gray-light-v5--hover rounded g-pa-3"
 				href="page-payment-options-1.html"> <span
 					class="u-icon-v1 g-color-gray-dark-v5 mr-2"><i
 						class="icon-finance-110 u-line-icon-pro"></i></span> 결제 정보
-			</a></li>
+			</a></li> -->
 		</ul>
 		<!-- End Profile Settings List -->
 	</aside>

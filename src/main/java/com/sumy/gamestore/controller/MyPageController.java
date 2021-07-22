@@ -1,5 +1,13 @@
 package com.sumy.gamestore.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,7 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sumy.gamestore.config.auth.PrincipalDetail;
 import com.sumy.gamestore.model.UserInfo;
@@ -157,15 +167,54 @@ public class MyPageController {
 	// 아직 사용 안하는 컨트롤러 두 개
 
 	// 프로필 사진 업데이트
-//	@PostMapping("/profileImgUpdate")
-//	public String profileImgUpdate() {
-//		System.out.println("프로필이미지 변경중");
-//		return null;
-//	}
-//	// 아직 안 쓰는 화면 : 결제 정보 저장 화면
-//	@GetMapping("/payment-options")
-//	public String test13() {
-//		System.out.println("결제정보");
-//		return "user/page-payment-options-1";
-//	}
+	@PostMapping("/user/profileImgUpdate")
+	@ResponseBody
+	public String profileImgUpdate(@RequestPart(value = "file") MultipartFile file, Authentication authentication, HttpServletRequest request) {
+		System.out.println("프로필이미지 변경중");
+		PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
+		int userId = principal.getUser().getUserId();
+		
+		UserInfo userInfo = userInfoService.유저검색(userId);
+		
+		if (file == null || file.isEmpty()) {
+			System.out.println("파일이 없음");
+		}
+
+		// 현재 날짜 조회 - ex) 2021-07-07
+		String currentDate = LocalDate.now().toString();
+		// 파일 저장 경로 (현재 날짜를 포함) - ex) C:/upload/2021-07-07/
+		String uploadFilePath = "C:\\upload\\" + currentDate + "/";
+
+		// 파일 확장자 ex) jpg, png ..
+		String prefix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1,
+				file.getOriginalFilename().length());
+
+		// 랜덤아이디로 파일명 생성
+		String filename = UUID.randomUUID().toString() + "." + prefix;
+
+		// 폴더가 없다면 생성
+		File folder = new File(uploadFilePath);
+		if (!folder.isDirectory()) {
+			folder.mkdirs();
+		}
+
+		// 실제 저장되는 위치
+		String pathname = uploadFilePath + filename;
+		// 가상 가상 파일 위치 - ex) /upload/2021-07-07/파일명.jpg
+		String resourcePathname = "/upload/" + currentDate + "/" + filename;
+		File dest = new File(pathname);
+		try {
+			file.transferTo(dest);
+
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(file.getOriginalFilename());
+		System.out.println(resourcePathname);
+		userInfo.setUserProfileImage(resourcePathname);
+		userInfoService.유저수정(userInfo);
+		
+		return resourcePathname;
+	}
 }
