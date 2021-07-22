@@ -19,11 +19,6 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<!-- CSS Global Icons -->
-<!-- Favicon -->
-<link rel="shortcut icon" href="/resources/static/favicon.ico">
-<link rel="stylesheet" href="/resources/static/assets/vendor/icon-hs/style.css">
-
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/bootstrap/bootstrap.min.css">
