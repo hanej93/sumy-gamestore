@@ -192,6 +192,9 @@
 							<input value="${gameInfo.gamePrice * (100-gameInfo.gameDiscountRate) / 100}" type="number" name="gamePrice" pattern="replace(/,/g, '')">
 						</form>
 						<!-- End Price -->
+						
+						<c:choose>
+						<c:when test="${not empty principal }">
 						<c:if test="${purchasedGame ne 1 }">
 						<!-- Buttons -->
 						
@@ -228,6 +231,32 @@
 							</div>
 							<!-- End Buttons -->
 						</c:if>
+						</c:when>
+						<c:otherwise>
+							<!-- Buttons -->
+						
+							<div class="row g-mx-minus-5 g-mb-20">
+								<div class="col g-px-5 g-mb-10">
+								<a href="/sumy/login">
+									<button  
+										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
+										>
+										구매 <i class="align-middle ml-2 icon-wallet u-line-icon-pro"></i>
+									</button>
+								</a>
+								</div>
+								<div class="col g-px-5 g-mb-10">
+								<a href="/sumy/login">
+									<button 
+										class="btn btn-block u-btn-bluegray g-font-size-12 text-uppercase g-py-15 g-px-25"
+										><span>위시리스트 담기</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>
+									</button>
+								</a>
+								</div>
+							</div>
+							<!-- End Buttons -->
+						</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>
@@ -542,8 +571,8 @@
 											
 										</div>
 										<!-- End Product Info -->
-
-										<!-- Products Icons -->
+										<!-- 
+										Products Icons
 										<ul class="list-inline media-body text-right">
 											<li class="list-inline-item align-middle mx-0"><a
 												class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-primary--hover g-font-size-15 rounded-circle"
@@ -552,7 +581,8 @@
 													class="icon-finance-100 u-line-icon-pro"></i>
 											</a></li>
 										</ul>
-										<!-- End Products Icons -->
+										End Products Icons
+										 -->
 									</div>
 									<!-- End Product -->
 								</div>
