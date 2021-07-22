@@ -136,16 +136,17 @@ $(document).on('ready', function() {
 		formData.append('file', $('#imgInp')[0].files[0]);
 		$.ajax({
 			type: 'POST',
-			url: '/sumy/profileImgAdd',
+			url: '/user/profileImgUpdate',
 			enctype: "multipart/form-data",
 			processData: false,
 			contentType: false,
 			data: formData,
 		}).done(function(result) {
 			console.log("파일전송 성공");
-			if (!confirm('프로필 변경을 완료하시겠습니까?')) {
+			/*if (!confirm('프로필 변경을 완료하시겠습니까?')) {
 				alert('프로필 변경을 취소하였습니다.');
-			}
+				return false;
+			}*/
 			$('#userProfileImage').attr('value', result);
 			alert('프로필 변경을 완료하였습니다.');
 			$("#profileUpdateModal").modal('hide');

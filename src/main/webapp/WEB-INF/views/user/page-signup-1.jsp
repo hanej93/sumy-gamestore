@@ -16,11 +16,6 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
 
-<!-- CSS Global Icons -->
-<!-- Favicon -->
-<link rel="shortcut icon" href="/resources/static/favicon.ico">
-<link rel="stylesheet" href="/resources/static/assets/vendor/icon-hs/style.css">
-
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/bootstrap/bootstrap.min.css">

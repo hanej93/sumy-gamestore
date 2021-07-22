@@ -21,11 +21,6 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
 
-<!-- CSS Global Icons -->
-<!-- Favicon -->
-<link rel="shortcut icon" href="/resources/static/favicon.ico">
-<link rel="stylesheet" href="/resources/static/assets/vendor/icon-hs/style.css">
-
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/bootstrap/bootstrap.min.css">
@@ -347,7 +342,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form id="fileForm" name="fileForm">
 							<label class="g-mb-10">이미지 찾기</label>
 							<div class="input-group g-mb-10">
 								<div class="custom-file">
@@ -355,7 +350,7 @@
 									<div class="form-group mb-0">
 										<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
 											<input id="imgInp" class="questionFileInput"
-											name="file-attachment" type="file"> <i
+											name="fileAttachment" type="file"> <i
 											class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
 											<span class="js-value">이미지 첨부</span>
 										</label>
