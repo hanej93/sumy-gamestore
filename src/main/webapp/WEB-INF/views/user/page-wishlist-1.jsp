@@ -209,7 +209,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form id="fileForm" name="fileForm">
 							<label class="g-mb-10">이미지 찾기</label>
 							<div class="input-group g-mb-10">
 								<div class="custom-file">
@@ -217,7 +217,7 @@
 									<div class="form-group mb-0">
 										<label class="u-file-attach-v2 g-color-gray-dark-v5 mb-0">
 											<input id="imgInp" class="questionFileInput"
-											name="file-attachment" type="file"> <i
+											name="fileAttachment" type="file"> <i
 											class="icon-cloud-upload g-font-size-16 g-pos-rel g-top-2 g-mr-5"></i>
 											<span class="js-value">이미지 첨부</span>
 										</label>
@@ -229,8 +229,8 @@
 								class="g-brd-around g-brd-gray-light-v3 g-bg-white rounded g-mb-20 text-center"
 								style="height: 360px">
 								<img id="blah" class="img-fluid"
-									src="/upload/default_img.jpg" style="height: 100%;"
-									alt="이미지 찾기를 실행해주세요.">
+									src="/resources/static/user/assets/img-temp/500x320/img1.png"
+									style="height: 100%;" alt="이미지 찾기를 실행해주세요.">
 							</div>
 						</form>
 					</div>
