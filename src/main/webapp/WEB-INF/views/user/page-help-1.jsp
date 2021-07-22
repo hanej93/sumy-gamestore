@@ -123,7 +123,7 @@
 											class="g-color-primary g-font-weight-700 g-font-size-16 g-line-height-1_2">1.</span>
 										Sumy Games Store는 무엇인가요?
 									</div>
-									<div id="accordion-12-1-body-01" class="collapse show"
+									<div id="accordion-12-1-body-01" class="collapse"
 										role="tabpanel" aria-labelledby="accordion-12-1-heading-01">
 										<div class="u-accordion__body g-color-gray-dark-v4">
 											Sumy Games Store는 플레이어와 크리에이터를 모두 고려하여 게임들이 엄선된 PC 및 Mac용 디지털
