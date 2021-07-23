@@ -146,6 +146,36 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
 
 $(document).ready(function() {
+	
+	//프로필 사진 변경 버튼
+	$('#profileSignUpBtn').on('click', function() {
+		var form = $('#fileForm')[0];
+		var formData = new FormData(form);
+
+		formData.append('file', $('#imgInp')[0].files[0]);
+		$.ajax({
+			type: 'POST',
+			url: '/profileImgUpdate',
+			enctype: "multipart/form-data",
+			processData: false,
+			contentType: false,
+			data: formData,
+		}).done(function(result) {
+			console.log("파일전송 성공");
+			/*if (!confirm('프로필 변경을 완료하시겠습니까?')) {
+				alert('프로필 변경을 취소하였습니다.');
+				return false;
+			}*/
+			$('#userProfileImage').attr('value', result);
+			alert('프로필 변경을 완료하였습니다.');
+			$("#profileUpdateModal").modal('hide');
+			$('#blah2').attr('src', targetUrl);
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
+	});
+	
+	
 	var emailCode;//이메일로 받은 인증번호 전역변수
 
 	//이메일 인증번호 전송 버튼
