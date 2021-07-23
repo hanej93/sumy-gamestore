@@ -10,7 +10,7 @@
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
-<footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20 text-center justify-content-center d-flex align-items-center" style="min-height: 65px;">
+<footer class="position-absolute w-100 g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20 text-center justify-content-center d-flex align-items-center" style="min-height: 65px;bottom:0px;">
 	<div class="g-ml-30 ">
 		<div>
 			<div class="text-center text-md-left g-mb-10 g-mb-0--md justify-content-center">
