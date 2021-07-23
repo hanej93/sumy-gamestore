@@ -294,10 +294,11 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: 'post',
-			url: '/user/pwdRecoveryUpdate',
+			url: '/pwdRecoveryUpdate',
 			data: queryString,
 			dataType: 'json',
 			error: function(xhr, status, error) {
+				//alert(xhr);
 			},
 			success: function(json) {
 				console.log("비밀번호 수정 성공");

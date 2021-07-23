@@ -129,21 +129,23 @@ public class MyPageController {
 	}
 
 	// 비밀번호 업데이트
-	@PostMapping("/user/pwdRecoveryUpdate")
+	@PostMapping("/pwdRecoveryUpdate")
 	@ResponseBody
 	public String pwdRecoveryUpdate(UserInfo userInfo) {
 		System.out.println("수정할 유저정보" + userInfo);
 //		System.out.println("컨트롤러에서 받은 유저 아이디 : "+userInfo.getUserId());
 //		System.out.println("컨트롤러에서 받은 유저 이메일 : "+userInfo.getUserEmail());
 //		System.out.println("컨트롤러에서 받은 유저 비밀번호 : "+userInfo.getUserPassword());
-		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
+		UserInfo updateUser = userInfoService.유저검색(userInfo.getUserId());
+		String oldPS = userInfo.getUserPassword();
+		String encodePS = bcryptPasswordEncoder.encode(oldPS);
 		System.out.println("인코딩 된 비밀번호 : "+encodePS);
 		userInfo.setUserPassword(encodePS);// 암호화
 
 		updateUserService.pwdRecoveryUpdate(userInfo);
 		
 		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+				.authenticate(new UsernamePasswordAuthenticationToken(updateUser.getUserEmail(), oldPS));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		return "비밀번호수정";
