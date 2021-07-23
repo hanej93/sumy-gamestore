@@ -168,53 +168,7 @@ public class MyPageController {
 	}
 
 	// 아직 사용 안하는 컨트롤러 두 개
-	
-	
-	// 프로필 사진 업데이트
-		@PostMapping("/profileImgUpdate")
-		@ResponseBody
-		public String profileImgSignUp(@RequestPart(value = "file") MultipartFile file) {
-			
-			if (file == null || file.isEmpty()) {
-				System.out.println("파일이 없음");
-			}
 
-			// 현재 날짜 조회 - ex) 2021-07-07
-			String currentDate = LocalDate.now().toString();
-			// 파일 저장 경로 (현재 날짜를 포함) - ex) C:/upload/2021-07-07/
-			String uploadFilePath = "C:\\upload\\" + currentDate + "/";
-
-			// 파일 확장자 ex) jpg, png ..
-			String prefix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1,
-					file.getOriginalFilename().length());
-
-			// 랜덤아이디로 파일명 생성
-			String filename = UUID.randomUUID().toString() + "." + prefix;
-
-			// 폴더가 없다면 생성
-			File folder = new File(uploadFilePath);
-			if (!folder.isDirectory()) {
-				folder.mkdirs();
-			}
-
-			// 실제 저장되는 위치
-			String pathname = uploadFilePath + filename;
-			// 가상 가상 파일 위치 - ex) /upload/2021-07-07/파일명.jpg
-			String resourcePathname = "/upload/" + currentDate + "/" + filename;
-			File dest = new File(pathname);
-			try {
-				file.transferTo(dest);
-
-			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			return resourcePathname;
-		}
-	
-	
-	
 	// 프로필 사진 업데이트
 	@PostMapping("/user/profileImgUpdate")
 	@ResponseBody

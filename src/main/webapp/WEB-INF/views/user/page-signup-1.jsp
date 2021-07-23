@@ -79,7 +79,7 @@
 						</header>
 
 						<!-- Form -->
-						<form name="userInfo" method="post" action="/joinedSuccess">
+						<form name="userInfo" method="post" action="joinedSuccess">
 							<!-- Profile Picture -->
 							<div class="text-center g-pos-rel g-mb-30">
 								<div class="g-width-100 g-height-100 mx-auto mb-3">
@@ -386,7 +386,7 @@
 					</div>
 					<div class="modal-footer justify-content-center">
 						<div class="row g-mx-minus-5 g-mb-20">
-							<button id="profileSignUpBtn"
+							<button id="profileUpdateBtn"
 								class="btn btn-lg u-btn-primary g-mr-10 g-font-size-14"
 								type="button" aria-label="Close">
 								업데이트</button>

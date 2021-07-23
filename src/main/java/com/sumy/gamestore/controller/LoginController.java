@@ -322,7 +322,7 @@ public class LoginController {
 	}
 
 	// 회원가입 완료 화면
-	@PostMapping("/joinedSuccess")
+	@PostMapping("/sumy/joinedSuccess")
 	public String test8(UserInfo userInfo) {
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
 		userInfo.setUserPassword(encodePS);// 암호화

@@ -67,9 +67,7 @@ public class GameListController {
 	}
 	
 	@GetMapping("/game/add")
-	public String addGame(Model model) {
-		
-		model.addAttribute("categoryList", gameInfoService.카테고리리스트검색());
+	public String addGame() {
 		
 		return "admin/game_add";
 	}
@@ -77,7 +75,6 @@ public class GameListController {
 	@GetMapping("/game/update/{gameId}")
 	public String updateGame(@PathVariable int gameId, Model model) {
 		
-		model.addAttribute("categoryList", gameInfoService.카테고리리스트검색());
 		model.addAttribute("gameInfo", gameInfoService.게임검색(gameId));
 		
 		return "admin/game_update";
