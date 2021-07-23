@@ -362,7 +362,7 @@
 						<div class="row justify-content-center">
 							<button id="catalogueFilterResetBtn"
 								class="btn u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25 g-mx-15 g-mb-20"
-								type="reset">초기화</button>
+								type="button">초기화</button>
 							<button id="catalogueFilterApplyBtn"
 								class="btn u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25 g-mx-15 g-mb-20"
 								type="button">적용</button>

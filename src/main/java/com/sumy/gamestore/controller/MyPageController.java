@@ -132,9 +132,10 @@ public class MyPageController {
 	@PostMapping("/user/pwdRecoveryUpdate")
 	@ResponseBody
 	public String pwdRecoveryUpdate(UserInfo userInfo) {
-		System.out.println("컨트롤러에서 받은 유저 아이디 : "+userInfo.getUserId());
-		System.out.println("컨트롤러에서 받은 유저 이메일 : "+userInfo.getUserEmail());
-		System.out.println("컨트롤러에서 받은 유저 비밀번호 : "+userInfo.getUserPassword());
+		System.out.println("수정할 유저정보" + userInfo);
+//		System.out.println("컨트롤러에서 받은 유저 아이디 : "+userInfo.getUserId());
+//		System.out.println("컨트롤러에서 받은 유저 이메일 : "+userInfo.getUserEmail());
+//		System.out.println("컨트롤러에서 받은 유저 비밀번호 : "+userInfo.getUserPassword());
 		String encodePS = bcryptPasswordEncoder.encode(userInfo.getUserPassword());
 		System.out.println("인코딩 된 비밀번호 : "+encodePS);
 		userInfo.setUserPassword(encodePS);// 암호화

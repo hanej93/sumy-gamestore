@@ -287,6 +287,7 @@ $(document).ready(function() {
 
 		if (!confirm('비밀번호 수정을 완료하시겠습니까?')) {
 			alert('비밀번호 수정을 취소했습니다.');
+			return false;
 		}
 		var queryString = $("form[name=pwdRecoveryForm]").serialize();
 		console.log("쿼리스트링" + queryString);

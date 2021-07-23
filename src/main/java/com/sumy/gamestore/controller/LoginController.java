@@ -102,6 +102,7 @@ public class LoginController {
 		} else {
 			gender = 0;
 		}
+		String authorityRate = "ROLE_USER";
 		
 		UserInfo userInfo = userInfoService.유저검색_이메일(userEmail);
 		
@@ -121,6 +122,7 @@ public class LoginController {
 						  .userBirthDate(userBirthDate)
 						  .userGender(gender)
 						  .userJoinedDate(LocalDate.now())
+						  .userAuthorityRate(authorityRate)
 						  .build();
 			joinedUserService.addUser(joinUser);
 		}
@@ -168,19 +170,10 @@ public class LoginController {
 		} else {
 			gender = 0;
 		}
+		String authorityRate = "ROLE_USER";
 		
 		String rawPassword = "sumy1234!@#$";
 		String userPassword = bcryptPasswordEncoder.encode(rawPassword);
-		
-//		kbirthday = kakao_account.path("birthday").asText();
-//		kage = kakao_account.path("age_range").asText();
-//		session.setAttribute("kemail", kemail);
-//		session.setAttribute("kname", kname);
-//		session.setAttribute("kimage", kimage);
-//		session.setAttribute("kgender", kgender);
-//		session.setAttribute("kbirthday", kbirthday);
-//		session.setAttribute("kage", kage);
-//		mav.setViewName("main");
 		
 		UserInfo kuserInfo = userInfoService.유저검색_이메일(kemail);
 		
@@ -197,6 +190,7 @@ public class LoginController {
 					  .userBirthDate(LocalDate.now())
 					  .userGender(gender)
 					  .userJoinedDate(LocalDate.now())
+					  .userAuthorityRate(authorityRate)
 					  .build();
 			joinedUserService.addUser(joinUser);
 		}
