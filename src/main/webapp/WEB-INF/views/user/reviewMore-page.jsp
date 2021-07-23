@@ -154,7 +154,7 @@
 						
 							<div class="row g-mx-minus-5 g-mb-20">
 								<div class="col g-px-5 g-mb-10">
-								<a href="/sumy/login">
+								<a class="u-link-v5" href="/sumy/login">
 									<button  
 										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
 										>
@@ -163,7 +163,7 @@
 								</a>
 								</div>
 								<div class="col g-px-5 g-mb-10">
-								<a href="/sumy/login">
+								<a class="u-link-v5" href="/sumy/login">
 									<button 
 										class="btn btn-block u-btn-bluegray g-font-size-12 text-uppercase g-py-15 g-px-25"
 										><span>위시리스트 담기</span><i class="align-middle ml-2 icon-finance-100 u-line-icon-pro"></i>

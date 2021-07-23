@@ -108,12 +108,14 @@
 		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/>
 	      				 					</span>
 										</span>
+										<c:if test="${not empty newsList.newsUpdateDate }">
 										<span class="d-block g-color-text mb-4">수정일 :
 											<span>
 												<fmt:parseDate value="${newsList.newsUpdateDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
 		      				  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/>
 											</span>
 										</span>
+										</c:if>
 									</div>
 	
 								</div>
