@@ -24,7 +24,7 @@
 		
 		<!-- 파일 업로드 형식을 지원하도록 web.xml을 설정 -->
 		<multipart-config>
-			<location>C:\\upload\\</location>
+			<!-- <location>C:\\upload\\</location> -->
 			<!-- 파일당 크기 byte단위 -->
 			<max-file-size>10000000</max-file-size>
 			<!-- 요청당 크기 byte단위 -->
