@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sumy.gamestore.dto.CategoryCountDto;
 import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.mapper.GameInfoMapper;
 import com.sumy.gamestore.model.GameInfo;
@@ -64,5 +65,9 @@ public class GameInfoService {
 
 	public List<GameInfo> 관련게임검색(int categoryId) {
 		return gameInfoMapper.selectRelatedGameInfo(categoryId);
+	}
+	
+	public List<CategoryCountDto> 카테고리리스트검색(){
+		return gameInfoMapper.countCategoryListGroupById();
 	}
 }

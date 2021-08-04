@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.csrf().disable(); // csrf 해킹을 막는 기능인데 이것을 비활성화
 		http.authorizeRequests()  // url 요청에 관한 세팅
 			//.antMatchers("/user/**").authenticated()
-			//.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().permitAll()
 			
 			.and()

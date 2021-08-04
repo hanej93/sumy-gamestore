@@ -242,206 +242,26 @@
                   <!-- 할인된 게임 가격 끝 -->
 
                   <!-- 게임 카테고리 선택 시작 -->
-                  <h5 class="g-mb-20">카테고리 선택</h5>
-                  <div id="sumy-game-category" class="row g-mb-30">
-                    <!-- Left Column -->
-                    <div class="col-md-6">
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="1" 
-                          <c:if test="${gameInfo.gameCategoryId1 eq '1'  
-                         			or gameInfo.gameCategoryId2 eq '1'
-                         			or gameInfo.gameCategoryId3 eq '1'
-                         			or gameInfo.gameCategoryId4 eq '1'}">checked</c:if>
-                          class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          액션
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="2"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '2'  
-                         			or gameInfo.gameCategoryId2 eq '2'
-                         			or gameInfo.gameCategoryId3 eq '2'
-                         			or gameInfo.gameCategoryId4 eq '2'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          어드벤쳐
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10 g-mb-10--md">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="3"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '3'  
-                         			or gameInfo.gameCategoryId2 eq '3'
-                         			or gameInfo.gameCategoryId3 eq '3'
-                         			or gameInfo.gameCategoryId4 eq '3'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          인디
-                        </label>
-                      </div>
-                    </div>
-                    <!-- End Left Column -->
-
-                    <!-- Right Column -->
-                    <div class="col-md-6">
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="4"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '4'  
-                         			or gameInfo.gameCategoryId2 eq '4'
-                         			or gameInfo.gameCategoryId3 eq '4'
-                         			or gameInfo.gameCategoryId4 eq '4'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          RPG
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="5"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '5'  
-                         			or gameInfo.gameCategoryId2 eq '5'
-                         			or gameInfo.gameCategoryId3 eq '5'
-                         			or gameInfo.gameCategoryId4 eq '5'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          퍼즐
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10 g-mb-20--md">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="6"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '6'  
-                         			or gameInfo.gameCategoryId2 eq '6'
-                         			or gameInfo.gameCategoryId3 eq '6'
-                         			or gameInfo.gameCategoryId4 eq '6'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          1인칭
-                        </label>
-                      </div>
-                    </div>
-                    <!-- End Right Column -->
-                    
-                    <!-- Left Column -->
-                    <div class="col-md-6">
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="7"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '7'  
-                         			or gameInfo.gameCategoryId2 eq '7'
-                         			or gameInfo.gameCategoryId3 eq '7'
-                         			or gameInfo.gameCategoryId4 eq '7'}">checked</c:if>
-                          class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          내레이션
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="8"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '8'  
-                         			or gameInfo.gameCategoryId2 eq '8'
-                         			or gameInfo.gameCategoryId3 eq '8'
-                         			or gameInfo.gameCategoryId4 eq '8'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          전략
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10 g-mb-0--md">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="9"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '9'  
-                         			or gameInfo.gameCategoryId2 eq '9'
-                         			or gameInfo.gameCategoryId3 eq '9'
-                         			or gameInfo.gameCategoryId4 eq '9'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          슈팅
-                        </label>
-                      </div>
-                    </div>
-                    <!-- End Left Column -->
-                    
-                    <!-- Right Column -->
-                    <div class="col-md-6">
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="10"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '10'  
-                         			or gameInfo.gameCategoryId2 eq '10'
-                         			or gameInfo.gameCategoryId3 eq '10'
-                         			or gameInfo.gameCategoryId4 eq '10'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          시뮬레이션
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="11"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '11'  
-                         			or gameInfo.gameCategoryId2 eq '11'
-                         			or gameInfo.gameCategoryId3 eq '11'
-                         			or gameInfo.gameCategoryId4 eq '11'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          전투
-                        </label>
-                      </div>
-
-                      <div class="form-group g-mb-10 g-mb-0--md">
-                        <label class="u-check g-pl-25">
-                          <input id="category" value="12"
-                          <c:if test="${gameInfo.gameCategoryId1 eq '12'  
-                         			or gameInfo.gameCategoryId2 eq '12'
-                         			or gameInfo.gameCategoryId3 eq '12'
-                         			or gameInfo.gameCategoryId4 eq '12'}">checked</c:if>
-                           class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                          <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                            <i class="fa" data-check-icon=""></i>
-                          </div>
-                          도시 건설
-                        </label>
-                      </div>
-                    </div>
-                    <!-- End Right Column -->
-                  </div>
-
-                  <!-- 게임 카테고리 선택 끝 -->
+							<h5 class="g-mb-20">카테고리 선택</h5>
+							<div id="sumy-game-category" class="row g-mb-30">
+								<!-- Left Column -->
+								<div class="col-md-12 row">
+									<c:forEach items="${categoryList }" var="category">
+										<div class="form-group g-mb-10 col-md-6">
+											<label class="u-check g-pl-25"> <input id="category"
+												value="${ category.categoryId}"
+												class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0"
+												type="checkbox">
+												<div
+													class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+													<i class="fa" data-check-icon=""></i>
+												</div> ${ category.categoryName}
+											</label>
+										</div>
+									</c:forEach>
+								</div>
+							</div>
+							<!-- 게임 카테고리 선택 끝 -->
 
                   <!-- 게임설명 시작 -->
                   <div class="g-mt-30 g-mb-30">

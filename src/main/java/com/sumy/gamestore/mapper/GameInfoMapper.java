@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.sumy.gamestore.dto.CategoryCountDto;
 import com.sumy.gamestore.dto.PagingVO;
 import com.sumy.gamestore.model.GameInfo;
 
@@ -78,6 +79,16 @@ public interface GameInfoMapper {
 			+ " limit 7;")
 	public List<GameInfo> selectRelatedGameInfo(int categoryId);
 	
+	// 카테고리별 개수 조회
+	@Select("select category_id, category_name, count(*) as category_count"
+			+ " from game_info g"
+			+ " join category_list c"
+			+ " on g.game_category_id1 = c.category_id"
+			+ " or g.game_category_id2 = c.category_id"
+			+ " or g.game_category_id3 = c.category_id"
+			+ " or g.game_category_id4 = c.category_id"
+			+ " group by category_id order by category_name")
+	public List<CategoryCountDto> countCategoryListGroupById();
 	// ================================================
 	
 	//@Select("select count(*) from game_info")
