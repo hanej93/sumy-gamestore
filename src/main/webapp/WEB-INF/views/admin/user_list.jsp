@@ -114,7 +114,7 @@
               </div>
             </div>
 
-            <div class="js-custom-scroll g-height-500 g-pa-15 g-pa-0-30-25--md">
+            <div class="g-pa-15 g-pa-0-30-25--md">
               <table class="table w-100 g-mb-25">
                 <thead class="g-color-gray-dark-v6">
                   <tr>

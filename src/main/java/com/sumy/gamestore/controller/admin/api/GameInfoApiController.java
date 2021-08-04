@@ -56,7 +56,7 @@ public class GameInfoApiController {
 		if (file == null || file.isEmpty()) {
 			System.out.println("파일이 없음");
 		}
-
+		
 		// 현재 날짜 조회 - ex) 2021-07-07
 		String currentDate = LocalDate.now().toString();
 		// 파일 저장 경로 (현재 날짜를 포함) - ex) C:/upload/2021-07-07/
