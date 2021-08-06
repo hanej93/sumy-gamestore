@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,8 @@
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/resources/static/favicon.ico">
-<link rel="stylesheet" href="/resources/static/assets/vendor/icon-hs/style.css">
+<link rel="stylesheet"
+	href="/resources/static/assets/vendor/icon-hs/style.css">
 
 <!-- CSS Implementing Plugins -->
 <link rel="stylesheet"
@@ -276,49 +277,49 @@
 			</div>
 
 			<div class="row g-mx-minus-10">
-		<c:forEach var="newsList" items="${newsList}" >
-				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
-					<!-- Blog Background Overlay Blocks -->
-					<article class="u-block-hover">
-						<div class="g-bg-cover g-bg-white-gradient-opacity-v1--after">
-							<img
-								class="d-flex align-items-end u-block-hover__main--mover-down"
-								src="${newsList.newsThumbImage}"
-								alt="Image Description">
-						</div>
-						<div
-							class="u-block-hover__additional--partially-slide-up text-center g-z-index-1 mt-auto">
-							<div class="u-block-hover__visible g-pa-25">
-								<span
-									class="d-block g-color-white-opacity-0_7 g-font-size-13 mb-2">News</span>
-								<h2 class="h4 g-color-white g-font-weight-400 mb-3">
-									<a
-										class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
-										href="page-our-stores-2.html">${newsList.newsTitle}</a>
-								</h2>
-								<h2
-									class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
-									${newsList.newsSubTitle}</h2>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">작성일</span>
-								<span class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2">&#183;</span>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
-									<fmt:parseDate value="${newsList.newsWriteDate}" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
-									<fmt:formatDate value="${dateFmt}"  pattern="yyyy년 MM월 dd일"/>
-									</span>
+				<c:forEach var="newsList" items="${newsList}">
+					<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
+						<!-- Blog Background Overlay Blocks -->
+						<article class="u-block-hover">
+							<div class="g-bg-cover g-bg-white-gradient-opacity-v1--after">
+								<img
+									class="d-flex align-items-end u-block-hover__main--mover-down"
+									src="${newsList.newsThumbImage}" alt="Image Description">
 							</div>
+							<div
+								class="u-block-hover__additional--partially-slide-up text-center g-z-index-1 mt-auto">
+								<div class="u-block-hover__visible g-pa-25">
+									<span
+										class="d-block g-color-white-opacity-0_7 g-font-size-13 mb-2">News</span>
+									<h2 class="h4 g-color-white g-font-weight-400 mb-3">
+										<a
+											class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
+											href="page-our-stores-2.html">${newsList.newsTitle}</a>
+									</h2>
+									<h2
+										class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
+										${newsList.newsSubTitle}</h2>
+									<span
+										class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">작성일</span>
+									<span class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2">&#183;</span>
+									<span
+										class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
+										<fmt:parseDate value="${newsList.newsWriteDate}" var="dateFmt"
+											pattern="yyyy-MM-dd'T'HH:mm" /> <fmt:formatDate
+											value="${dateFmt}" pattern="yyyy년 MM월 dd일" />
+									</span>
+								</div>
 
-							<a
-								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
-								href="/sumy/news/${newsList.newsId }">뉴스 더보기</a>
-						</div>
-						<a class="u-link-v2" href="/sumy/news/${newsList.newsId }"></a>
-					</article>
-					<!-- End Blog Background Overlay Blocks -->
-				</div>
+								<a
+									class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
+									href="/sumy/news/${newsList.newsId }">뉴스 더보기</a>
+							</div>
+							<a class="u-link-v2" href="/sumy/news/${newsList.newsId }"></a>
+						</article>
+						<!-- End Blog Background Overlay Blocks -->
+					</div>
 				</c:forEach>
-		</div>
+			</div>
 		</div>
 		<!-- End News -->
 
@@ -342,35 +343,39 @@
 				data-arrow-left-classes="fa fa-angle-left g-left-10"
 				data-arrow-right-classes="fa fa-angle-right g-right-10"
 				data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-20 text-center">
-				
-			<c:forEach var="FreeGameList" items="${FreeGameList}">
-				<div class="js-slide">
-					<div class="g-px-10" >
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid" style="min-height: 320px; height: 320px;"
-								data-lazy="${FreeGameList.gameThumbImage}"
-								alt="Image Description">
-							<a class="u-link-v2" href="/sumy/single-product/${FreeGameList.gameId}"></a>
-						</figure>
 
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="/sumy/single-product/${FreeGameList.gameId}"> ${FreeGameList.gameTitle} </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${FreeGameList.gameDev}</span>
-								<span class="g-color-black g-font-size-17"> <del class="g-font-size-12 g-color-gray-dark-v5">
-								    &#8361;${FreeGameList.gamePrice}</del>
-									<span class="g-font-size-15 font-weight-bold">무료</span>
-								</span>
-							</div>
-							<!-- End Product Info -->
-							
-							<!-- 위시리스트 아이콘 -->
-							<!-- 
+				<c:forEach var="FreeGameList" items="${FreeGameList}">
+					<div class="js-slide">
+						<div class="g-px-10">
+							<!-- Product -->
+							<figure class="g-pos-rel g-mb-20">
+								<img class="img-fluid" style="min-height: 320px; height: 320px;"
+									data-lazy="${FreeGameList.gameThumbImage}"
+									alt="Image Description">
+								<a class="u-link-v2"
+									href="/sumy/single-product/${FreeGameList.gameId}"></a>
+							</figure>
+
+							<div class="media">
+								<!-- Product Info -->
+								<div class="d-flex flex-column">
+									<h4 class="h6 g-color-black mb-1">
+										<a class="u-link-v5 g-color-black g-color-primary--hover"
+											href="/sumy/single-product/${FreeGameList.gameId}">
+											${FreeGameList.gameTitle} </a>
+									</h4>
+									<span
+										class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${FreeGameList.gameDev}</span>
+									<span class="g-color-black g-font-size-17"> <del
+											class="g-font-size-12 g-color-gray-dark-v5">
+											&#8361;${FreeGameList.gamePrice}</del> <span
+										class="g-font-size-15 font-weight-bold">무료</span>
+									</span>
+								</div>
+								<!-- End Product Info -->
+
+								<!-- 위시리스트 아이콘 -->
+								<!-- 
 							Products Icons
 							<ul class="list-inline media-body text-right">
 								<li class="list-inline-item align-middle mx-0"><a
@@ -382,13 +387,13 @@
 							</ul>
 							End Products Icons
 							 -->
-							 
+
+							</div>
+							<!-- End Product -->
 						</div>
-						<!-- End Product -->
 					</div>
-				</div>
-			</c:forEach>
-		</div>
+				</c:forEach>
+			</div>
 		</div>
 
 
@@ -411,43 +416,45 @@
 				data-arrow-left-classes="fa fa-angle-left g-left-10"
 				data-arrow-right-classes="fa fa-angle-right g-right-10"
 				data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-20 text-center">
-				
-		<c:forEach var="DiscountGameList" items="${DiscountGameList}">
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid" style="min-height: 340px; height: 340px;"
-								data-lazy="${DiscountGameList.gameThumbImage}"
-								
-								alt="Image Description">
-							<c:if test="${DiscountGameList.gameDiscountRate > 0}">
-								<span
-									class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
-									-${DiscountGameList.gameDiscountRate}%</span>
-							</c:if>
-							<a class="u-link-v2" href="/sumy/single-product/${DiscountGameList.gameId}"></a>
-						</figure>
 
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="/sumy/single-product/${DiscountGameList.gameId}"></a>${DiscountGameList.gameTitle}
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13"></span>${DiscountGameList.gameDev}
-								 <span class="g-color-black g-font-size-17">
-								 <c:if test="${ DiscountGameList.gameDiscountRate ne '0'}">
-		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${DiscountGameList.gamePrice}</del>
-		                        </c:if>
-									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${DiscountGameList.gamePrice * (100-DiscountGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
-								</span>
-							</div>
-							<!-- End Product Info -->
-							
-							<!-- 위시리스트 아이콘 -->
-							<!-- 
+				<c:forEach var="DiscountGameList" items="${DiscountGameList}">
+					<div class="js-slide">
+						<div class="g-px-10">
+							<!-- Product -->
+							<figure class="g-pos-rel g-mb-20">
+								<img class="img-fluid" style="min-height: 340px; height: 340px;"
+									data-lazy="${DiscountGameList.gameThumbImage}"
+									alt="Image Description">
+								<c:if test="${DiscountGameList.gameDiscountRate > 0}">
+									<span
+										class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
+										-${DiscountGameList.gameDiscountRate}%</span>
+								</c:if>
+								<a class="u-link-v2"
+									href="/sumy/single-product/${DiscountGameList.gameId}"></a>
+							</figure>
+
+							<div class="media">
+								<!-- Product Info -->
+								<div class="d-flex flex-column">
+									<h4 class="h6 g-color-black mb-1">
+										<a class="u-link-v5 g-color-black g-color-primary--hover"
+											href="/sumy/single-product/${DiscountGameList.gameId}"></a>${DiscountGameList.gameTitle}
+									</h4>
+									<span
+										class="d-inline-block g-color-gray-dark-v5 g-font-size-13"></span>${DiscountGameList.gameDev}
+									<span class="g-color-black g-font-size-17"> <c:if
+											test="${ DiscountGameList.gameDiscountRate ne '0'}">
+											<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${DiscountGameList.gamePrice}</del>
+										</c:if> <span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber
+												value="${DiscountGameList.gamePrice * (100-DiscountGameList.gameDiscountRate) / 100}"
+												type="number" pattern="###,###,###,###,###,###" /></span>
+									</span>
+								</div>
+								<!-- End Product Info -->
+
+								<!-- 위시리스트 아이콘 -->
+								<!-- 
 							Products Icons
 							<ul class="list-inline media-body text-right">
 								<li class="list-inline-item align-middle mx-0"><a
@@ -459,16 +466,16 @@
 							</ul>
 							End Products Icons
  							-->
- 														
+
+							</div>
+							<!-- End Product -->
 						</div>
-						<!-- End Product -->
 					</div>
-				</div>
-			</c:forEach>
-		</div>
+				</c:forEach>
+			</div>
 		</div>
 
-				
+
 		<!-- New Arrivals -->
 		<section class="container g-pb-70">
 			<div class="text-center mx-auto g-max-width-600 g-mb-50">
@@ -485,94 +492,94 @@
 					<div class="g-px-10">
 						<!-- Article -->
 						<c:forEach var="NewGameList" items="${NewGameList}">
-						<article
-							class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
-							<!-- Article Image -->
-							<div class="g-max-width-100 g-mr-15">
-								
-								<a href="/sumy/single-product/${NewGameList.gameId}">
-									<img class="d-flex w-100"
-									src="${NewGameList.gameThumbImage}"
-									alt="Image Description">
-								</a>
+							<article
+								class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
+								<!-- Article Image -->
+								<div class="g-max-width-100 g-mr-15">
 
-							</div>
-							<!-- End Article Image -->
+									<a href="/sumy/single-product/${NewGameList.gameId}"> <img
+										class="d-flex w-100" src="${NewGameList.gameThumbImage}"
+										alt="Image Description">
+									</a>
 
-							<!-- Article Info -->
-							<div class="media-body align-self-center">
-								<h4 class="h5 g-mb-7">
-									<a
-										class="g-color-black g-color-primary--hover g-text-underline--none--hover"
-										href="/sumy/single-product/${NewGameList.gameId}">${NewGameList.gameTitle}</a>
-								</h4>
-								<!-- End Article Info -->
+								</div>
+								<!-- End Article Image -->
+
+								<!-- Article Info -->
+								<div class="media-body align-self-center">
+									<h4 class="h5 g-mb-7">
+										<a
+											class="g-color-black g-color-primary--hover g-text-underline--none--hover"
+											href="/sumy/single-product/${NewGameList.gameId}">${NewGameList.gameTitle}</a>
+									</h4>
+									<!-- End Article Info -->
 
 
-								<!-- Article Footer -->
-								<footer class="d-flex justify-content-between g-font-size-16">
-									<span class="g-color-black g-font-size-17">
-								 <c:if test="${ NewGameList.gameDiscountRate ne '0'}">
-		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${NewGameList.gamePrice}</del>
-		                        </c:if>
-									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${NewGameList.gamePrice * (100-NewGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
-								</span>
-									
-								</footer>
-								<!-- End Article Footer -->
-							</div>
-						</article>
-						<!-- End Article -->
-				</c:forEach>
+									<!-- Article Footer -->
+									<footer class="d-flex justify-content-between g-font-size-16">
+										<span class="g-color-black g-font-size-17"> <c:if
+												test="${ NewGameList.gameDiscountRate ne '0'}">
+												<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${NewGameList.gamePrice}</del>
+											</c:if> <span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber
+													value="${NewGameList.gamePrice * (100-NewGameList.gameDiscountRate) / 100}"
+													type="number" pattern="###,###,###,###,###,###" /></span>
+										</span>
+
+									</footer>
+									<!-- End Article Footer -->
+								</div>
+							</article>
+							<!-- End Article -->
+						</c:forEach>
 					</div>
-					</div>
-	
+				</div>
+
 
 				<div class="col-sm-6 col-md-4 g-px-20 g-py-30 mb-4">
 					<p class="lead">리뷰 많은 순</p>
 					<div class="g-px-10">
 						<!-- Article -->
 						<c:forEach var="MostReviewGameList" items="${MostReviewGameList}">
-						<article
-							class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
-							<!-- Article Image -->
-							<div class="g-max-width-100 g-mr-15">
-								<a href="/sumy/single-product/${MostReviewGameList.gameId}">
-									<img class="d-flex w-100"
-									src="${MostReviewGameList.gameThumbImage}"
-									alt="Image Description">
-								</a>
-							</div>
-							<!-- End Article Image -->
+							<article
+								class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
+								<!-- Article Image -->
+								<div class="g-max-width-100 g-mr-15">
+									<a href="/sumy/single-product/${MostReviewGameList.gameId}">
+										<img class="d-flex w-100"
+										src="${MostReviewGameList.gameThumbImage}"
+										alt="Image Description">
+									</a>
+								</div>
+								<!-- End Article Image -->
 
-							<!-- Article Info -->
-							<div class="media-body align-self-center">
-								<h4 class="h5 g-mb-7">
-									<a
-										class="g-color-black g-color-primary--hover g-text-underline--none--hover"
-										href="/sumy/single-product/${MostReviewGameList.gameId}">${MostReviewGameList.gameTitle}</a>
-								</h4>
+								<!-- Article Info -->
+								<div class="media-body align-self-center">
+									<h4 class="h5 g-mb-7">
+										<a
+											class="g-color-black g-color-primary--hover g-text-underline--none--hover"
+											href="/sumy/single-product/${MostReviewGameList.gameId}">${MostReviewGameList.gameTitle}</a>
+									</h4>
 
-								<!-- End Article Info -->
+									<!-- End Article Info -->
 
-								<!-- Article Footer -->
-								<footer class="d-flex justify-content-between g-font-size-16">
-									<span class="g-color-black g-font-size-17">
-								 <c:if test="${ MostReviewGameList.gameDiscountRate ne '0'}">
-		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${MostReviewGameList.gamePrice}</del>
-		                        </c:if>
-									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${MostReviewGameList.gamePrice * (100-MostReviewGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
-								</span>
-								</footer>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-8">리뷰
-								  </span>
-								<!-- End Article Content -->
-							</div>
-						</article>
-						<!-- End Article -->
-					</c:forEach>
+									<!-- Article Footer -->
+									<footer class="d-flex justify-content-between g-font-size-16">
+										<span class="g-color-black g-font-size-17"> <c:if
+												test="${ MostReviewGameList.gameDiscountRate ne '0'}">
+												<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${MostReviewGameList.gamePrice}</del>
+											</c:if> <span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber
+													value="${MostReviewGameList.gamePrice * (100-MostReviewGameList.gameDiscountRate) / 100}"
+													type="number" pattern="###,###,###,###,###,###" /></span>
+										</span>
+									</footer>
+									</span>
+									<!-- End Article Content -->
+								</div>
+							</article>
+							<!-- End Article -->
+						</c:forEach>
 					</div>
-					</div>
+				</div>
 
 
 				<div class="col-sm-6 col-md-4 g-px-20 g-py-30 mb-4">
@@ -580,113 +587,115 @@
 					<div class="g-px-10">
 						<!-- Article -->
 						<c:forEach var="AllUsersGameList" items="${AllUsersGameList}">
-						<article
-							class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
-							<!-- Article Image -->
-							<div class="g-max-width-100 g-mr-15">
-								<a href="/sumy/single-product/${AllUsersGameList.gameId}">
-									<img class="d-flex w-100"
-									src="${AllUsersGameList.gameThumbImage}"
-									alt="Image Description">
-								</a>
-							</div>
-							<!-- End Article Image -->
+							<article
+								class="media g-brd-around g-brd-gray-light-v4 g-bg-white rounded g-pa-10 g-mb-20">
+								<!-- Article Image -->
+								<div class="g-max-width-100 g-mr-15">
+									<a href="/sumy/single-product/${AllUsersGameList.gameId}">
+										<img class="d-flex w-100"
+										src="${AllUsersGameList.gameThumbImage}"
+										alt="Image Description">
+									</a>
+								</div>
+								<!-- End Article Image -->
 
-							<!-- Article Info -->
-							<div class="media-body align-self-center">
-								<h4 class="h5 g-mb-7">
-									<a
-										class="g-color-black g-color-primary--hover g-text-underline--none--hover"
-										href="/sumy/single-product/${AllUsersGameList.gameId}">${AllUsersGameList.gameTitle}</a>
-								</h4>
+								<!-- Article Info -->
+								<div class="media-body align-self-center">
+									<h4 class="h5 g-mb-7">
+										<a
+											class="g-color-black g-color-primary--hover g-text-underline--none--hover"
+											href="/sumy/single-product/${AllUsersGameList.gameId}">${AllUsersGameList.gameTitle}</a>
+									</h4>
 
-								<!-- End Article Info -->
+									<!-- End Article Info -->
 
-								<!-- Article Footer -->
-								<footer class="d-flex justify-content-between g-font-size-16">
-									<span class="g-color-black g-font-size-17">
-								 <c:if test="${ AllUsersGameList.gameDiscountRate ne '0'}">
-		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${AllUsersGameList.gamePrice}</del>
-		                        </c:if>
-									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${AllUsersGameList.gamePrice * (100-AllUsersGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
-								</span>
-								</footer>
-								<!-- End Article Footer -->
-							</div>
-						</article>
-						<!-- End Article -->
-					</c:forEach>
+									<!-- Article Footer -->
+									<footer class="d-flex justify-content-between g-font-size-16">
+										<span class="g-color-black g-font-size-17"> <c:if
+												test="${ AllUsersGameList.gameDiscountRate ne '0'}">
+												<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${AllUsersGameList.gamePrice}</del>
+											</c:if> <span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber
+													value="${AllUsersGameList.gamePrice * (100-AllUsersGameList.gameDiscountRate) / 100}"
+													type="number" pattern="###,###,###,###,###,###" /></span>
+										</span>
+									</footer>
+									<!-- End Article Footer -->
+								</div>
+							</article>
+							<!-- End Article -->
+						</c:forEach>
 					</div>
-					</div>
+				</div>
 
-					
-					</div>
-			
+
+			</div>
+
 		</section>
 		<!-- End New Arrivals -->
 
-			<!-- chuchun game -->
-		<div class="row g-mx-minus-10 g-pb-170">
-		<div class="container">
-			<div class="text-center mx-auto g-max-width-600 g-mb-50">
-				<h2 class="g-color-black mb-4">
-					<span class="u-icon-v1 g-color-blue g-pb-15"> <i
-						class="icon-christmas-037 u-line-icon-pro"></i>
-					</span> 추천 게임 <span class="u-icon-v1 g-color-blue g-pb-15"> <i
-						class="icon-christmas-037 u-line-icon-pro"></i>
-					</span>
-				</h2>
-				<p class="lead">Sumy Game shop에서 인증된 추천 게임들 여러분의 마음대로 즐겨보세요!!</p>
-			</div>
-			<div class="row g-mx-minus-10">			
-            <c:forEach var="RecommendGameList" items="${RecommendGameList}">
-				<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
-					<!-- Blog Background Overlay Blocks -->
-					
-					<article class="u-block-hover">
-						<div class="g-bg-cover g-bg-white-gradient-opacity-v1--after">
-							<img
-								class="d-flex align-items-end u-block-hover__main--mover-down"
-								src="${RecommendGameList.gameThumbImage}"
-								alt="Image Description">
-						</div>
-						<div
-							class="u-block-hover__additional--partially-slide-up text-center g-z-index-1 mt-auto">
-							<div class="u-block-hover__visible g-pa-25">
-								<h2 class="h4 g-color-white g-font-weight-400 mb-3">
-									<a
-										class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
-										href="/sumy/single-product/${RecommendGameList.gameId}">${RecommendGameList.gameTitle}</a>
-								</h2>
-								<h2
-									class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
-									${RecommendGameList.gameSubText}</h2>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
-									</span> <span
-									class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2"></span>
-								<span
-									class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">${RecommendGameList.gameUpdateDate}</span>
-							</div>
-
-							<a
-								class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
-								href="page-single-product-1.html">게임 상세보기</a>
-						</div>
-						<a class="u-link-v2" href="/sumy/single-product/${RecommendGameList.gameId}"></a>
-					</article>
-					<!-- End Blog Background Overlay Blocks -->
-				</div>
-				</c:forEach>
-				</div>
-				</div>
-				</div>
-				
-
-				
 		<!-- chuchun game -->
-				
-				
+		<div class="row g-mx-minus-10 g-pb-170">
+			<div class="container">
+				<div class="text-center mx-auto g-max-width-600 g-mb-50">
+					<h2 class="g-color-black mb-4">
+						<span class="u-icon-v1 g-color-blue g-pb-15"> <i
+							class="icon-christmas-037 u-line-icon-pro"></i>
+						</span> 추천 게임 <span class="u-icon-v1 g-color-blue g-pb-15"> <i
+							class="icon-christmas-037 u-line-icon-pro"></i>
+						</span>
+					</h2>
+					<p class="lead">Sumy Game shop에서 인증된 추천 게임들 여러분의 마음대로 즐겨보세요!!</p>
+				</div>
+				<div class="row g-mx-minus-10">
+					<c:forEach var="RecommendGameList" items="${RecommendGameList}">
+						<div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
+							<!-- Blog Background Overlay Blocks -->
+
+							<article class="u-block-hover">
+								<div class="g-bg-cover g-bg-white-gradient-opacity-v1--after">
+									<img
+										class="d-flex align-items-end u-block-hover__main--mover-down"
+										src="${RecommendGameList.gameThumbImage}"
+										alt="Image Description">
+								</div>
+								<div
+									class="u-block-hover__additional--partially-slide-up text-center g-z-index-1 mt-auto">
+									<div class="u-block-hover__visible g-pa-25">
+										<h2 class="h4 g-color-white g-font-weight-400 mb-3">
+											<a
+												class="u-link-v5 g-color-white g-color-primary--hover g-cursor-pointer"
+												href="/sumy/single-product/${RecommendGameList.gameId}">${RecommendGameList.gameTitle}</a>
+										</h2>
+										<h2
+											class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
+											${RecommendGameList.gameSubText}</h2>
+										<span
+											class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
+										</span> <span
+											class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2"></span>
+										<span
+											class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">${RecommendGameList.gameUpdateDate}</span>
+									</div>
+
+									<a
+										class="d-inline-block g-brd-bottom g-brd-white g-color-white g-font-weight-500 g-font-size-12 text-uppercase g-text-underline--none--hover g-mb-30"
+										href="page-single-product-1.html">게임 상세보기</a>
+								</div>
+								<a class="u-link-v2"
+									href="/sumy/single-product/${RecommendGameList.gameId}"></a>
+							</article>
+							<!-- End Blog Background Overlay Blocks -->
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- chuchun game -->
+
+
 		<!-- End Products -->
 
 		<!-- Categories -->
@@ -746,40 +755,44 @@
 				data-arrow-right-classes="fa fa-angle-right g-right-10"
 				data-pagi-classes="u-carousel-indicators-v1 g-absolute-centered--x g-bottom-20 text-center">
 				<c:forEach var="HottestGameList" items="${HottestGameList}">
-				<div class="js-slide">
-					<div class="g-px-10">
-						<!-- Product -->
-						<figure class="g-pos-rel g-mb-20">
-							<img class="img-fluid"
-								data-lazy="${HottestGameList.gameThumbImage}"
-								alt="Image Description">
-							<c:if test="${HottestGameList.gameDiscountRate > 0 }">
-								<span
-									class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
-								-${HottestGameList.gameDiscountRate}%</span>
-							</c:if>
-							<a class="u-link-v2" href="/sumy/single-product/${HottestGameList.gameId}"></a>
-						</figure>
+					<div class="js-slide">
+						<div class="g-px-10">
+							<!-- Product -->
+							<figure class="g-pos-rel g-mb-20">
+								<img class="img-fluid"
+									data-lazy="${HottestGameList.gameThumbImage}"
+									alt="Image Description">
+								<c:if test="${HottestGameList.gameDiscountRate > 0 }">
+									<span
+										class="u-ribbon-v1 g-width-40 g-height-40 g-color-white g-bg-primary g-font-size-13 text-center text-uppercase g-rounded-50x g-top-10 g-right-minus-10 g-px-2 g-py-10">
+										-${HottestGameList.gameDiscountRate}%</span>
+								</c:if>
+								<a class="u-link-v2"
+									href="/sumy/single-product/${HottestGameList.gameId}"></a>
+							</figure>
 
-						<div class="media">
-							<!-- Product Info -->
-							<div class="d-flex flex-column">
-								<h4 class="h6 g-color-black mb-1">
-									<a class="u-link-v5 g-color-black g-color-primary--hover"
-										href="/sumy/single-product/${HottestGameList.gameId}"> ${HottestGameList.gameTitle} </a>
-								</h4>
-								<span class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${HottestGameList.gameDev}</span>
-								<span class="g-color-black g-font-size-17">
-								 <c:if test="${ HottestGameList.gameDiscountRate ne '0'}">
-		                        	<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${HottestGameList.gamePrice}</del>
-		                        </c:if>
-									<span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber value="${HottestGameList.gamePrice * (100-HottestGameList.gameDiscountRate) / 100}" type="number" pattern="###,###,###,###,###,###"/></span>
-								</span>
-							</div>
-							<!-- End Product Info -->
-							
-							<!-- 위시리스트 아이콘 -->
-							<!-- 
+							<div class="media">
+								<!-- Product Info -->
+								<div class="d-flex flex-column">
+									<h4 class="h6 g-color-black mb-1">
+										<a class="u-link-v5 g-color-black g-color-primary--hover"
+											href="/sumy/single-product/${HottestGameList.gameId}">
+											${HottestGameList.gameTitle} </a>
+									</h4>
+									<span
+										class="d-inline-block g-color-gray-dark-v5 g-font-size-13">${HottestGameList.gameDev}</span>
+									<span class="g-color-black g-font-size-17"> <c:if
+											test="${ HottestGameList.gameDiscountRate ne '0'}">
+											<del class="g-font-size-12 g-color-gray-dark-v5">&#8361;${HottestGameList.gamePrice}</del>
+										</c:if> <span class="g-font-size-17 text-info">&#8361;<fmt:formatNumber
+												value="${HottestGameList.gamePrice * (100-HottestGameList.gameDiscountRate) / 100}"
+												type="number" pattern="###,###,###,###,###,###" /></span>
+									</span>
+								</div>
+								<!-- End Product Info -->
+
+								<!-- 위시리스트 아이콘 -->
+								<!-- 
 							Products Icons
 							<ul class="list-inline media-body text-right">
 								<li class="list-inline-item align-middle mx-0"><a
@@ -791,16 +804,16 @@
 							</ul>
 							End Products Icons
 							 -->
-							
-						</div>
-						</div>
-						</div>
-						<!-- End Product -->
-						</c:forEach>
-					</div>
-				</div>
 
-			
+							</div>
+						</div>
+					</div>
+					<!-- End Product -->
+				</c:forEach>
+			</div>
+		</div>
+
+
 		<!-- End Products -->
 
 		<!-- Footer -->
@@ -956,7 +969,7 @@
 	<script src="/resources/static/assets/js/components/hs.header.js"></script>
 	<script src="/resources/static/assets/js/components/hs.countdown.js"></script>
 	<script src="/resources/static/assets/js/components/hs.count-qty.js"></script>
-	
+
 	<!-- JS Customization -->
 	<script src="/resources/static/user/assets/js/footer.js"></script>
 
