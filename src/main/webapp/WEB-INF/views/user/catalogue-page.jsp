@@ -23,6 +23,11 @@
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/bootstrap/bootstrap.min.css">
 
+<!-- Favicon -->
+<link rel="shortcut icon" href="/resources/static/favicon.ico">
+<link rel="stylesheet"
+	href="/resources/static/assets/vendor/icon-hs/style.css">
+
 <!-- CSS Implementing Plugins -->
 <link rel="stylesheet"
 	href="/resources/static/assets/vendor/icon-awesome/css/font-awesome.min.css">
@@ -116,7 +121,7 @@
 							<c:forEach items="${viewAll}" var="gameInfo">
 								<div class="col-6 col-lg-4 g-mb-30">
 									<!-- Product -->
-									<figure class="g-pos-rel g-mb-20 g-height-350">
+									<figure class="g-pos-rel g-mb-30 g-height-300">
 										<img class="img-fluid" src="${gameInfo.gameThumbImage }" style="min-height: 320px; height: 320px;"
 											alt="Image Description">
 										<c:if test="${gameInfo.gameDiscountRate > 0}">
