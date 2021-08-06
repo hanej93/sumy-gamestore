@@ -572,6 +572,7 @@
 													type="number" pattern="###,###,###,###,###,###" /></span>
 										</span>
 									</footer>
+
 									</span>
 									<!-- End Article Content -->
 								</div>
@@ -670,11 +671,16 @@
 											class="h6 g-color-white g-font-weight-300 mb-3 text-truncate">
 											${RecommendGameList.gameSubText}</h2>
 										<span
-											class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
-										</span> <span
-											class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2"></span>
+										class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">작성일</span>
+										<span class="g-color-white-opacity-0_7 g-pos-rel g-top-2 mx-2">&#183;</span>
+										
 										<span
-											class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">${RecommendGameList.gameUpdateDate}</span>
+										class="g-color-white-opacity-0_7 g-font-size-10 text-uppercase">
+										<fmt:parseDate value="${RecommendGameList.gameReleaseDate}" var="dateFmt"
+											pattern="yyyy-MM-dd'T'HH:mm" /> <fmt:formatDate
+											value="${dateFmt}" pattern="yyyy년 MM월 dd일" />
+									</span>
+										
 									</div>
 
 									<a
