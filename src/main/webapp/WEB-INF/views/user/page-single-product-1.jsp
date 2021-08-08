@@ -267,11 +267,11 @@
 				<h2 class="h4 mb-3">게임 스토리</h2>
 
 				<div class="row">
-					<div class="col-md-8 g-mb-30">
+					<div class="col-lg-7 col-md-8 g-mb-30">
 						<p>${gameInfo.gameSubText }</p>
 					</div>
 
-					<div class="col-md-4 g-mb-0 g-mb-30--md">
+					<div class="g-px-40--lg col-lg-5 col-md-4 g-mb-0 g-mb-30--md">
 						<!-- List -->
 						<ul class="list-unstyled g-color-text">
 							<li class="g-brd-bottom--dashed g-brd-gray-light-v3 pt-1 mb-3">
