@@ -7,7 +7,10 @@
 <html>
 <head>
 <!-- Title -->
-<title>sumy web - 뉴스리스트</title>
+<title>sumy gamestore - news list page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">

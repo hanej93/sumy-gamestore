@@ -5,7 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <!-- Title -->
-<title>sumy web - 로그인</title>
+<title>sumy gamestore - login page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">

@@ -11,7 +11,7 @@
 <html>
 <head>
 <!-- Title -->
-<title>sumy web - 목록화면</title>
+<title>sumy gamestore - catalogue page</title>
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">

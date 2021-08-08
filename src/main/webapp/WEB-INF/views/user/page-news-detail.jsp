@@ -6,7 +6,10 @@
 <html>
 <head>
 <!-- Title -->
-<title>sumy web - 뉴스상세보기</title>
+<title>sumy gamestore - news detail page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">
@@ -109,7 +112,7 @@
 							<span class="g-color-text mr-10">작성일 : <span>
 							<fmt:parseDate value="${news.newsWriteDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
 		  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/></span></span> 
-							<span class="g-color-text">수정일 : <span>
+							
 							<fmt:parseDate value="${news.newsUpdateDate }" var="dateFmt" pattern="yyyy-MM-dd'T'HH:mm"/>
 		  					<fmt:formatDate value="${dateFmt}"  pattern="yyyy.MM.dd  HH:mm"/></span></span>
 							<div class="row">

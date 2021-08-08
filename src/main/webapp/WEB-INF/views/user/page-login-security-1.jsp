@@ -10,7 +10,10 @@
 <html>
 <head>
 <!-- Title -->
-<title>sumy web - 회원정보변경</title>
+<title>sumy gamestore - Edit member information page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">

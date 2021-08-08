@@ -15,7 +15,10 @@
 <title>Insert title here</title>
 <head>
 <!-- Title -->
-<title>sumy web - 리뷰더보기화면</title>
+<title>sumy gamestore - games review detail page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">

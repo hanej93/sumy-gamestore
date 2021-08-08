@@ -15,7 +15,10 @@
 <title>page-single-product-1</title>
 <head>
 <!-- Title -->
-<title>sumy web - 게임상세보기</title>
+<title>sumy gamestore - games View Details page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">

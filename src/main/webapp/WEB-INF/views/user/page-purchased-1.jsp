@@ -12,7 +12,10 @@
 <html>
 <head>
 <!-- Title -->
-<title>sumy web - 내가보유한게임</title>
+<title>sumy gamestore - paid games list page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">

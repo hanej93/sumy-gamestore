@@ -4,7 +4,10 @@
 <html>
 <head>
 <!-- Title -->
-<title>sumy web - 결제정보</title>
+<title>sumy gamestore - Payment information page</title>
+
+<!--favicon  -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/static/user/assets/img/logo/logo-yy (1).ico" />
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">
