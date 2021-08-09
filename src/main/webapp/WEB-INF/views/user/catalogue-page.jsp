@@ -92,7 +92,7 @@
 							class="d-flex justify-content-between align-items-center g-brd-bottom g-brd-gray-light-v4 g-pt-40 g-pb-20">
 								<span>
 									<c:if test="${not empty paging.keyword}">
-									검색한 결과 : ${paging.keyword }
+										검색한 결과 : ${paging.keyword }
 									</c:if>
 								</span>
 							<!-- Sort By -->
@@ -121,8 +121,12 @@
 						<!-- End Filters -->
 
 						<!-- Products -->
-						<div class="row g-pt-30 g-mb-50">
-						
+						<div class="row g-pt-30 g-mb-50 justify-content-center d-flex align-items-center">
+							<c:if test="${empty viewAll}">
+								<div class="col-8 col-lg-6 g-mb-30 g-height-600 align-middle justify-content-center d-flex align-items-center">
+									<h5>검색조건에 해당하는 게임이 없습니다</h5>
+								</div>
+							</c:if>
 							<c:forEach items="${viewAll}" var="gameInfo">
 								<div class="col-6 col-lg-4 g-mb-30">
 									<!-- Product -->
