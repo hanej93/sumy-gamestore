@@ -90,6 +90,16 @@ $(document).on('ready', function() {
 
 	console.log($("form[name=questionForm] input[name=userId]").val());
 	//문의하기 버튼
+	
+	//문의하기 화면이 꺼질 때 문의하기 내용 초기화 하는 역할
+	$("#questionForSumyModal").on('hidden.bs.modal', function () {
+		/*location.reload();*/
+		$('#questionForSumyModalTitle').val('');
+		$('#questionForSumyModalContents').val('');
+		$('#questionImgInput').val('');
+		$('#questionImg').attr('src','/upload/default_img.jpg');
+	});
+		
 	$('#questionForSumyBtn').on('click', function() {
 		
 		if ($('#questionForSumyModalTitle').val() == "") {
