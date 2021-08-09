@@ -89,12 +89,12 @@
 					<div class="g-pr-15--lg">
 						<!-- Filters -->
 						<div
-							class="d-flex justify-content-end align-items-center g-brd-bottom g-brd-gray-light-v4 g-pt-40 g-pb-20">
-							<%-- <c:forEach items="${paging}" var="keyword">
-								<div>
-								${keyword.keyword }
-								</div>
-							</c:forEach> --%>
+							class="d-flex justify-content-between align-items-center g-brd-bottom g-brd-gray-light-v4 g-pt-40 g-pb-20">
+								<span>
+									<c:if test="${not empty paging.keyword}">
+									검색한 결과 : ${paging.keyword }
+									</c:if>
+								</span>
 							<!-- Sort By -->
 							<div>
 								<h2
