@@ -193,9 +193,10 @@
 						
 						<c:choose>
 						<c:when test="${not empty principal }">
-						<c:if test="${purchasedGame ne 1 }">
-						<!-- Buttons -->
-						
+						<c:choose>
+						<%-- 이미 구매한 게임인 경우 조건--%>
+						<c:when test="${purchasedGame ne 1 }">
+							<!-- Buttons -->
 							<div class="row g-mx-minus-5 g-mb-20">
 								<div class="col g-px-5 g-mb-10">
 									<button id="purchaseBtn" gameId='${gameInfo.gameId }' 
@@ -228,7 +229,23 @@
 								</div>
 							</div>
 							<!-- End Buttons -->
-						</c:if>
+						</c:when>
+						<c:otherwise>
+							<!-- Buttons -->
+							<div class="row g-mx-minus-5 g-mb-20">
+								<div class="col g-px-5 g-mb-10">
+								<a class="u-link-v5" href="/user/purchased">
+									<button 
+										class="btn btn-block u-btn-primary g-font-size-12 text-uppercase g-py-15 g-px-25"
+										type="button">
+										구매한 게임 <i class="align-middle ml-2 icon-wallet u-line-icon-pro"></i>
+									</button>
+								</a>
+								</div>
+							</div>
+							<!-- End Buttons -->
+						</c:otherwise>
+						</c:choose>
 						</c:when>
 						<c:otherwise>
 							<!-- Buttons -->

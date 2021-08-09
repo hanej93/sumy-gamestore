@@ -99,6 +99,9 @@ public class SingleProductController {
 			PrincipalDetail principal = (PrincipalDetail) authentication.getPrincipal();
 			int userId = principal.getUser().getUserId();
 			int exists =  wishListService.위시리스트유무(userId, gameId);
+			int purchased = purchasedService.구매한게임유무(userId, gameId);
+			
+			model.addAttribute("purchasedGame", purchased);
 						
 			if(exists > 0 ) {
 				model.addAttribute("existsWishlist", exists);
