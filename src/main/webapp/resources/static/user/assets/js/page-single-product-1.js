@@ -198,6 +198,11 @@ $(document).on('ready', function() {
 		$('#detailsBtn').text($('#detailsBtn').text() == '자세히 보기' ? '간략히 보기' : '자세히 보기');
 	});
 	
+	if($("#details").height() > 300){
+		$("#details").addClass('line--clamp');
+		$("#detailsBtn").removeClass('d-none');
+	}
+			
 	// 위시리스트 추가/삭제
 	$("#wishlist-btn").on("click", function(){
 		

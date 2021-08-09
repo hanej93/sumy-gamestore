@@ -329,23 +329,26 @@
 
 		<!-- Details -->
 		<div class="container g-py-50 text-center">
-			<style>
-				.line--clamp {
-					display: -webkit-box;
-					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 8;
-					overflow: hidden;
-				}
-			</style>
 			<!-- 자세히보기 인덱스2 -->
-			<div id="details" class="mb-5 line--clamp">
+			<div>
 				<span class="d-block g-font-size-12 text-uppercase mb-5">게임소개</span>
 				<h2 class="mb-4">${gameInfo.gameTitle }</h2>
+				<style>
+					.line--clamp {
+						/* display: -webkit-box;
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 8; */
+						max-height: 300px;
+						overflow: hidden;
+					}
+				</style>
+				<div id="details" class="mb-5">
 				${gameInfo.gameMainText }
+				</div>
 			</div>
-
+			
 			<button id="detailsBtn"
-				class="btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25">자세히 보기</button>
+				class="d-none btn u-btn-primary g-font-size-12 text-uppercase g-py-12 g-px-25">자세히 보기</button>
 		</div>
 		<!-- End Details -->
 
