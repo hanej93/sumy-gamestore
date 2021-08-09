@@ -61,10 +61,10 @@
 			class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall"
 			data-options='{direction: "fromtop", animation_duration: 25, direction: "reverse"}'>
 			<div
-				class="divimage dzsparallaxer--target w-100 g-bg-pos-top-center g-bg-cover g-bg-black-opacity-0_1--after"
+				class="divimage dzsparallaxer--target w-100 g-bg-pos-top-center g-bg-cover g-bg-black-opacity-0_7--after"
 				style="height: 140%; background-image: url(/resources/static/user/assets/img/banner/egs-amongus.jpg);"></div>
 
-			<div class="container g-color-white g-pt-100 g-pb-40">
+			<div class="container g-color-white g-pt-100 g-pb-40 opacity-75">
 				<div class="g-mb-50">
 					<span
 						class="d-block g-color-white-opacity-0_8 g-font-weight-300 g-font-size-20">당신을
