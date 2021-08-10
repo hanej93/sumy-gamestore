@@ -40,7 +40,7 @@
 			class="u-header__section u-header__section--hidden u-header__section--dark g-bg-black g-transition-0_3 g-py-10">
 			<div class="g-mx-30">
 				<div
-					class="row flex-column flex-sm-row justify-content-between align-items-center text-uppercase g-font-weight-100 g-color-white g-font-size-16 g-mx-0--lg">
+					class="row flex-lg-row flex-column justify-content-between align-items-center text-uppercase g-font-weight-100 g-color-white g-font-size-16 g-mx-0--lg">
 					<div class="col-auto">
 						<li class="list-inline-item g-mx-30"><a href="/">
 								<img src="/resources/static/user/assets/img/logo/logo-y.png"
@@ -62,7 +62,7 @@
 							</c:if>
 					</div>
 
-
+				<div class="g-mx-30">
 					<div class="col-auto">
 						<!-- Search -->
 						<div
@@ -245,6 +245,7 @@
 								class="g-color-white g-color-primary--hover g-text-underline--none--hover"
 								href="/user/login-security">Mypage</a></li>
 						</c:if>
+					</div>
 					</div>
 				</div>
 			</div>
