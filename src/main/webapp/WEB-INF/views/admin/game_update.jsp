@@ -240,7 +240,6 @@
                     </div>
                   </div>
                   <!-- 할인된 게임 가격 끝 -->
-
                   <!-- 게임 카테고리 선택 시작 -->
 							<h5 class="g-mb-20">카테고리 선택</h5>
 							<div id="sumy-game-category" class="row g-mb-30">
@@ -251,7 +250,12 @@
 											<label class="u-check g-pl-25"> <input id="category"
 												value="${ category.categoryId}"
 												class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0"
-												type="checkbox">
+												type="checkbox"
+												<c:if test="${gameInfo.gameCategoryId1 eq category.categoryId }">checked</c:if>
+												<c:if test="${gameInfo.gameCategoryId2 eq category.categoryId }">checked</c:if>
+												<c:if test="${gameInfo.gameCategoryId3 eq category.categoryId }">checked</c:if>
+												<c:if test="${gameInfo.gameCategoryId4 eq category.categoryId }">checked</c:if>
+												>
 												<div
 													class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
 													<i class="fa" data-check-icon=""></i>
