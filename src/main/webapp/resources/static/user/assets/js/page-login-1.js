@@ -60,7 +60,18 @@ function chkPW(password) {
 	}
 }
 
-
+	
+	$('#passwordEye').on('click',function(){
+		$('#userPassword').toggleClass('active');
+        if($('#userPassword').hasClass('active')){
+            $('#userPassword').prop('type',"text");
+			$('#passwordEye').toggleClass('fa-eye-slash fa-eye');
+        }else{
+            $('#userPassword').prop('type','password');
+			$('#passwordEye').toggleClass('fa-eye-slash fa-eye');
+        }	
+		
+	});
 
 /*** 
  **
@@ -76,7 +87,7 @@ function chkPW(password) {
 
 $(document).on('ready', function() {
 	
-	//비밀번호 입력 pocus 시 password off
+	/*//비밀번호 입력 pocus 시 password off
 	$('#userPassword').focus(function() {
 		$(this).attr('type', 'text');
 	});
@@ -84,9 +95,8 @@ $(document).on('ready', function() {
 	//비밀번호 입력 blur 시 password on
 	$('#userPassword').blur(function() {
 		$(this).attr('type', 'password');
-	});
-	
-	
+	});*/
+
 
 	
 	$('#loginForm').on('submit', function() {
