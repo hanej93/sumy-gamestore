@@ -205,7 +205,7 @@
 
 		<!-- Review write -->
 		<form name="reviewInsertForm" style="display: none;">
-			<c:if test="${userReviewCnt == 0 }">
+			<c:if test="${userReviewCnt == 0 && purchasedGame ne 0}">
 				<div class="container g-mb-100">
 					<h2 class="h4 mb-5">리뷰 작성</h2>
 					
