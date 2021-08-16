@@ -282,7 +282,7 @@
 								<div class="text-center">
 									<p class="g-color-gray-dark-v5 mb-0">
 										이미 계정이 있으신가요? <a class="g-font-weight-600"
-											href="page-login-1.html">로그인</a>
+											href="/sumy/login">로그인</a>
 									</p>
 								</div>
 							</div>
