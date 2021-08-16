@@ -194,7 +194,7 @@ $(document).ready(function() {
 			$('#userProfileImage').attr('value', result);
 			alert('프로필 변경을 완료하였습니다.');
 			$("#profileUpdateModal").modal('hide');
-			$('#blah2').attr('src', targetUrl);
+			$('#blah2').prop('src', result);
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
