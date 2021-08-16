@@ -1,5 +1,74 @@
+let singleProduct = {
+	init: function() {
+
+		// 이벤트
+
+	},
+	purchase: function(gameId) {
+		console.log("ajax 보내기 전 gameId : "+$("form[name='singlePaymentForm'] input[name='gameId']").val());
+		console.log("ajax 보내기 전 gamePrice : "+$("form[name='singlePaymentForm'] input[name='gamePrice']").val());
+		$("form[name='singlePaymentForm'] input[name='gamePrice']").val(Math.floor($("form[name='singlePaymentForm'] input[name='gamePrice']").val()));
+		var singlePaymentForm = $("form[name='singlePaymentForm']").serialize();
+		sessionStorage.setItem("gameId", $("form[name='singlePaymentForm'] input[name='gameId']").val());
+
+
+		if ($("form[name='singlePaymentForm'] input[name='gamePrice']").val() <= 0) {
+			$.ajax({
+				type: "POST",
+				url: '/user/orderSuccess2',
+				data:singlePaymentForm,
+				dataType: "json",
+				success: function(result) {
+					console.log("0원 결제 성공");
+					location.href="/user/orderSuccess2";
+				},
+				error: function(err) {
+					console.log("err" + err);
+				}
+			})
+		}else {
+			$.ajax({
+				type: "POST",
+				url: '/user/kakaoPayApi2',
+				data:singlePaymentForm,
+				dataType: "json",
+				success: function(result) {
+					if (result == "free") {
+						free();
+					}
+					var resultBox = result.next_redirect_pc_url;
+					window.open(resultBox);
+				},
+				error: function(err) {
+					console.log("err" + err);
+				}
+			})
+		}
+	}
+}
+singleProduct.init();
 
 $(document).on('ready', function() {
+	$('#purchaseBtn').on('click', function(){
+		
+		let gameId = $(this).attr('gameId');
+
+		
+		$.ajax({
+			type:"POST",
+			url:"/user/selectPurchasedGameYN",
+			data:JSON.stringify(gameId),
+			contentType:"application/json;charset=utf-8", 
+			dataType:"json" 
+		}).done(function(resp){ 
+			singleProduct.purchase(gameId);
+			console.log(resp);
+		}).fail(function(error){ 
+			console.log(error); 
+			alert(JSON.stringify(error));
+		});
+	});
+	
 	//리뷰 수정하기 : p, textarea toggle
 	$('.reviewUpdateBtn').on('click', function() {
 		//리뷰 수정 전 p값 가져와서 input에 넣기.

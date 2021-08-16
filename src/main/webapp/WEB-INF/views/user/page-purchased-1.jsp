@@ -224,9 +224,9 @@
 										<%-- <li class="list-inline-item hidden-down"><a
 											class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5"
 											href="#">${p }</a></li> --%>
-											<li class="list-inline-item hidden-down"><span
+											<li class="list-inline-item hidden-down"><a
 											class="u-pagination-v1__item g-width-30 g-height-30 g-color-gray-dark-v5 g-color-primary--hover g-font-size-12 rounded-circle g-pa-5 active"
-											>${p }</span></li>
+											href="/user/purchased?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${paging.keyword}&orderOpt=${paging.orderOpt}">${p }</a></li>
 					                </c:when>
 				                </c:choose>
 			                </c:forEach>

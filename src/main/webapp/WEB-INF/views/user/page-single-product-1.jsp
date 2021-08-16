@@ -195,7 +195,7 @@
 						<c:when test="${not empty principal }">
 						<c:choose>
 						<%-- 이미 구매한 게임인 경우 조건--%>
-						<c:when test="${purchasedGame ne 1 }">
+						<c:when test="${purchasedGame eq 0}">
 							<!-- Buttons -->
 							<div class="row g-mx-minus-5 g-mb-20">
 								<div class="col g-px-5 g-mb-10">
