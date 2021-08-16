@@ -157,7 +157,7 @@
 											<input type="text" name="userId"
 												value="${principal.user.userId}" style="display: none;">
 											<input type="hidden" name="userPassword"
-												value="">
+												>
 											<textarea id="loginSecurityNickNameTextArea"
 												name="userNickname"
 												class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15"

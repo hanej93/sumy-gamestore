@@ -57,13 +57,12 @@ public class MyPageController {
 	// 닉네임 업데이트
 	@PostMapping("/user/profileNickNameUpdate")
 	public String profileNickNameUpdate(UserInfo userInfo) {
-		System.out.println(userInfo);
 		myPageService.insertUserNickname(userInfo);
 		
 		UserInfo loginUser = userInfoService.유저검색(userInfo.getUserId());
 		
 		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+				.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUserEmail(), userInfo.getUserPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		return "닉네임수정";
@@ -75,8 +74,10 @@ public class MyPageController {
 		System.out.println(userInfo);
 		myPageService.insertUserAddress(userInfo);
 		
+		UserInfo loginUser = userInfoService.유저검색(userInfo.getUserId());
+		
 		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+				.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUserEmail(), userInfo.getUserPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		return "주소수정";
@@ -100,8 +101,10 @@ public class MyPageController {
 		System.out.println(userInfo);
 		myPageService.insertUserPhoneNumber(userInfo);
 		
+		UserInfo loginUser = userInfoService.유저검색(userInfo.getUserId());
+		
 		Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(userInfo.getUserEmail(), userInfo.getUserPassword()));
+				.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUserEmail(), userInfo.getUserPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		return "연락처수정";
