@@ -9,7 +9,8 @@ let singleProduct = {
 		console.log("ajax 보내기 전 gamePrice : "+$("form[name='singlePaymentForm'] input[name='gamePrice']").val());
 		$("form[name='singlePaymentForm'] input[name='gamePrice']").val(Math.floor($("form[name='singlePaymentForm'] input[name='gamePrice']").val()));
 		var singlePaymentForm = $("form[name='singlePaymentForm']").serialize();
-		
+		sessionStorage.setItem("gameId", $("form[name='singlePaymentForm'] input[name='gameId']").val());
+
 
 		if ($("form[name='singlePaymentForm'] input[name='gamePrice']").val() <= 0) {
 			$.ajax({
