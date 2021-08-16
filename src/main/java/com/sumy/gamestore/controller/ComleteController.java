@@ -11,6 +11,7 @@ import com.sumy.gamestore.service.JoinedUserService;
 //@Controller
 //@RequestMapping("/success")
 //public class ComleteController {
+
 //
 //	@Autowired
 //	JoinedUserService joinedUserService;
