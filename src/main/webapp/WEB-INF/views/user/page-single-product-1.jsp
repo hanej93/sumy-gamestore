@@ -360,7 +360,7 @@
 						<h2 class="h4 mb-5">리뷰 보기</h2>
 
 						<!-- Review -->
-						<div class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-50 d-flex justify-content-center align-items-center">
+						<div class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-50">
 							<c:if test="${empty reviewList}">
 								<div class="col-8 col-lg-6 g-mb-30 g-height-100 align-middle justify-content-center d-flex align-items-center">
 									<h5>작성된 리뷰가 없습니다</h5>
