@@ -114,9 +114,9 @@ main{
 									</span> 
 									
 									<input id="userPassword" name="password"
-										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-none g-rounded-left-0 g-rounded-right-3 g-py-15 g-px-15"
+										class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-none g-rounded-left-0 g-py-15 g-px-15"
 										type="password" placeholder="비밀번호 입력">
-										<span class="input-group-append g-color-gray-dark-v5 justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye" class="fa fa-eye fa-lg"></i></span>
+										<span class="input-group-append g-color-gray-dark-v5 g-brd-left justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye" class="fa fa-eye fa-lg"></i></span>
 
 								</div>
 								<small class="form-control-feedback" style="display: none;">비밀번호

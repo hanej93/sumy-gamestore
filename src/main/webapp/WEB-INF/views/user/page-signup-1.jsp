@@ -154,9 +154,9 @@
 									<label class="g-mb-10">비밀번호</label>
 									<div class="g-mb-10 input-group">
 										<input id="userPassword" name="userPassword"
-											class="form-control form-control-md rounded g-py-15 g-px-15"
+											class="form-control form-control-md g-py-15 g-px-15 rounded-right-none"
 											type="text" placeholder="비밀번호 입력">
-											<span class="input-group-append g-color-gray-dark-v5 justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye" class="fa fa-eye fa-lg"></i>
+											<span class="input-group-append g-color-gray-dark-v5 rounded-left-none justify-content-center align-items-center g-bg-white g-rounded-right-3" style="border :1px solid #ced4da;cursor:pointer;"><i id="passwordEye" class="fa fa-eye fa-lg"></i>
 										</span>
 									</div>
 									<small class="form-control-feedback" style="display: none;">비밀번호
@@ -169,9 +169,9 @@
 									<label class="g-mb-10">비밀번호 확인</label>
 									<div class="g-mb-10 input-group">
 										<input id="rePasswordInput"
-											class="form-control form-control-md rounded g-py-15 g-px-15"
+											class="form-control form-control-md g-py-15 g-px-15 rounded-right-none"
 											type="text" placeholder="비밀번호 재입력">
-										<span class="input-group-append g-color-gray-dark-v5 justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye2" class="fa fa-eye fa-lg"></i>
+										<span class="input-group-append g-color-gray-dark-v5 rounded-left-none justify-content-center align-items-center g-bg-white g-rounded-right-3" style="border :1px solid #ced4da;cursor:pointer;"><i id="passwordEye2" class="fa fa-eye fa-lg"></i>
 										</span>
 									</div>
 									<small class="form-control-feedback" style="display: none;">비밀번호
