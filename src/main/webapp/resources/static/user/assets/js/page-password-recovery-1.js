@@ -240,7 +240,7 @@ $(document).ready(function() {
 		$('#rePasswordLast').css('display', 'block');
 		$('#loginSecurityUpdateEmail').val($('#userEmail').val());
 	});
-
+/*
 	//현재 비밀번호 수정 입력 pocus 시 password off
 	$('#loginSecurityUpdateNowPwd').focus(function() {
 		$(this).attr('type', 'text');
@@ -270,7 +270,7 @@ $(document).ready(function() {
 	$('#loginSecurityUpdateCheckNewPwd').blur(function() {
 		$(this).attr('type', 'password');
 	});
-
+*/
 	//비밀번호 수정완료 : update review
 	$('#loginSecurityUpdatePwdBtn').on('click', function() {
 		if ($('#loginSecurityUpdateNowPwd').val() == "") {
