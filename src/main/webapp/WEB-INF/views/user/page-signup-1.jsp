@@ -159,7 +159,7 @@
 									</div>
 									<small class="form-control-feedback" style="display: none;">비밀번호
 										입력은 필수 항목입니다.</small>
-									<div class="g-color-gray-dark-v5 g-font-size-12">영문 대소문자
+									<div class="g-color-gray-dark-v5 g-font-size-12">영문자
 										포함, 숫자 포함, 특수 문자 포함, 공백x, 비밀번호 8~20자</div>
 								</div>
 
