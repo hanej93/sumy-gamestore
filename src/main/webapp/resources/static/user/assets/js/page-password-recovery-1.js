@@ -114,6 +114,7 @@ $(document).ready(function() {
 					}
 					$('#upuserId').val(result);
 					removeErrorAndSuccess($('#userEmail'));
+					addSuccess($('#userEmail'));
 					$('#userEmail').parent().parent().children('small').html('이메일을 보내고 있습니다. 잠시만 기다려주세요..');
 					$.ajax({
 						type: "GET",
