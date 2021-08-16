@@ -152,10 +152,12 @@
 
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">비밀번호</label>
-									<div class="g-mb-10">
+									<div class="g-mb-10 input-group">
 										<input id="userPassword" name="userPassword"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="비밀번호 입력">
+											<span class="input-group-append g-color-gray-dark-v5 justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye" class="fa fa-eye fa-lg"></i>
+										</span>
 									</div>
 									<small class="form-control-feedback" style="display: none;">비밀번호
 										입력은 필수 항목입니다.</small>
@@ -165,10 +167,12 @@
 
 								<div class="form-group g-mb-20">
 									<label class="g-mb-10">비밀번호 확인</label>
-									<div class="g-mb-10">
+									<div class="g-mb-10 input-group">
 										<input id="rePasswordInput"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="비밀번호 재입력">
+										<span class="input-group-append g-color-gray-dark-v5 justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye2" class="fa fa-eye fa-lg"></i>
+										</span>
 									</div>
 									<small class="form-control-feedback" style="display: none;">비밀번호
 										재입력은 필수 항목입니다.</small>

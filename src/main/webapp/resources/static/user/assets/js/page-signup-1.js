@@ -130,6 +130,31 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		
 }
 
+	
+	$('#passwordEye').on('click',function(){
+		$('#userPassword').toggleClass('active');
+        if($('#userPassword').hasClass('active')){
+            $('#userPassword').prop('type',"text");
+			$('#passwordEye').toggleClass('fa-eye-slash fa-eye');
+        }else{
+            $('#userPassword').prop('type','password');
+			$('#passwordEye').toggleClass('fa-eye-slash fa-eye');
+        }	
+		
+	});
+	
+	$('#passwordEye2').on('click',function(){
+		$('#rePasswordInput').toggleClass('active');
+        if($('#rePasswordInput').hasClass('active')){
+            $('#rePasswordInput').prop('type',"text");
+			$('#passwordEye2').toggleClass('fa-eye-slash fa-eye');
+        }else{
+            $('#rePasswordInput').prop('type','password');
+			$('#passwordEye2').toggleClass('fa-eye-slash fa-eye');
+        }	
+		
+	});
+	
 
 /*** 
  **
@@ -254,7 +279,7 @@ $(document).ready(function() {
 		$('#emailCertificationSendBox').css('display', 'none');
 		$('#emailReBox').css('display', 'block');
 	});
-
+/*
 	//비밀번호 입력 pocus 시 password off
 	$('#userPassword').focus(function() {
 		$(this).attr('type', 'text');
@@ -274,7 +299,7 @@ $(document).ready(function() {
 	$('#rePasswordInput').blur(function() {
 		$(this).attr('type', 'password');
 	});
-
+*/
 	//회원가입 form submit
 	$('#joinBtn').on('click', function() {
 		//이메일 공란 check

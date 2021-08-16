@@ -68,6 +68,34 @@ function chkPW(password) {
 	}
 }
 
+
+	
+	$('#passwordEye').on('click',function(){
+		$('#loginSecurityUpdateNewPwd').toggleClass('active');
+        if($('#loginSecurityUpdateNewPwd').hasClass('active')){
+            $('#loginSecurityUpdateNewPwd').prop('type',"text");
+			$('#passwordEye').toggleClass('fa-eye-slash fa-eye');
+        }else{
+            $('#loginSecurityUpdateNewPwd').prop('type','password');
+			$('#passwordEye').toggleClass('fa-eye-slash fa-eye');
+        }	
+		
+	});
+	
+	$('#passwordEye2').on('click',function(){
+		$('#loginSecurityUpdateCheckNewPwd').toggleClass('active');
+        if($('#loginSecurityUpdateCheckNewPwd').hasClass('active')){
+            $('#loginSecurityUpdateCheckNewPwd').prop('type',"text");
+			$('#passwordEye2').toggleClass('fa-eye-slash fa-eye');
+        }else{
+            $('#loginSecurityUpdateCheckNewPwd').prop('type','password');
+			$('#passwordEye2').toggleClass('fa-eye-slash fa-eye');
+        }	
+		
+	});
+	
+
+
 /*** 
  **
  *

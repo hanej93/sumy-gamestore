@@ -148,17 +148,26 @@
 											id="loginSecurityUpdateEmail"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" readonly="readonly">
-									<label class="g-mb-10 g-mt-20">새 비밀번호</label> 
-									<input
+									<label class="g-mb-10 g-mt-20">새 비밀번호</label>
+									<div class="input-group"> 
+										<input
 											id="loginSecurityUpdateNewPwd"
 											name="userPassword"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="새 비밀번호 입력">
-
-									<label class="g-mb-10 g-mt-20">새 비밀번호 확인</label>  <input
+											<span class="input-group-append g-color-gray-dark-v5 justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye" class="fa fa-eye fa-lg"></i>
+										</span>
+									</div>
+									
+									<label class="g-mb-10 g-mt-20">새 비밀번호 확인</label>  
+									<div class="input-group">
+										<input
 											id="loginSecurityUpdateCheckNewPwd"
 											class="form-control form-control-md rounded g-py-15 g-px-15"
 											type="text" placeholder="새 비밀번호 재입력">
+											<span class="input-group-append g-color-gray-dark-v5 justify-content-center align-items-center g-bg-white g-rounded-right-3"><i id="passwordEye2" class="fa fa-eye fa-lg"></i>
+										</span>
+									</div>
 
 									<div class="row no-gutters g-mt-30">
 										<div class="col-6">
