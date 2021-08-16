@@ -127,7 +127,7 @@ main{
 										type="checkbox"> <span
 										class="d-block u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
 											<i class="fa" data-check-icon="&#xf00c"></i>
-									</span> 아이디 저장하기
+									</span> 자동 로그인
 									</label>
 								</div>
 								<div class="col align-self-center text-right">
